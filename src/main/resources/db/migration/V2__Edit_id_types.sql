@@ -1,0 +1,11 @@
+alter table public.coffee alter column id type bigint using id::bigint;
+alter table public.tea alter column id type bigint using id::bigint;
+alter table public.users alter column id type bigint using id::bigint;
+alter table public.drink alter column id type bigint using id::bigint;
+alter table public.coffee_type alter column id type bigint using id::bigint;
+alter table public.countries alter column id type bigint using id::bigint;
+alter table public.manufacturer alter column id type bigint using id::bigint;
+alter table public.packaging alter column id type bigint using id::bigint;
+alter table public.pg_order alter column id type bigint using id::bigint;
+alter table public.roasting alter column id type bigint using id::bigint;
+alter table public.tea_type alter column id type bigint using id::bigint;
