@@ -3,10 +3,10 @@ package ru.coffeetearea.model.directory;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "countries", schema = "public")
-public class Countries {
+@Table(name = "tea_color", schema = "public")
+public class TeaColor {
 
-    public Countries() { // Constructor for Hibernate
+    public TeaColor() { // Constructor for Hibernate
 
     }
 

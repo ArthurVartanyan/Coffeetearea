@@ -1,3 +1,19 @@
+-- drop tables
+drop table if exists public.tea_color cascade;
+drop table if exists public.cart_products cascade;
+drop table if exists public.coffee cascade;
+drop table if exists public.coffee_type cascade;
+drop table if exists public.countries cascade;
+drop table if exists public.drink cascade;
+drop table if exists public.favourites cascade;
+drop table if exists public.manufacturer cascade;
+drop table if exists public.packaging cascade;
+drop table if exists public.pg_order cascade;
+drop table if exists public.users cascade;
+drop table if exists public.roasting cascade;
+drop table if exists public.tea cascade;
+drop table if exists public.tea_type cascade;
+
 -- Create table USER
 create table users
 (

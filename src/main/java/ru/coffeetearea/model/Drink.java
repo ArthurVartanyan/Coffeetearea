@@ -7,10 +7,10 @@ import ru.coffeetearea.model.directory.Packaging;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "coffeetearea", schema = "public")
+@Table(name = "drink", schema = "public")
 public class Drink {
 
-    public Drink(){ // Constructor for Hibernate
+    public Drink() { // Constructor for Hibernate
 
     }
 
@@ -30,12 +30,20 @@ public class Drink {
     @Column(name = "about")
     private String about;
 
-    @Column(name = "packaging_id")
+    @Column(name = "is_deleted")
+    private boolean isDeleted;
+
+    // Relationships
+    //
+    @ManyToOne
+    @JoinColumn(name = "packaging_id")
     private Packaging packaging;
 
-    @Column(name = "manufacturer_id")
+    @ManyToOne
+    @JoinColumn(name = "manufacturer_id")
     private Manufacturer manufacturer;
 
-    @Column(name = "countries_id")
+    @ManyToOne
+    @JoinColumn(name = "country_id")
     private Countries countries;
 }
