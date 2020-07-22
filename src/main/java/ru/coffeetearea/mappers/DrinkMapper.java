@@ -1,5 +1,6 @@
 package ru.coffeetearea.mappers;
 
+import org.mapstruct.IterableMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
@@ -8,7 +9,7 @@ import ru.coffeetearea.model.Drink;
 
 import java.util.List;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface DrinkMapper {
 
     DrinkMapper INSTANCE = Mappers.getMapper(DrinkMapper.class);
@@ -29,11 +30,6 @@ public interface DrinkMapper {
     @Mapping(source = "countries", target = "drinkCountries")
     Drink drinkDTOtoDrink(DrinkDTO drinkDTO);
 
-    @Mapping(source = "name", target = "drinkName")
-    @Mapping(source = "price", target = "drinkPrice")
-    @Mapping(source = "about", target = "drinkAbout")
-    @Mapping(source = "packaging", target = "drinkPackaging")
-    @Mapping(source = "manufacturer", target = "drinkManufacturer")
-    @Mapping(source = "countries", target = "drinkCountries")
+    @IterableMapping(qualifiedByName = "drinkToDrinkDTO")
     List<DrinkDTO> drinksToDrinksDTO(List<Drink> drinks);
 }
