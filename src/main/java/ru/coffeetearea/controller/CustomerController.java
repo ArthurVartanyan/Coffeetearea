@@ -1,5 +1,6 @@
 package ru.coffeetearea.controller;
 
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +11,7 @@ import ru.coffeetearea.service.UserService;
 
 import java.util.List;
 
+@Api(value = "Customer", tags = {"Customer"})
 @RestController
 @RequestMapping("/customer")
 public class CustomerController {
