@@ -4,17 +4,5 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "coffee_type")
-public class CoffeeType {
-
-    // Fields
-    //
-    private @Id
-    @GeneratedValue
-    Long id;
-
-    @Column(name = "name")
-    private String name;
-
-    @Column(name = "is_deleted")
-    private boolean isDeleted;
+public class CoffeeType extends GeneralCatalog{
 }

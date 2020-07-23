@@ -5,10 +5,4 @@ import javax.persistence.*;
 @Entity
 @Table(name = "countries")
 public class Countries extends GeneralCatalog{
-
-    // Fields
-    //
-    private @Id
-    @GeneratedValue
-    Long id;
 }

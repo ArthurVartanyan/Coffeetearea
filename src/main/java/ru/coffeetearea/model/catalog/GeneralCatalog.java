@@ -1,8 +1,14 @@
 package ru.coffeetearea.model.catalog;
 
+import javax.persistence.*;
+
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class GeneralCatalog {
 
-    protected Long id;
+    public @Id
+    @GeneratedValue
+    Long id;
 
     protected String name;
 
