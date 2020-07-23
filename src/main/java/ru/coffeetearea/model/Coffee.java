@@ -1,5 +1,11 @@
 package ru.coffeetearea.model;
 
+/**
+ * Класс: Кофе
+ * Содержит поля: id(ИД), coffeeType(тип кофе(молотый, зерновой...)), roasting(степень обжарки).
+ * Через наследование связан с классом Drink(Напиток).
+ */
+
 import ru.coffeetearea.model.catalog.CoffeeType;
 import ru.coffeetearea.model.catalog.Roasting;
 
@@ -11,9 +17,6 @@ public class Coffee {
 
     // Fields
     //
-
-    // Other fields are in parent class Drink (with RelationShips)
-
     private @Id
     @GeneratedValue
     Long id;

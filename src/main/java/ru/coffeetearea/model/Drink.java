@@ -1,5 +1,11 @@
 package ru.coffeetearea.model;
 
+/**
+ * Класс: Напиток
+ * Содержит поля: id(ИД), name(название), price(цена), about(описание), is_deleted(флаг(удален, не удален)).
+ * Через связи есть поля packaging(тип упаковки), manufacturer(производитель), countries(страна).
+ */
+
 import lombok.Data;
 import ru.coffeetearea.model.catalog.Countries;
 import ru.coffeetearea.model.catalog.Manufacturer;

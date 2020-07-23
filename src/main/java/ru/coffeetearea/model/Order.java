@@ -1,5 +1,12 @@
 package ru.coffeetearea.model;
 
+/**
+ * Класс: Заказ
+ * Содержит поля: id(ИД), address(адрес), phoneNumber(номер телефона), dateOrder(дата заказа),
+ * orderStatus(статус заказа), totalCost(общая стоимость всех товаров в заказе).
+ * Через связи есть поля user(заказчик).
+ */
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;

@@ -1,5 +1,11 @@
 package ru.coffeetearea.model;
 
+/**
+ * Класс: Чай
+ * Содержит поля: id(ИД), teaType(тип чая(листовой...)), teaColor(цвет чая).
+ * Через наследование связан с классом Drink(Напиток).
+ */
+
 import ru.coffeetearea.model.catalog.TeaColor;
 import ru.coffeetearea.model.catalog.TeaType;
 

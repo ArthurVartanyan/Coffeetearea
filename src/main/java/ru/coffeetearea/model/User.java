@@ -1,5 +1,11 @@
 package ru.coffeetearea.model;
 
+/**
+ * Класс: Пользователь
+ * Пользователя 2 типа: Админ или Заказчик(соответствующее поле role).
+ * Содержит поля: id(ИД), name(имя), lastName(фамилия), login(логин), password(пароль), mail(почта).
+ */
+
 import javax.persistence.*;
 
 @Entity
