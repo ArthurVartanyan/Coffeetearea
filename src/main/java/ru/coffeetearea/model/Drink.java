@@ -17,6 +17,7 @@ import java.math.BigDecimal;
 @Data
 @Entity
 @Table(name = "drink")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Drink {
 
     // Fields

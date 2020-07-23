@@ -13,20 +13,10 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "tea")
-public class Tea {
-
-    // Fields
-    //
-    private @Id
-    @GeneratedValue
-    Long id;
+public class Tea extends Drink {
 
     // Relationships
     //
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "drink_id")
-    private Drink drink;
-
     @ManyToOne
     @JoinColumn(name = "type_id")
     private TeaType teaType;
