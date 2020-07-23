@@ -1,18 +1,13 @@
 package ru.coffeetearea.model;
 
-import ru.coffeetearea.model.directory.TeaColor;
-import ru.coffeetearea.model.directory.TeaType;
+import ru.coffeetearea.model.catalog.TeaColor;
+import ru.coffeetearea.model.catalog.TeaType;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "tea", schema = "public")
+@Table(name = "tea")
 public class Tea {
-
-    public Tea() { // Constructor for Hibernate
-
-    }
-
 
     // Fields
     //

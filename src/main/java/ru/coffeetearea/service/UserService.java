@@ -2,14 +2,13 @@ package ru.coffeetearea.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.coffeetearea.DTO.DrinkDTO;
 import ru.coffeetearea.model.Drink;
 import ru.coffeetearea.repository.DrinkRepository;
 
 import java.util.List;
 
 @Service
-public class CustomerService {
+public class UserService {
 
     // Fields
     //

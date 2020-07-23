@@ -1,15 +1,10 @@
-package ru.coffeetearea.model.directory;
+package ru.coffeetearea.model.catalog;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "roasting", schema = "public")
+@Table(name = "roasting")
 public class Roasting {
-
-    public Roasting() { // Constructor for Hibernate
-
-    }
-
 
     // Fields
     //
@@ -18,7 +13,7 @@ public class Roasting {
     Long id;
 
     @Column(name = "roasting")
-    private String roasting;
+    private short roasting;
 
     @Column(name = "is_deleted")
     private boolean isDeleted;

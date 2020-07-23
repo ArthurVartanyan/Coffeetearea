@@ -3,12 +3,8 @@ package ru.coffeetearea.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "users", schema = "public")
+@Table(name = "users")
 public class User {
-
-    public User() { // Constructor for Hibernate
-
-    }
 
     // Roles
     //

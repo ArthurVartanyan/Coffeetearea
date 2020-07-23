@@ -1,15 +1,10 @@
-package ru.coffeetearea.model.directory;
+package ru.coffeetearea.model.catalog;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "packaging", schema = "public")
-public class Packaging {
-
-    public Packaging() { // Constructor for Hibernate
-
-    }
-
+@Table(name = "coffee_type")
+public class CoffeeType {
 
     // Fields
     //

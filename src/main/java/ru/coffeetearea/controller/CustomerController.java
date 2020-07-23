@@ -6,8 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.coffeetearea.DTO.DrinkDTO;
 import ru.coffeetearea.mappers.DrinkMapper;
-import ru.coffeetearea.model.Drink;
-import ru.coffeetearea.service.CustomerService;
+import ru.coffeetearea.service.UserService;
 
 import java.util.List;
 
@@ -15,19 +14,34 @@ import java.util.List;
 @RequestMapping("/customer")
 public class CustomerController {
 
-    @Autowired
-    public CustomerController(CustomerService customerService) { // DI are here
-        this.customerService = customerService;
-    }
-
     // Fields
     //
-    private final CustomerService customerService;
+    private UserService userService;
+
+    private DrinkMapper drinkMapper;
 
 
+    // Dependency Injections
+    //
+    @Autowired
+    public void setUserService(UserService userService) {
+        this.userService = userService;
+    }
+
+    @Autowired
+    public void setDrinkMapper(DrinkMapper drinkMapper) {
+        this.drinkMapper = drinkMapper;
+    }
+    //
+
+
+    // Methods
+    //
+    // GET - methods
+    //
     // Получение списка товаров
     @GetMapping("/drinks")
     List<DrinkDTO> getAllDrinks(){
-        return DrinkMapper.INSTANCE.drinksToDrinksDTO(customerService.getAllDrinks());
+        return drinkMapper.drinksToDrinksDTO(userService.getAllDrinks());
     }
 }

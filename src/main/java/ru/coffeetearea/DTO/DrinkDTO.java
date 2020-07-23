@@ -1,86 +1,24 @@
 package ru.coffeetearea.DTO;
 
-import ru.coffeetearea.model.directory.Countries;
-import ru.coffeetearea.model.directory.Manufacturer;
-import ru.coffeetearea.model.directory.Packaging;
+import lombok.Data;
+import ru.coffeetearea.model.catalog.Countries;
+import ru.coffeetearea.model.catalog.Manufacturer;
+import ru.coffeetearea.model.catalog.Packaging;
 
+@Data
 public class DrinkDTO {
 
     // Fields
     //
-    private String drinkName;
+    private String name;
 
-    private float drinkPrice;
+    private float price;
 
-    private String drinkAbout;
+    private String about;
 
-    private Packaging drinkPackaging;
+    private Packaging packaging;
 
-    private Manufacturer drinkManufacturer;
+    private Manufacturer manufacturer;
 
-    private Countries drinkCountries;
-
-
-    // Getters and Setters
-    //
-    public String getDrinkName() {
-        return drinkName;
-    }
-
-    public void setDrinkName(String drinkName) {
-        this.drinkName = drinkName;
-    }
-
-    public float getDrinkPrice() {
-        return drinkPrice;
-    }
-
-    public void setDrinkPrice(float drinkPrice) {
-        this.drinkPrice = drinkPrice;
-    }
-
-    public String getDrinkAbout() {
-        return drinkAbout;
-    }
-
-    public void setDrinkAbout(String drinkAbout) {
-        this.drinkAbout = drinkAbout;
-    }
-
-    public Packaging getDrinkPackaging() {
-        return drinkPackaging;
-    }
-
-    public void setDrinkPackaging(Packaging drinkPackaging) {
-        this.drinkPackaging = drinkPackaging;
-    }
-
-    public Manufacturer getDrinkManufacturer() {
-        return drinkManufacturer;
-    }
-
-    public void setDrinkManufacturer(Manufacturer drinkManufacturer) {
-        this.drinkManufacturer = drinkManufacturer;
-    }
-
-    public Countries getDrinkCountries() {
-        return drinkCountries;
-    }
-
-    public void setDrinkCountries(Countries drinkCountries) {
-        this.drinkCountries = drinkCountries;
-    }
-
-    // toSTRING
-    @Override
-    public String toString() {
-        return "DrinkDTO{" +
-                "drinkName='" + drinkName + '\'' +
-                ", drinkPrice=" + drinkPrice +
-                ", drinkAbout='" + drinkAbout + '\'' +
-                ", drinkPackaging=" + drinkPackaging +
-                ", drinkManufacturer=" + drinkManufacturer +
-                ", drinkCountries=" + drinkCountries +
-                '}';
-    }
+    private Countries countries;
 }

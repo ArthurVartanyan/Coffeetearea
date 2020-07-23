@@ -14,6 +14,12 @@ drop table if exists public.roasting cascade;
 drop table if exists public.tea cascade;
 drop table if exists public.tea_type cascade;
 
+-- Drop sequence
+drop sequence if exists hibernate_sequence;
+
+-- Create Hibernate Sequence
+create sequence hibernate_sequence minvalue 1 start with 1;
+
 -- Create table USER
 create table users
 (

@@ -1,16 +1,12 @@
 package ru.coffeetearea.model;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
-@Table(name = "pg_order", schema = "public")
+@Table(name = "pg_order")
 public class Order {
-
-    public Order() { // Constructor for Hibernate
-
-    }
-
 
     // Fields
     //
@@ -24,14 +20,16 @@ public class Order {
     @Column(name = "phone_number")
     private String phoneNumber;
 
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "date_order")
     private Date dateOrder;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "order_status")
     private OrderStatus orderStatus;
 
     @Column(name = "total_cost")
-    private float totalCost;
+    private BigDecimal totalCost;
 
     // Relationships
     //

@@ -1,19 +1,17 @@
 package ru.coffeetearea.model;
 
-import ru.coffeetearea.model.directory.Countries;
-import ru.coffeetearea.model.directory.Manufacturer;
-import ru.coffeetearea.model.directory.Packaging;
+import lombok.Data;
+import ru.coffeetearea.model.catalog.Countries;
+import ru.coffeetearea.model.catalog.Manufacturer;
+import ru.coffeetearea.model.catalog.Packaging;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
+@Data
 @Entity
-@Table(name = "drink", schema = "public")
+@Table(name = "drink")
 public class Drink {
-
-    public Drink() { // Constructor for Hibernate
-
-    }
-
 
     // Fields
     //
@@ -21,13 +19,10 @@ public class Drink {
     @GeneratedValue
     Long id;
 
-    @Column(name = "name")
     private String name;
 
-    @Column(name = "price")
-    private float price;
+    private BigDecimal price;
 
-    @Column(name = "about")
     private String about;
 
     @Column(name = "is_deleted")
