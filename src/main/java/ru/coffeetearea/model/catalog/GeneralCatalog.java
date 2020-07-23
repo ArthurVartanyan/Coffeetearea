@@ -3,22 +3,23 @@ package ru.coffeetearea.model.catalog;
 /**
  * Родительский абстрактный класс для всех справочников.
  * Общие поля справочников вынесены сюда.
- * Стратегия наследования InheritanceType.JOINED
+ * Стратегия наследования @MappedSuperClass
  */
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
 
 @Data
-@Entity
-@Inheritance(strategy = InheritanceType.JOINED)
+@MappedSuperclass
 public abstract class GeneralCatalog {
 
-    public @Id
+    protected  @Id
     @GeneratedValue
     Long id;
 
+    @Transient // ЭТО ВРЕМЕННО! ПОКА НЕ РАЗБЕРУСЬ, КАК ПОСТУПИТЬ С ОШИБКОЙ!!!!!
     protected String name;
 
     protected boolean isDeleted;
