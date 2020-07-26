@@ -7,6 +7,7 @@ import ru.coffeetearea.model.catalog.Packaging;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * Класс: Напиток
@@ -48,4 +49,11 @@ public class Drink {
     @ManyToOne
     @JoinColumn(name = "country_id")
     private Countries countries;
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "cart_products",
+            joinColumns = @JoinColumn(name = "order_id"),
+            inverseJoinColumns = @JoinColumn(name = "drink_id"))
+    private List<Order> order;
 }

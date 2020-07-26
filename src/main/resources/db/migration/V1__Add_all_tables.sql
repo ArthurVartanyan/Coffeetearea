@@ -176,15 +176,12 @@ create table favourites
 );
 
 -- Create table CART_PRODUCTS
-create table cart_products
-(
-    drink_id bigint
-        constraint cart_products_drink_id_fkey
-        references drink
-        on update cascade on delete cascade,
-    order_id bigint
-        constraint cart_products_order_id_fkey
-        references pg_order
-        on update cascade on delete cascade,
-    count    integer not null
-);
+create table cart_products(order_id bigint references pg_order(id)
+    on update cascade on delete cascade,
+                         drink_id bigint references drink(id)
+                             on update cascade on delete cascade,
+                         constraint order_drink_pkey primary key (order_id, drink_id),
+                           count    integer not null);
+
+alter table drink
+    add weight int;

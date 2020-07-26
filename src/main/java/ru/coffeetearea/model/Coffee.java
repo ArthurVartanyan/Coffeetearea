@@ -13,7 +13,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "coffee")
-public class Coffee extends Drink{
+public class Coffee extends Drink {
 
     // Relationships
     //

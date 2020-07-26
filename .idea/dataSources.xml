@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="coffeetearea@localhost" uuid="ab15f29b-a894-4f56-a456-e64e4a035ea0">
+    <data-source source="LOCAL" name="coffeetearea@localhost" uuid="72acdf02-1612-437b-bdb8-d326f30abd07">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://localhost:8083/coffeetearea</jdbc-url>
+      <jdbc-url>jdbc:postgresql://localhost:5432/coffeetearea</jdbc-url>
     </data-source>
   </component>
 </project>
