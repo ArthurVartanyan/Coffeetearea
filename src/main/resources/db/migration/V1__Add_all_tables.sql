@@ -41,7 +41,7 @@ create table roasting
     id         serial   not null
         constraint roasting_pkey
             primary key,
-    roasting   smallint not null,
+    name   varchar(5) not null,
     is_deleted boolean  not null
 );
 

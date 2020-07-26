@@ -10,6 +10,8 @@ public class DrinkDTO {
 
     // Fields
     //
+    private Long id;
+
     private String name;
 
     private float price;

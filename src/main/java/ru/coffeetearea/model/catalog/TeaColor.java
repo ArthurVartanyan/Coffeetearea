@@ -1,10 +1,10 @@
 package ru.coffeetearea.model.catalog;
 
+import javax.persistence.*;
+
 /**
  * см. класс GeneralCatalog
  */
-
-import javax.persistence.*;
 
 @Entity
 @Table(name = "tea_color")

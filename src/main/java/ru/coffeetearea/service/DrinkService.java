@@ -8,7 +8,7 @@ import ru.coffeetearea.repository.DrinkRepository;
 import java.util.List;
 
 @Service
-public class UserService {
+public class DrinkService {
 
     // Fields
     //

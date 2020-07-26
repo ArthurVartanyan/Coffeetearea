@@ -1,15 +1,15 @@
 package ru.coffeetearea.model;
 
+import ru.coffeetearea.model.catalog.CoffeeType;
+import ru.coffeetearea.model.catalog.Roasting;
+
+import javax.persistence.*;
+
 /**
  * Класс: Кофе
  * Содержит поля: id(ИД), coffeeType(тип кофе(молотый, зерновой...)), roasting(степень обжарки).
  * Через наследование связан с классом Drink(Напиток).
  */
-
-import ru.coffeetearea.model.catalog.CoffeeType;
-import ru.coffeetearea.model.catalog.Roasting;
-
-import javax.persistence.*;
 
 @Entity
 @Table(name = "coffee")

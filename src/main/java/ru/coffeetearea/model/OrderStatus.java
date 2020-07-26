@@ -1,10 +1,10 @@
 package ru.coffeetearea.model;
 
 /**
- * Статусы заказов: Активный(в процессе), Canceled(отменен), Completed(завершен успешно).
+ * Статусы заказов: Новый(не оплачен или неактивен) Активный(в процессе), Canceled(отменен), Completed(завершен успешно).
  */
 
 public enum OrderStatus {
 
-    ACTIVE, CANCELED, COMPLETED
+    NEW, ACTIVE, CANCELED, COMPLETED
 }

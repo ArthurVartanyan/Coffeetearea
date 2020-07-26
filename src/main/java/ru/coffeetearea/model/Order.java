@@ -1,15 +1,15 @@
 package ru.coffeetearea.model;
 
+import javax.persistence.*;
+import java.math.BigDecimal;
+import java.util.Date;
+
 /**
  * Класс: Заказ
  * Содержит поля: id(ИД), address(адрес), phoneNumber(номер телефона), dateOrder(дата заказа),
  * orderStatus(статус заказа), totalCost(общая стоимость всех товаров в заказе).
  * Через связи есть поля user(заказчик).
  */
-
-import javax.persistence.*;
-import java.math.BigDecimal;
-import java.util.Date;
 
 @Entity
 @Table(name = "pg_order")
@@ -21,7 +21,6 @@ public class Order {
     @GeneratedValue
     Long id;
 
-    @Column(name = "address")
     private String address;
 
     @Column(name = "phone_number")

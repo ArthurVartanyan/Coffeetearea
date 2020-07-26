@@ -75,21 +75,21 @@ insert into public.packaging(name, is_deleted)
 values ('Жестяная банка', false);
 
 -- Заполняем справочник Roasting
-insert into public.roasting(roasting, is_deleted)
-values (1, false);
-insert into public.roasting(roasting, is_deleted)
-values (2, false);
-insert into public.roasting(roasting, is_deleted)
-values (3, false);
-insert into public.roasting(roasting, is_deleted)
-values (4, false);
-insert into public.roasting(roasting, is_deleted)
-values (5, false);
-insert into public.roasting(roasting, is_deleted)
-values (6, false);
-insert into public.roasting(roasting, is_deleted)
-values (7, false);
-insert into public.roasting(roasting, is_deleted)
-values (8, false);
+insert into public.roasting(name, is_deleted)
+values ('1', false);
+insert into public.roasting(name, is_deleted)
+values ('2', false);
+insert into public.roasting(name, is_deleted)
+values ('3', false);
+insert into public.roasting(name, is_deleted)
+values ('4', false);
+insert into public.roasting(name, is_deleted)
+values ('5', false);
+insert into public.roasting(name, is_deleted)
+values ('6', false);
+insert into public.roasting(name, is_deleted)
+values ('7', false);
+insert into public.roasting(name, is_deleted)
+values ('8', false);
 
 
