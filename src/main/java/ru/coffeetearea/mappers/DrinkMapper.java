@@ -3,6 +3,7 @@ package ru.coffeetearea.mappers;
 import org.mapstruct.IterableMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
+import org.springframework.data.domain.Page;
 import ru.coffeetearea.DTO.DrinkDTO;
 import ru.coffeetearea.model.Drink;
 
@@ -18,5 +19,5 @@ public interface DrinkMapper {
     Drink drinkDTOtoDrink(DrinkDTO drinkDTO);
 
     @IterableMapping(qualifiedByName = "drinkToDrinkDTO")
-    List<DrinkDTO> drinksToDrinksDTO(List<Drink> drinks);
+    Page<DrinkDTO> drinksToDrinksDTO(List<Drink> drinks);
 }
