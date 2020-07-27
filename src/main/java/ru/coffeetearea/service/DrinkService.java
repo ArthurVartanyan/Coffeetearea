@@ -29,10 +29,8 @@ public class DrinkService {
     // Methods
     //
     // Получение списка товаров
-    public Page<Drink> getAllDrinks() {
+    public List<Drink> getAllDrinks() {
 
-        Pageable firstPageWithTwoElements = PageRequest.of(0, 2);
-
-        return drinkRepository.findAll(firstPageWithTwoElements);
+        return drinkRepository.findAll();
     }
 }

@@ -49,7 +49,7 @@ public class DrinkController {
     //
     // Получение списка товаров
     @GetMapping("/drinks")
-    Page<DrinkDTO> getAllDrinks(){
+    List<DrinkDTO> getAllDrinks(){
         return drinkMapper.drinksToDrinksDTO(drinkService.getAllDrinks());
     }
 }
