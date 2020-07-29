@@ -19,5 +19,5 @@ public interface DrinkMapper {
     Drink drinkDTOtoDrink(DrinkDTO drinkDTO);
 
     @IterableMapping(qualifiedByName = "drinkToDrinkDTO")
-    List<DrinkDTO> drinksToDrinksDTO(List<Drink> drinks);
+    List<DrinkDTO> drinksToDrinksDTO(Page<Drink> drinks);
 }

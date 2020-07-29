@@ -12,5 +12,10 @@
         <module name="Coffeetearea.main" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Coffeetearea.generated" target="1.8" />
+      <module name="Coffeetearea.jpaModelgen" target="1.8" />
+      <module name="Coffeetearea.metamodel" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

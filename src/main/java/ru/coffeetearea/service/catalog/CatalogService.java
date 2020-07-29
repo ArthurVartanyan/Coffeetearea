@@ -1,105 +1,69 @@
 package ru.coffeetearea.service.catalog;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import ru.coffeetearea.mappers.DrinkMapper;
 import ru.coffeetearea.model.catalog.*;
 import ru.coffeetearea.repository.catalog.*;
 
 import java.util.List;
 
+@RequiredArgsConstructor
 @Service
 public class CatalogService {
 
     // Fields
     //
-    protected CountriesRepository countriesRepository;
+    private final CountriesRepository countriesRepository;
 
-    protected ManufacturerRepository manufacturerRepository;
+    private final ManufacturerRepository manufacturerRepository;
 
-    protected RoastingRepository roastingRepository;
+    private final RoastingRepository roastingRepository;
 
-    protected PackagingRepository packagingRepository;
+    private final PackagingRepository packagingRepository;
 
-    protected TeaColorRepository teaColorRepository;
+    private final TeaColorRepository teaColorRepository;
 
-    protected CoffeeTypeRepository coffeeTypeRepository;
+    private final CoffeeTypeRepository coffeeTypeRepository;
 
-    protected TeaTypeRepository teaTypeRepository;
-
-
-    // Setters
-    //
-    @Autowired
-    public void setCountriesRepository(CountriesRepository countriesRepository) {
-        this.countriesRepository = countriesRepository;
-    }
-
-    @Autowired
-    public void setManufacturerRepository(ManufacturerRepository manufacturerRepository) {
-        this.manufacturerRepository = manufacturerRepository;
-    }
-
-    @Autowired
-    public void setRoastingRepository(RoastingRepository roastingRepository) {
-        this.roastingRepository = roastingRepository;
-    }
-
-    @Autowired
-    public void setPackagingRepository(PackagingRepository packagingRepository) {
-        this.packagingRepository = packagingRepository;
-    }
-
-    @Autowired
-    public void setTeaColorRepository(TeaColorRepository teaColorRepository) {
-        this.teaColorRepository = teaColorRepository;
-    }
-
-    @Autowired
-    public void setCoffeeTypeRepository(CoffeeTypeRepository coffeeTypeRepository) {
-        this.coffeeTypeRepository = coffeeTypeRepository;
-    }
-
-    @Autowired
-    public void setTeaTypeRepository(TeaTypeRepository teaTypeRepository) {
-        this.teaTypeRepository = teaTypeRepository;
-    }
-    //
+    private final TeaTypeRepository teaTypeRepository;
 
 
     // Methods
     //
-    // Получение списка стран
-    public List<Countries> findCountries(){
+    //
+    /* Получение списка стран */
+    public List<Countries> findCountries() {
         return countriesRepository.findAll();
     }
 
-    // Получение списка производителей
-    public List<Manufacturer> findManufacturers(){
+    /* Получение списка производителей */
+    public List<Manufacturer> findManufacturers() {
         return manufacturerRepository.findAll();
     }
 
-    // Получение списка обжарки
-    public List<Roasting> findRoastings(){
+    /* Получение списка обжарки */
+    public List<Roasting> findRoastings() {
         return roastingRepository.findAll();
     }
 
-    // Получение списка упаковок
-    public List<Packaging> findPackagings(){
+    /* Получение списка упаковок */
+    public List<Packaging> findPackagings() {
         return packagingRepository.findAll();
     }
 
-    // Получение списка цвета чая
-    public List<TeaColor> findTeaColors(){
+    /* Получение списка цвета чая */
+    public List<TeaColor> findTeaColors() {
         return teaColorRepository.findAll();
     }
 
-    // Получение списка типов кофе
-    public List<CoffeeType> findCoffeeTypes(){
+    /* Получение списка типов кофе */
+    public List<CoffeeType> findCoffeeTypes() {
         return coffeeTypeRepository.findAll();
     }
 
-    // Получение списка типов чая
-    public List<TeaType> findTeaTypes(){
+    /* Получение списка типов чая */
+    public List<TeaType> findTeaTypes() {
         return teaTypeRepository.findAll();
     }
 }

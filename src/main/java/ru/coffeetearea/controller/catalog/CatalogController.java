@@ -1,7 +1,7 @@
 package ru.coffeetearea.controller.catalog;
 
 import io.swagger.annotations.Api;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,22 +11,14 @@ import ru.coffeetearea.service.catalog.CatalogService;
 import java.util.List;
 
 @Api(value = "Catalog", tags = {"Catalog"})
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/catalog")
 public class CatalogController {
 
     // Fields
     //
-    private CatalogService catalogService;
-
-
-    // Injects
-    //
-    @Autowired
-    public void setCatalogService(CatalogService catalogService) {
-        this.catalogService = catalogService;
-    }
-    //
+    private final CatalogService catalogService;
 
 
     // Methods

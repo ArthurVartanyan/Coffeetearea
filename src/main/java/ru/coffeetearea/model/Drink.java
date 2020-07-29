@@ -7,13 +7,7 @@ import ru.coffeetearea.model.catalog.Packaging;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.List;
 
-/**
- * Класс: Напиток
- * Содержит поля: id(ИД), name(название), price(цена), about(описание), is_deleted(флаг(удален, не удален)).
- * Через связи есть поля packaging(тип упаковки), manufacturer(производитель), countries(страна).
- */
 
 @Data
 @Entity
@@ -27,33 +21,33 @@ public class Drink {
     @GeneratedValue
     Long id;
 
+    /* Название напитка */
     private String name;
 
+    /* Цена напитка */
     private BigDecimal price;
 
+    /* Описание напитка */
     private String about;
 
+    /* Флаг удаления */
     @Column(name = "is_deleted")
     private boolean isDeleted;
 
     // Relationships
     //
+    /* Упаковка напитка */
     @ManyToOne
     @JoinColumn(name = "packaging_id")
     private Packaging packaging;
 
+    /* Производитель */
     @ManyToOne
     @JoinColumn(name = "manufacturer_id")
     private Manufacturer manufacturer;
 
+    /* Страна производитель */
     @ManyToOne
     @JoinColumn(name = "country_id")
     private Countries countries;
-
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "cart_products",
-            joinColumns = @JoinColumn(name = "order_id"),
-            inverseJoinColumns = @JoinColumn(name = "drink_id"))
-    private List<Order> order;
 }
