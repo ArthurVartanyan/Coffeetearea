@@ -1,6 +1,7 @@
 package ru.coffeetearea.model.catalog;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
@@ -11,6 +12,7 @@ import javax.persistence.*;
  */
 
 @Data
+@NoArgsConstructor
 @MappedSuperclass
 public abstract class GeneralCatalog {
 

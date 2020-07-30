@@ -3,16 +3,14 @@ package ru.coffeetearea.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Service;
 import ru.coffeetearea.DTO.DrinkDTO;
+import ru.coffeetearea.DTO.PageDTO.PageDTO;
 import ru.coffeetearea.mappers.DrinkMapper;
 import ru.coffeetearea.model.Drink;
 import ru.coffeetearea.repository.DrinkRepository;
-
-import java.util.List;
+import ru.coffeetearea.repository.OrderRepository;
 
 @RequiredArgsConstructor
 @Service
@@ -22,18 +20,34 @@ public class DrinkService {
     //
     private final DrinkRepository drinkRepository;
 
+    private final OrderRepository orderRepository;
+
     private final DrinkMapper drinkMapper;
 
 
     // Methods
     //
-    /* Получение списка товаров */
-    public List<DrinkDTO> getAllDrinks() {
+    //
+    /**
+     * Получение списка товаров
+     * @param page
+     * @param pageSize
+     * @return drinksDTOs
+     */
+    public PageDTO<DrinkDTO> getAllDrinks(int page, int pageSize) {
 
-        Pageable page = PageRequest.of(0, 4, Sort.by("price"));
+        PageRequest pageRequest = PageRequest.of(page, pageSize, Sort.by("id"));
 
-        final Page<Drink> drinks = drinkRepository.findAll(page);
+        final Page<Drink> drinks = drinkRepository.findAll(pageRequest);
 
-        return drinkMapper.drinksToDrinksDTO(drinks);
+        return new PageDTO<DrinkDTO>(drinkMapper.drinksToDrinksDTO(drinks));
     }
+
+
+//    public Page<DrinkDTO> getPopularDrinks(int page, int pageSize) {
+//
+//        List<Drink> popularDrinks = orderRepository.f
+//
+//        PageRequest pageRequest = PageRequest.of(page, pageSize, Sort.by())
+//    }
 }

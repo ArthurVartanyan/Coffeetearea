@@ -1,11 +1,14 @@
 package ru.coffeetearea.model;
 
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Set;
 
 @Entity
+@NoArgsConstructor
 @Table(name = "pg_order")
 public class Order {
 

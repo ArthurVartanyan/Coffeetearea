@@ -1,6 +1,7 @@
 package ru.coffeetearea.DTO;
 
 import lombok.Data;
+import ru.coffeetearea.DTO.catalogDTO.GeneralCatalogDTO;
 import ru.coffeetearea.model.catalog.Countries;
 import ru.coffeetearea.model.catalog.Manufacturer;
 import ru.coffeetearea.model.catalog.Packaging;
@@ -18,9 +19,9 @@ public class DrinkDTO {
 
     private String about;
 
-    private Packaging packaging;
+    private GeneralCatalogDTO<Packaging> packaging;
 
-    private Manufacturer manufacturer;
+    private GeneralCatalogDTO<Manufacturer> manufacturer;
 
-    private Countries countries;
+    private GeneralCatalogDTO<Countries> countries;
 }

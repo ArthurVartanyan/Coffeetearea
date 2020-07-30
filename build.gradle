@@ -11,6 +11,7 @@ repositories {
     mavenCentral()
 }
 
+
 dependencies {
     // Swagger UI
     compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
@@ -18,10 +19,6 @@ dependencies {
     compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot
     compile group: 'org.springframework.boot', name: 'spring-boot', version: '2.3.1.RELEASE'
-    // https://mvnrepository.com/artifact/org.hibernate.orm/hibernate-core
-    compile group: 'org.hibernate.orm', name: 'hibernate-core', version: '6.0.0.Alpha5'
-    // https://mvnrepository.com/artifact/org.hibernate/hibernate-entitymanager
-    compile group: 'org.hibernate', name: 'hibernate-entitymanager', version: '6.0.0.Alpha5', ext: 'pom'
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.3.1.RELEASE'
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-jdbc
@@ -41,5 +38,5 @@ dependencies {
     compileOnly 'org.projectlombok:lombok:1.18.12'
     annotationProcessor 'org.projectlombok:lombok:1.18.12'
     // https://mvnrepository.com/artifact/org.hibernate.orm/hibernate-jpamodelgen
-    compile group: 'org.hibernate.orm', name: 'hibernate-jpamodelgen', version: '6.0.0.Alpha5'
+    annotationProcessor('org.hibernate:hibernate-jpamodelgen:6.0.0.Alpha5')
 }

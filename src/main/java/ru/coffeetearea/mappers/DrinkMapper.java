@@ -7,8 +7,6 @@ import org.springframework.data.domain.Page;
 import ru.coffeetearea.DTO.DrinkDTO;
 import ru.coffeetearea.model.Drink;
 
-import java.util.List;
-
 @Mapper(componentModel = "spring")
 public interface DrinkMapper {
 
@@ -19,5 +17,7 @@ public interface DrinkMapper {
     Drink drinkDTOtoDrink(DrinkDTO drinkDTO);
 
     @IterableMapping(qualifiedByName = "drinkToDrinkDTO")
-    List<DrinkDTO> drinksToDrinksDTO(Page<Drink> drinks);
+    default Page<DrinkDTO> drinksToDrinksDTO(Page<Drink> drinks){
+        return drinks.map(this::drinkToDrinkDTO);
+    }
 }

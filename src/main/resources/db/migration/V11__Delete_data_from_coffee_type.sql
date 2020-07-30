@@ -1,0 +1,1 @@
+delete from coffee_type where id = 6;

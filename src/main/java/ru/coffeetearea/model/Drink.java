@@ -1,6 +1,7 @@
 package ru.coffeetearea.model;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import ru.coffeetearea.model.catalog.Countries;
 import ru.coffeetearea.model.catalog.Manufacturer;
 import ru.coffeetearea.model.catalog.Packaging;
@@ -11,6 +12,7 @@ import java.math.BigDecimal;
 
 @Data
 @Entity
+@NoArgsConstructor
 @Table(name = "drink")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Drink {

@@ -1,9 +1,11 @@
 package ru.coffeetearea.DTO.catalogDTO;
 
 import lombok.Data;
+import org.springframework.stereotype.Component;
 
 @Data
-public class GeneralCatalogDTO {
+@Component
+public class GeneralCatalogDTO<T> {
 
     // Fields
     //

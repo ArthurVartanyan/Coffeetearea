@@ -13,6 +13,7 @@ import java.io.Serializable;
 
 @Data
 @Entity
+@NoArgsConstructor
 @Table(name = "cart_products")
 public class Cart {
 
