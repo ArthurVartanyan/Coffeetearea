@@ -10,7 +10,6 @@ import ru.coffeetearea.DTO.PageDTO.PageDTO;
 import ru.coffeetearea.mappers.DrinkMapper;
 import ru.coffeetearea.model.Drink;
 import ru.coffeetearea.repository.DrinkRepository;
-import ru.coffeetearea.repository.OrderRepository;
 
 @RequiredArgsConstructor
 @Service
@@ -20,16 +19,16 @@ public class DrinkService {
     //
     private final DrinkRepository drinkRepository;
 
-    private final OrderRepository orderRepository;
-
     private final DrinkMapper drinkMapper;
 
 
     // Methods
     //
     //
+
     /**
      * Получение списка товаров
+     *
      * @param page
      * @param pageSize
      * @return drinksDTOs
@@ -42,12 +41,4 @@ public class DrinkService {
 
         return new PageDTO<DrinkDTO>(drinkMapper.drinksToDrinksDTO(drinks));
     }
-
-
-//    public Page<DrinkDTO> getPopularDrinks(int page, int pageSize) {
-//
-//        List<Drink> popularDrinks = orderRepository.f
-//
-//        PageRequest pageRequest = PageRequest.of(page, pageSize, Sort.by())
-//    }
 }
