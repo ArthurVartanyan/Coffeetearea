@@ -28,14 +28,14 @@ public class TeaController {
      * Получение списка товаров
      */
     @GetMapping("/teas")
-    public PageDTO<DrinkDTO> getAllCoffees(@RequestParam(value = "page", defaultValue = "1") int page,
+    private PageDTO<DrinkDTO> getAllCoffees(@RequestParam(value = "page", defaultValue = "1") int page,
                                            @RequestParam(value = "page_size", defaultValue = "5") int pageSize) {
 
         return teaService.findAll(page, pageSize);
     }
 
     @GetMapping("/filter/teas")
-    public PageDTO<DrinkDTO> getAllCoffees(@RequestParam(value = "page", defaultValue = "1") int page,
+    private PageDTO<DrinkDTO> getAllCoffees(@RequestParam(value = "page", defaultValue = "1") int page,
                                            @RequestParam(value = "page_size", defaultValue = "5") int pageSize,
                                            @RequestParam String colorName,
                                            @RequestParam String teaType,
