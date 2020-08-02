@@ -6,4 +6,6 @@ import ru.coffeetearea.model.Drink;
 
 public interface DrinkRepository extends JpaRepository<Drink, Long>, JpaSpecificationExecutor<Drink> {
 
+//    @Query()
+//    List<Drink> findMorePopular();
 }

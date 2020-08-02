@@ -11,12 +11,12 @@ public class Tea extends Drink {
 
     // Relationships
     //
-    /* Тип чая */
+    /** Тип чая */
     @ManyToOne
     @JoinColumn(name = "type_id")
     private TeaType teaType;
 
-    /* Цвет чая */
+    /** Цвет чая */
     @ManyToOne
     @JoinColumn(name = "color_id")
     private TeaColor teaColor;

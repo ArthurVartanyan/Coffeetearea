@@ -49,18 +49,19 @@ public class TeaService {
      *
      * @param page
      * @param pageSize
-     * @param colorName
-     * @param teaType
+     * @param colorId
+     * @param typeId
+     * @param typeId
      * @return filtered Coffees(DTOs)
      */
-    public PageDTO<DrinkDTO> findAllByFilter(int page, int pageSize, String colorName,
-                                             String teaType, String country) {
+    public PageDTO<DrinkDTO> findAllByFilter(int page, int pageSize, Long colorId,
+                                             Long typeId, Long countryId) {
 
         // По дефолту он сортирует список по возрастанию цены
         PageRequest pageRequest = PageRequest.of(page, pageSize, Sort.by("price").ascending());
 
         final Page<Tea> teas = teaRepository
-                .findAll(TeaSpecification.getTeasByFilter(colorName, teaType, country), pageRequest);
+                .findAll(TeaSpecification.getTeasByFilter(colorId, typeId, countryId), pageRequest);
 
         return new PageDTO<>(drinkMapper.drinksToDrinksDTO(teas));
     }

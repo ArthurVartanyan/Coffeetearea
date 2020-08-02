@@ -30,6 +30,6 @@ public class DrinkController {
     private PageDTO<DrinkDTO> getAllDrinks(@RequestParam(value = "page", defaultValue = "1") int page,
                                    @RequestParam(value = "page_size", defaultValue = "2") int pageSize) {
 
-        return drinkService.getAllDrinks(page, pageSize);
+        return drinkService.findAllDrinks(page, pageSize);
     }
 }

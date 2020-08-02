@@ -11,6 +11,8 @@ import ru.coffeetearea.mappers.DrinkMapper;
 import ru.coffeetearea.model.Drink;
 import ru.coffeetearea.repository.DrinkRepository;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @Service
 public class DrinkService {
@@ -33,7 +35,7 @@ public class DrinkService {
      * @param pageSize
      * @return drinksDTOs
      */
-    public PageDTO<DrinkDTO> getAllDrinks(int page, int pageSize) {
+    public PageDTO<DrinkDTO> findAllDrinks(int page, int pageSize) {
 
         PageRequest pageRequest = PageRequest.of(page, pageSize, Sort.by("id"));
 
@@ -41,4 +43,6 @@ public class DrinkService {
 
         return new PageDTO<DrinkDTO>(drinkMapper.drinksToDrinksDTO(drinks));
     }
+
+
 }

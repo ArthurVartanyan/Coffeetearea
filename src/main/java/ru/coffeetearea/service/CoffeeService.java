@@ -47,18 +47,18 @@ public class CoffeeService {
      *
      * @param page
      * @param pageSize
-     * @param roastingName
-     * @param coffeeType
+     * @param roastingId
+     * @param typeId
+     * @param countryId
      * @return filtered Coffees(DTOs)
      */
-    public PageDTO<DrinkDTO> findAllFilter(int page, int pageSize, String roastingName,
-                                           String coffeeType, String country) {
+    public PageDTO<DrinkDTO> findAllFilter(int page, int pageSize, Long roastingId, Long typeId, Long countryId) {
 
         // По дефолту он сортирует список по возрастанию цены
         PageRequest pageRequest = PageRequest.of(page, pageSize, Sort.by("price").ascending());
 
         final Page<Coffee> coffees = coffeeRepository
-                .findAll(CoffeeSpecification.getCoffeesByFilter(roastingName, coffeeType, country), pageRequest);
+                .findAll(CoffeeSpecification.getCoffeesByFilter(roastingId, typeId, countryId), pageRequest);
 
         return new PageDTO<>(drinkMapper.drinksToDrinksDTO(coffees));
     }

@@ -4,11 +4,10 @@ import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import ru.coffeetearea.DTO.PageDTO.PageDTO;
-import ru.coffeetearea.DTO.catalogDTO.GeneralCatalogDTO;
 import ru.coffeetearea.service.catalog.CatalogService;
+
+import java.util.List;
 
 @Api(value = "Catalog", tags = {"Catalog"})
 @RequiredArgsConstructor
@@ -21,105 +20,49 @@ public class CatalogController {
     private final CatalogService catalogService;
 
 
+    // Methods
+    //
     // GET - methods
     //
-    //
-
-    /**
-     * Получение списка стран
-     *
-     * @param page
-     * @param pageSize
-     */
+    // Получение списка стран
     @GetMapping("/countries")
-    private PageDTO<? extends GeneralCatalogDTO> findCountries(
-            @RequestParam(value = "page", defaultValue = "1") int page,
-            @RequestParam(value = "page_size", defaultValue = "6") int pageSize) {
-
-        return catalogService.findCountries(page, pageSize);
+    private List findCountries() {
+        return catalogService.findCountries();
     }
 
-    /**
-     * Получение списка покетов
-     *
-     * @param page
-     * @param pageSize
-     */
+    // Получение списка покетов
     @GetMapping("/packages")
-    private PageDTO<? extends GeneralCatalogDTO> findPackages(
-            @RequestParam(value = "page", defaultValue = "1") int page,
-            @RequestParam(value = "page_size", defaultValue = "6") int pageSize) {
-
-        return catalogService.findPackages(page, pageSize);
+    private List findPackages() {
+        return catalogService.findPackages();
     }
 
-    /**
-     * Получение списка производителей
-     *
-     * @param page
-     * @param pageSize
-     */
+    // Получение списка производителей
     @GetMapping("/manufacturers")
-    private PageDTO<? extends GeneralCatalogDTO> findManufacturers(
-            @RequestParam(value = "page", defaultValue = "1") int page,
-            @RequestParam(value = "page_size", defaultValue = "6") int pageSize) {
-
-        return catalogService.findManufacturers(page, pageSize);
+    private List findManufacturers() {
+        return catalogService.findManufacturers();
     }
 
-    /**
-     * Получение списка цветов чая
-     *
-     * @param page
-     * @param pageSize
-     */
+    // Получение списка цветов чая
     @GetMapping("/teacolors")
-    private PageDTO<? extends GeneralCatalogDTO> findTeaColors(
-            @RequestParam(value = "page", defaultValue = "1") int page,
-            @RequestParam(value = "page_size", defaultValue = "6") int pageSize) {
-
-        return catalogService.findTeaColors(page, pageSize);
+    private List findTeaColor() {
+        return catalogService.findTeaColors();
     }
 
-    /**
-     * Получение списка типов кофе
-     *
-     * @param page
-     * @param pageSize
-     */
-    @GetMapping("/coffeetypes")
-    private PageDTO<? extends GeneralCatalogDTO> findCoffeeTypes(
-            @RequestParam(value = "page", defaultValue = "1") int page,
-            @RequestParam(value = "page_size", defaultValue = "6") int pageSize) {
-
-        return catalogService.findCoffeeTypes(page, pageSize);
+    // Получение списка типов кофе
+    @GetMapping("/coffee/types")
+    private List findCoffeeType() {
+        return catalogService.findCoffeeTypes();
     }
 
-    /**
-     * Получение списка типов чая
-     *
-     * @param page
-     * @param pageSize
-     */
-    @GetMapping("/teatypes")
-    private PageDTO<? extends GeneralCatalogDTO> findTeaTypes(
-            @RequestParam(value = "page", defaultValue = "1") int page,
-            @RequestParam(value = "page_size", defaultValue = "6") int pageSize) {
-
-        return catalogService.findTeaTypes(page, pageSize);
+    // Получение списка типов чая
+    @GetMapping("/tea/types")
+    private List findTeaType() {
+        return catalogService.findTeaTypes();
     }
 
-    /**
-     * Получение списка прожарки
-     *
-     * @param page
-     * @param pageSize
-     */
+    // Получение списка прожарки
     @GetMapping("/roastings")
-    private PageDTO<? extends GeneralCatalogDTO> findRoastings(
-            @RequestParam(value = "page", defaultValue = "1") int page,
-            @RequestParam(value = "page_size", defaultValue = "6") int pageSize) {
-
-        return catalogService.findRoastings(page, pageSize);
+    private List findRoasting() {
+        return catalogService.findRoastings();
     }
 }

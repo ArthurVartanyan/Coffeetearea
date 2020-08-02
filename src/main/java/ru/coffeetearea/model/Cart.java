@@ -17,7 +17,7 @@ import java.io.Serializable;
 @Table(name = "cart_products")
 public class Cart {
 
-    /* Внутренний статический класс */
+    /** Внутренний статический класс */
     @Embeddable
     @NoArgsConstructor
     @AllArgsConstructor
@@ -44,6 +44,6 @@ public class Cart {
             insertable = false, updatable = false)
     private Drink drink;
 
-    /* Кол-во товаров в корзине */
+    /** Кол-во товаров в корзине */
     private int count;
 }

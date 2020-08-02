@@ -37,10 +37,10 @@ public class TeaController {
     @GetMapping("/filter/teas")
     private PageDTO<DrinkDTO> getAllCoffees(@RequestParam(value = "page", defaultValue = "1") int page,
                                            @RequestParam(value = "page_size", defaultValue = "5") int pageSize,
-                                           @RequestParam String colorName,
-                                           @RequestParam String teaType,
-                                           @RequestParam String country) {
+                                           @RequestParam Long colorId,
+                                           @RequestParam Long typeId,
+                                           @RequestParam Long countryId) {
 
-        return teaService.findAllByFilter(page, pageSize, colorName, teaType, country);
+        return teaService.findAllByFilter(page, pageSize, colorId, typeId, countryId);
     }
 }

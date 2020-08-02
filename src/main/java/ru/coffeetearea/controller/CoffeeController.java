@@ -29,18 +29,18 @@ public class CoffeeController {
      */
     @GetMapping("/coffees")
     private PageDTO<DrinkDTO> getAllCoffees(@RequestParam(value = "page", defaultValue = "1") int page,
-                                           @RequestParam(value = "page_size", defaultValue = "5") int pageSize) {
+                                            @RequestParam(value = "page_size", defaultValue = "5") int pageSize) {
 
         return coffeeService.findAll(page, pageSize);
     }
 
     @GetMapping("/filter/coffees")
     private PageDTO<DrinkDTO> getAllCoffees(@RequestParam(value = "page", defaultValue = "1") int page,
-                                           @RequestParam(value = "page_size", defaultValue = "5") int pageSize,
-                                           @RequestParam String roastingName,
-                                           @RequestParam String coffeeType,
-                                           @RequestParam String country) {
+                                            @RequestParam(value = "page_size", defaultValue = "5") int pageSize,
+                                            @RequestParam Long roastingId,
+                                            @RequestParam Long typeId,
+                                            @RequestParam Long countryId) {
 
-        return coffeeService.findAllFilter(page, pageSize, roastingName, coffeeType, country);
+        return coffeeService.findAllFilter(page, pageSize, roastingId, typeId, countryId);
     }
 }
