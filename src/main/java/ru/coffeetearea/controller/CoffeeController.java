@@ -28,18 +28,18 @@ public class CoffeeController {
      * Получение списка товаров
      */
     @GetMapping("/coffees")
-    private PageDTO<DrinkDTO> getAllCoffees(@RequestParam(value = "page", defaultValue = "1") int page,
+    private PageDTO<DrinkDTO> findAll(@RequestParam(value = "page", defaultValue = "0") int page,
                                             @RequestParam(value = "page_size", defaultValue = "5") int pageSize) {
 
         return coffeeService.findAll(page, pageSize);
     }
 
     @GetMapping("/filter/coffees")
-    private PageDTO<DrinkDTO> getAllCoffees(@RequestParam(value = "page", defaultValue = "1") int page,
+    private PageDTO<DrinkDTO> findAllFilter(@RequestParam(value = "page", defaultValue = "0") int page,
                                             @RequestParam(value = "page_size", defaultValue = "5") int pageSize,
-                                            @RequestParam Long roastingId,
-                                            @RequestParam Long typeId,
-                                            @RequestParam Long countryId) {
+                                            @RequestParam(required = false) Long roastingId,
+                                            @RequestParam(required = false) Long typeId,
+                                            @RequestParam(required = false) Long countryId) {
 
         return coffeeService.findAllFilter(page, pageSize, roastingId, typeId, countryId);
     }

@@ -27,7 +27,7 @@ public class DrinkController {
     //
     /** Получение списка товаров */
     @GetMapping("/drinks")
-    private PageDTO<DrinkDTO> getAllDrinks(@RequestParam(value = "page", defaultValue = "1") int page,
+    private PageDTO<DrinkDTO> getAllDrinks(@RequestParam(value = "page", defaultValue = "0") int page,
                                    @RequestParam(value = "page_size", defaultValue = "2") int pageSize) {
 
         return drinkService.findAllDrinks(page, pageSize);

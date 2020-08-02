@@ -9,6 +9,7 @@ import ru.coffeetearea.DTO.DrinkDTO;
 import ru.coffeetearea.DTO.PageDTO.PageDTO;
 import ru.coffeetearea.mappers.DrinkMapper;
 import ru.coffeetearea.model.Coffee;
+import ru.coffeetearea.model.SortingParams;
 import ru.coffeetearea.repository.CoffeeRepository;
 import ru.coffeetearea.specification.CoffeeSpecification;
 
@@ -24,6 +25,7 @@ public class CoffeeService {
     // Methods
     //
     //
+
 
     /**
      * Метод для вывода всех кофе

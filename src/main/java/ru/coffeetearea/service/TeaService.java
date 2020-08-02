@@ -8,10 +8,8 @@ import org.springframework.stereotype.Service;
 import ru.coffeetearea.DTO.DrinkDTO;
 import ru.coffeetearea.DTO.PageDTO.PageDTO;
 import ru.coffeetearea.mappers.DrinkMapper;
-import ru.coffeetearea.model.Coffee;
 import ru.coffeetearea.model.Tea;
 import ru.coffeetearea.repository.TeaRepository;
-import ru.coffeetearea.specification.CoffeeSpecification;
 import ru.coffeetearea.specification.TeaSpecification;
 
 @Service
