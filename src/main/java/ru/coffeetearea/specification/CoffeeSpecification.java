@@ -3,17 +3,20 @@ package ru.coffeetearea.specification;
 import org.springframework.data.jpa.domain.Specification;
 import ru.coffeetearea.model.Coffee;
 import ru.coffeetearea.model.Coffee_;
+import ru.coffeetearea.model.Tea_;
 import ru.coffeetearea.model.catalog.CoffeeType_;
 import ru.coffeetearea.model.catalog.Countries_;
 import ru.coffeetearea.model.catalog.Roasting_;
 
 import javax.persistence.criteria.Predicate;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CoffeeSpecification {
 
-    public static Specification<Coffee> getCoffeesByFilter(Long roastingId, Long typeId, Long countryId) {
+    public static Specification<Coffee> getCoffeesByFilter(Long roastingId, Long typeId, Long countryId,
+                                                           BigDecimal min, BigDecimal max) {
 
         List<Predicate> predicateList = new ArrayList<>();
 
@@ -33,6 +36,11 @@ public class CoffeeSpecification {
                         .equal(root.get(Coffee_.countries).get(Countries_.id), countryId);
                 predicateList.add(countryPredicate);
             }
+            if (min != null || max != null) {
+                Predicate pricePredicate = criteriaBuilder.between(root.get(Coffee_.price), min, max);
+                predicateList.add(pricePredicate);
+            }
+
             Predicate predicates = criteriaBuilder.and(predicateList.toArray(new Predicate[0]));
 
             return criteriaBuilder.and(predicates);

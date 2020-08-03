@@ -10,6 +10,8 @@ import ru.coffeetearea.DTO.DrinkDTO;
 import ru.coffeetearea.DTO.PageDTO.PageDTO;
 import ru.coffeetearea.service.TeaService;
 
+import java.math.BigDecimal;
+
 @Api(value = "Tea", tags = {"Tea"})
 @RequiredArgsConstructor
 @RestController
@@ -39,8 +41,10 @@ public class TeaController {
                                               @RequestParam(value = "page_size", defaultValue = "5") int pageSize,
                                               @RequestParam(required = false) Long colorId,
                                               @RequestParam(required = false) Long typeId,
-                                              @RequestParam(required = false) Long countryId) {
+                                              @RequestParam(required = false) Long countryId,
+                                              @RequestParam(required = false, defaultValue = "0") BigDecimal min,
+                                              @RequestParam(required = false, defaultValue = "10000") BigDecimal max){
 
-        return teaService.findAllByFilter(page, pageSize, colorId, typeId, countryId);
+        return teaService.findAllByFilter(page, pageSize, colorId, typeId, countryId, min, max);
     }
 }

@@ -12,6 +12,8 @@ import ru.coffeetearea.model.Tea;
 import ru.coffeetearea.repository.TeaRepository;
 import ru.coffeetearea.specification.TeaSpecification;
 
+import java.math.BigDecimal;
+
 @Service
 @RequiredArgsConstructor
 public class TeaService {
@@ -53,13 +55,13 @@ public class TeaService {
      * @return filtered Coffees(DTOs)
      */
     public PageDTO<DrinkDTO> findAllByFilter(int page, int pageSize, Long colorId,
-                                             Long typeId, Long countryId) {
+                                             Long typeId, Long countryId, BigDecimal min, BigDecimal max) {
 
         // По дефолту он сортирует список по возрастанию цены
         PageRequest pageRequest = PageRequest.of(page, pageSize, Sort.by("price").ascending());
 
         final Page<Tea> teas = teaRepository
-                .findAll(TeaSpecification.getTeasByFilter(colorId, typeId, countryId), pageRequest);
+                .findAll(TeaSpecification.getTeasByFilter(colorId, typeId, countryId, min, max), pageRequest);
 
         return new PageDTO<>(drinkMapper.drinksToDrinksDTO(teas));
     }

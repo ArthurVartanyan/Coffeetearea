@@ -10,6 +10,8 @@ import ru.coffeetearea.DTO.DrinkDTO;
 import ru.coffeetearea.DTO.PageDTO.PageDTO;
 import ru.coffeetearea.service.CoffeeService;
 
+import java.math.BigDecimal;
+
 @Api(value = "Coffee", tags = {"Coffee"})
 @RequiredArgsConstructor
 @RestController
@@ -29,7 +31,7 @@ public class CoffeeController {
      */
     @GetMapping("/coffees")
     private PageDTO<DrinkDTO> findAll(@RequestParam(value = "page", defaultValue = "0") int page,
-                                            @RequestParam(value = "page_size", defaultValue = "5") int pageSize) {
+                                      @RequestParam(value = "page_size", defaultValue = "5") int pageSize) {
 
         return coffeeService.findAll(page, pageSize);
     }
@@ -39,8 +41,10 @@ public class CoffeeController {
                                             @RequestParam(value = "page_size", defaultValue = "5") int pageSize,
                                             @RequestParam(required = false) Long roastingId,
                                             @RequestParam(required = false) Long typeId,
-                                            @RequestParam(required = false) Long countryId) {
+                                            @RequestParam(required = false) Long countryId,
+                                            @RequestParam(required = false, defaultValue = "0") BigDecimal min,
+                                            @RequestParam(required = false, defaultValue = "10000") BigDecimal max) {
 
-        return coffeeService.findAllFilter(page, pageSize, roastingId, typeId, countryId);
+        return coffeeService.findAllFilter(page, pageSize, roastingId, typeId, countryId, min, max);
     }
 }

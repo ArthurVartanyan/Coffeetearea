@@ -9,9 +9,10 @@ import ru.coffeetearea.DTO.DrinkDTO;
 import ru.coffeetearea.DTO.PageDTO.PageDTO;
 import ru.coffeetearea.mappers.DrinkMapper;
 import ru.coffeetearea.model.Coffee;
-import ru.coffeetearea.model.SortingParams;
 import ru.coffeetearea.repository.CoffeeRepository;
 import ru.coffeetearea.specification.CoffeeSpecification;
+
+import java.math.BigDecimal;
 
 @Service
 @RequiredArgsConstructor
@@ -54,13 +55,15 @@ public class CoffeeService {
      * @param countryId
      * @return filtered Coffees(DTOs)
      */
-    public PageDTO<DrinkDTO> findAllFilter(int page, int pageSize, Long roastingId, Long typeId, Long countryId) {
+    public PageDTO<DrinkDTO> findAllFilter(int page, int pageSize, Long roastingId, Long typeId,
+                                           Long countryId, BigDecimal min, BigDecimal max) {
 
         // По дефолту он сортирует список по возрастанию цены
         PageRequest pageRequest = PageRequest.of(page, pageSize, Sort.by("price").ascending());
 
         final Page<Coffee> coffees = coffeeRepository
-                .findAll(CoffeeSpecification.getCoffeesByFilter(roastingId, typeId, countryId), pageRequest);
+                .findAll(CoffeeSpecification
+                        .getCoffeesByFilter(roastingId, typeId, countryId, min, max), pageRequest);
 
         return new PageDTO<>(drinkMapper.drinksToDrinksDTO(coffees));
     }
