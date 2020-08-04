@@ -2,7 +2,7 @@ package ru.coffeetearea.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import ru.coffeetearea.model.catalog.Countries;
+import ru.coffeetearea.model.catalog.Country;
 import ru.coffeetearea.model.catalog.Manufacturer;
 import ru.coffeetearea.model.catalog.Packaging;
 
@@ -51,5 +51,5 @@ public class Drink {
     /** Страна производитель */
     @ManyToOne
     @JoinColumn(name = "country_id")
-    private Countries countries;
+    private Country country;
 }

@@ -15,7 +15,7 @@ public class User {
     @GeneratedValue
     private Long id;
 
-    /** мя */
+    /** Имя */
     private String name;
 
     /** Фамилия */

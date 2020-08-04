@@ -19,5 +19,5 @@ public class DrinkDTO {
 
     protected GeneralCatalogDTO manufacturer;
 
-    protected GeneralCatalogDTO countries;
+    protected GeneralCatalogDTO country;
 }

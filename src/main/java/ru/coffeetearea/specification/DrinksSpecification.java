@@ -30,7 +30,7 @@ public class DrinksSpecification {
 
         if (countryId != null) {
             Predicate countryPredicate = cb
-                    .equal(root.get(Drink_.countries).get(Countries_.id), countryId);
+                    .equal(root.get(Drink_.country).get(Country_.id), countryId);
             predicateList.add(countryPredicate);
         }
         // Если И мин И мах НЕ равны нулю

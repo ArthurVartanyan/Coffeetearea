@@ -8,5 +8,5 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "countries")
-public class Countries extends GeneralCatalog{
+public class Country extends GeneralCatalog{
 }

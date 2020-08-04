@@ -15,7 +15,7 @@ public class CatalogService {
 
     // Fields
     //
-    private final CountriesRepository countriesRepository;
+    private final CountryRepository countriesRepository;
 
     private final ManufacturerRepository manufacturerRepository;
 

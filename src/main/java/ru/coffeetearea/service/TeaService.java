@@ -21,8 +21,6 @@ public class TeaService {
 
     private final TeaRepository teaRepository;
 
-    private final DrinkMapper drinkMapper;
-
     private final TeaMapper teaMapper;
 
 
