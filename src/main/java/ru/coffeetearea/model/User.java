@@ -9,37 +9,29 @@ import javax.persistence.*;
 @Table(name = "users")
 public class User {
 
-    // Roles
-    //
-    /* Роль Админа */
-    public static final String ROLE_ADMIN = "ADMIN";
-
-    /* Роль Заказчика */
-    public static final String ROLE_CUSTOMER = "CUSTOMER";
-
-
     // Fields
     //
-    private @Id
+    @Id
     @GeneratedValue
-    Long id;
+    private Long id;
 
-    /* мя */
+    /** мя */
     private String name;
 
-    /* Фамилия */
+    /** Фамилия */
     @Column(name = "last_name")
     private String lastName;
 
-    /* Логин */
+    /** Логин */
     private String login;
 
-    /* Пароль */
+    /** Пароль */
     private String password;
 
-    /* Почта */
+    /** Почта */
     private String mail;
 
-    /* Роль (см. javadoc над классом) */
-    private String role;
+    /** Роль (см. javadoc над классом) */
+    @Enumerated(EnumType.STRING)
+    private Role role;
 }

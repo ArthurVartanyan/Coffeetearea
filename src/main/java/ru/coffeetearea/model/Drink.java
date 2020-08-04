@@ -19,9 +19,9 @@ public class Drink {
 
     // Fields
     //
-    private @Id
+    @Id
     @GeneratedValue
-    Long id;
+    private Long id;
 
     /** Название напитка */
     private String name;

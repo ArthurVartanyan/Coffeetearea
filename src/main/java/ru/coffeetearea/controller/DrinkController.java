@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import ru.coffeetearea.DTO.DrinkDTO;
-import ru.coffeetearea.DTO.PageDTO.PageDTO;
+import ru.coffeetearea.dto.DrinkDTO;
+import ru.coffeetearea.dto.PageDTO;
 import ru.coffeetearea.service.DrinkService;
 
 @Api(value = "Drink", tags = {"Drink"})
@@ -25,10 +25,13 @@ public class DrinkController {
     //
     // GET - methods
     //
-    /** Получение списка товаров */
+
+    /**
+     * Получение списка товаров
+     */
     @GetMapping("/drinks")
     private PageDTO<DrinkDTO> getAllDrinks(@RequestParam(value = "page", defaultValue = "0") int page,
-                                   @RequestParam(value = "page_size", defaultValue = "2") int pageSize) {
+                                           @RequestParam(value = "page_size", defaultValue = "2") int pageSize) {
 
         return drinkService.findAllDrinks(page, pageSize);
     }

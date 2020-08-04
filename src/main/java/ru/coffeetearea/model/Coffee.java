@@ -11,12 +11,12 @@ public class Coffee extends Drink {
 
     // Relationships
     //
-    /* Тип кофе */
+    /** Тип кофе */
     @ManyToOne
     @JoinColumn(name = "type_id")
     private CoffeeType coffeeType;
 
-    /* Тип обжарки кофе */
+    /** Тип обжарки кофе */
     @ManyToOne
     @JoinColumn(name = "roasting_id")
     private Roasting roasting;

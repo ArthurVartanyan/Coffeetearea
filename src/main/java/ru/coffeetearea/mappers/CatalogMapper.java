@@ -3,7 +3,7 @@ package ru.coffeetearea.mappers;
 import org.mapstruct.IterableMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
-import ru.coffeetearea.DTO.catalogDTO.GeneralCatalogDTO;
+import ru.coffeetearea.dto.GeneralCatalogDTO;
 import ru.coffeetearea.model.catalog.GeneralCatalog;
 
 import java.util.List;

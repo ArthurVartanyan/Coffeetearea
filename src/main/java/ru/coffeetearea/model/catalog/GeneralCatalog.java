@@ -16,11 +16,17 @@ import javax.persistence.*;
 @MappedSuperclass
 public abstract class GeneralCatalog {
 
-    protected  @Id
+    @Id
     @GeneratedValue
-    Long id;
+    protected Long id;
 
+    /**
+     * Название объекта каталога
+     */
     protected String name;
 
+    /**
+     * Флаг - удален или нет
+     */
     protected boolean isDeleted;
 }

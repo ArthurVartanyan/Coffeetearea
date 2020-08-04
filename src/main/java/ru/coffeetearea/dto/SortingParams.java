@@ -1,4 +1,4 @@
-package ru.coffeetearea.model;
+package ru.coffeetearea.dto;
 
 /**
  * ENUM для сортировки товара на странице.

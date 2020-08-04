@@ -5,13 +5,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import ru.coffeetearea.DTO.DrinkDTO;
-import ru.coffeetearea.DTO.PageDTO.PageDTO;
+import ru.coffeetearea.dto.DrinkDTO;
+import ru.coffeetearea.dto.PageDTO;
 import ru.coffeetearea.mappers.DrinkMapper;
 import ru.coffeetearea.model.Drink;
 import ru.coffeetearea.repository.DrinkRepository;
-
-import java.util.List;
 
 @RequiredArgsConstructor
 @Service

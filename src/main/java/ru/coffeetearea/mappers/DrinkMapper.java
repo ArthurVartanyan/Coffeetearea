@@ -4,7 +4,7 @@ import org.mapstruct.IterableMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 import org.springframework.data.domain.Page;
-import ru.coffeetearea.DTO.DrinkDTO;
+import ru.coffeetearea.dto.DrinkDTO;
 import ru.coffeetearea.model.Drink;
 
 @Mapper(componentModel = "spring")

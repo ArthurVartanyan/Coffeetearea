@@ -1,4 +1,4 @@
-package ru.coffeetearea.DTO.PageDTO;
+package ru.coffeetearea.dto;
 
 import lombok.Data;
 import org.springframework.data.domain.Page;

@@ -1,7 +1,9 @@
 package ru.coffeetearea.service.catalog;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import ru.coffeetearea.dto.GeneralCatalogDTO;
 import ru.coffeetearea.mappers.CatalogMapper;
 import ru.coffeetearea.repository.catalog.*;
 
@@ -31,37 +33,37 @@ public class CatalogService {
 
 
     // Получение списка стран
-    public List<?> findCountries(){
-        return catalogMapper.catalogsToCatalogsDTO(countriesRepository.findAll());
+    public List<GeneralCatalogDTO> findCountries(){
+        return catalogMapper.catalogsToCatalogsDTO(countriesRepository.findAll(Sort.by("name").ascending()));
     }
 
     // Получение списка производителей
-    public List<?> findManufacturers(){
-        return catalogMapper.catalogsToCatalogsDTO(manufacturerRepository.findAll());
+    public List<GeneralCatalogDTO> findManufacturers(){
+        return catalogMapper.catalogsToCatalogsDTO(manufacturerRepository.findAll(Sort.by("name").ascending()));
     }
 
     // Получение списка обжарки
-    public List<?> findRoastings(){
-        return catalogMapper.catalogsToCatalogsDTO(roastingRepository.findAll()) ;
+    public List<GeneralCatalogDTO> findRoastings(){
+        return catalogMapper.catalogsToCatalogsDTO(roastingRepository.findAll(Sort.by("name").ascending())) ;
     }
 
     // Получение списка упаковок
-    public List<?> findPackages(){
-        return catalogMapper.catalogsToCatalogsDTO(packagingRepository.findAll());
+    public List<GeneralCatalogDTO> findPackages(){
+        return catalogMapper.catalogsToCatalogsDTO(packagingRepository.findAll(Sort.by("name").ascending()));
     }
 
     // Получение списка цвета чая
-    public List<?> findTeaColors(){
-        return catalogMapper.catalogsToCatalogsDTO(teaColorRepository.findAll());
+    public List<GeneralCatalogDTO> findTeaColors(){
+        return catalogMapper.catalogsToCatalogsDTO(teaColorRepository.findAll(Sort.by("name").ascending()));
     }
 
     // Получение списка типов кофе
-    public List<?> findCoffeeTypes(){
-        return catalogMapper.catalogsToCatalogsDTO(coffeeTypeRepository.findAll());
+    public List<GeneralCatalogDTO> findCoffeeTypes(){
+        return catalogMapper.catalogsToCatalogsDTO(coffeeTypeRepository.findAll(Sort.by("name").ascending()));
     }
 
     // Получение списка типов чая
-    public List<?> findTeaTypes(){
-        return catalogMapper.catalogsToCatalogsDTO(teaTypeRepository.findAll());
+    public List<GeneralCatalogDTO> findTeaTypes(){
+        return catalogMapper.catalogsToCatalogsDTO(teaTypeRepository.findAll(Sort.by("name").ascending()));
     }
 }
