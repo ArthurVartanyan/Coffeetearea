@@ -1,9 +1,11 @@
 package ru.coffeetearea.model;
 
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+@Getter
 @Entity
 @NoArgsConstructor
 @Table(name = "users")
@@ -30,6 +32,9 @@ public class User {
 
     /** Почта */
     private String mail;
+
+    @Column(name = "is_deleted")
+    private boolean isDeleted;
 
     /** Роль (см. javadoc над классом) */
     @Enumerated(EnumType.STRING)

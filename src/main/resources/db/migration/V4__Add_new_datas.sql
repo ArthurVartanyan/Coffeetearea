@@ -8,6 +8,12 @@ values ('Сергей', 'Павлов', 'try123523', 'pass123', 'CUSTOMER', 'ser
 insert into public.users(name, last_name, login, password, role, mail, is_deleted)
 values ('Григорий', 'Дубцов', 'grigort', 'pass123', 'CUSTOMER', 'grig@mail.ru', false);
 
+create extension if not exists pgcrypto;
+
+update users
+set password = crypt(password, gen_salt('md5'));
+
+
 -- Заполняем справочник COFFEE_TYPE
 insert into public.coffee_type(name, is_deleted)
 values ('Молотый', false);

@@ -29,7 +29,7 @@ create table users
     name       varchar(50) not null,
     last_name  varchar(50) not null,
     login      varchar(25) not null,
-    password   varchar(25) not null,
+    password   varchar not null,
     role       varchar(10) not null,
     mail       varchar(30) not null,
     is_deleted boolean     not null
