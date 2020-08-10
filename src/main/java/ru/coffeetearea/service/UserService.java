@@ -1,7 +1,6 @@
 package ru.coffeetearea.service;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.coffeetearea.exceptions.MainNotFound;
 import ru.coffeetearea.model.User;
