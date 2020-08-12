@@ -12,35 +12,41 @@ import java.util.Set;
 @Table(name = "pg_order")
 public class Order {
 
-    // Fields
-    //
     @Id
     @GeneratedValue
     private Long id;
 
-    /** Адрес доставки */
+    /**
+     * Адрес доставки
+     */
     private String address;
 
-    /** Номер телефона заказчика */
+    /**
+     * Номер телефона заказчика
+     */
     @Column(name = "phone_number")
     private String phoneNumber;
 
-    /** Дата заказа */
+    /**
+     * Дата заказа
+     */
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "date_order")
     private Date dateOrder;
 
-    /** Статус заказа (см. EnumType) */
+    /**
+     * Статус заказа (см. EnumType)
+     */
     @Enumerated(EnumType.STRING)
     @Column(name = "order_status")
     private OrderStatus orderStatus;
 
-    /** Полная стоимость заказа */
+    /**
+     * Полная стоимость заказа
+     */
     @Column(name = "total_cost")
     private BigDecimal totalCost;
 
-    // Relationships
-    //
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;

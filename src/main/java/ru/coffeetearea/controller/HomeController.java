@@ -1,6 +1,8 @@
 package ru.coffeetearea.controller;
 
+import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -18,10 +20,12 @@ import ru.coffeetearea.service.UserService;
 import java.util.HashMap;
 import java.util.Map;
 
-@RequiredArgsConstructor
+@Slf4j
 @RestController
-@RequestMapping("/auth")
-public class AuthenticationController {
+@RequestMapping("/home")
+@RequiredArgsConstructor
+@Api(value = "Home", tags = {"Home"})
+public class HomeController {
 
     // Fields
     //
@@ -30,7 +34,6 @@ public class AuthenticationController {
     private final JwtTokenProvider jwtTokenProvider;
 
     private final UserService userService;
-    //
 
 
     // GET-Methods
@@ -54,7 +57,8 @@ public class AuthenticationController {
             return ResponseEntity.ok(response);
 
         } catch (AuthenticationException e) {
-            throw new BadCredentialsException("Invalid login or password");
+            log.error("Error: ", e);
+            throw new BadCredentialsException("Invalid login or password!", e);
         }
     }
 }

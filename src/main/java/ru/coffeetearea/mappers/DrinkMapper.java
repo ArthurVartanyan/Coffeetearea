@@ -17,7 +17,7 @@ public interface DrinkMapper {
     Drink drinkDTOtoDrink(DrinkDTO drinkDTO);
 
     @IterableMapping(qualifiedByName = "drinkToDrinkDTO")
-    default Page<DrinkDTO> drinksToDrinksDTO(Page<? extends Drink> drinks){
+    default Page<DrinkDTO> drinksToDrinksDTO(Page<? extends Drink> drinks) {
         return drinks.map(this::drinkToDrinkDTO);
     }
 }

@@ -23,11 +23,6 @@ public class CoffeeService {
     private final CoffeeMapper coffeeMapper;
 
 
-    // Methods
-    //
-    //
-
-
     /**
      * Метод для вывода всех кофе
      *

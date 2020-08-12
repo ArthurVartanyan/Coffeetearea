@@ -5,9 +5,9 @@ import lombok.EqualsAndHashCode;
 import ru.coffeetearea.model.catalog.CoffeeType;
 import ru.coffeetearea.model.catalog.Roasting;
 
-@EqualsAndHashCode(callSuper = true)
 @Data
-public class CoffeeDTO extends DrinkDTO{
+@EqualsAndHashCode(callSuper = true)
+public class CoffeeDTO extends DrinkDTO {
 
     private CoffeeType coffeeType;
 

@@ -3,20 +3,25 @@ package ru.coffeetearea.model;
 import ru.coffeetearea.model.catalog.TeaColor;
 import ru.coffeetearea.model.catalog.TeaType;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "tea")
 public class Tea extends Drink {
 
-    // Relationships
-    //
-    /** Тип чая */
+    /**
+     * Тип чая
+     */
     @ManyToOne
     @JoinColumn(name = "type_id")
     private TeaType teaType;
 
-    /** Цвет чая */
+    /**
+     * Цвет чая
+     */
     @ManyToOne
     @JoinColumn(name = "color_id")
     private TeaColor teaColor;

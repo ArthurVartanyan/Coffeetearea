@@ -7,16 +7,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import ru.coffeetearea.dto.CoffeeDTO;
-import ru.coffeetearea.dto.DrinkDTO;
 import ru.coffeetearea.dto.PageDTO;
 import ru.coffeetearea.service.CoffeeService;
 
 import java.math.BigDecimal;
 
-@Api(value = "Coffee", tags = {"Coffee"})
-@RequiredArgsConstructor
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/coffee")
+@Api(value = "Coffee", tags = {"Coffee"})
 public class CoffeeController {
 
     private final CoffeeService coffeeService;

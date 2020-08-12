@@ -13,11 +13,12 @@ public class UserService {
     private final UserRepository userRepository;
 
     /**
-     * Поиск пользователя по ЛОГИНу
+     * Поиск пользователя по логину
+     *
      * @param login
      * @return USER
      */
-    public User findByLogin(String login){
+    public User findByLogin(String login) {
         return userRepository.findByLogin(login).orElseThrow(() -> new MainNotFound(login));
     }
 }

@@ -11,20 +11,14 @@ import ru.coffeetearea.mappers.DrinkMapper;
 import ru.coffeetearea.model.Drink;
 import ru.coffeetearea.repository.DrinkRepository;
 
-@RequiredArgsConstructor
 @Service
+@RequiredArgsConstructor
 public class DrinkService {
 
-    // Fields
-    //
     private final DrinkRepository drinkRepository;
 
     private final DrinkMapper drinkMapper;
 
-
-    // Methods
-    //
-    //
 
     /**
      * Получение списка товаров
@@ -41,6 +35,4 @@ public class DrinkService {
 
         return new PageDTO<DrinkDTO>(drinkMapper.drinksToDrinksDTO(drinks));
     }
-
-
 }

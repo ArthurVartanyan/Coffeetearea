@@ -7,7 +7,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import ru.coffeetearea.dto.PageDTO;
 import ru.coffeetearea.dto.TeaDTO;
-import ru.coffeetearea.mappers.DrinkMapper;
 import ru.coffeetearea.mappers.TeaMapper;
 import ru.coffeetearea.model.Tea;
 import ru.coffeetearea.repository.TeaRepository;
@@ -23,10 +22,6 @@ public class TeaService {
 
     private final TeaMapper teaMapper;
 
-
-    // Methods
-    //
-    //
 
     /**
      * Метод для вывода всех кофе
@@ -44,6 +39,7 @@ public class TeaService {
 
         return new PageDTO<>(teaMapper.teaToTeasDTO(teas));
     }
+
 
     /**
      * Метод для возвращение КОФЕ через фильтрацию

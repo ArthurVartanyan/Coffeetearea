@@ -10,10 +10,10 @@ import ru.coffeetearea.dto.DrinkDTO;
 import ru.coffeetearea.dto.PageDTO;
 import ru.coffeetearea.service.DrinkService;
 
-@Api(value = "Drink", tags = {"Drink"})
-@RequiredArgsConstructor
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/drink")
+@Api(value = "Drink", tags = {"Drink"})
 public class DrinkController {
 
     // Fields

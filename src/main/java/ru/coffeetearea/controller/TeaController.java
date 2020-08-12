@@ -6,17 +6,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import ru.coffeetearea.dto.DrinkDTO;
 import ru.coffeetearea.dto.PageDTO;
 import ru.coffeetearea.dto.TeaDTO;
 import ru.coffeetearea.service.TeaService;
 
 import java.math.BigDecimal;
 
-@Api(value = "Tea", tags = {"Tea"})
-@RequiredArgsConstructor
 @RestController
 @RequestMapping("/tea")
+@RequiredArgsConstructor
+@Api(value = "Tea", tags = {"Tea"})
 public class TeaController {
 
     private final TeaService teaService;

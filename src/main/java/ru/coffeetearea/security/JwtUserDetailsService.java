@@ -11,9 +11,9 @@ import ru.coffeetearea.security.jwt.JwtUser;
 import ru.coffeetearea.security.jwt.JwtUserFactory;
 import ru.coffeetearea.service.UserService;
 
-@RequiredArgsConstructor
-@Service
 @Slf4j
+@Service
+@RequiredArgsConstructor
 public class JwtUserDetailsService implements UserDetailsService {
 
     private final UserService userService;

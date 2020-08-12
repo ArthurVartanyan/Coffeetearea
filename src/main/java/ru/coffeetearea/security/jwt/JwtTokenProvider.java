@@ -31,11 +31,11 @@ public class JwtTokenProvider {
 
     @Value("${jwt.token.expired}")
     private Long validityInMilliSeconds;
-    //
 
 
     // METHODS
     //
+
     /**
      * Использован BCrypt
      */
@@ -60,7 +60,7 @@ public class JwtTokenProvider {
     public String createToken(String login, Role role) {
 
         Claims claims = Jwts.claims().setSubject(login);
-        claims.put("roles", getRoleName(role));
+        claims.put("roles", role.name());
 
         Date now = new Date();
         Date validity = new Date(now.getTime() + validityInMilliSeconds);
@@ -89,10 +89,7 @@ public class JwtTokenProvider {
         try {
             Jws<Claims> claims = Jwts.parser().setSigningKey(secret).parseClaimsJws(token);
 
-            if (claims.getBody().getExpiration().before(new Date())) {
-                return false;
-            }
-            return true;
+            return !claims.getBody().getExpiration().before(new Date());
 
         } catch (JwtException | IllegalArgumentException e) {
             throw new JwtAuthenticationException("JWT token is expired or invalid");
@@ -100,19 +97,17 @@ public class JwtTokenProvider {
     }
 
 
+    /**
+     * Использование ТОКЕНА
+     *
+     * @param req
+     * @return bearerToken
+     */
     public String resolveToken(HttpServletRequest req) {
         String bearerToken = req.getHeader("Authorization");
         if (bearerToken != null && bearerToken.startsWith("Bearer_")) {
-            return bearerToken.substring(7, bearerToken.length());
+            return bearerToken.substring(7);
         }
         return null;
-    }
-
-
-    private String getRoleName(Role role) {
-
-        String roleName = role.name();
-
-        return roleName;
     }
 }

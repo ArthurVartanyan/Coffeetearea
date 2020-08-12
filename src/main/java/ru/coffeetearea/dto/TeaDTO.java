@@ -5,8 +5,8 @@ import lombok.EqualsAndHashCode;
 import ru.coffeetearea.model.catalog.TeaColor;
 import ru.coffeetearea.model.catalog.TeaType;
 
-@EqualsAndHashCode(callSuper = true)
 @Data
+@EqualsAndHashCode(callSuper = true)
 public class TeaDTO extends DrinkDTO {
 
     private TeaType teaType;

@@ -7,8 +7,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class GeneralCatalogDTO {
 
-    // Fields
-    //
     private Long id;
 
     private String name;

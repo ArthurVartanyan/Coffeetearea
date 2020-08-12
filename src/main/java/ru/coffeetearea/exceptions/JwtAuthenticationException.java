@@ -4,7 +4,13 @@ import org.springframework.security.core.AuthenticationException;
 
 public class JwtAuthenticationException extends AuthenticationException {
 
-    public JwtAuthenticationException(String msg) {
-        super(msg);
+    /**
+     * Конструктор
+     * Вызываем родительский конструктор и передаем наше сообщение
+     *
+     * @param message
+     */
+    public JwtAuthenticationException(String message) {
+        super(message);
     }
 }

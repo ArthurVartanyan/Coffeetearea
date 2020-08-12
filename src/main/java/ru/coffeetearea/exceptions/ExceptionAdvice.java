@@ -13,7 +13,15 @@ import java.util.Map;
 
 public class ExceptionAdvice extends ResponseEntityExceptionHandler {
 
-    // ResponseEntity
+    /**
+     * ResponseEntity HANDLE
+     *
+     * @param ex
+     * @param headers
+     * @param status
+     * @param request
+     * @return new ResponseEntity<>
+     */
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(
             MethodArgumentNotValidException ex, HttpHeaders headers,

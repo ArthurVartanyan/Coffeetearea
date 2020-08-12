@@ -10,12 +10,10 @@ import ru.coffeetearea.model.Role;
 import java.util.Collection;
 import java.util.Collections;
 
-@AllArgsConstructor
 @Getter
+@AllArgsConstructor
 public class JwtUser implements UserDetails {
 
-    // Fields
-    //
     private Long id;
 
     private String name;
@@ -39,27 +37,26 @@ public class JwtUser implements UserDetails {
 
     @Override
     public String getUsername() {
-        return null;
+        return login;
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 }
-

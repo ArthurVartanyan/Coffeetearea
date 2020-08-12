@@ -17,38 +17,48 @@ import java.math.BigDecimal;
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Drink {
 
-    // Fields
-    //
     @Id
     @GeneratedValue
     private Long id;
 
-    /** Название напитка */
+    /**
+     * Название напитка
+     */
     private String name;
 
-    /** Цена напитка */
+    /**
+     * Цена напитка
+     */
     private BigDecimal price;
 
-    /** Описание напитка */
+    /**
+     * Описание напитка
+     */
     private String about;
 
-    /** Флаг удаления */
+    /**
+     * Флаг удаления
+     */
     @Column(name = "is_deleted")
     private boolean isDeleted;
 
-    // Relationships
-    //
-    /** Упаковка напитка */
+    /**
+     * Упаковка напитка
+     */
     @ManyToOne
     @JoinColumn(name = "packaging_id")
     private Packaging packaging;
 
-    /** Производитель */
+    /**
+     * Производитель
+     */
     @ManyToOne
     @JoinColumn(name = "manufacturer_id")
     private Manufacturer manufacturer;
 
-    /** Страна производитель */
+    /**
+     * Страна производитель
+     */
     @ManyToOne
     @JoinColumn(name = "country_id")
     private Country country;

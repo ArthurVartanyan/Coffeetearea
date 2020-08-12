@@ -5,8 +5,6 @@ import lombok.Data;
 @Data
 public class DrinkDTO {
 
-    // Fields
-    //
     protected Long id;
 
     protected String name;

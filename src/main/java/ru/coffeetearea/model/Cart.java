@@ -7,8 +7,9 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.io.Serializable;
 
-/*
-Класс Корзина. Сюда добавляются товары из магазина, для дальнейшего оформления.
+/**
+ * Класс Корзина.
+ * Сюда добавляются товары из магазина, для дальнейшего оформления.
  */
 
 @Data
@@ -17,7 +18,9 @@ import java.io.Serializable;
 @Table(name = "cart_products")
 public class Cart {
 
-    /** Внутренний статический класс */
+    /**
+     * Внутренний статический класс
+     */
     @Embeddable
     @NoArgsConstructor
     @AllArgsConstructor
@@ -29,8 +32,9 @@ public class Cart {
     }
 
 
-    // Fields
-    //
+    /**
+     * Создан ключ через @EmbeddedId
+     */
     @EmbeddedId
     private CartId cartId;
 
@@ -44,6 +48,8 @@ public class Cart {
             insertable = false, updatable = false)
     private Drink drink;
 
-    /** Кол-во товаров в корзине */
+    /**
+     * Кол-во товаров в корзине
+     */
     private int count;
 }
