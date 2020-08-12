@@ -1,12 +1,14 @@
 package ru.coffeetearea.model;
 
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
+@Data
 @Entity
 @NoArgsConstructor
 @Table(name = "pg_order")
@@ -52,5 +54,5 @@ public class Order {
     private User user;
 
     @OneToMany(mappedBy = "order")
-    private Set<Cart> cart;
+    private List<CartItem> cartItem;
 }

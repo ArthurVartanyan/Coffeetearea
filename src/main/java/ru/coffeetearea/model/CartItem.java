@@ -16,7 +16,7 @@ import java.io.Serializable;
 @Entity
 @NoArgsConstructor
 @Table(name = "cart_products")
-public class Cart {
+public class CartItem {
 
     /**
      * Внутренний статический класс
@@ -40,12 +40,12 @@ public class Cart {
 
     @ManyToOne
     @JoinColumn(name = "order_id", referencedColumnName = "id",
-            insertable = false, updatable = false)
+            nullable = false, insertable = false, updatable = false)
     private Order order;
 
     @ManyToOne
     @JoinColumn(name = "drink_id", referencedColumnName = "id",
-            insertable = false, updatable = false)
+            nullable = false, insertable = false, updatable = false)
     private Drink drink;
 
     /**

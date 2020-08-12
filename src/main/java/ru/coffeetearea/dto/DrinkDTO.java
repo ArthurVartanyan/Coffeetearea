@@ -7,6 +7,8 @@ public class DrinkDTO {
 
     protected Long id;
 
+    protected String image;
+
     protected String name;
 
     protected float price;

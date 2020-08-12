@@ -1,0 +1,1 @@
+alter table drink add column image varchar;

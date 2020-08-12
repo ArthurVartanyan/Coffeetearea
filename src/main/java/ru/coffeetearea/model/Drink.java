@@ -22,6 +22,11 @@ public class Drink {
     private Long id;
 
     /**
+     * Изображение товара
+     */
+    private String image;
+
+    /**
      * Название напитка
      */
     private String name;

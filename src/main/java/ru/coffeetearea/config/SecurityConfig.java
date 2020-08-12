@@ -19,7 +19,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     //
     private final JwtTokenProvider jwtTokenProvider;
 
-
     @Bean
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
@@ -40,9 +39,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/home/login").permitAll()
-                .antMatchers().hasRole(Role.ADMIN.name()) // Все ссылки, которые доступны только админу
-                .antMatchers().hasRole(Role.CUSTOMER.name()) // Все ссылки, которые доступны только заказчику
+                .antMatchers("/v2/api-docs",
+                        "/configuration/ui",
+                        "/swagger-resources/**",
+                        "/configuration/security",
+                        "/swagger-ui.html",
+                        "/webjars/**").permitAll()
+                .antMatchers("/home/login", "/cart-item/add-in-cart").permitAll()
+                .antMatchers()
+                .hasRole(Role.CUSTOMER.name()) // Все ссылки, которые доступны только заказчику
                 .anyRequest().authenticated()
                 .and()
                 .apply(new JwtConfigurer(jwtTokenProvider));
