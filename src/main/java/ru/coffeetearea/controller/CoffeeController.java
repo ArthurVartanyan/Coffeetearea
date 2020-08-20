@@ -2,10 +2,7 @@ package ru.coffeetearea.controller;
 
 import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.coffeetearea.dto.CoffeeDTO;
 import ru.coffeetearea.dto.PageDTO;
 import ru.coffeetearea.service.CoffeeService;
@@ -23,6 +20,32 @@ public class CoffeeController {
     private final CoffeeService coffeeService;
 
 
+    // PUT - methods
+
+    /**
+     * Удалить кофе из товаров
+     * @param coffeeId
+     */
+    @PutMapping("/{coffeeId}/coffee-delete")
+    public void deleteCoffeeFromDrinks(@PathVariable Long coffeeId){
+
+        coffeeService.deleteCoffeeFromDrinks(coffeeId);
+    }
+
+
+    // POST - methods
+
+    /**
+     * Добавить кофе в список товаров
+     *
+     * @param coffeeDTO
+     */
+    @PostMapping("/coffee-add")
+    public CoffeeDTO addCoffee(@RequestBody CoffeeDTO coffeeDTO) {
+        return coffeeService.addCoffee(coffeeDTO);
+    }
+
+
     // GET - methods
 
     /**
@@ -35,6 +58,17 @@ public class CoffeeController {
         return coffeeService.findAll(page, pageSize);
     }
 
+    /**
+     * Поиск напитка по фильтрам
+     *
+     * @param page
+     * @param pageSize
+     * @param roastingId
+     * @param typeId
+     * @param countryId
+     * @param min
+     * @param max
+     */
     @GetMapping("/coffees-filter")
     public PageDTO<CoffeeDTO> findAllFilter(@RequestParam(value = "page", defaultValue = "0") int page,
                                             @RequestParam(value = "page_size", defaultValue = "5") int pageSize,

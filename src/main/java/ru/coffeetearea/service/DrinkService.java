@@ -26,19 +26,22 @@ public class DrinkService {
     //
 
 
-    public void deleteDrinkFromFavourites(Long drinkId){
+    /**
+     * Удалить напиток из избранного
+     *
+     * @param drinkId
+     */
+    public void deleteDrinkFromFavourites(Long drinkId) {
 
         User user = userRepository.getById(JwtUser.getCurrentUserID());
-
-        List<Drink> favouriteDrinks =user.getFavouriteDrinks();
-
+        // Берем у пользователя избранные напитки
+        List<Drink> favouriteDrinks = user.getFavouriteDrinks();
+        // Equals переопределен в Drink
         favouriteDrinks.removeIf(e -> e.equals(drinkRepository.getById(drinkId)));
-
+        // Сохраняем коллекцию обратно к пользователю
         user.setFavouriteDrinks(favouriteDrinks);
-
+        // Сохраняем пользователя с напитками
         userRepository.save(user);
-
-//        favouriteDrinks.stream()..anyMatch(drinkRepository.getById(drinkId)::equals);
     }
 
 
@@ -69,11 +72,6 @@ public class DrinkService {
         User user = userRepository.getById(JwtUser.getCurrentUserID());
 
         List<Drink> userFavouriteList = user.getFavouriteDrinks();
-
-//        if (userFavouriteList.stream().filter(drink::equals).findFirst().get().equals(drink)) {
-//
-//            throw new RuntimeException("Напиток уже добавлен в избранное!");
-//        }
 
         userFavouriteList.add(drink);
 

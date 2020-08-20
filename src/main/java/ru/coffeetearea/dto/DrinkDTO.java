@@ -2,18 +2,20 @@ package ru.coffeetearea.dto;
 
 import lombok.Data;
 
+import java.math.BigDecimal;
+
 @Data
 public class DrinkDTO {
 
     protected Long id;
 
-    protected String image;
-
     protected String name;
 
-    protected float price;
+    protected BigDecimal price;
 
     protected String about;
+
+    protected int weight;
 
     protected GeneralCatalogDTO packaging;
 

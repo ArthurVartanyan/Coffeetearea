@@ -5,9 +5,12 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import ru.coffeetearea.dto.CoffeeDTO;
 import ru.coffeetearea.dto.PageDTO;
 import ru.coffeetearea.dto.TeaDTO;
 import ru.coffeetearea.mappers.TeaMapper;
+import ru.coffeetearea.model.Coffee;
+import ru.coffeetearea.model.Drink;
 import ru.coffeetearea.model.Tea;
 import ru.coffeetearea.repository.TeaRepository;
 import ru.coffeetearea.specification.DrinksSpecification;
@@ -24,6 +27,44 @@ public class TeaService {
 
     private final TeaMapper teaMapper;
 
+
+    /**
+     * Удалить чай из списка товаров.
+     * На самом деле меняем всего лишь поле is_deleted.
+     */
+    public void deleteTeaFromDrinks(Long teaId){
+
+        Tea tea = teaRepository.getOne(teaId);
+
+        tea.setDeleted(true);
+
+        teaRepository.save(tea);
+    }
+
+
+    /**
+     * Добавить новый чай в список товаров
+     * @param teaDTO
+     * @return
+     */
+    public TeaDTO addTea(TeaDTO teaDTO){
+
+        Tea tea = new Tea();
+
+        tea.setName(teaDTO.getName());
+        tea.setPrice(teaDTO.getPrice());
+        tea.setAbout(teaDTO.getAbout());
+        tea.setPackaging(teaMapper.teaDTOtoTea(teaDTO).getPackaging());
+        tea.setManufacturer(teaMapper.teaDTOtoTea(teaDTO).getManufacturer());
+        tea.setCountry(teaMapper.teaDTOtoTea(teaDTO).getCountry());
+        tea.setWeight(teaDTO.getWeight());
+        tea.setTeaType(teaDTO.getTeaType());
+        tea.setTeaColor(teaDTO.getTeaColor());
+        tea.setDeleted(false);
+        teaRepository.save(tea);
+
+        return teaMapper.teaToTeaDTO(tea);
+    }
 
     /**
      * Метод для вывода всех кофе

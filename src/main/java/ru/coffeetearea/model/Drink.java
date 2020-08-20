@@ -23,11 +23,6 @@ public class Drink {
     private Long id;
 
     /**
-     * Изображение товара
-     */
-    private String image;
-
-    /**
      * Название напитка
      */
     private String name;
@@ -41,6 +36,12 @@ public class Drink {
      * Описание напитка
      */
     private String about;
+
+
+    /**
+     * Вес вещества(например: 100гр. или 1 кг.)
+     */
+    private int weight;
 
     /**
      * Флаг удаления
@@ -76,7 +77,6 @@ public class Drink {
         Drink drink = (Drink) o;
         return isDeleted == drink.isDeleted &&
                 Objects.equals(id, drink.id) &&
-                Objects.equals(image, drink.image) &&
                 Objects.equals(name, drink.name) &&
                 Objects.equals(price, drink.price) &&
                 Objects.equals(about, drink.about) &&
@@ -87,6 +87,6 @@ public class Drink {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, image, name, price, about, isDeleted, packaging, manufacturer, country);
+        return Objects.hash(id, name, price, about, isDeleted, packaging, manufacturer, country);
     }
 }

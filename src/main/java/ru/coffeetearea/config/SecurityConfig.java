@@ -49,11 +49,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/swagger-ui.html",
                         "/webjars/**").permitAll()
                 .antMatchers("/home/login",
-                        "/cart-item", "/cart-drinks",
-                        "/**/add-cart/", "/**/delete-cart/", "/delete-all-cart",
-                        "/add-in-favourites/**", "/coffee", "/coffees", "/coffees-filter",
-                        "/tea", "/teas", "/teas-filter", "/drink","/**/favourite-delete",
-                        "/**/add-favourites/", "/drinks-favourite", "/order", "/make-order").permitAll()
+                        "/cart-item", "/cart-drinks", "/**/add-cart/", "/**/delete-cart/",
+                        "/delete-all-cart", "/drink-add", "/add-in-favourites/**", "/coffee",
+                        "/coffees", "/coffees-filter", "/tea", "/teas", "/teas-filter",
+                        "/drink","/**/favourite-delete", "/**/add-favourites/", "/drinks-favourite",
+                        "/order", "/make-order", "/coffee-add", "/tea-add", "/{coffeeId}/coffee-delete",
+                        "/{teaId}/tea-delete").permitAll()
                 .antMatchers()
                 .hasRole(Role.CUSTOMER.name()) // Все ссылки, которые доступны только заказчику
                 .anyRequest().authenticated()

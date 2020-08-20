@@ -9,6 +9,7 @@ import ru.coffeetearea.dto.CoffeeDTO;
 import ru.coffeetearea.dto.PageDTO;
 import ru.coffeetearea.mappers.CoffeeMapper;
 import ru.coffeetearea.model.Coffee;
+import ru.coffeetearea.model.Tea;
 import ru.coffeetearea.repository.CoffeeRepository;
 import ru.coffeetearea.specification.DrinksSpecification;
 
@@ -22,6 +23,46 @@ public class CoffeeService {
 
     private final CoffeeMapper coffeeMapper;
 
+
+
+    /**
+     * Удалить кофе из списка товаров.
+     * На самом деле меняем всего лишь поле is_deleted.
+     */
+    public void deleteCoffeeFromDrinks(Long coffeeId){
+
+        Coffee coffee = coffeeRepository.getOne(coffeeId);
+
+        coffee.setDeleted(true);
+
+        coffeeRepository.save(coffee);
+    }
+
+
+    /**
+     * Добавить новый кофе в список товаров
+     *
+     * @param coffeeDTO
+     * @return
+     */
+    public CoffeeDTO addCoffee(CoffeeDTO coffeeDTO) {
+
+        Coffee coffee = new Coffee();
+
+        coffee.setName(coffeeDTO.getName());
+        coffee.setPrice(coffeeDTO.getPrice());
+        coffee.setAbout(coffeeDTO.getAbout());
+        coffee.setPackaging(coffeeMapper.coffeeDTOtoCoffee(coffeeDTO).getPackaging());
+        coffee.setManufacturer(coffeeMapper.coffeeDTOtoCoffee(coffeeDTO).getManufacturer());
+        coffee.setCountry(coffeeMapper.coffeeDTOtoCoffee(coffeeDTO).getCountry());
+        coffee.setWeight(coffeeDTO.getWeight());
+        coffee.setCoffeeType(coffeeDTO.getCoffeeType());
+        coffee.setRoasting(coffeeDTO.getRoasting());
+        coffee.setDeleted(false);
+        coffeeRepository.save(coffee);
+
+        return coffeeMapper.coffeeToCoffeeDTO(coffee);
+    }
 
     /**
      * Метод для вывода всех кофе

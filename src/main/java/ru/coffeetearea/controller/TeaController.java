@@ -2,10 +2,7 @@ package ru.coffeetearea.controller;
 
 import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.coffeetearea.dto.PageDTO;
 import ru.coffeetearea.dto.TeaDTO;
 import ru.coffeetearea.service.TeaService;
@@ -21,6 +18,32 @@ public class TeaController {
     // Fields
 
     private final TeaService teaService;
+
+
+    // PUT - methods
+
+    /**
+     * Удалить кофе из товаров
+     *
+     * @param teaId
+     */
+    @PutMapping("/{teaId}/tea-delete")
+    public void deleteTeaFromDrinks(@PathVariable Long teaId) {
+
+        teaService.deleteTeaFromDrinks(teaId);
+    }
+
+    // POST - methods
+
+    /**
+     * Добавить чай в список товаров
+     *
+     * @param teaDTO
+     */
+    @PostMapping("/tea-add")
+    public TeaDTO addTea(@RequestBody TeaDTO teaDTO) {
+        return teaService.addTea(teaDTO);
+    }
 
 
     // GET - methods
