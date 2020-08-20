@@ -6,7 +6,7 @@ public class EntityNotFoundException extends RuntimeException {
         super("Внимание! Невозможно найти id: " + id);
     }
 
-    public EntityNotFoundException(String login) {
-        super("Внимание! Невозможно найти login: " + login);
+    public EntityNotFoundException(String message) {
+        super(message);
     }
 }

@@ -2,18 +2,15 @@ package ru.coffeetearea.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.coffeetearea.dto.CartItemDTO;
 import ru.coffeetearea.dto.OrderDTO;
+import ru.coffeetearea.mappers.OrderMapper;
 import ru.coffeetearea.model.CartItem;
 import ru.coffeetearea.model.Order;
 import ru.coffeetearea.model.OrderStatus;
-import ru.coffeetearea.model.User;
-import ru.coffeetearea.repository.DrinkRepository;
 import ru.coffeetearea.repository.OrderRepository;
-import ru.coffeetearea.repository.UserRepository;
-import ru.coffeetearea.security.JwtUserDetailsService;
 import ru.coffeetearea.security.jwt.JwtUser;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,49 +20,65 @@ public class OrderService {
 
     // Поля
 
-    private final DrinkRepository drinkRepository;
-
-    private final UserRepository userRepository;
-
-    private final CartItemService cartItemService;
-
     private final OrderRepository orderRepository;
 
-    private final JwtUserDetailsService jwtUserDetailsService;
-
+    private final OrderMapper orderMapper;
     //
 
-//    public Order addDrinksToOrder(List<CartItemDTO> cartItemsDTO){
-//
-//        User user = JwtUser.getCurrentUser();
-//
-//        Order order = new Order();
-//        order.setOrderStatus(OrderStatus.NEW);
-//
-//        List<CartItem> cartItems = new ArrayList<>();
-//
-//        for (CartItemDTO c : cartItemsDTO) {
-//
-//            cartItems.add(cartItemService.addCartItem(c));
-//        }
-//
-//        order.setCartItem(cartItems);
-//        order.setOrderStatus(OrderStatus.NEW);
-//
-//        return userRepository.save(user.set);
-//    }
+
+    /**
+     * Расчитать стоимость заказа
+     *
+     * @param order
+     * @return расчитанная стомость
+     */
+    public BigDecimal calculateOrderPrice(Order order) {
+
+        // Итоговая цена BigDecimal (изначально он равен нулю)
+        BigDecimal totalPrice = new BigDecimal(0);
+
+        // Создал коллекцию типа BigDecimal
+        List<BigDecimal> priceOfCartItem = new ArrayList<>();
+
+        // В этот список кидаю все элементы корзины заказа
+        List<CartItem> cartItemList = order.getCartItems();
+
+        // Пробегаемся по коллекции и умножаем кол-во напитков на стоимость напитка
+        for (CartItem c : cartItemList) {
+
+            priceOfCartItem.add(c.getDrink().getPrice().multiply(new BigDecimal(c.getCount())));
+        }
+
+        for (BigDecimal b : priceOfCartItem) {
+
+            totalPrice = totalPrice.add(b);
+        }
+        return totalPrice;
+    }
 
 
+    /**
+     * Сделать заказ.
+     * По сути в этом методе заказ из статуса NEW переходит в статус ACTIVE,
+     * соответственно, мы добавляем еще немного информации для заказа.
+     *
+     * @param orderDTO
+     * @return saved order
+     */
+    public OrderDTO makeOrder(OrderDTO orderDTO) {
 
-    public Order makeOrder(Long orderId, OrderDTO orderDTO){
+        Long userId = JwtUser.getCurrentUserID();
 
-        Order order = orderRepository.getOne(orderId);
+        Order order = orderRepository.findByUserIdAndOrderStatus(userId, OrderStatus.NEW);
 
+        order.setTotalCost(calculateOrderPrice(order));
         order.setAddress(orderDTO.getAddress());
         order.setPhoneNumber(orderDTO.getPhoneNumber());
         order.setDateOrder(orderDTO.getDateOrder());
         order.setOrderStatus(OrderStatus.ACTIVE);
 
-        return orderRepository.save(order);
+        orderRepository.save(order);
+
+        return orderMapper.orderToOrderDTO(order);
     }
 }

@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.coffeetearea.dto.AuthenticationRequestDTO;
+import ru.coffeetearea.dto.RegistrationUserDTO;
+import ru.coffeetearea.dto.UserDTO;
 import ru.coffeetearea.model.User;
 import ru.coffeetearea.security.jwt.JwtTokenProvider;
 import ru.coffeetearea.service.UserService;
@@ -36,9 +38,8 @@ public class HomeController {
     private final UserService userService;
 
 
-    // GET-Methods
-    //
-    //
+    // POST - methods
+
     @PostMapping("/login")
     public ResponseEntity<Map<String, String>> login(@RequestBody AuthenticationRequestDTO requestDto) {
         try {
@@ -61,4 +62,17 @@ public class HomeController {
             throw new BadCredentialsException("Invalid login or password!", e);
         }
     }
+
+
+    @PostMapping("/registration")
+    public UserDTO registration(@RequestBody RegistrationUserDTO registrationUserDTO){
+
+        return userService.registration(registrationUserDTO);
+    }
+
+
+
+    // GET-Methods
+    //
+    //
 }

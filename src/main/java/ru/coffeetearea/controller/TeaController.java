@@ -18,31 +18,30 @@ import java.math.BigDecimal;
 @Api(value = "Tea", tags = {"Tea"})
 public class TeaController {
 
+    // Fields
+
     private final TeaService teaService;
 
 
-    // Methods
-    //
     // GET - methods
-    //
 
     /**
      * Получение списка товаров
      */
     @GetMapping("/teas")
-    private PageDTO<TeaDTO> findAll(@RequestParam(value = "page", defaultValue = "0") int page,
-                                    @RequestParam(value = "page_size", defaultValue = "5") int pageSize) {
+    public PageDTO<TeaDTO> findAll(@RequestParam(value = "page", defaultValue = "0") int page,
+                                   @RequestParam(value = "page_size", defaultValue = "5") int pageSize) {
 
         return teaService.findAll(page, pageSize);
     }
 
-    @GetMapping("/filter-teas")
-    private PageDTO<TeaDTO> findAllByFilter(@RequestParam(value = "page", defaultValue = "0") int page,
-                                            @RequestParam(value = "page_size", defaultValue = "5") int pageSize,
-                                            @RequestParam(required = false) Long colorId,
-                                            @RequestParam(required = false) Long typeId,
-                                            @RequestParam(required = false) Long countryId,
-                                            BigDecimal min, BigDecimal max) {
+    @GetMapping("/teas-filter")
+    public PageDTO<TeaDTO> findAllByFilter(@RequestParam(value = "page", defaultValue = "0") int page,
+                                           @RequestParam(value = "page_size", defaultValue = "5") int pageSize,
+                                           @RequestParam(required = false) Long colorId,
+                                           @RequestParam(required = false) Long typeId,
+                                           @RequestParam(required = false) Long countryId,
+                                           BigDecimal min, BigDecimal max) {
 
         return teaService.findAllByFilter(page, pageSize, colorId, typeId, countryId, min, max);
     }

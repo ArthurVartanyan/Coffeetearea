@@ -18,31 +18,30 @@ import java.math.BigDecimal;
 @Api(value = "Coffee", tags = {"Coffee"})
 public class CoffeeController {
 
+    // Fields
+
     private final CoffeeService coffeeService;
 
 
-    // Methods
-    //
     // GET - methods
-    //
 
     /**
      * Получение списка товаров
      */
     @GetMapping("/coffees")
-    private PageDTO<CoffeeDTO> findAll(@RequestParam(value = "page", defaultValue = "0") int page,
-                                       @RequestParam(value = "page_size", defaultValue = "5") int pageSize) {
+    public PageDTO<CoffeeDTO> findAll(@RequestParam(value = "page", defaultValue = "0") int page,
+                                      @RequestParam(value = "page_size", defaultValue = "5") int pageSize) {
 
         return coffeeService.findAll(page, pageSize);
     }
 
-    @GetMapping("/filter-coffees")
-    private PageDTO<CoffeeDTO> findAllFilter(@RequestParam(value = "page", defaultValue = "0") int page,
-                                             @RequestParam(value = "page_size", defaultValue = "5") int pageSize,
-                                             @RequestParam(required = false) Long roastingId,
-                                             @RequestParam(required = false) Long typeId,
-                                             @RequestParam(required = false) Long countryId,
-                                             BigDecimal min, BigDecimal max) {
+    @GetMapping("/coffees-filter")
+    public PageDTO<CoffeeDTO> findAllFilter(@RequestParam(value = "page", defaultValue = "0") int page,
+                                            @RequestParam(value = "page_size", defaultValue = "5") int pageSize,
+                                            @RequestParam(required = false) Long roastingId,
+                                            @RequestParam(required = false) Long typeId,
+                                            @RequestParam(required = false) Long countryId,
+                                            BigDecimal min, BigDecimal max) {
 
         return coffeeService.findAllFilter(page, pageSize, roastingId, typeId, countryId, min, max);
     }

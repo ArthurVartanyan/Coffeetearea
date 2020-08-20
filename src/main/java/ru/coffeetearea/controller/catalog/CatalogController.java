@@ -17,13 +17,11 @@ import java.util.List;
 public class CatalogController {
 
     // Fields
-    //
-    private final CatalogService catalogService;
 
+    final CatalogService catalogService;
 
 
     // GET - methods
-    //
 
     /**
      * Получение списка стран
@@ -31,7 +29,7 @@ public class CatalogController {
      * @return List<GeneralCatalogDTO>
      */
     @GetMapping("/countries")
-    private List<GeneralCatalogDTO> findCountries() {
+    public List<GeneralCatalogDTO> findCountries() {
         return catalogService.findCountries();
     }
 
@@ -41,7 +39,7 @@ public class CatalogController {
      * @return List<GeneralCatalogDTO>
      */
     @GetMapping("/packages")
-    private List<GeneralCatalogDTO> findPackages() {
+    public List<GeneralCatalogDTO> findPackages() {
         return catalogService.findPackages();
     }
 
@@ -51,7 +49,7 @@ public class CatalogController {
      * @return List<GeneralCatalogDTO>
      */
     @GetMapping("/manufacturers")
-    private List<GeneralCatalogDTO> findManufacturers() {
+    public List<GeneralCatalogDTO> findManufacturers() {
         return catalogService.findManufacturers();
     }
 
@@ -61,7 +59,7 @@ public class CatalogController {
      * @return List<GeneralCatalogDTO>
      */
     @GetMapping("/tea-colors")
-    private List<GeneralCatalogDTO> findTeaColor() {
+    public List<GeneralCatalogDTO> findTeaColor() {
         return catalogService.findTeaColors();
     }
 
@@ -71,7 +69,7 @@ public class CatalogController {
      * @return List<GeneralCatalogDTO>
      */
     @GetMapping("/coffee-types")
-    private List<GeneralCatalogDTO> findCoffeeType() {
+    public List<GeneralCatalogDTO> findCoffeeType() {
         return catalogService.findCoffeeTypes();
     }
 
@@ -81,7 +79,7 @@ public class CatalogController {
      * @return List<GeneralCatalogDTO>
      */
     @GetMapping("/tea-types")
-    private List<GeneralCatalogDTO> findTeaType() {
+    public List<GeneralCatalogDTO> findTeaType() {
         return catalogService.findTeaTypes();
     }
 
@@ -91,7 +89,7 @@ public class CatalogController {
      * @return List<GeneralCatalogDTO>
      */
     @GetMapping("/roastings")
-    private List<GeneralCatalogDTO> findRoasting() {
+    public List<GeneralCatalogDTO> findRoasting() {
         return catalogService.findRoastings();
     }
 }

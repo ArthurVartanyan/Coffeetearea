@@ -1,9 +1,13 @@
 package ru.coffeetearea.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Класс пользователя.
@@ -13,6 +17,7 @@ import javax.persistence.*;
  */
 
 
+@Setter
 @Getter
 @Entity
 @NoArgsConstructor
@@ -57,4 +62,12 @@ public class User {
      */
     @Enumerated(EnumType.STRING)
     private Role role;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "favourites",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "drink_id"))
+    @JsonIgnore // Таким образом я предотвратил рекурсию
+    private List<Drink> favouriteDrinks = new ArrayList<>();
 }

@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import ru.coffeetearea.model.Role;
@@ -13,11 +14,13 @@ import ru.coffeetearea.security.jwt.JwtTokenProvider;
 
 @RequiredArgsConstructor
 @Configuration
+@EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     // Fields
     //
     private final JwtTokenProvider jwtTokenProvider;
+
 
     @Bean
     @Override
@@ -45,7 +48,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/configuration/security",
                         "/swagger-ui.html",
                         "/webjars/**").permitAll()
-                .antMatchers("/home/login", "/cart-item/add-in-cart").permitAll()
+                .antMatchers("/home/login",
+                        "/cart-item", "/cart-drinks",
+                        "/**/add-cart/", "/**/delete-cart/", "/delete-all-cart",
+                        "/add-in-favourites/**", "/coffee", "/coffees", "/coffees-filter",
+                        "/tea", "/teas", "/teas-filter", "/drink","/**/favourite-delete",
+                        "/**/add-favourites/", "/drinks-favourite", "/order", "/make-order").permitAll()
                 .antMatchers()
                 .hasRole(Role.CUSTOMER.name()) // Все ссылки, которые доступны только заказчику
                 .anyRequest().authenticated()

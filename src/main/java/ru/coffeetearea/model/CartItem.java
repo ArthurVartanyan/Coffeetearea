@@ -1,8 +1,6 @@
 package ru.coffeetearea.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -12,19 +10,21 @@ import java.io.Serializable;
  * Сюда добавляются товары из магазина, для дальнейшего оформления.
  */
 
-@Data
+@Getter
+@Setter
 @Entity
 @NoArgsConstructor
-@Table(name = "cart_products")
+@Table(name = "cart_items")
 public class CartItem {
 
     /**
      * Внутренний статический класс
      */
+    @Data
     @Embeddable
     @NoArgsConstructor
     @AllArgsConstructor
-    static class CartId implements Serializable {
+    public static class CartId implements Serializable {
 
         private Long order_id;
 

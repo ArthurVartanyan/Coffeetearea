@@ -36,14 +36,6 @@ public class JwtTokenProvider {
     // METHODS
     //
 
-    /**
-     * Использован BCrypt
-     */
-    @Bean
-    public BCryptPasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder(8);
-    }
-
 
     @PostConstruct
     protected void init() {
@@ -98,6 +90,14 @@ public class JwtTokenProvider {
 
 
     /**
+     * Использован BCrypt
+     */
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder(8);
+    }
+
+    /**
      * Использование ТОКЕНА
      *
      * @param req
@@ -105,7 +105,7 @@ public class JwtTokenProvider {
      */
     public String resolveToken(HttpServletRequest req) {
         String bearerToken = req.getHeader("Authorization");
-        if (bearerToken != null && bearerToken.startsWith("Bearer_")) {
+        if (bearerToken != null && bearerToken.startsWith("Bearer ")) {
             return bearerToken.substring(7);
         }
         return null;

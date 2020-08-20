@@ -18,6 +18,8 @@ import java.math.BigDecimal;
 @RequiredArgsConstructor
 public class TeaService {
 
+    // Fields
+
     private final TeaRepository teaRepository;
 
     private final TeaMapper teaMapper;

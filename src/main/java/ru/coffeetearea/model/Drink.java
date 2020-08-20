@@ -8,6 +8,7 @@ import ru.coffeetearea.model.catalog.Packaging;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.Objects;
 
 
 @Data
@@ -67,4 +68,25 @@ public class Drink {
     @ManyToOne
     @JoinColumn(name = "country_id")
     private Country country;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Drink drink = (Drink) o;
+        return isDeleted == drink.isDeleted &&
+                Objects.equals(id, drink.id) &&
+                Objects.equals(image, drink.image) &&
+                Objects.equals(name, drink.name) &&
+                Objects.equals(price, drink.price) &&
+                Objects.equals(about, drink.about) &&
+                Objects.equals(packaging, drink.packaging) &&
+                Objects.equals(manufacturer, drink.manufacturer) &&
+                Objects.equals(country, drink.country);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, image, name, price, about, isDeleted, packaging, manufacturer, country);
+    }
 }

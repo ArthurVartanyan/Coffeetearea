@@ -15,6 +15,6 @@ public interface CatalogMapper {
 
     GeneralCatalogDTO catalogToCatalogsDTO(GeneralCatalog generalCatalog);
 
-    @IterableMapping(qualifiedByName = "catalogToDrinkDTO")
+    @IterableMapping(qualifiedByName = "catalogToCatalogDTO")
     List<GeneralCatalogDTO> catalogsToCatalogsDTO(List<? extends GeneralCatalog> catalogs);
 }

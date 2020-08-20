@@ -1,0 +1,1 @@
+alter table cart_products rename to cart_items;

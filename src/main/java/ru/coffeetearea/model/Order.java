@@ -1,14 +1,17 @@
 package ru.coffeetearea.model;
 
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@Data
+@Getter
+@Setter
 @Entity
 @NoArgsConstructor
 @Table(name = "pg_order")
@@ -53,6 +56,21 @@ public class Order {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany(mappedBy = "order")
-    private List<CartItem> cartItem;
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CartItem> cartItems = new ArrayList<>();
+
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", address='" + address + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", dateOrder=" + dateOrder +
+                ", orderStatus=" + orderStatus +
+                ", totalCost=" + totalCost +
+                ", user=" + user +
+                ", cartItems=" + cartItems +
+                '}';
+    }
 }

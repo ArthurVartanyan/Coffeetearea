@@ -7,7 +7,6 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import ru.coffeetearea.model.Role;
-import ru.coffeetearea.model.User;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -40,8 +39,15 @@ public class JwtUser implements UserDetails {
     /**
      * Возвращает авторизованного пользователя
      */
-    public static User getCurrentUser() {
-        return (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    public static JwtUser getCurrentUser() {
+        return (JwtUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    }
+
+    /**
+     * Возвращает ID авторизованного пользователя
+     */
+    public static Long getCurrentUserID() {
+        return JwtUser.getCurrentUser().getId();
     }
 
     @Override

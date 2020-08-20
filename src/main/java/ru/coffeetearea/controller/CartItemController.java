@@ -2,11 +2,11 @@ package ru.coffeetearea.controller;
 
 import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ru.coffeetearea.model.CartItem;
+import ru.coffeetearea.dto.CartItemDTO;
 import ru.coffeetearea.service.CartItemService;
+
+import java.util.List;
 
 
 @RestController
@@ -15,23 +15,57 @@ import ru.coffeetearea.service.CartItemService;
 @Api(value = "Cart item", tags = {"Cart item"})
 public class CartItemController {
 
+    // Fields
+
     private final CartItemService cartItemService;
 
 
     // Get - methods
 
-    @PostMapping("/add-in-cart")
-    private ResponseEntity<CartItem> addDrinkInCart(@RequestParam Long drinkId) {
+    /**
+     * Получичение списка товаров в корзине
+     */
+    @GetMapping("/cart-drinks")
+    public List<CartItemDTO> showAllCartDrinks() {
 
-        return new ResponseEntity<>(cartItemService.addDrinkInCart(drinkId), HttpStatus.CREATED);
+        return cartItemService.showAllCartDrinks();
+    }
+
+
+    // POST - methods
+
+    /**
+     * Добавление 1 товара в корзину(1 шт.).
+     *
+     * @param drinkId
+     */
+    @PostMapping("/{drinkId}/add-cart/")
+    public CartItemDTO addDrinkInCart(@PathVariable Long drinkId) {
+
+        return cartItemService.addDrinkInCart(drinkId);
     }
 
 
     // Delete - methods
 
-    @DeleteMapping("/delete-from-cart")
-    private ResponseEntity<CartItem> removeDrinkFromCart(@RequestParam Long drinkId) {
+    /**
+     * Удаление товара из корзины.
+     *
+     * @param drinkId
+     */
+    @DeleteMapping("/{drinkId}/delete-cart/")
+    public void removeDrinkFromCart(@PathVariable Long drinkId) {
 
-        return new ResponseEntity<>(cartItemService.removeDrinkFromCart(drinkId), HttpStatus.ACCEPTED);
+        cartItemService.removeDrinkFromCart(drinkId);
+    }
+
+
+    /**
+     * Удаление всех товаров из корзины.
+     */
+    @DeleteMapping("/delete-all-cart")
+    public void removeAllDrinksFromCart() {
+
+        cartItemService.removeAllDrinksFromCart();
     }
 }
