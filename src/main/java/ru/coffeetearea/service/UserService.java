@@ -37,6 +37,7 @@ public class UserService {
         user.setMail(registrationUserDTO.getMail());
         user.setPassword(passwordEncoder.encode(registrationUserDTO.getPassword()));
         user.setRole(Role.CUSTOMER);
+        user.setDeleted(false);
 
         userRepository.save(user);
 

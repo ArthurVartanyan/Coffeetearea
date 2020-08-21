@@ -1,7 +1,6 @@
 package ru.coffeetearea.config;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -9,7 +8,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import ru.coffeetearea.model.Role;
 import ru.coffeetearea.security.JwtUserDetailsService;
@@ -22,10 +20,9 @@ import ru.coffeetearea.security.jwt.JwtTokenProvider;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     // Fields
-    //
-//    private final JwtTokenProvider jwtTokenProvider;
 
     private final JwtUserDetailsService jwtUserDetailsService;
+
 
     /**
      * Использован BCrypt
@@ -72,8 +69,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/delete-all-cart", "/drink-add", "/add-in-favourites/**", "/coffee",
                         "/coffees", "/coffees-filter", "/tea", "/teas", "/teas-filter",
                         "/drink", "/**/favourite-delete", "/**/add-favourites/", "/drinks-favourite",
-                        "/order", "/make-order", "/coffee-add", "/tea-add", "/{coffeeId}/coffee-delete",
-                        "/{teaId}/tea-delete", "/**/coffee-edit", "/**/tea-edit").permitAll()
+                        "/order", "/make-order", "/coffee-add", "/tea-add", "/**/coffee-delete",
+                        "/**/tea-delete", "/**/coffee-edit", "/**/tea-edit", "/**/coffee-type-delete",
+                        "/**/country-delete", "/**/manufacturer-delete", "/**/packaging-delete",
+                        "/**/roasting-delete", "/**/tea-color-delete",
+                        "/**/tea-type-delete", "/tea-type-add", "/tea-color-add", "/roasting-add",
+                        "/packaging-add", "/manufacturer-add", "/country-add", "/coffee-type-add",
+                        "/{coffeeTypeId}/coffee-type-edit", "/{countryId}/country-edit",
+                        "/{manufacturerId}/manufacturer-edit", "/{packagingId}/packaging-edit",
+                        "/{roastingId}/roasting-edit", "/{teaColorId}/tea-color-edit",
+                        "/{teaTypeId}/tea-type-edit").permitAll()
                 .antMatchers()
                 .hasRole(Role.CUSTOMER.name()) // Все ссылки, которые доступны только заказчику
                 .anyRequest().authenticated()
