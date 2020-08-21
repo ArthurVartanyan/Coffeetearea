@@ -9,7 +9,6 @@ import ru.coffeetearea.dto.CoffeeDTO;
 import ru.coffeetearea.dto.PageDTO;
 import ru.coffeetearea.mappers.CoffeeMapper;
 import ru.coffeetearea.model.Coffee;
-import ru.coffeetearea.model.Tea;
 import ru.coffeetearea.repository.CoffeeRepository;
 import ru.coffeetearea.specification.DrinksSpecification;
 
@@ -24,12 +23,40 @@ public class CoffeeService {
     private final CoffeeMapper coffeeMapper;
 
 
+    /**
+     * Редктирование напитка кофе
+     *
+     * @param coffeeId
+     * @param coffeeDTO
+     * @return coffeeDTO
+     */
+    public CoffeeDTO editCoffee(Long coffeeId, CoffeeDTO coffeeDTO) {
+
+        Coffee coffee = coffeeRepository.getOne(coffeeId);
+
+        if (coffeeDTO.getName() != null) coffee.setName(coffeeDTO.getName());
+        if (coffeeDTO.getPrice() != null) coffee.setPrice(coffeeDTO.getPrice());
+        if (coffeeDTO.getAbout() != null) coffee.setAbout(coffeeDTO.getAbout());
+        if (coffeeDTO.getPackaging() != null)
+            coffee.setPackaging(coffeeMapper.coffeeDTOtoCoffee(coffeeDTO).getPackaging());
+        if (coffeeDTO.getManufacturer() != null)
+            coffee.setManufacturer(coffeeMapper.coffeeDTOtoCoffee(coffeeDTO).getManufacturer());
+        if (coffeeDTO.getCountry() != null) coffee.setCountry(coffeeMapper.coffeeDTOtoCoffee(coffeeDTO).getCountry());
+        if (coffeeDTO.getWeight() == 0) coffee.setWeight(coffeeDTO.getWeight());
+        if (coffeeDTO.getCoffeeType() != null) coffee.setCoffeeType(coffeeDTO.getCoffeeType());
+        if (coffeeDTO.getRoasting() != null) coffee.setRoasting(coffeeDTO.getRoasting());
+
+        coffeeRepository.save(coffee);
+
+        return coffeeMapper.coffeeToCoffeeDTO(coffee);
+    }
+
 
     /**
      * Удалить кофе из списка товаров.
      * На самом деле меняем всего лишь поле is_deleted.
      */
-    public void deleteCoffeeFromDrinks(Long coffeeId){
+    public void deleteCoffeeFromDrinks(Long coffeeId) {
 
         Coffee coffee = coffeeRepository.getOne(coffeeId);
 

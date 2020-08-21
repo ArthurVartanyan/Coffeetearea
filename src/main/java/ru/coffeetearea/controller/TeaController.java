@@ -23,6 +23,16 @@ public class TeaController {
     // PUT - methods
 
     /**
+     * Редактирование напитка кофе
+     */
+    @PutMapping("/{teaId}/tea-edit")
+    public TeaDTO editDTO(@PathVariable Long teaId, @RequestBody TeaDTO teaDTO) {
+
+        return teaService.editTea(teaId, teaDTO);
+    }
+
+
+    /**
      * Удалить кофе из товаров
      *
      * @param teaId

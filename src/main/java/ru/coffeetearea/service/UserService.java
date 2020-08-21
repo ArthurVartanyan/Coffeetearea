@@ -19,7 +19,7 @@ public class UserService {
 
     private final UserMapper userMapper;
 
-//    private final PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
 
     /**
@@ -35,7 +35,7 @@ public class UserService {
         user.setLastName(registrationUserDTO.getLastName());
         user.setLogin(registrationUserDTO.getLogin());
         user.setMail(registrationUserDTO.getMail());
-        user.setPassword(/*passwordEncoder.encode(*/registrationUserDTO.getPassword())/*)*/;
+        user.setPassword(passwordEncoder.encode(registrationUserDTO.getPassword()));
         user.setRole(Role.CUSTOMER);
 
         userRepository.save(user);

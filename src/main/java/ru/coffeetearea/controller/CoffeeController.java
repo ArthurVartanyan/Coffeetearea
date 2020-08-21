@@ -23,11 +23,22 @@ public class CoffeeController {
     // PUT - methods
 
     /**
+     * Редактирование напитка кофе
+     */
+    @PutMapping("/{coffeeId}/coffee-edit")
+    public CoffeeDTO editCoffee(@PathVariable Long coffeeId, @RequestBody CoffeeDTO coffeeDTO) {
+
+        return coffeeService.editCoffee(coffeeId, coffeeDTO);
+    }
+
+
+    /**
      * Удалить кофе из товаров
+     *
      * @param coffeeId
      */
     @PutMapping("/{coffeeId}/coffee-delete")
-    public void deleteCoffeeFromDrinks(@PathVariable Long coffeeId){
+    public void deleteCoffeeFromDrinks(@PathVariable Long coffeeId) {
 
         coffeeService.deleteCoffeeFromDrinks(coffeeId);
     }

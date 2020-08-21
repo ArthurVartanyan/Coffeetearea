@@ -6,7 +6,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import ru.coffeetearea.exceptions.EntityNotFoundException;
 import ru.coffeetearea.model.User;
+import ru.coffeetearea.repository.UserRepository;
 import ru.coffeetearea.security.jwt.JwtUser;
 import ru.coffeetearea.security.jwt.JwtUserFactory;
 import ru.coffeetearea.service.UserService;
@@ -16,12 +18,15 @@ import ru.coffeetearea.service.UserService;
 @RequiredArgsConstructor
 public class JwtUserDetailsService implements UserDetailsService {
 
-    private final UserService userService;
+//    private final UserService userService;
+
+    private final UserRepository userRepository;
 
     @Override
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
 
-        User user = userService.findByLogin(login);
+        User user = userRepository.findByLogin(login)
+                .orElseThrow(() -> new EntityNotFoundException("Внимание! Невозможно найти login: " + login));
 
         JwtUser jwtUser = JwtUserFactory.create(user);
         log.info("IN loadUserByUsername - user with login: {} successfully loaded", login);

@@ -19,7 +19,7 @@ import java.util.Base64;
 import java.util.Date;
 
 @RequiredArgsConstructor
-@Component
+//@Component
 public class JwtTokenProvider {
 
     // Fields
@@ -86,15 +86,6 @@ public class JwtTokenProvider {
         } catch (JwtException | IllegalArgumentException e) {
             throw new JwtAuthenticationException("JWT token is expired or invalid");
         }
-    }
-
-
-    /**
-     * Использован BCrypt
-     */
-    @Bean
-    public BCryptPasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder(8);
     }
 
     /**

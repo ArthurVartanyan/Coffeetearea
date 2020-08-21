@@ -5,12 +5,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import ru.coffeetearea.dto.CoffeeDTO;
 import ru.coffeetearea.dto.PageDTO;
 import ru.coffeetearea.dto.TeaDTO;
 import ru.coffeetearea.mappers.TeaMapper;
-import ru.coffeetearea.model.Coffee;
-import ru.coffeetearea.model.Drink;
 import ru.coffeetearea.model.Tea;
 import ru.coffeetearea.repository.TeaRepository;
 import ru.coffeetearea.specification.DrinksSpecification;
@@ -29,10 +26,37 @@ public class TeaService {
 
 
     /**
+     * Редктирование напитка чая
+     *
+     * @param teaId
+     * @param teaDTO
+     * @return teaDTO
+     */
+    public TeaDTO editTea(Long teaId, TeaDTO teaDTO) {
+
+        Tea tea = teaRepository.getOne(teaId);
+
+        if (teaDTO.getName() != null) tea.setName(teaDTO.getName());
+        if (teaDTO.getPrice() != null) tea.setPrice(teaDTO.getPrice());
+        if (teaDTO.getAbout() != null) tea.setAbout(teaDTO.getAbout());
+        if (teaDTO.getPackaging() != null) tea.setPackaging(teaMapper.teaDTOtoTea(teaDTO).getPackaging());
+        if (teaDTO.getManufacturer() != null) tea.setManufacturer(teaMapper.teaDTOtoTea(teaDTO).getManufacturer());
+        if (teaDTO.getCountry() != null) tea.setCountry(teaMapper.teaDTOtoTea(teaDTO).getCountry());
+        if (teaDTO.getWeight() == 0) tea.setWeight(teaDTO.getWeight());
+        if (teaDTO.getTeaType() != null) tea.setTeaType(teaDTO.getTeaType());
+        if (teaDTO.getTeaColor() != null) tea.setTeaColor(teaDTO.getTeaColor());
+
+        teaRepository.save(tea);
+
+        return teaMapper.teaToTeaDTO(tea);
+    }
+
+
+    /**
      * Удалить чай из списка товаров.
      * На самом деле меняем всего лишь поле is_deleted.
      */
-    public void deleteTeaFromDrinks(Long teaId){
+    public void deleteTeaFromDrinks(Long teaId) {
 
         Tea tea = teaRepository.getOne(teaId);
 
@@ -44,10 +68,11 @@ public class TeaService {
 
     /**
      * Добавить новый чай в список товаров
+     *
      * @param teaDTO
      * @return
      */
-    public TeaDTO addTea(TeaDTO teaDTO){
+    public TeaDTO addTea(TeaDTO teaDTO) {
 
         Tea tea = new Tea();
 
