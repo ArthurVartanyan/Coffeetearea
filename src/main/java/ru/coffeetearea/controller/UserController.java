@@ -11,7 +11,7 @@ import ru.coffeetearea.service.UserService;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/user")
+@RequestMapping("/users")
 @Api(value = "User", tags = {"User"})
 public class UserController {
 

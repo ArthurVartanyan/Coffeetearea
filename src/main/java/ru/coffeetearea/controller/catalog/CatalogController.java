@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/catalog")
+@RequestMapping("/catalogs")
 @Api(value = "Catalog", tags = {"Catalog"})
 public class CatalogController {
 
@@ -21,43 +21,43 @@ public class CatalogController {
 
     // POST - methods
 
-    @PostMapping("/coffee-type-add")
+    @PostMapping("/coffee")
     public GeneralCatalogDTO addCoffeeType(@RequestParam String name) {
 
         return catalogService.addCoffeeType(name);
     }
 
-    @PostMapping("/country-add")
+    @PostMapping("/countries")
     public GeneralCatalogDTO addCountry(@RequestParam String name) {
 
         return catalogService.addCountry(name);
     }
 
-    @PostMapping("/manufacturer-add")
+    @PostMapping("/manufacturers")
     public GeneralCatalogDTO addManufacturer(@RequestParam String name) {
 
         return catalogService.addManufacturer(name);
     }
 
-    @PostMapping("/packaging-add")
+    @PostMapping("/packages")
     public GeneralCatalogDTO addPackaging(@RequestParam String name) {
 
         return catalogService.addPackaging(name);
     }
 
-    @PostMapping("/roasting-add")
+    @PostMapping("/roastings")
     public GeneralCatalogDTO addRoasting(@RequestParam String name) {
 
         return catalogService.addRoasting(name);
     }
 
-    @PostMapping("/tea-color-add")
+    @PostMapping("/tea-colors")
     public GeneralCatalogDTO addTeaColor(@RequestParam String name) {
 
         return catalogService.addTeaColor(name);
     }
 
-    @PostMapping("/tea-type-add")
+    @PostMapping("/tea-types")
     public GeneralCatalogDTO addTeaType(@RequestParam String name) {
 
         return catalogService.addTeaType(name);
@@ -142,7 +142,7 @@ public class CatalogController {
     /**
      * Редактирование элементов типов кофе
      */
-    @PutMapping("/{coffeeTypeId}/coffee-type-edit")
+    @PutMapping("/{coffeeTypeId}/coffee-types")
     public GeneralCatalogDTO editCoffeeType(@PathVariable Long coffeeTypeId, @RequestParam String name) {
 
         return catalogService.editCoffeeType(coffeeTypeId, name);
@@ -151,7 +151,7 @@ public class CatalogController {
     /**
      * Редактирование элементов стран
      */
-    @PutMapping("/{countryId}/country-edit")
+    @PutMapping("/{countryId}/countries")
     public GeneralCatalogDTO editCountry(@PathVariable Long countryId, @RequestParam String name) {
 
         return catalogService.editCountry(countryId, name);
@@ -161,7 +161,7 @@ public class CatalogController {
     /**
      * Редактирование элементов типов производителей
      */
-    @PutMapping("/{manufacturerId}/manufacturer-edit")
+    @PutMapping("/{manufacturerId}/manufacturers")
     public GeneralCatalogDTO editManufacturer(@PathVariable Long manufacturerId, @RequestParam String name) {
 
         return catalogService.editManufacturer(manufacturerId, name);
@@ -171,7 +171,7 @@ public class CatalogController {
     /**
      * Редактирование элементов типов пакетов
      */
-    @PutMapping("/{packagingId}/packaging-edit")
+    @PutMapping("/{packagingId}/packages")
     public GeneralCatalogDTO editPackaging(@PathVariable Long packagingId, @RequestParam String name) {
 
         return catalogService.editPackaging(packagingId, name);
@@ -181,7 +181,7 @@ public class CatalogController {
     /**
      * Редактирование элементов типов обжарки
      */
-    @PutMapping("/{roastingId}/roasting-edit")
+    @PutMapping("/{roastingId}/roastings")
     public GeneralCatalogDTO editRoasting(@PathVariable Long roastingId, @RequestParam String name) {
 
         return catalogService.editRoasting(roastingId, name);
@@ -191,7 +191,7 @@ public class CatalogController {
     /**
      * Редактирование элементов цветов чая
      */
-    @PutMapping("/{teaColorId}/tea-color-edit")
+    @PutMapping("/{teaColorId}/tea-colors")
     public GeneralCatalogDTO editTeaColor(@PathVariable Long teaColorId, @RequestParam String name) {
 
         return catalogService.editTeaColor(teaColorId, name);
@@ -200,7 +200,7 @@ public class CatalogController {
     /**
      * Редактирование элементов типов чая
      */
-    @PutMapping("/{teaTypeId}/tea-type-edit")
+    @PutMapping("/{teaTypeId}/tea-types")
     public GeneralCatalogDTO editTeaType(@PathVariable Long teaTypeId, @RequestParam String name) {
 
         return catalogService.editTeaType(teaTypeId, name);
@@ -210,7 +210,7 @@ public class CatalogController {
     /**
      * Удаление элементов типов кофе
      */
-    @PutMapping("/{coffeeTypeId}/coffee-type-delete")
+    @PutMapping("/{coffeeTypeId}/delete")
     public void deleteCoffeeType(@PathVariable Long coffeeTypeId) {
         catalogService.deleteCoffeeType(coffeeTypeId);
     }
@@ -218,7 +218,7 @@ public class CatalogController {
     /**
      * Удаление элементов стран
      */
-    @PutMapping("/{countryId}/country-delete")
+    @PutMapping("/{countryId}/delete")
     public void deleteCountry(@PathVariable Long countryId) {
         catalogService.deleteCountry(countryId);
     }
@@ -226,7 +226,7 @@ public class CatalogController {
     /**
      * Удаление элементов произваодителей
      */
-    @PutMapping("/{manufacturerId}/manufacturer-delete")
+    @PutMapping("/{manufacturerId}/delete")
     public void deleteManufacturer(@PathVariable Long manufacturerId) {
         catalogService.deleteManufacturer(manufacturerId);
     }
@@ -234,7 +234,7 @@ public class CatalogController {
     /**
      * Удаление элементов упаковок
      */
-    @PutMapping("/{packagingId}/packaging-delete")
+    @PutMapping("/{packagingId}/delete")
     public void deletePackaging(@PathVariable Long packagingId) {
         catalogService.deletePackaging(packagingId);
     }
@@ -242,7 +242,7 @@ public class CatalogController {
     /**
      * Удаление элементов обжарки кофе
      */
-    @PutMapping("/{roastingId}/roasting-delete")
+    @PutMapping("/{roastingId}/delete")
     public void deleteRoasting(@PathVariable Long roastingId) {
         catalogService.deleteRoasting(roastingId);
     }
@@ -250,7 +250,7 @@ public class CatalogController {
     /**
      * Удаление элементов цвета чая
      */
-    @PutMapping("/{teaColorId}/tea-color-delete")
+    @PutMapping("/{teaColorId}/delete")
     public void deleteTeaColor(@PathVariable Long teaColorId) {
         catalogService.deleteTeaColor(teaColorId);
     }
@@ -258,7 +258,7 @@ public class CatalogController {
     /**
      * Удаление элементов типа чая
      */
-    @PutMapping("/{teaTypeId}/tea-type-delete")
+    @PutMapping("/{teaTypeId}/delete")
     public void deleteTeaType(@PathVariable Long teaTypeId) {
         catalogService.deleteTeaType(teaTypeId);
     }

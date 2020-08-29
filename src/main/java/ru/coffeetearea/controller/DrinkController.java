@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/drink")
+@RequestMapping("/drinks")
 @Api(value = "Drink", tags = {"Drink"})
 public class DrinkController {
 
