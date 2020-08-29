@@ -20,12 +20,12 @@ public class CartItemController {
     private final CartItemService cartItemService;
 
 
-    // Get - methods
+    // GET - methods
 
     /**
      * Получичение списка товаров в корзине
      */
-    @GetMapping("/cart-drinks")
+    @GetMapping("/list")
     public List<CartItemDTO> showAllCartDrinks() {
 
         return cartItemService.showAllCartDrinks();
@@ -39,7 +39,7 @@ public class CartItemController {
      *
      * @param drinkId
      */
-    @PostMapping("/{drinkId}/add-cart/")
+    @PostMapping("/{drinkId}")
     public CartItemDTO addDrinkInCart(@PathVariable Long drinkId) {
 
         return cartItemService.addDrinkInCart(drinkId);
@@ -53,7 +53,7 @@ public class CartItemController {
      *
      * @param drinkId
      */
-    @DeleteMapping("/{drinkId}/delete-cart/")
+    @DeleteMapping("/{drinkId}")
     public void removeDrinkFromCart(@PathVariable Long drinkId) {
 
         cartItemService.removeDrinkFromCart(drinkId);
@@ -63,7 +63,7 @@ public class CartItemController {
     /**
      * Удаление всех товаров из корзины.
      */
-    @DeleteMapping("/delete-all-cart")
+    @DeleteMapping("/all")
     public void removeAllDrinksFromCart() {
 
         cartItemService.removeAllDrinksFromCart();

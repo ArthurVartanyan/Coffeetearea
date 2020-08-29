@@ -2,6 +2,7 @@ package ru.coffeetearea.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Formula;
 import ru.coffeetearea.model.catalog.Country;
 import ru.coffeetearea.model.catalog.Manufacturer;
 import ru.coffeetearea.model.catalog.Packaging;
@@ -31,6 +32,16 @@ public class Drink {
      * Цена напитка
      */
     private BigDecimal price;
+
+    /**
+     * Количество напитка в корзине
+     */
+    @Formula("coalesce((select sum(c.count) from cart_items c" +
+            " left join pg_order po on c.order_id = po.id" +
+            " where po.order_status = 'ACTIVE' and " +
+            "c.drink_id = id), 0)")
+//    @Formula("coalesce((select sum(c.count) from cart_items c where c.drink_id = id), 0)")
+    private Long drinkCountInOrder;
 
     /**
      * Описание напитка

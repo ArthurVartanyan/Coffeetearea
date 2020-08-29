@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import ru.coffeetearea.dto.GeneralCatalogDTO;
+import ru.coffeetearea.exceptions.EntityNotFoundException;
 import ru.coffeetearea.mappers.CatalogMapper;
 import ru.coffeetearea.model.catalog.*;
 import ru.coffeetearea.repository.catalog.*;
@@ -36,7 +37,9 @@ public class CatalogService {
      */
     public GeneralCatalogDTO editCoffeeType(Long coffeeTypeId, String name) {
 
-        CoffeeType coffeeType = coffeeTypeRepository.getOne(coffeeTypeId);
+        CoffeeType coffeeType = coffeeTypeRepository
+                .findById(coffeeTypeId)
+                .orElseThrow(() -> new EntityNotFoundException(coffeeTypeId));
         coffeeType.setName(name);
         coffeeTypeRepository.save(coffeeType);
 
@@ -48,7 +51,9 @@ public class CatalogService {
      */
     public GeneralCatalogDTO editCountry(Long countryId, String name) {
 
-        Country country = countriesRepository.getOne(countryId);
+        Country country = countriesRepository
+                .findById(countryId)
+                .orElseThrow(() -> new EntityNotFoundException(countryId));
         country.setName(name);
         countriesRepository.save(country);
 
@@ -61,7 +66,9 @@ public class CatalogService {
      */
     public GeneralCatalogDTO editManufacturer(Long manufacturerId, String name) {
 
-        Manufacturer manufacturer = manufacturerRepository.getOne(manufacturerId);
+        Manufacturer manufacturer = manufacturerRepository
+                .findById(manufacturerId)
+                .orElseThrow(() -> new EntityNotFoundException(manufacturerId));
         manufacturer.setName(name);
         manufacturerRepository.save(manufacturer);
 
@@ -74,7 +81,9 @@ public class CatalogService {
      */
     public GeneralCatalogDTO editPackaging(Long packagingId, String name) {
 
-        Packaging packaging = packagingRepository.getOne(packagingId);
+        Packaging packaging = packagingRepository
+                .findById(packagingId)
+                .orElseThrow(() -> new EntityNotFoundException(packagingId));
         packaging.setName(name);
         packagingRepository.save(packaging);
 
@@ -87,7 +96,9 @@ public class CatalogService {
      */
     public GeneralCatalogDTO editRoasting(Long roastingId, String name) {
 
-        Roasting roasting = roastingRepository.getOne(roastingId);
+        Roasting roasting = roastingRepository
+                .findById(roastingId)
+                .orElseThrow(() -> new EntityNotFoundException(roastingId));
         roasting.setName(name);
         roastingRepository.save(roasting);
 
@@ -100,7 +111,9 @@ public class CatalogService {
      */
     public GeneralCatalogDTO editTeaColor(Long teaColorId, String name) {
 
-        TeaColor teaColor = teaColorRepository.getOne(teaColorId);
+        TeaColor teaColor = teaColorRepository
+                .findById(teaColorId)
+                .orElseThrow(() -> new EntityNotFoundException(teaColorId));
         teaColor.setName(name);
         teaColorRepository.save(teaColor);
 
@@ -112,13 +125,14 @@ public class CatalogService {
      */
     public GeneralCatalogDTO editTeaType(Long teaTypeId, String name) {
 
-        TeaType teaType = teaTypeRepository.getOne(teaTypeId);
+        TeaType teaType = teaTypeRepository
+                .findById(teaTypeId)
+                .orElseThrow(() -> new EntityNotFoundException(teaTypeId));
         teaType.setName(name);
         teaTypeRepository.save(teaType);
 
         return catalogMapper.catalogToCatalogsDTO(teaType);
     }
-
 
 
     /**
@@ -222,7 +236,10 @@ public class CatalogService {
      */
     public void deleteCoffeeType(Long coffeeTypeId) {
 
-        CoffeeType coffeeType = coffeeTypeRepository.getOne(coffeeTypeId);
+        CoffeeType coffeeType = coffeeTypeRepository
+                .findById(coffeeTypeId)
+                .orElseThrow(() -> new EntityNotFoundException(coffeeTypeId));
+        ;
         coffeeType.setDeleted(true);
         coffeeTypeRepository.save(coffeeType);
 
@@ -233,7 +250,9 @@ public class CatalogService {
      */
     public void deleteCountry(Long countryId) {
 
-        Country country = countriesRepository.getOne(countryId);
+        Country country = countriesRepository
+                .findById(countryId)
+                .orElseThrow(() -> new EntityNotFoundException(countryId));
         country.setDeleted(true);
         countriesRepository.save(country);
     }
@@ -243,7 +262,9 @@ public class CatalogService {
      */
     public void deleteManufacturer(Long manufacturerId) {
 
-        Manufacturer manufacturer = manufacturerRepository.getOne(manufacturerId);
+        Manufacturer manufacturer = manufacturerRepository
+                .findById(manufacturerId)
+                .orElseThrow(() -> new EntityNotFoundException(manufacturerId));
         manufacturer.setDeleted(true);
         manufacturerRepository.save(manufacturer);
     }
@@ -253,7 +274,9 @@ public class CatalogService {
      */
     public void deletePackaging(Long packagingId) {
 
-        Packaging packaging = packagingRepository.getOne(packagingId);
+        Packaging packaging = packagingRepository
+                .findById(packagingId)
+                .orElseThrow(() -> new EntityNotFoundException(packagingId));
         packaging.setDeleted(true);
         packagingRepository.save(packaging);
     }
@@ -263,7 +286,9 @@ public class CatalogService {
      */
     public void deleteRoasting(Long roastingId) {
 
-        Roasting roasting = roastingRepository.getOne(roastingId);
+        Roasting roasting = roastingRepository
+                .findById(roastingId)
+                .orElseThrow(() -> new EntityNotFoundException(roastingId));
         roasting.setDeleted(true);
         roastingRepository.save(roasting);
     }
@@ -273,7 +298,9 @@ public class CatalogService {
      */
     public void deleteTeaColor(Long teaColorId) {
 
-        TeaColor teaColor = teaColorRepository.getOne(teaColorId);
+        TeaColor teaColor = teaColorRepository
+                .findById(teaColorId)
+                .orElseThrow(() -> new EntityNotFoundException(teaColorId));
         teaColor.setDeleted(true);
         teaColorRepository.save(teaColor);
     }
@@ -283,7 +310,9 @@ public class CatalogService {
      */
     public void deleteTeaType(Long teaTypeId) {
 
-        TeaType teaType = teaTypeRepository.getOne(teaTypeId);
+        TeaType teaType = teaTypeRepository
+                .findById(teaTypeId)
+                .orElseThrow(() -> new EntityNotFoundException(teaTypeId));
         teaType.setDeleted(true);
         teaTypeRepository.save(teaType);
     }

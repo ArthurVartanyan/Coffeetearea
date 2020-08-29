@@ -11,7 +11,7 @@ public class IndexController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @RequestMapping("/")
-    String index(){
+    String index() {
         logger.debug("This is a debug message");
         logger.info("This is an info message");
         logger.warn("This is a warn message");

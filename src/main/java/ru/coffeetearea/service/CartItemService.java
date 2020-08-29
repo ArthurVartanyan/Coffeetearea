@@ -4,8 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.coffeetearea.dto.CartItemDTO;
 import ru.coffeetearea.exceptions.EntityNotFoundException;
+import ru.coffeetearea.exceptions.MainNullPointerException;
 import ru.coffeetearea.mappers.CartItemMapper;
-import ru.coffeetearea.mappers.DrinkMapper;
 import ru.coffeetearea.model.CartItem;
 import ru.coffeetearea.model.Drink;
 import ru.coffeetearea.model.Order;
@@ -32,8 +32,6 @@ public class CartItemService {
     private final OrderRepository orderRepository;
 
     private final UserRepository userRepository;
-
-    private final DrinkMapper drinkMapper;
 
     private final CartItemMapper cartItemMapper;
 
@@ -75,9 +73,8 @@ public class CartItemService {
         // Если товар уже в корзине, то его кол-во увеличивается на 1
         List<CartItem> cartItemList = userOrder.getCartItems();
         List<Drink> drinkList = new ArrayList<>();
-        for (CartItem c : cartItemList) {
-            drinkList.add(c.getDrink());
-        }
+        // Пробегаюсь по коллекции cartItemList и добавляю его напитки в drinkList
+        cartItemList.forEach(c -> drinkList.add(c.getDrink()));
 
         if (drinkList.stream().anyMatch(drinkRepository.getById(drinkId)::equals)) {
             CartItem cartItem = cartItemRepository.getByOrderAndDrinkId(userOrder, drinkId);
@@ -85,7 +82,6 @@ public class CartItemService {
             cartItemRepository.save(cartItem);
             return cartItemMapper.cartItemToCartItemDTO(cartItem);
         } else {
-
             // Если же товар есть, мы создаем экземпляр и работаем с ним.
             CartItem cart = new CartItem();
             cart.setDrink(drinkRepository.getById(drinkId));
@@ -114,7 +110,7 @@ public class CartItemService {
         Order order = orderRepository.findByUserIdAndOrderStatus(userId, OrderStatus.NEW);
 
         if (order == null) {
-            throw new EntityNotFoundException("Внимание! Ваша корзина пуста!");
+            throw new EntityNotFoundException("Ошибка! Ваша корзина пуста!");
         }
 
         List<CartItem> cartItemList = order.getCartItems();
@@ -138,16 +134,15 @@ public class CartItemService {
         Order order = orderRepository.findByUserIdAndOrderStatus(userId, OrderStatus.NEW);
 
         if (order == null) {
-            throw new EntityNotFoundException("Внимание! Ваша корзина пуста!");
-        } else {
-
-            List<CartItem> cartItemList = order.getCartItems();
-
-            cartItemList.clear();
-
-            order.setCartItems(cartItemList);
-            orderRepository.save(order);
+            throw new MainNullPointerException("Ошибка! Ваша корзина пуста!");
         }
+
+        List<CartItem> cartItemList = order.getCartItems();
+
+        cartItemList.clear();
+
+        order.setCartItems(cartItemList);
+        orderRepository.save(order);
     }
 
 
@@ -159,6 +154,10 @@ public class CartItemService {
         Long id = JwtUser.getCurrentUserID();
 
         Order order = orderRepository.findByUserIdAndOrderStatus(id, OrderStatus.NEW);
+
+        if (order == null) {
+            throw new MainNullPointerException("Ошибка! Ваша корзина пуста!");
+        }
 
         List<CartItem> cartItem = order.getCartItems();
 

@@ -2,15 +2,18 @@ package ru.coffeetearea.controller;
 
 import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
+import ru.coffeetearea.dto.MakeOrderDTO;
 import ru.coffeetearea.dto.OrderDTO;
 import ru.coffeetearea.service.OrderService;
 
+import javax.validation.constraints.Size;
+
 @RestController
-@RequestMapping("/order")
+@RequestMapping("/orders")
 @RequiredArgsConstructor
 @Api(value = "Order", tags = {"Order"})
 public class OrderController {
@@ -23,10 +26,10 @@ public class OrderController {
     /**
      * Оформление заказа
      *
-     * @param orderDTO
+     * @param makeOrderDTO
      */
-    @PostMapping("/make-order")
-    public OrderDTO makeOrder(@RequestBody OrderDTO orderDTO) {
-        return orderService.makeOrder(orderDTO);
+    @PostMapping
+    public ResponseEntity<OrderDTO> makeOrder(@Validated @RequestBody MakeOrderDTO makeOrderDTO) {
+        return new ResponseEntity<>(orderService.makeOrder(makeOrderDTO), HttpStatus.OK);
     }
 }

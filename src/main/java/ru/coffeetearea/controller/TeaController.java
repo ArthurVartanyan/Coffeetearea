@@ -2,8 +2,12 @@ package ru.coffeetearea.controller;
 
 import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.coffeetearea.dto.PageDTO;
+import ru.coffeetearea.dto.SortingParams;
 import ru.coffeetearea.dto.TeaDTO;
 import ru.coffeetearea.service.TeaService;
 
@@ -25,10 +29,10 @@ public class TeaController {
     /**
      * Редактирование напитка кофе
      */
-    @PutMapping("/{teaId}/tea-edit")
-    public TeaDTO editDTO(@PathVariable Long teaId, @RequestBody TeaDTO teaDTO) {
+    @PutMapping("/{teaId}")
+    public ResponseEntity<TeaDTO> editDTO(@PathVariable Long teaId, @Validated @RequestBody TeaDTO teaDTO) {
 
-        return teaService.editTea(teaId, teaDTO);
+        return new ResponseEntity<>(teaService.editTea(teaId, teaDTO), HttpStatus.OK);
     }
 
 
@@ -37,7 +41,7 @@ public class TeaController {
      *
      * @param teaId
      */
-    @PutMapping("/{teaId}/tea-delete")
+    @PutMapping("/{teaId}/delete")
     public void deleteTeaFromDrinks(@PathVariable Long teaId) {
 
         teaService.deleteTeaFromDrinks(teaId);
@@ -50,9 +54,9 @@ public class TeaController {
      *
      * @param teaDTO
      */
-    @PostMapping("/tea-add")
-    public TeaDTO addTea(@RequestBody TeaDTO teaDTO) {
-        return teaService.addTea(teaDTO);
+    @PostMapping
+    public ResponseEntity<TeaDTO> addTea(@Validated(TeaDTO.New.class) @RequestBody TeaDTO teaDTO) {
+        return new ResponseEntity<>(teaService.addTea(teaDTO), HttpStatus.OK);
     }
 
 
@@ -61,21 +65,23 @@ public class TeaController {
     /**
      * Получение списка товаров
      */
-    @GetMapping("/teas")
+    @GetMapping("/all")
     public PageDTO<TeaDTO> findAll(@RequestParam(value = "page", defaultValue = "0") int page,
-                                   @RequestParam(value = "page_size", defaultValue = "5") int pageSize) {
+                                   @RequestParam(value = "page_size", defaultValue = "5") int pageSize,
+                                   @RequestParam(required = false) SortingParams sortingParams) {
 
-        return teaService.findAll(page, pageSize);
+        return teaService.findAll(page, pageSize, sortingParams);
     }
 
-    @GetMapping("/teas-filter")
+    @GetMapping("/filter")
     public PageDTO<TeaDTO> findAllByFilter(@RequestParam(value = "page", defaultValue = "0") int page,
                                            @RequestParam(value = "page_size", defaultValue = "5") int pageSize,
                                            @RequestParam(required = false) Long colorId,
                                            @RequestParam(required = false) Long typeId,
                                            @RequestParam(required = false) Long countryId,
-                                           BigDecimal min, BigDecimal max) {
+                                           BigDecimal min, BigDecimal max,
+                                           @RequestParam(required = false) SortingParams sortingParams) {
 
-        return teaService.findAllByFilter(page, pageSize, colorId, typeId, countryId, min, max);
+        return teaService.findAllByFilter(page, pageSize, colorId, typeId, countryId, min, max, sortingParams);
     }
 }

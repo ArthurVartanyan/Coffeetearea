@@ -3,13 +3,11 @@ package ru.coffeetearea.security.jwt;
 import io.jsonwebtoken.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
+import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.stereotype.Component;
 import ru.coffeetearea.exceptions.JwtAuthenticationException;
 import ru.coffeetearea.model.Role;
 
@@ -19,7 +17,6 @@ import java.util.Base64;
 import java.util.Date;
 
 @RequiredArgsConstructor
-//@Component
 public class JwtTokenProvider {
 
     // Fields
@@ -35,7 +32,6 @@ public class JwtTokenProvider {
 
     // METHODS
     //
-
 
     @PostConstruct
     protected void init() {
@@ -68,6 +64,7 @@ public class JwtTokenProvider {
 
     public Authentication getAuthentication(String token) {
         UserDetails userDetails = this.userDetailsService.loadUserByUsername(getLogin(token));
+
         return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
     }
 

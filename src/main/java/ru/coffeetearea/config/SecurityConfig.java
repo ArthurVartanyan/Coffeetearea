@@ -32,6 +32,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder(8);
     }
 
+    /**
+     * Работаем без внедрения зависимостей, так как возникает цикличность
+     *
+     * @param userDetailsService
+     * @return JwtTokenProvider
+     */
     @Bean
     public JwtTokenProvider jwtTokenProvider(JwtUserDetailsService userDetailsService) {
         return new JwtTokenProvider(userDetailsService);
@@ -48,7 +54,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     /**
      * Метод конфигураций.
      * Вместо аннотаций над методами и классами для доступа по ролям,
-     * было решено использовать antMatchers с ограничениями по ссылкам(по ролям).
+     * было решено использовать antMatchers с ограничениями по ссылкам (по ролям).
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -64,21 +70,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/configuration/security",
                         "/swagger-ui.html",
                         "/webjars/**").permitAll()
-                .antMatchers("/home/login",
-                        "/cart-item", "/cart-drinks", "/**/add-cart/", "/**/delete-cart/",
-                        "/delete-all-cart", "/drink-add", "/add-in-favourites/**", "/coffee",
-                        "/coffees", "/coffees-filter", "/tea", "/teas", "/teas-filter",
-                        "/drink", "/**/favourite-delete", "/**/add-favourites/", "/drinks-favourite",
-                        "/order", "/make-order", "/coffee-add", "/tea-add", "/**/coffee-delete",
-                        "/**/tea-delete", "/**/coffee-edit", "/**/tea-edit", "/**/coffee-type-delete",
-                        "/**/country-delete", "/**/manufacturer-delete", "/**/packaging-delete",
-                        "/**/roasting-delete", "/**/tea-color-delete",
-                        "/**/tea-type-delete", "/tea-type-add", "/tea-color-add", "/roasting-add",
-                        "/packaging-add", "/manufacturer-add", "/country-add", "/coffee-type-add",
-                        "/{coffeeTypeId}/coffee-type-edit", "/{countryId}/country-edit",
-                        "/{manufacturerId}/manufacturer-edit", "/{packagingId}/packaging-edit",
-                        "/{roastingId}/roasting-edit", "/{teaColorId}/tea-color-edit",
-                        "/{teaTypeId}/tea-type-edit").permitAll()
+                .antMatchers("/home/login", "/cart-item/list", "/cart-item/**", "/cart-item/all").permitAll()
                 .antMatchers()
                 .hasRole(Role.CUSTOMER.name()) // Все ссылки, которые доступны только заказчику
                 .anyRequest().authenticated()

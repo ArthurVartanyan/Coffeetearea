@@ -4,7 +4,6 @@ import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import ru.coffeetearea.dto.GeneralCatalogDTO;
-import ru.coffeetearea.model.catalog.*;
 import ru.coffeetearea.service.catalog.CatalogService;
 
 import java.util.List;
@@ -23,43 +22,43 @@ public class CatalogController {
     // POST - methods
 
     @PostMapping("/coffee-type-add")
-    public GeneralCatalogDTO addCoffeeType(String name) {
+    public GeneralCatalogDTO addCoffeeType(@RequestParam String name) {
 
         return catalogService.addCoffeeType(name);
     }
 
     @PostMapping("/country-add")
-    public GeneralCatalogDTO addCountry(String name) {
+    public GeneralCatalogDTO addCountry(@RequestParam String name) {
 
         return catalogService.addCountry(name);
     }
 
     @PostMapping("/manufacturer-add")
-    public GeneralCatalogDTO addManufacturer(String name) {
+    public GeneralCatalogDTO addManufacturer(@RequestParam String name) {
 
         return catalogService.addManufacturer(name);
     }
 
     @PostMapping("/packaging-add")
-    public GeneralCatalogDTO addPackaging(String name) {
+    public GeneralCatalogDTO addPackaging(@RequestParam String name) {
 
         return catalogService.addPackaging(name);
     }
 
     @PostMapping("/roasting-add")
-    public GeneralCatalogDTO addRoasting(String name) {
+    public GeneralCatalogDTO addRoasting(@RequestParam String name) {
 
         return catalogService.addRoasting(name);
     }
 
     @PostMapping("/tea-color-add")
-    public GeneralCatalogDTO addTeaColor(String name) {
+    public GeneralCatalogDTO addTeaColor(@RequestParam String name) {
 
         return catalogService.addTeaColor(name);
     }
 
     @PostMapping("/tea-type-add")
-    public GeneralCatalogDTO addTeaType(String name) {
+    public GeneralCatalogDTO addTeaType(@RequestParam String name) {
 
         return catalogService.addTeaType(name);
     }
@@ -144,7 +143,7 @@ public class CatalogController {
      * Редактирование элементов типов кофе
      */
     @PutMapping("/{coffeeTypeId}/coffee-type-edit")
-    public GeneralCatalogDTO editCoffeeType(@PathVariable Long coffeeTypeId, String name) {
+    public GeneralCatalogDTO editCoffeeType(@PathVariable Long coffeeTypeId, @RequestParam String name) {
 
         return catalogService.editCoffeeType(coffeeTypeId, name);
     }
@@ -153,7 +152,7 @@ public class CatalogController {
      * Редактирование элементов стран
      */
     @PutMapping("/{countryId}/country-edit")
-    public GeneralCatalogDTO editCountry(@PathVariable Long countryId, String name) {
+    public GeneralCatalogDTO editCountry(@PathVariable Long countryId, @RequestParam String name) {
 
         return catalogService.editCountry(countryId, name);
     }
@@ -163,7 +162,7 @@ public class CatalogController {
      * Редактирование элементов типов производителей
      */
     @PutMapping("/{manufacturerId}/manufacturer-edit")
-    public GeneralCatalogDTO editManufacturer(@PathVariable Long manufacturerId, String name) {
+    public GeneralCatalogDTO editManufacturer(@PathVariable Long manufacturerId, @RequestParam String name) {
 
         return catalogService.editManufacturer(manufacturerId, name);
     }
@@ -173,7 +172,7 @@ public class CatalogController {
      * Редактирование элементов типов пакетов
      */
     @PutMapping("/{packagingId}/packaging-edit")
-    public GeneralCatalogDTO editPackaging(@PathVariable Long packagingId, String name) {
+    public GeneralCatalogDTO editPackaging(@PathVariable Long packagingId, @RequestParam String name) {
 
         return catalogService.editPackaging(packagingId, name);
     }
@@ -183,7 +182,7 @@ public class CatalogController {
      * Редактирование элементов типов обжарки
      */
     @PutMapping("/{roastingId}/roasting-edit")
-    public GeneralCatalogDTO editRoasting(@PathVariable Long roastingId, String name) {
+    public GeneralCatalogDTO editRoasting(@PathVariable Long roastingId, @RequestParam String name) {
 
         return catalogService.editRoasting(roastingId, name);
     }
@@ -193,7 +192,7 @@ public class CatalogController {
      * Редактирование элементов цветов чая
      */
     @PutMapping("/{teaColorId}/tea-color-edit")
-    public GeneralCatalogDTO editTeaColor(@PathVariable Long teaColorId, String name) {
+    public GeneralCatalogDTO editTeaColor(@PathVariable Long teaColorId, @RequestParam String name) {
 
         return catalogService.editTeaColor(teaColorId, name);
     }
@@ -202,7 +201,7 @@ public class CatalogController {
      * Редактирование элементов типов чая
      */
     @PutMapping("/{teaTypeId}/tea-type-edit")
-    public GeneralCatalogDTO editTeaType(@PathVariable Long teaTypeId, String name) {
+    public GeneralCatalogDTO editTeaType(@PathVariable Long teaTypeId, @RequestParam String name) {
 
         return catalogService.editTeaType(teaTypeId, name);
     }

@@ -2,11 +2,11 @@ package ru.coffeetearea.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import ru.coffeetearea.dto.CoffeeDTO;
 import ru.coffeetearea.dto.PageDTO;
+import ru.coffeetearea.dto.SortingParams;
+import ru.coffeetearea.exceptions.EntityNotFoundException;
 import ru.coffeetearea.mappers.CoffeeMapper;
 import ru.coffeetearea.model.Coffee;
 import ru.coffeetearea.repository.CoffeeRepository;
@@ -22,17 +22,19 @@ public class CoffeeService {
 
     private final CoffeeMapper coffeeMapper;
 
+    private final DrinkService drinkService;
+
 
     /**
      * Редктирование напитка кофе
      *
-     * @param coffeeId
      * @param coffeeDTO
      * @return coffeeDTO
      */
     public CoffeeDTO editCoffee(Long coffeeId, CoffeeDTO coffeeDTO) {
 
-        Coffee coffee = coffeeRepository.getOne(coffeeId);
+        Coffee coffee = coffeeRepository.findById(coffeeId)
+                .orElseThrow(() -> new EntityNotFoundException(coffeeId));
 
         if (coffeeDTO.getName() != null) coffee.setName(coffeeDTO.getName());
         if (coffeeDTO.getPrice() != null) coffee.setPrice(coffeeDTO.getPrice());
@@ -58,7 +60,8 @@ public class CoffeeService {
      */
     public void deleteCoffeeFromDrinks(Long coffeeId) {
 
-        Coffee coffee = coffeeRepository.getOne(coffeeId);
+        Coffee coffee = coffeeRepository.findById(coffeeId)
+                .orElseThrow(() -> new EntityNotFoundException(coffeeId));
 
         coffee.setDeleted(true);
 
@@ -98,12 +101,10 @@ public class CoffeeService {
      * @param pageSize
      * @return CoffeesDTOs
      */
-    public PageDTO<CoffeeDTO> findAll(int page, int pageSize) {
+    public PageDTO<CoffeeDTO> findAll(int page, int pageSize, SortingParams sortingParams) {
 
-        // По дефолту он сортирует список по возрастанию цены
-        PageRequest pageRequest = PageRequest.of(page, pageSize, Sort.by("price").ascending());
-
-        final Page<Coffee> coffees = coffeeRepository.findAll(pageRequest);
+        final Page<Coffee> coffees = coffeeRepository
+                .findAll(drinkService.sortingWithParams(sortingParams, page, pageSize));
 
         return new PageDTO<>(coffeeMapper.coffeeToCoffeesDTO(coffees));
     }
@@ -116,17 +117,16 @@ public class CoffeeService {
      * @param roastingId
      * @param typeId
      * @param countryId
+     * @param sortingParams
      * @return filtered Coffees(DTOs)
      */
-    public PageDTO<CoffeeDTO> findAllFilter(int page, int pageSize, Long roastingId, Long typeId,
-                                            Long countryId, BigDecimal min, BigDecimal max) {
-
-        // По дефолту он сортирует список по возрастанию цены
-        PageRequest pageRequest = PageRequest.of(page, pageSize, Sort.by("price").ascending());
+    public PageDTO<CoffeeDTO> findAllFilter(int page, int pageSize, Long roastingId, Long typeId, Long countryId,
+                                            BigDecimal min, BigDecimal max, SortingParams sortingParams) {
 
         final Page<Coffee> coffees = coffeeRepository
                 .findAll(DrinksSpecification
-                        .getCoffeesByFilter(roastingId, typeId, countryId, min, max), pageRequest);
+                                .getCoffeesByFilter(roastingId, typeId, countryId, min, max),
+                        drinkService.sortingWithParams(sortingParams, page, pageSize));
 
         return new PageDTO<>(coffeeMapper.coffeeToCoffeesDTO(coffees));
     }

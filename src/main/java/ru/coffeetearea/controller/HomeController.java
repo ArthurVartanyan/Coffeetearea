@@ -5,9 +5,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.AuthenticationException;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +16,7 @@ import ru.coffeetearea.dto.AuthenticationRequestDTO;
 import ru.coffeetearea.dto.RegistrationUserDTO;
 import ru.coffeetearea.dto.UserDTO;
 import ru.coffeetearea.model.User;
+import ru.coffeetearea.repository.UserRepository;
 import ru.coffeetearea.security.jwt.JwtTokenProvider;
 import ru.coffeetearea.service.UserService;
 
@@ -37,6 +38,7 @@ public class HomeController {
 
     private final UserService userService;
 
+    private final UserRepository userRepository;
 
     // POST - methods
 
@@ -47,7 +49,11 @@ public class HomeController {
             authenticationManager
                     .authenticate(new UsernamePasswordAuthenticationToken(login, requestDto.getPassword()));
 
-            User user = userService.findByLogin(login);
+            User user = userRepository.getByLogin(login);
+
+            if (user == null) {
+                throw new AuthenticationServiceException("ddwd");
+            }
 
             String token = jwtTokenProvider.createToken(login, user.getRole());
 
@@ -57,22 +63,16 @@ public class HomeController {
 
             return ResponseEntity.ok(response);
 
-        } catch (AuthenticationException e) {
+        } catch (AuthenticationServiceException e) {
             log.error("Error: ", e);
-            throw new BadCredentialsException("Invalid login or password!", e);
+            throw new AuthenticationServiceException("Invalid login ored");
         }
     }
 
 
     @PostMapping("/registration")
-    public UserDTO registration(@RequestBody RegistrationUserDTO registrationUserDTO){
+    public UserDTO registration(@Validated @RequestBody RegistrationUserDTO registrationUserDTO) {
 
         return userService.registration(registrationUserDTO);
     }
-
-
-
-    // GET-Methods
-    //
-    //
 }

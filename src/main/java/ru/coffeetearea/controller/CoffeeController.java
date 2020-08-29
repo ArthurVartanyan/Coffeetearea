@@ -2,9 +2,13 @@ package ru.coffeetearea.controller;
 
 import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.coffeetearea.dto.CoffeeDTO;
 import ru.coffeetearea.dto.PageDTO;
+import ru.coffeetearea.dto.SortingParams;
 import ru.coffeetearea.service.CoffeeService;
 
 import java.math.BigDecimal;
@@ -25,10 +29,11 @@ public class CoffeeController {
     /**
      * Редактирование напитка кофе
      */
-    @PutMapping("/{coffeeId}/coffee-edit")
-    public CoffeeDTO editCoffee(@PathVariable Long coffeeId, @RequestBody CoffeeDTO coffeeDTO) {
+    @PutMapping("/{coffeeId}")
+    public ResponseEntity<CoffeeDTO> editCoffee(@PathVariable Long coffeeId,
+                                                @Validated @RequestBody CoffeeDTO coffeeDTO) {
 
-        return coffeeService.editCoffee(coffeeId, coffeeDTO);
+        return new ResponseEntity<>(coffeeService.editCoffee(coffeeId, coffeeDTO), HttpStatus.OK);
     }
 
 
@@ -37,7 +42,7 @@ public class CoffeeController {
      *
      * @param coffeeId
      */
-    @PutMapping("/{coffeeId}/coffee-delete")
+    @PutMapping("/{coffeeId}/delete")
     public void deleteCoffeeFromDrinks(@PathVariable Long coffeeId) {
 
         coffeeService.deleteCoffeeFromDrinks(coffeeId);
@@ -51,9 +56,9 @@ public class CoffeeController {
      *
      * @param coffeeDTO
      */
-    @PostMapping("/coffee-add")
-    public CoffeeDTO addCoffee(@RequestBody CoffeeDTO coffeeDTO) {
-        return coffeeService.addCoffee(coffeeDTO);
+    @PostMapping
+    public ResponseEntity<CoffeeDTO> addCoffee(@Validated(CoffeeDTO.New.class) @RequestBody CoffeeDTO coffeeDTO) {
+        return new ResponseEntity<>(coffeeService.addCoffee(coffeeDTO), HttpStatus.OK);
     }
 
 
@@ -62,11 +67,12 @@ public class CoffeeController {
     /**
      * Получение списка товаров
      */
-    @GetMapping("/coffees")
+    @GetMapping("/all")
     public PageDTO<CoffeeDTO> findAll(@RequestParam(value = "page", defaultValue = "0") int page,
-                                      @RequestParam(value = "page_size", defaultValue = "5") int pageSize) {
+                                      @RequestParam(value = "page_size", defaultValue = "5") int pageSize,
+                                      @RequestParam(required = false) SortingParams sortingParams) {
 
-        return coffeeService.findAll(page, pageSize);
+        return coffeeService.findAll(page, pageSize, sortingParams);
     }
 
     /**
@@ -80,14 +86,15 @@ public class CoffeeController {
      * @param min
      * @param max
      */
-    @GetMapping("/coffees-filter")
+    @GetMapping("/filter")
     public PageDTO<CoffeeDTO> findAllFilter(@RequestParam(value = "page", defaultValue = "0") int page,
                                             @RequestParam(value = "page_size", defaultValue = "5") int pageSize,
                                             @RequestParam(required = false) Long roastingId,
                                             @RequestParam(required = false) Long typeId,
                                             @RequestParam(required = false) Long countryId,
-                                            BigDecimal min, BigDecimal max) {
+                                            BigDecimal min, BigDecimal max,
+                                            @RequestParam(required = false) SortingParams sortingParams) {
 
-        return coffeeService.findAllFilter(page, pageSize, roastingId, typeId, countryId, min, max);
+        return coffeeService.findAllFilter(page, pageSize, roastingId, typeId, countryId, min, max, sortingParams);
     }
 }

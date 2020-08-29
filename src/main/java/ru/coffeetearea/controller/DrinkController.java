@@ -23,10 +23,11 @@ public class DrinkController {
 
     /**
      * Добавление в избранное
+     *
      * @param drinkId
      * @return
      */
-    @PostMapping("/{drinkId}/add-favourites/")
+    @PostMapping("/{drinkId}/favourites")
     public DrinkDTO addDrinkInFavourites(@PathVariable Long drinkId) {
 
         return drinkService.addDrinkInFavourites(drinkId);
@@ -38,21 +39,20 @@ public class DrinkController {
     /**
      * Получение списка избранных напитков
      */
-    @GetMapping("/drinks-favourite")
+    @GetMapping("/favourites")
     public List<DrinkDTO> findFavouriteDrinks() {
         return drinkService.findFavouriteDrinks();
     }
 
 
     /**
-     * Получение списка товаров
+     * Получение списка самых популярных товаров
      */
-//    @GetMapping("/drinks")
-//    public PageDTO<DrinkDTO> getAllDrinks(@RequestParam(value = "page", defaultValue = "0") int page,
-//                                           @RequestParam(value = "page_size", defaultValue = "2") int pageSize) {
-//
-//        return drinkService.findAllDrinks(page, pageSize);
-//    }
+    @GetMapping("/populars")
+    public List<DrinkDTO> findMostPopularDrinks() {
+
+        return drinkService.findMostPopularDrinks();
+    }
 
 
     // Delete - methods
@@ -60,7 +60,7 @@ public class DrinkController {
     /**
      * Удаление из избранных
      */
-    @DeleteMapping("/{drinkId}/favourite-delete")
+    @DeleteMapping("/{drinkId}/favourites")
     public void deleteDrinkFromFavourites(@PathVariable Long drinkId) {
         drinkService.deleteDrinkFromFavourites(drinkId);
     }

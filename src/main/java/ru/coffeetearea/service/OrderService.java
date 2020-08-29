@@ -2,7 +2,9 @@ package ru.coffeetearea.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import ru.coffeetearea.dto.MakeOrderDTO;
 import ru.coffeetearea.dto.OrderDTO;
+import ru.coffeetearea.exceptions.MainNullPointerException;
 import ru.coffeetearea.mappers.OrderMapper;
 import ru.coffeetearea.model.CartItem;
 import ru.coffeetearea.model.Order;
@@ -12,6 +14,7 @@ import ru.coffeetearea.security.jwt.JwtUser;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -44,10 +47,8 @@ public class OrderService {
         List<CartItem> cartItemList = order.getCartItems();
 
         // Пробегаемся по коллекции и умножаем кол-во напитков на стоимость напитка
-        for (CartItem c : cartItemList) {
-
-            priceOfCartItem.add(c.getDrink().getPrice().multiply(new BigDecimal(c.getCount())));
-        }
+        cartItemList.forEach(c ->
+                priceOfCartItem.add(c.getDrink().getPrice().multiply(new BigDecimal(c.getCount()))));
 
         for (BigDecimal b : priceOfCartItem) {
 
@@ -62,19 +63,22 @@ public class OrderService {
      * По сути в этом методе заказ из статуса NEW переходит в статус ACTIVE,
      * соответственно, мы добавляем еще немного информации для заказа.
      *
-     * @param orderDTO
+     * @param makeOrderDTO
      * @return saved order
      */
-    public OrderDTO makeOrder(OrderDTO orderDTO) {
+    public OrderDTO makeOrder(MakeOrderDTO makeOrderDTO) {
 
         Long userId = JwtUser.getCurrentUserID();
 
         Order order = orderRepository.findByUserIdAndOrderStatus(userId, OrderStatus.NEW);
 
+        if (order == null) {
+            throw new MainNullPointerException("Ошибка! Ваша корзина пуста!");
+        }
         order.setTotalCost(calculateOrderPrice(order));
-        order.setAddress(orderDTO.getAddress());
-        order.setPhoneNumber(orderDTO.getPhoneNumber());
-        order.setDateOrder(orderDTO.getDateOrder());
+        order.setAddress(makeOrderDTO.getAddress());
+        order.setPhoneNumber(makeOrderDTO.getPhoneNumber());
+        order.setDateOrder(new Date());
         order.setOrderStatus(OrderStatus.ACTIVE);
 
         orderRepository.save(order);
