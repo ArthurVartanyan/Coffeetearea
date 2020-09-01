@@ -45,12 +45,12 @@ public class UserService {
      */
     public UserDTO registration(RegistrationUserDTO registrationUserDTO) {
 
-        User user = new User();
+        User user = userMapper.registrationUserDTOtoUser(registrationUserDTO);
 
-        user.setName(registrationUserDTO.getName());
-        user.setLastName(registrationUserDTO.getLastName());
-        user.setLogin(registrationUserDTO.getLogin());
-        user.setMail(registrationUserDTO.getMail());
+//        user.setName(registrationUserDTO.getName());
+//        user.setLastName(registrationUserDTO.getLastName());
+//        user.setLogin(registrationUserDTO.getLogin());
+//        user.setMail(registrationUserDTO.getMail());
         if (registrationUserDTO.getCheckPassword().equals(registrationUserDTO.getPassword())) {
             user.setPassword(passwordEncoder.encode(registrationUserDTO.getPassword()));
         } else {

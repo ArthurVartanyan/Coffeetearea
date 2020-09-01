@@ -2,6 +2,9 @@ package ru.coffeetearea.controller.catalog;
 
 import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.coffeetearea.dto.GeneralCatalogDTO;
 import ru.coffeetearea.service.catalog.CatalogService;
@@ -21,46 +24,55 @@ public class CatalogController {
 
     // POST - methods
 
-    @PostMapping("/coffee")
-    public GeneralCatalogDTO addCoffeeType(@RequestParam String name) {
+    @PostMapping("/coffee-types")
+    public ResponseEntity<GeneralCatalogDTO> addCoffeeType(@Validated(GeneralCatalogDTO.New.class)
+                                                           @RequestBody GeneralCatalogDTO generalCatalogDTO) {
 
-        return catalogService.addCoffeeType(name);
+        return new ResponseEntity<>(catalogService
+                .addCoffeeType(generalCatalogDTO.getName()), HttpStatus.OK);
     }
 
     @PostMapping("/countries")
-    public GeneralCatalogDTO addCountry(@RequestParam String name) {
+    public ResponseEntity<GeneralCatalogDTO> addCountry(@Validated(GeneralCatalogDTO.New.class)
+                                                        @RequestBody GeneralCatalogDTO generalCatalogDTO) {
 
-        return catalogService.addCountry(name);
+        return new ResponseEntity<>(catalogService
+                .addCountry(generalCatalogDTO.getName()), HttpStatus.OK);
     }
 
     @PostMapping("/manufacturers")
-    public GeneralCatalogDTO addManufacturer(@RequestParam String name) {
+    public ResponseEntity<GeneralCatalogDTO> addManufacturer(@Validated(GeneralCatalogDTO.New.class)
+                                                             @RequestBody GeneralCatalogDTO generalCatalogDTO) {
 
-        return catalogService.addManufacturer(name);
+        return new ResponseEntity<>(catalogService.addManufacturer(generalCatalogDTO.getName()), HttpStatus.OK);
     }
 
     @PostMapping("/packages")
-    public GeneralCatalogDTO addPackaging(@RequestParam String name) {
+    public ResponseEntity<GeneralCatalogDTO> addPackaging(@Validated(GeneralCatalogDTO.New.class)
+                                                          @RequestBody GeneralCatalogDTO generalCatalogDTO) {
 
-        return catalogService.addPackaging(name);
+        return new ResponseEntity<>(catalogService.addPackaging(generalCatalogDTO.getName()), HttpStatus.OK);
     }
 
     @PostMapping("/roastings")
-    public GeneralCatalogDTO addRoasting(@RequestParam String name) {
+    public ResponseEntity<GeneralCatalogDTO> addRoasting(@Validated(GeneralCatalogDTO.New.class)
+                                                         @RequestBody GeneralCatalogDTO generalCatalogDTO) {
 
-        return catalogService.addRoasting(name);
+        return new ResponseEntity<>(catalogService.addRoasting(generalCatalogDTO.getName()), HttpStatus.OK);
     }
 
     @PostMapping("/tea-colors")
-    public GeneralCatalogDTO addTeaColor(@RequestParam String name) {
+    public ResponseEntity<GeneralCatalogDTO> addTeaColor(@Validated(GeneralCatalogDTO.New.class)
+                                                         @RequestBody GeneralCatalogDTO generalCatalogDTO) {
 
-        return catalogService.addTeaColor(name);
+        return new ResponseEntity<>(catalogService.addTeaColor(generalCatalogDTO.getName()), HttpStatus.OK);
     }
 
     @PostMapping("/tea-types")
-    public GeneralCatalogDTO addTeaType(@RequestParam String name) {
+    public ResponseEntity<GeneralCatalogDTO> addTeaType(@Validated(GeneralCatalogDTO.New.class)
+                                                        @RequestBody GeneralCatalogDTO generalCatalogDTO) {
 
-        return catalogService.addTeaType(name);
+        return new ResponseEntity<>(catalogService.addTeaType(generalCatalogDTO.getName()), HttpStatus.OK);
     }
 
 
@@ -143,18 +155,24 @@ public class CatalogController {
      * Редактирование элементов типов кофе
      */
     @PutMapping("/{coffeeTypeId}/coffee-types")
-    public GeneralCatalogDTO editCoffeeType(@PathVariable Long coffeeTypeId, @RequestParam String name) {
+    public ResponseEntity<GeneralCatalogDTO> editCoffeeType(@PathVariable Long coffeeTypeId,
+                                                            @Validated(GeneralCatalogDTO.New.class)
+                                                            @RequestBody GeneralCatalogDTO generalCatalogDTO) {
 
-        return catalogService.editCoffeeType(coffeeTypeId, name);
+        return new ResponseEntity<>(catalogService
+                .editCoffeeType(coffeeTypeId, generalCatalogDTO.getName()), HttpStatus.OK);
     }
 
     /**
      * Редактирование элементов стран
      */
     @PutMapping("/{countryId}/countries")
-    public GeneralCatalogDTO editCountry(@PathVariable Long countryId, @RequestParam String name) {
+    public ResponseEntity<GeneralCatalogDTO> editCountry(@PathVariable Long countryId,
+                                                         @Validated(GeneralCatalogDTO.New.class)
+                                                         @RequestBody GeneralCatalogDTO generalCatalogDTO) {
 
-        return catalogService.editCountry(countryId, name);
+        return new ResponseEntity<>(catalogService
+                .editCountry(countryId, generalCatalogDTO.getName()), HttpStatus.OK);
     }
 
 
@@ -162,9 +180,12 @@ public class CatalogController {
      * Редактирование элементов типов производителей
      */
     @PutMapping("/{manufacturerId}/manufacturers")
-    public GeneralCatalogDTO editManufacturer(@PathVariable Long manufacturerId, @RequestParam String name) {
+    public ResponseEntity<GeneralCatalogDTO> editManufacturer(@PathVariable Long manufacturerId,
+                                                              @Validated(GeneralCatalogDTO.New.class)
+                                                              @RequestBody GeneralCatalogDTO generalCatalogDTO) {
 
-        return catalogService.editManufacturer(manufacturerId, name);
+        return new ResponseEntity<>(catalogService
+                .editManufacturer(manufacturerId, generalCatalogDTO.getName()), HttpStatus.OK);
     }
 
 
@@ -172,9 +193,12 @@ public class CatalogController {
      * Редактирование элементов типов пакетов
      */
     @PutMapping("/{packagingId}/packages")
-    public GeneralCatalogDTO editPackaging(@PathVariable Long packagingId, @RequestParam String name) {
+    public ResponseEntity<GeneralCatalogDTO> editPackaging(@PathVariable Long packagingId,
+                                                           @Validated(GeneralCatalogDTO.New.class)
+                                                           @RequestBody GeneralCatalogDTO generalCatalogDTO) {
 
-        return catalogService.editPackaging(packagingId, name);
+        return new ResponseEntity<>(catalogService
+                .editPackaging(packagingId, generalCatalogDTO.getName()), HttpStatus.OK);
     }
 
 
@@ -182,9 +206,12 @@ public class CatalogController {
      * Редактирование элементов типов обжарки
      */
     @PutMapping("/{roastingId}/roastings")
-    public GeneralCatalogDTO editRoasting(@PathVariable Long roastingId, @RequestParam String name) {
+    public ResponseEntity<GeneralCatalogDTO> editRoasting(@PathVariable Long roastingId,
+                                                          @Validated(GeneralCatalogDTO.New.class)
+                                                          @RequestBody GeneralCatalogDTO generalCatalogDTO) {
 
-        return catalogService.editRoasting(roastingId, name);
+        return new ResponseEntity<>(catalogService
+                .editRoasting(roastingId, generalCatalogDTO.getName()), HttpStatus.OK);
     }
 
 
@@ -192,18 +219,24 @@ public class CatalogController {
      * Редактирование элементов цветов чая
      */
     @PutMapping("/{teaColorId}/tea-colors")
-    public GeneralCatalogDTO editTeaColor(@PathVariable Long teaColorId, @RequestParam String name) {
+    public ResponseEntity<GeneralCatalogDTO> editTeaColor(@PathVariable Long teaColorId,
+                                                          @Validated(GeneralCatalogDTO.New.class)
+                                                          @RequestBody GeneralCatalogDTO generalCatalogDTO) {
 
-        return catalogService.editTeaColor(teaColorId, name);
+        return new ResponseEntity<>(catalogService
+                .editTeaColor(teaColorId, generalCatalogDTO.getName()), HttpStatus.OK);
     }
 
     /**
      * Редактирование элементов типов чая
      */
     @PutMapping("/{teaTypeId}/tea-types")
-    public GeneralCatalogDTO editTeaType(@PathVariable Long teaTypeId, @RequestParam String name) {
+    public ResponseEntity<GeneralCatalogDTO> editTeaType(@PathVariable Long teaTypeId,
+                                                         @Validated(GeneralCatalogDTO.New.class)
+                                                         @RequestBody GeneralCatalogDTO generalCatalogDTO) {
 
-        return catalogService.editTeaType(teaTypeId, name);
+        return new ResponseEntity<>(catalogService
+                .editTeaType(teaTypeId, generalCatalogDTO.getName()), HttpStatus.OK);
     }
 
 
@@ -218,7 +251,7 @@ public class CatalogController {
     /**
      * Удаление элементов стран
      */
-    @PutMapping("/{countryId}/delete/countrie")
+    @PutMapping("/{countryId}/delete/country")
     public void deleteCountry(@PathVariable Long countryId) {
         catalogService.deleteCountry(countryId);
     }

@@ -73,7 +73,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/home/login", "/home/registration", "/cart-item/list", "/cart-item/**",
                         "/cart-item/all", "/coffee", "/coffee/**", "/**/delete", "/all", "/filter", "/tea", "/tea/**",
                         "/**/delete", "/all", "/filter", "/orders", "/users", "/drinks/drinks/{drinkId}/favourites",
-                        "/drinks/favourites", "/drinks/populars", "/**/favourites", "/catalogs/coffee",
+                        "/drinks/favourites", "/drinks/populars", "/**/favourites", "/catalogs/coffee-types",
                         "/catalogs/countries", "/catalogs/manufacturers", "/catalogs/packages", "/catalogs/roastings",
                         "/catalogs/tea-colors", "/catalogs/tea-types", "/catalogs/**/coffee-types",
                         "/catalogs/**/countries", "/catalogs/**/manufacturers",

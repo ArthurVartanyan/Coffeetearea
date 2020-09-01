@@ -78,17 +78,17 @@ public class TeaService {
      */
     public TeaDTO addTea(TeaDTO teaDTO) {
 
-        Tea tea = new Tea();
+        Tea tea = teaMapper.teaDTOtoTea(teaDTO);
 
-        tea.setName(teaDTO.getName());
-        tea.setPrice(teaDTO.getPrice());
-        tea.setAbout(teaDTO.getAbout());
-        tea.setPackaging(teaMapper.teaDTOtoTea(teaDTO).getPackaging());
-        tea.setManufacturer(teaMapper.teaDTOtoTea(teaDTO).getManufacturer());
-        tea.setCountry(teaMapper.teaDTOtoTea(teaDTO).getCountry());
-        tea.setWeight(teaDTO.getWeight());
-        tea.setTeaType(teaDTO.getTeaType());
-        tea.setTeaColor(teaDTO.getTeaColor());
+//        tea.setName(teaDTO.getName());
+//        tea.setPrice(teaDTO.getPrice());
+//        tea.setAbout(teaDTO.getAbout());
+//        tea.setPackaging(teaMapper.teaDTOtoTea(teaDTO).getPackaging());
+//        tea.setManufacturer(teaMapper.teaDTOtoTea(teaDTO).getManufacturer());
+//        tea.setCountry(teaMapper.teaDTOtoTea(teaDTO).getCountry());
+//        tea.setWeight(teaDTO.getWeight());
+//        tea.setTeaType(teaDTO.getTeaType());
+//        tea.setTeaColor(teaDTO.getTeaColor());
         tea.setDeleted(false);
         teaRepository.save(tea);
 

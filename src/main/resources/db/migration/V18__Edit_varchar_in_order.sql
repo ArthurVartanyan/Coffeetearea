@@ -1,0 +1,1 @@
+alter table pg_order alter column phone_number type varchar(11) using phone_number::varchar(11);

@@ -77,17 +77,17 @@ public class CoffeeService {
      */
     public CoffeeDTO addCoffee(CoffeeDTO coffeeDTO) {
 
-        Coffee coffee = new Coffee();
+        Coffee coffee = coffeeMapper.coffeeDTOtoCoffee(coffeeDTO);
 
-        coffee.setName(coffeeDTO.getName());
-        coffee.setPrice(coffeeDTO.getPrice());
-        coffee.setAbout(coffeeDTO.getAbout());
-        coffee.setPackaging(coffeeMapper.coffeeDTOtoCoffee(coffeeDTO).getPackaging());
-        coffee.setManufacturer(coffeeMapper.coffeeDTOtoCoffee(coffeeDTO).getManufacturer());
-        coffee.setCountry(coffeeMapper.coffeeDTOtoCoffee(coffeeDTO).getCountry());
-        coffee.setWeight(coffeeDTO.getWeight());
-        coffee.setCoffeeType(coffeeDTO.getCoffeeType());
-        coffee.setRoasting(coffeeDTO.getRoasting());
+//        coffee.setName(coffeeDTO.getName());
+//        coffee.setPrice(coffeeDTO.getPrice());
+//        coffee.setAbout(coffeeDTO.getAbout());
+//        coffee.setPackaging(coffeeMapper.coffeeDTOtoCoffee(coffeeDTO).getPackaging());
+//        coffee.setManufacturer(coffeeMapper.coffeeDTOtoCoffee(coffeeDTO).getManufacturer());
+//        coffee.setCountry(coffeeMapper.coffeeDTOtoCoffee(coffeeDTO).getCountry());
+//        coffee.setWeight(coffeeDTO.getWeight());
+//        coffee.setCoffeeType(coffeeDTO.getCoffeeType());
+//        coffee.setRoasting(coffeeDTO.getRoasting());
         coffee.setDeleted(false);
         coffeeRepository.save(coffee);
 

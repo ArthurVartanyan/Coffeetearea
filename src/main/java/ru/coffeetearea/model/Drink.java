@@ -3,6 +3,7 @@ package ru.coffeetearea.model;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Formula;
+import org.hibernate.annotations.Where;
 import ru.coffeetearea.model.catalog.Country;
 import ru.coffeetearea.model.catalog.Manufacturer;
 import ru.coffeetearea.model.catalog.Packaging;
@@ -22,6 +23,8 @@ public class Drink {
     @Id
     @GeneratedValue
     private Long id;
+
+    private String image;
 
     /**
      * Название напитка
@@ -58,6 +61,7 @@ public class Drink {
      * Флаг удаления
      */
     @Column(name = "is_deleted")
+//    @Where(clause = "is_deleted = false")
     private boolean isDeleted;
 
     /**

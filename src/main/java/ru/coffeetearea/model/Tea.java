@@ -1,6 +1,7 @@
 package ru.coffeetearea.model;
 
 import lombok.Setter;
+import org.hibernate.annotations.Where;
 import ru.coffeetearea.model.catalog.TeaColor;
 import ru.coffeetearea.model.catalog.TeaType;
 
@@ -12,6 +13,7 @@ import javax.persistence.Table;
 @Setter
 @Entity
 @Table(name = "tea")
+//@Where(clause = "is_deleted = false")
 public class Tea extends Drink {
 
     /**

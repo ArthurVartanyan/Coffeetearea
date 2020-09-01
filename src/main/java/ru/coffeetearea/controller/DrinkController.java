@@ -2,11 +2,18 @@ package ru.coffeetearea.controller;
 
 import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
+import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.*;
 import ru.coffeetearea.dto.DrinkDTO;
 import ru.coffeetearea.service.DrinkService;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
+import java.util.Properties;
+
 
 @RestController
 @RequiredArgsConstructor
@@ -17,6 +24,25 @@ public class DrinkController {
     // Fields
 
     private final DrinkService drinkService;
+
+
+    public Properties getImage() throws IOException {
+
+        Properties properties = new Properties();
+
+        File file = ResourceUtils.getFile("classpath:application.properties");
+        InputStream in = new FileInputStream(file);
+        properties.load(in);
+
+        return properties;
+    }
+
+
+//    @GetMapping("/image")
+//    public @ResponseBody byte[]getImageAsByteArray() throws IOException {
+//        BufferedImage in = ImageIO.read(new File("/WEB-INF/images/image-example.jpg"));
+//        return IOUtils.toByteArray(in);
+//    }
 
 
     // POST - methods
