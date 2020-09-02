@@ -89,7 +89,7 @@ public class TeaService {
 //        tea.setWeight(teaDTO.getWeight());
 //        tea.setTeaType(teaDTO.getTeaType());
 //        tea.setTeaColor(teaDTO.getTeaColor());
-        tea.setDeleted(false);
+//        tea.setDeleted(false);
         teaRepository.save(tea);
 
         return teaMapper.teaToTeaDTO(tea);

@@ -3,9 +3,7 @@ package ru.coffeetearea.model.catalog;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 
 /**
  * Родительский абстрактный класс для всех справочников.
@@ -19,7 +17,8 @@ import javax.persistence.MappedSuperclass;
 public abstract class GeneralCatalog {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_id_seq")
+    @SequenceGenerator(name = "users_id_seq", sequenceName = "users_id_seq", allocationSize = 1)
     protected Long id;
 
     /**

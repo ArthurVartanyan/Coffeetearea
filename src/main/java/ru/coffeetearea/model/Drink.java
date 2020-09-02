@@ -21,7 +21,8 @@ import java.util.Objects;
 public class Drink {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "drink_id_seq")
+    @SequenceGenerator(name = "drink_id_seq", sequenceName = "drink_id_seq", allocationSize = 1)
     private Long id;
 
     private String image;

@@ -70,20 +70,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/configuration/security",
                         "/swagger-ui.html",
                         "/webjars/**").permitAll()
+
+                .antMatchers("/catalogs/countries")
+                .hasAuthority(Role.CUSTOMER.name())
                 .antMatchers("/home/login", "/home/registration", "/cart-item/list", "/cart-item/**",
                         "/cart-item/all", "/coffee", "/coffee/**", "/**/delete", "/all", "/filter", "/tea", "/tea/**",
-                        "/**/delete", "/all", "/filter", "/orders", "/users", "/drinks/drinks/{drinkId}/favourites",
+                        "/**/delete", "/all", "/filter", "/orders", "/users", "/drinks/drinks/**/favourites",
                         "/drinks/favourites", "/drinks/populars", "/**/favourites", "/catalogs/coffee-types",
-                        "/catalogs/countries", "/catalogs/manufacturers", "/catalogs/packages", "/catalogs/roastings",
+                        "/catalogs/manufacturers", "/catalogs/packages", "/catalogs/roastings",
                         "/catalogs/tea-colors", "/catalogs/tea-types", "/catalogs/**/coffee-types",
                         "/catalogs/**/countries", "/catalogs/**/manufacturers",
                         "/catalogs/**/packages", "/catalogs/**/roastings",
                         "/catalogs/**/tea-colors", "/catalogs/**/tea-types", "/catalogs/**/delete/coffee-type",
                         "/catalogs/**/delete/country", "/catalogs/**/delete/manufacturer",
                         "/catalogs/**/delete/package", "/catalogs/**/delete/roasting",
-                        "/catalogs/**/delete/tea-color", "/catalogs/**/delete/tea-type").permitAll()
-                .antMatchers()
-                .hasRole(Role.CUSTOMER.name()) // Все ссылки, которые доступны только заказчику
+                        "/catalogs/**/delete/tea-color", "/catalogs/**/delete/tea-type").permitAll()// Все ссылки, которые доступны только заказчику
                 .anyRequest().authenticated()
                 .and()
                 .apply(new JwtConfigurer(jwtTokenProvider(jwtUserDetailsService)));

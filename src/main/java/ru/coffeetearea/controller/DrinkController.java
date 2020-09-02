@@ -2,15 +2,23 @@ package ru.coffeetearea.controller;
 
 import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.io.IOUtils;
+import org.springframework.context.ApplicationContext;
+import org.springframework.http.MediaType;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.*;
 import ru.coffeetearea.dto.DrinkDTO;
 import ru.coffeetearea.service.DrinkService;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import javax.imageio.ImageIO;
+import javax.imageio.stream.ImageInputStream;
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.awt.*;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Properties;
 
@@ -25,17 +33,34 @@ public class DrinkController {
 
     private final DrinkService drinkService;
 
-
-    public Properties getImage() throws IOException {
-
-        Properties properties = new Properties();
-
-        File file = ResourceUtils.getFile("classpath:application.properties");
-        InputStream in = new FileInputStream(file);
-        properties.load(in);
-
-        return properties;
+    @GetMapping(value = "/image")
+    public @ResponseBody Image getImageAsByteArray() throws IOException {
+        InputStream in = new BufferedInputStream(
+                new FileInputStream("C:\\Users\\Артур\\Desktop\\images\\Puer.jpg"));
+        Image image = ImageIO.read(in);
+//                ApplicationContext.class.getResourceAsStream("C:\\Users\\Артур\\Desktop\\images");
+        return image;
     }
+
+
+//    @GetMapping("/image")
+//    public void getImageAsByteArray(HttpServletResponse response) throws IOException {
+//
+//        ImageInputStream in = Files.readAllBytes("C:\\Users\\Артур\Desktop\\images");
+//        response.setContentType(MediaType.IMAGE_JPEG_VALUE);
+//        IOUtils.copy(in, response.getOutputStream());
+//    }
+
+//    public Properties getImage() throws IOException {
+//
+//        Properties properties = new Properties();
+//
+//        File file = ResourceUtils.getFile("classpath:application.properties");
+//        InputStream in = new FileInputStream(file);
+//        properties.load(in);
+//
+//        return properties;
+//    }
 
 
 //    @GetMapping("/image")

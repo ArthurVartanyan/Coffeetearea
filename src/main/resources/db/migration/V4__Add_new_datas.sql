@@ -1,12 +1,12 @@
 -- Создаем новых пользователей
-insert into public.users(name, last_name, login, password, role, mail, is_deleted)
-values ('Артур', 'Вартанян', 'art123', 'pass123', 'CUSTOMER', 'artur@mail.ru', false);
-insert into public.users(name, last_name, login, password, role, mail, is_deleted)
-values ('Сергей', 'Иванов', 'ivan123', 'pass123', 'CUSTOMER', 'ivan@mail.ru', false);
-insert into public.users(name, last_name, login, password, role, mail, is_deleted)
-values ('Сергей', 'Павлов', 'try123523', 'pass123', 'CUSTOMER', 'serg@mail.ru', false);
-insert into public.users(name, last_name, login, password, role, mail, is_deleted)
-values ('Григорий', 'Дубцов', 'grigort', 'pass123', 'CUSTOMER', 'grig@mail.ru', false);
+insert into public.users(id, name, last_name, login, password, role, mail, is_deleted)
+values (nextval('users_id_seq'), 'Артур', 'Вартанян', 'art123', 'pass123', 'CUSTOMER', 'artur@mail.ru', false);
+insert into public.users(id, name, last_name, login, password, role, mail, is_deleted)
+values (nextval('users_id_seq'), 'Сергей', 'Иванов', 'ivan123', 'pass123', 'CUSTOMER', 'ivan@mail.ru', false);
+insert into public.users(id, name, last_name, login, password, role, mail, is_deleted)
+values (nextval('users_id_seq'), 'Сергей', 'Павлов', 'try123523', 'pass123', 'CUSTOMER', 'serg@mail.ru', false);
+insert into public.users(id, name, last_name, login, password, role, mail, is_deleted)
+values (nextval('users_id_seq'), 'Григорий', 'Дубцов', 'grigort', 'pass123', 'CUSTOMER', 'grig@mail.ru', false);
 
 create extension if not exists pgcrypto;
 
