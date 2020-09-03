@@ -23,7 +23,7 @@ public class UserController {
      *
      * @return userDTO
      */
-    @GetMapping
+    @GetMapping("/info")
     public UserInfoDTO getInfoAboutUser() {
         return userService.getInfoAboutUser();
     }

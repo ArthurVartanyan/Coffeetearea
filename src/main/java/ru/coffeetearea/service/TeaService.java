@@ -40,19 +40,19 @@ public class TeaService {
                 .findById(teaId)
                 .orElseThrow(() -> new EntityNotFoundException(teaId));
 
-        if (teaDTO.getName() != null) tea.setName(teaDTO.getName());
-        if (teaDTO.getPrice() != null) tea.setPrice(teaDTO.getPrice());
-        if (teaDTO.getAbout() != null) tea.setAbout(teaDTO.getAbout());
-        if (teaDTO.getPackaging() != null) tea.setPackaging(teaMapper.teaDTOtoTea(teaDTO).getPackaging());
-        if (teaDTO.getManufacturer() != null) tea.setManufacturer(teaMapper.teaDTOtoTea(teaDTO).getManufacturer());
-        if (teaDTO.getCountry() != null) tea.setCountry(teaMapper.teaDTOtoTea(teaDTO).getCountry());
-        if (teaDTO.getWeight() == 0) tea.setWeight(teaDTO.getWeight());
-        if (teaDTO.getTeaType() != null) tea.setTeaType(teaDTO.getTeaType());
-        if (teaDTO.getTeaColor() != null) tea.setTeaColor(teaDTO.getTeaColor());
+        tea.setName(teaDTO.getName());
+        tea.setPrice(teaDTO.getPrice());
+        tea.setAbout(teaDTO.getAbout());
+        tea.setPackaging(teaMapper.teaDTOtoTea(teaDTO).getPackaging());
+        tea.setManufacturer(teaMapper.teaDTOtoTea(teaDTO).getManufacturer());
+        tea.setCountry(teaMapper.teaDTOtoTea(teaDTO).getCountry());
+        tea.setWeight(teaDTO.getWeight());
+        tea.setTeaType(teaMapper.teaDTOtoTea(teaDTO).getTeaType());
+        tea.setTeaColor(teaMapper.teaDTOtoTea(teaDTO).getTeaColor());
 
         teaRepository.save(tea);
 
-        return teaMapper.teaToTeaDTO(tea);
+        return teaMapper.teaToTeaDTO(teaRepository.getOne(teaId));
     }
 
 
@@ -80,16 +80,6 @@ public class TeaService {
 
         Tea tea = teaMapper.teaDTOtoTea(teaDTO);
 
-//        tea.setName(teaDTO.getName());
-//        tea.setPrice(teaDTO.getPrice());
-//        tea.setAbout(teaDTO.getAbout());
-//        tea.setPackaging(teaMapper.teaDTOtoTea(teaDTO).getPackaging());
-//        tea.setManufacturer(teaMapper.teaDTOtoTea(teaDTO).getManufacturer());
-//        tea.setCountry(teaMapper.teaDTOtoTea(teaDTO).getCountry());
-//        tea.setWeight(teaDTO.getWeight());
-//        tea.setTeaType(teaDTO.getTeaType());
-//        tea.setTeaColor(teaDTO.getTeaColor());
-//        tea.setDeleted(false);
         teaRepository.save(tea);
 
         return teaMapper.teaToTeaDTO(tea);

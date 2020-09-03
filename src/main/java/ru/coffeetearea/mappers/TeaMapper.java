@@ -10,16 +10,16 @@ import ru.coffeetearea.dto.TeaDTO;
 import ru.coffeetearea.model.Tea;
 
 @Mapper(componentModel = "spring")
-public abstract class TeaMapper {
+public interface TeaMapper {
 
-//    TeaMapper INSTANCE = Mappers.getMapper(TeaMapper.class);
+    TeaMapper INSTANCE = Mappers.getMapper(TeaMapper.class);
 
-    public abstract TeaDTO teaToTeaDTO(Tea tea);
+    TeaDTO teaToTeaDTO(Tea tea);
 
-    public abstract Tea teaDTOtoTea(TeaDTO teaDTO);
+    Tea teaDTOtoTea(TeaDTO teaDTO);
 
     @IterableMapping(qualifiedByName = "teaToTeaDTO")
-    public Page<TeaDTO> teaToTeasDTO(Page<Tea> teas) {
+    default Page<TeaDTO> teaToTeasDTO(Page<Tea> teas) {
         return teas.map(this::teaToTeaDTO);
     }
 

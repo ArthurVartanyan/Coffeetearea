@@ -7,6 +7,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import ru.coffeetearea.dto.DrinkDTO;
 import ru.coffeetearea.dto.SortingParams;
@@ -39,6 +41,15 @@ public class DrinkService {
 
     private final CartItemRepository cartItemRepository;
     //
+
+
+
+//    @RequestMapping(value = "/image-manual-response", method = RequestMethod.GET)
+//    public void getImageAsByteArray(HttpServletResponse response) throws IOException {
+//        InputStream in = servletContext.getResourceAsStream("/WEB-INF/images/image-example.jpg");
+//        response.setContentType(MediaType.IMAGE_JPEG_VALUE);
+//        IOUtils.copy(in, response.getOutputStream());
+//    }
 
 
     /**

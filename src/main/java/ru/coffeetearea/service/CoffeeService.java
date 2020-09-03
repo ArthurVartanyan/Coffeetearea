@@ -36,17 +36,16 @@ public class CoffeeService {
         Coffee coffee = coffeeRepository.findById(coffeeId)
                 .orElseThrow(() -> new EntityNotFoundException(coffeeId));
 
-        if (coffeeDTO.getName() != null) coffee.setName(coffeeDTO.getName());
-        if (coffeeDTO.getPrice() != null) coffee.setPrice(coffeeDTO.getPrice());
-        if (coffeeDTO.getAbout() != null) coffee.setAbout(coffeeDTO.getAbout());
-        if (coffeeDTO.getPackaging() != null)
-            coffee.setPackaging(coffeeMapper.coffeeDTOtoCoffee(coffeeDTO).getPackaging());
-        if (coffeeDTO.getManufacturer() != null)
-            coffee.setManufacturer(coffeeMapper.coffeeDTOtoCoffee(coffeeDTO).getManufacturer());
-        if (coffeeDTO.getCountry() != null) coffee.setCountry(coffeeMapper.coffeeDTOtoCoffee(coffeeDTO).getCountry());
-        if (coffeeDTO.getWeight() == 0) coffee.setWeight(coffeeDTO.getWeight());
-        if (coffeeDTO.getCoffeeType() != null) coffee.setCoffeeType(coffeeDTO.getCoffeeType());
-        if (coffeeDTO.getRoasting() != null) coffee.setRoasting(coffeeDTO.getRoasting());
+
+        coffee.setName(coffeeDTO.getName());
+        coffee.setPrice(coffeeDTO.getPrice());
+        coffee.setAbout(coffeeDTO.getAbout());
+        coffee.setPackaging(coffeeMapper.coffeeDTOtoCoffee(coffeeDTO).getPackaging());
+        coffee.setManufacturer(coffeeMapper.coffeeDTOtoCoffee(coffeeDTO).getManufacturer());
+        coffee.setCountry(coffeeMapper.coffeeDTOtoCoffee(coffeeDTO).getCountry());
+        coffee.setWeight(coffeeDTO.getWeight());
+        coffee.setCoffeeType(coffeeMapper.coffeeDTOtoCoffee(coffeeDTO).getCoffeeType());
+        coffee.setRoasting(coffeeMapper.coffeeDTOtoCoffee(coffeeDTO).getRoasting());
 
         coffeeRepository.save(coffee);
 
@@ -79,15 +78,6 @@ public class CoffeeService {
 
         Coffee coffee = coffeeMapper.coffeeDTOtoCoffee(coffeeDTO);
 
-//        coffee.setName(coffeeDTO.getName());
-//        coffee.setPrice(coffeeDTO.getPrice());
-//        coffee.setAbout(coffeeDTO.getAbout());
-//        coffee.setPackaging(coffeeMapper.coffeeDTOtoCoffee(coffeeDTO).getPackaging());
-//        coffee.setManufacturer(coffeeMapper.coffeeDTOtoCoffee(coffeeDTO).getManufacturer());
-//        coffee.setCountry(coffeeMapper.coffeeDTOtoCoffee(coffeeDTO).getCountry());
-//        coffee.setWeight(coffeeDTO.getWeight());
-//        coffee.setCoffeeType(coffeeDTO.getCoffeeType());
-//        coffee.setRoasting(coffeeDTO.getRoasting());
         coffee.setDeleted(false);
         coffeeRepository.save(coffee);
 

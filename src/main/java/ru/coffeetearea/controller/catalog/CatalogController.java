@@ -240,10 +240,12 @@ public class CatalogController {
     }
 
 
+    // Delete - methods
+    
     /**
      * Удаление элементов типов кофе
      */
-    @PutMapping("/{coffeeTypeId}/delete/coffee-type")
+    @DeleteMapping("/{coffeeTypeId}/coffee-type")
     public void deleteCoffeeType(@PathVariable Long coffeeTypeId) {
         catalogService.deleteCoffeeType(coffeeTypeId);
     }
@@ -251,7 +253,7 @@ public class CatalogController {
     /**
      * Удаление элементов стран
      */
-    @PutMapping("/{countryId}/delete/country")
+    @DeleteMapping("/{countryId}/country")
     public void deleteCountry(@PathVariable Long countryId) {
         catalogService.deleteCountry(countryId);
     }
@@ -259,7 +261,7 @@ public class CatalogController {
     /**
      * Удаление элементов произваодителей
      */
-    @PutMapping("/{manufacturerId}/delete/manufacturer")
+    @DeleteMapping("/{manufacturerId}/manufacturer")
     public void deleteManufacturer(@PathVariable Long manufacturerId) {
         catalogService.deleteManufacturer(manufacturerId);
     }
@@ -267,7 +269,7 @@ public class CatalogController {
     /**
      * Удаление элементов упаковок
      */
-    @PutMapping("/{packagingId}/delete/package")
+    @DeleteMapping("/{packagingId}/package")
     public void deletePackaging(@PathVariable Long packagingId) {
         catalogService.deletePackaging(packagingId);
     }
@@ -275,7 +277,7 @@ public class CatalogController {
     /**
      * Удаление элементов обжарки кофе
      */
-    @PutMapping("/{roastingId}/delete/roasting")
+    @DeleteMapping("/{roastingId}/roasting")
     public void deleteRoasting(@PathVariable Long roastingId) {
         catalogService.deleteRoasting(roastingId);
     }
@@ -283,7 +285,7 @@ public class CatalogController {
     /**
      * Удаление элементов цвета чая
      */
-    @PutMapping("/{teaColorId}/delete/tea-color")
+    @DeleteMapping("/{teaColorId}/tea-color")
     public void deleteTeaColor(@PathVariable Long teaColorId) {
         catalogService.deleteTeaColor(teaColorId);
     }
@@ -291,7 +293,7 @@ public class CatalogController {
     /**
      * Удаление элементов типа чая
      */
-    @PutMapping("/{teaTypeId}/delete/tea-type")
+    @DeleteMapping("/{teaTypeId}/tea-type")
     public void deleteTeaType(@PathVariable Long teaTypeId) {
         catalogService.deleteTeaType(teaTypeId);
     }

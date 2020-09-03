@@ -1,5 +1,6 @@
 package ru.coffeetearea.model;
 
+import lombok.Getter;
 import lombok.Setter;
 import ru.coffeetearea.model.catalog.CoffeeType;
 import ru.coffeetearea.model.catalog.Roasting;
@@ -9,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+@Getter
 @Setter
 @Entity
 @Table(name = "coffee")

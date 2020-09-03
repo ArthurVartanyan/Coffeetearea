@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.coffeetearea.dto.CoffeeDTO;
+import ru.coffeetearea.dto.DrinkDTO;
 import ru.coffeetearea.dto.PageDTO;
 import ru.coffeetearea.dto.SortingParams;
 import ru.coffeetearea.service.CoffeeService;
@@ -31,21 +32,9 @@ public class CoffeeController {
      */
     @PutMapping("/{coffeeId}")
     public ResponseEntity<CoffeeDTO> editCoffee(@PathVariable Long coffeeId,
-                                                @Validated @RequestBody CoffeeDTO coffeeDTO) {
+                                                @Validated(DrinkDTO.Edit.class) @RequestBody CoffeeDTO coffeeDTO) {
 
         return new ResponseEntity<>(coffeeService.editCoffee(coffeeId, coffeeDTO), HttpStatus.OK);
-    }
-
-
-    /**
-     * Удалить кофе из товаров
-     *
-     * @param coffeeId
-     */
-    @PutMapping("/{coffeeId}/delete")
-    public void deleteCoffeeFromDrinks(@PathVariable Long coffeeId) {
-
-        coffeeService.deleteCoffeeFromDrinks(coffeeId);
     }
 
 
@@ -70,7 +59,8 @@ public class CoffeeController {
     @GetMapping("/all")
     public PageDTO<CoffeeDTO> findAll(@RequestParam(value = "page", defaultValue = "0") int page,
                                       @RequestParam(value = "page_size", defaultValue = "5") int pageSize,
-                                      @RequestParam(required = false) SortingParams sortingParams) {
+                                      @RequestParam(required = false, defaultValue = "NAME_INCREASE")
+                                              SortingParams sortingParams) {
 
         return coffeeService.findAll(page, pageSize, sortingParams);
     }
@@ -93,8 +83,23 @@ public class CoffeeController {
                                             @RequestParam(required = false) Long typeId,
                                             @RequestParam(required = false) Long countryId,
                                             BigDecimal min, BigDecimal max,
-                                            @RequestParam(required = false) SortingParams sortingParams) {
+                                            @RequestParam(required = false, defaultValue = "NAME_INCREASE")
+                                                    SortingParams sortingParams) {
 
         return coffeeService.findAllFilter(page, pageSize, roastingId, typeId, countryId, min, max, sortingParams);
+    }
+
+
+    // Delete - methods
+
+    /**
+     * Удалить кофе из товаров
+     *
+     * @param coffeeId
+     */
+    @DeleteMapping("/{coffeeId}")
+    public void deleteCoffeeFromDrinks(@PathVariable Long coffeeId) {
+
+        coffeeService.deleteCoffeeFromDrinks(coffeeId);
     }
 }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+import ru.coffeetearea.dto.ErrorsDTO;
 import ru.coffeetearea.dto.FieldErrorDTO;
 
 import java.util.ArrayList;
@@ -90,6 +91,8 @@ public class ExceptionAdvice extends ResponseEntityExceptionHandler {
             MethodArgumentNotValidException ex, HttpHeaders headers,
             HttpStatus status, WebRequest request) {
 
+        ErrorsDTO errorsDTO = new ErrorsDTO();
+
         List<FieldErrorDTO> errorDTOS = new ArrayList<>();
 
         List<ObjectError> objectErrors = ex.getBindingResult().getAllErrors();
@@ -104,6 +107,9 @@ public class ExceptionAdvice extends ResponseEntityExceptionHandler {
 
             errorDTOS.add(f);
         }
+
+        errorsDTO.setFieldErrors(errorDTOS);
+        errorsDTO.setError(status.getReasonPhrase());
 
         return new ResponseEntity<>(errorDTOS, HttpStatus.BAD_REQUEST);
     }

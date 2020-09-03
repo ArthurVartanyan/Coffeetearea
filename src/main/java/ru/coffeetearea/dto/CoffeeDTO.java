@@ -2,7 +2,9 @@ package ru.coffeetearea.dto;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.springframework.web.bind.annotation.RequestParam;
 import ru.coffeetearea.model.catalog.CoffeeType;
+import ru.coffeetearea.model.catalog.GeneralCatalog;
 import ru.coffeetearea.model.catalog.Roasting;
 
 import javax.validation.constraints.NotNull;
@@ -11,9 +13,9 @@ import javax.validation.constraints.NotNull;
 @EqualsAndHashCode(callSuper = true)
 public class CoffeeDTO extends DrinkDTO {
 
-    @NotNull(groups = {New.class})
-    private CoffeeType coffeeType;
+    @NotNull(groups = {New.class, Edit.class})
+    private GeneralCatalogDTO coffeeType;
 
-    @NotNull(groups = {New.class})
-    private Roasting roasting;
+    @NotNull(groups = {New.class, Edit.class})
+    private GeneralCatalogDTO roasting;
 }

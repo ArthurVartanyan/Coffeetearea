@@ -33,41 +33,6 @@ public class DrinkController {
 
     private final DrinkService drinkService;
 
-    @GetMapping(value = "/image")
-    public @ResponseBody Image getImageAsByteArray() throws IOException {
-        InputStream in = new BufferedInputStream(
-                new FileInputStream("C:\\Users\\Артур\\Desktop\\images\\Puer.jpg"));
-        Image image = ImageIO.read(in);
-//                ApplicationContext.class.getResourceAsStream("C:\\Users\\Артур\\Desktop\\images");
-        return image;
-    }
-
-
-//    @GetMapping("/image")
-//    public void getImageAsByteArray(HttpServletResponse response) throws IOException {
-//
-//        ImageInputStream in = Files.readAllBytes("C:\\Users\\Артур\Desktop\\images");
-//        response.setContentType(MediaType.IMAGE_JPEG_VALUE);
-//        IOUtils.copy(in, response.getOutputStream());
-//    }
-
-//    public Properties getImage() throws IOException {
-//
-//        Properties properties = new Properties();
-//
-//        File file = ResourceUtils.getFile("classpath:application.properties");
-//        InputStream in = new FileInputStream(file);
-//        properties.load(in);
-//
-//        return properties;
-//    }
-
-
-//    @GetMapping("/image")
-//    public @ResponseBody byte[]getImageAsByteArray() throws IOException {
-//        BufferedImage in = ImageIO.read(new File("/WEB-INF/images/image-example.jpg"));
-//        return IOUtils.toByteArray(in);
-//    }
 
 
     // POST - methods

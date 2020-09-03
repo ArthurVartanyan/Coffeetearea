@@ -70,7 +70,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/configuration/security",
                         "/swagger-ui.html",
                         "/webjars/**").permitAll()
-
                 .antMatchers("/catalogs/countries")
                 .hasAuthority(Role.CUSTOMER.name())
                 .antMatchers("/home/login", "/home/registration", "/cart-item/list", "/cart-item/**",

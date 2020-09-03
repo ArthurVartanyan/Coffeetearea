@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import ru.coffeetearea.dto.DrinkDTO;
 import ru.coffeetearea.dto.PageDTO;
 import ru.coffeetearea.dto.SortingParams;
 import ru.coffeetearea.dto.TeaDTO;
@@ -30,22 +31,12 @@ public class TeaController {
      * Редактирование напитка кофе
      */
     @PutMapping("/{teaId}")
-    public ResponseEntity<TeaDTO> editDTO(@PathVariable Long teaId, @Validated @RequestBody TeaDTO teaDTO) {
+    public ResponseEntity<TeaDTO> editTea(@PathVariable Long teaId,
+                                          @Validated(TeaDTO.Edit.class) @RequestBody TeaDTO teaDTO) {
 
         return new ResponseEntity<>(teaService.editTea(teaId, teaDTO), HttpStatus.OK);
     }
 
-
-    /**
-     * Удалить кофе из товаров
-     *
-     * @param teaId
-     */
-    @PutMapping("/{teaId}/delete")
-    public void deleteTeaFromDrinks(@PathVariable Long teaId) {
-
-        teaService.deleteTeaFromDrinks(teaId);
-    }
 
     // POST - methods
 
@@ -68,11 +59,23 @@ public class TeaController {
     @GetMapping("/all")
     public PageDTO<TeaDTO> findAll(@RequestParam(value = "page", defaultValue = "0") int page,
                                    @RequestParam(value = "page_size", defaultValue = "5") int pageSize,
-                                   @RequestParam(required = false) SortingParams sortingParams) {
+                                   @RequestParam(required = false, defaultValue = "NAME_INCREASE")
+                                           SortingParams sortingParams) {
 
         return teaService.findAll(page, pageSize, sortingParams);
     }
 
+    /**
+     * Получаем чай с фильтрами
+     * @param page
+     * @param pageSize
+     * @param colorId
+     * @param typeId
+     * @param countryId
+     * @param min
+     * @param max
+     * @param sortingParams
+     */
     @GetMapping("/filter")
     public PageDTO<TeaDTO> findAllByFilter(@RequestParam(value = "page", defaultValue = "0") int page,
                                            @RequestParam(value = "page_size", defaultValue = "5") int pageSize,
@@ -80,8 +83,23 @@ public class TeaController {
                                            @RequestParam(required = false) Long typeId,
                                            @RequestParam(required = false) Long countryId,
                                            BigDecimal min, BigDecimal max,
-                                           @RequestParam(required = false) SortingParams sortingParams) {
+                                           @RequestParam(required = false, defaultValue = "NAME_INCREASE")
+                                                   SortingParams sortingParams) {
 
         return teaService.findAllByFilter(page, pageSize, colorId, typeId, countryId, min, max, sortingParams);
     }
+
+    // Delete - methods
+
+    /**
+     * Удалить кофе из товаров
+     *
+     * @param teaId
+     */
+    @DeleteMapping("/{teaId}")
+    public void deleteTeaFromDrinks(@PathVariable Long teaId) {
+
+        teaService.deleteTeaFromDrinks(teaId);
+    }
+
 }

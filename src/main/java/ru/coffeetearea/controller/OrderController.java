@@ -27,7 +27,7 @@ public class OrderController {
     /**
      * Оформление заказа
      *
-//     * @param makeOrderDTO
+     * @param makeOrderDTO
      */
     @PostMapping
     public ResponseEntity<OrderDTO> makeOrder(@Validated @RequestBody MakeOrderDTO makeOrderDTO) {
