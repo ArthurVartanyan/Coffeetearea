@@ -3,7 +3,6 @@ package ru.coffeetearea.model;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Formula;
-import org.hibernate.annotations.Where;
 import ru.coffeetearea.model.catalog.Country;
 import ru.coffeetearea.model.catalog.Manufacturer;
 import ru.coffeetearea.model.catalog.Packaging;
@@ -21,10 +20,12 @@ import java.util.Objects;
 public class Drink {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "drink_id_seq")
-    @SequenceGenerator(name = "drink_id_seq", sequenceName = "drink_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    /**
+     * Изображение товара(напитка)
+     */
     private String image;
 
     /**
@@ -44,7 +45,6 @@ public class Drink {
             " left join pg_order po on c.order_id = po.id" +
             " where po.order_status = 'ACTIVE' and " +
             "c.drink_id = id), 0)")
-//    @Formula("coalesce((select sum(c.count) from cart_items c where c.drink_id = id), 0)")
     private Long drinkCountInOrder;
 
     /**

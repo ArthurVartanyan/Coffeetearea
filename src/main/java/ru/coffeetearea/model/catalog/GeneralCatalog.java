@@ -17,7 +17,7 @@ import javax.persistence.*;
 public abstract class GeneralCatalog {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
 
     /**

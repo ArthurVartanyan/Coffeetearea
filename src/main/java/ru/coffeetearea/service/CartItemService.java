@@ -163,4 +163,24 @@ public class CartItemService {
 
         return cartItemMapper.cartItemsToCartItemsDTO(cartItem);
     }
+
+
+    /**
+     * Изменение кол-ва напитка в корзине
+     */
+    public void editDrinkCount(Long drinkId, int count) {
+
+        Order order = orderRepository.findByUserIdAndOrderStatus(JwtUser.getCurrentUserID(), OrderStatus.NEW);
+
+        List<CartItem> cartItem = order.getCartItems();
+
+        for (CartItem c : cartItem) {
+            if (c.getDrink().equals(drinkRepository.getById(drinkId))) {
+                c.setCount(count);
+            }
+        }
+        order.setCartItems(cartItem);
+
+        orderRepository.save(order);
+    }
 }

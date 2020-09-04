@@ -2,6 +2,7 @@ package ru.coffeetearea.dto;
 
 import lombok.Data;
 import ru.coffeetearea.model.catalog.GeneralCatalog;
+import ru.coffeetearea.model.catalog.Packaging;
 
 import javax.validation.constraints.*;
 import java.math.BigDecimal;
@@ -23,11 +24,14 @@ public class DrinkDTO {
     @NotNull(groups = {New.class, Edit.class})
     protected String name;
 
+//    protected String image;
+
     @NotNull(groups = {New.class, Edit.class})
     @DecimalMin("100.0")
     protected BigDecimal price;
 
-    @NotNull(groups = {New.class, Edit.class})
+    @NotNull(groups = {New.class})
+    @NotNull(groups = {Edit.class})
     @Size(min = 20)
     protected String about;
 

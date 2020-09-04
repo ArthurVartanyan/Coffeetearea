@@ -9,6 +9,7 @@ import ru.coffeetearea.dto.SortingParams;
 import ru.coffeetearea.exceptions.EntityNotFoundException;
 import ru.coffeetearea.mappers.CoffeeMapper;
 import ru.coffeetearea.model.Coffee;
+import ru.coffeetearea.model.catalog.Packaging;
 import ru.coffeetearea.repository.CoffeeRepository;
 import ru.coffeetearea.specification.DrinksSpecification;
 
@@ -36,18 +37,9 @@ public class CoffeeService {
         Coffee coffee = coffeeRepository.findById(coffeeId)
                 .orElseThrow(() -> new EntityNotFoundException(coffeeId));
 
+        coffeeDTO.setId(coffeeId);
 
-        coffee.setName(coffeeDTO.getName());
-        coffee.setPrice(coffeeDTO.getPrice());
-        coffee.setAbout(coffeeDTO.getAbout());
-        coffee.setPackaging(coffeeMapper.coffeeDTOtoCoffee(coffeeDTO).getPackaging());
-        coffee.setManufacturer(coffeeMapper.coffeeDTOtoCoffee(coffeeDTO).getManufacturer());
-        coffee.setCountry(coffeeMapper.coffeeDTOtoCoffee(coffeeDTO).getCountry());
-        coffee.setWeight(coffeeDTO.getWeight());
-        coffee.setCoffeeType(coffeeMapper.coffeeDTOtoCoffee(coffeeDTO).getCoffeeType());
-        coffee.setRoasting(coffeeMapper.coffeeDTOtoCoffee(coffeeDTO).getRoasting());
-
-        coffeeRepository.save(coffee);
+        coffeeRepository.save(coffeeMapper.coffeeDTOtoCoffee(coffeeDTO));
 
         return coffeeMapper.coffeeToCoffeeDTO(coffee);
     }

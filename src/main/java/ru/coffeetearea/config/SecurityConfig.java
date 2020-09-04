@@ -72,7 +72,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/webjars/**").permitAll()
                 .antMatchers("/catalogs/countries")
                 .hasAuthority(Role.CUSTOMER.name())
-                .antMatchers("/home/login", "/home/registration", "/cart-item/list", "/cart-item/**",
+                .antMatchers("/home/login", "/home/registration", "/drinks/image", "/cart-item/list", "/cart-item/**",
                         "/cart-item/all", "/coffee", "/coffee/**", "/**/delete", "/all", "/filter", "/tea", "/tea/**",
                         "/**/delete", "/all", "/filter", "/orders", "/users", "/drinks/drinks/**/favourites",
                         "/drinks/favourites", "/drinks/populars", "/**/favourites", "/catalogs/coffee-types",

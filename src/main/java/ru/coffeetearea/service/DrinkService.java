@@ -1,15 +1,9 @@
 package ru.coffeetearea.service;
 
 import lombok.RequiredArgsConstructor;
-import org.apache.tomcat.util.http.fileupload.IOUtils;
-import org.springframework.core.io.InputStreamResource;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import ru.coffeetearea.dto.DrinkDTO;
 import ru.coffeetearea.dto.SortingParams;
 import ru.coffeetearea.exceptions.EntityNotFoundException;
@@ -21,11 +15,9 @@ import ru.coffeetearea.repository.DrinkRepository;
 import ru.coffeetearea.repository.UserRepository;
 import ru.coffeetearea.security.jwt.JwtUser;
 
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -44,14 +36,6 @@ public class DrinkService {
 
 
 
-//    @RequestMapping(value = "/image-manual-response", method = RequestMethod.GET)
-//    public void getImageAsByteArray(HttpServletResponse response) throws IOException {
-//        InputStream in = servletContext.getResourceAsStream("/WEB-INF/images/image-example.jpg");
-//        response.setContentType(MediaType.IMAGE_JPEG_VALUE);
-//        IOUtils.copy(in, response.getOutputStream());
-//    }
-
-
     /**
      * Удалить напиток из избранного
      *
@@ -63,15 +47,19 @@ public class DrinkService {
         // Берем у пользователя избранные напитки
         List<Drink> favouriteDrinks = user.getFavouriteDrinks();
 
-        if (favouriteDrinks.isEmpty()) {
-            throw new EntityNotFoundException("Ошибка! У Вас нет избранных напитков!");
+        if (favouriteDrinks.contains(drinkRepository.getById(drinkId))) {
+
+            favouriteDrinks.remove(drinkRepository.getById(drinkId));
+            // Equals переопределен в Drink
+            favouriteDrinks.removeIf(e -> e.equals(drinkRepository.getById(drinkId)));
+            // Сохраняем коллекцию обратно к пользователю
+            user.setFavouriteDrinks(favouriteDrinks);
+            // Сохраняем пользователя с напитками
+            userRepository.save(user);
+        } else {
+            throw new EntityNotFoundException("Ошибка! Данного напитка у Вас нет в избранных!");
         }
-        // Equals переопределен в Drink
-        favouriteDrinks.removeIf(e -> e.equals(drinkRepository.getById(drinkId)));
-        // Сохраняем коллекцию обратно к пользователю
-        user.setFavouriteDrinks(favouriteDrinks);
-        // Сохраняем пользователя с напитками
-        userRepository.save(user);
+
     }
 
 
@@ -99,7 +87,7 @@ public class DrinkService {
      * @param drinkId
      * @return DrinkDTO добавленный в избранное
      */
-    public DrinkDTO addDrinkInFavourites(Long drinkId) {
+    public Long addDrinkInFavourites(Long drinkId) {
 
         Drink drink = drinkRepository.findById(drinkId)
                 .orElseThrow(() -> new EntityNotFoundException(drinkId));
@@ -109,12 +97,14 @@ public class DrinkService {
         List<Drink> userFavouriteList = user.getFavouriteDrinks();
 
         userFavouriteList.add(drink);
+        // Тут я удаляю все повторные значения, чтобы пользователь не смог себе добавить несколько одинаковых напитков !! ERROR!
+        userFavouriteList = userFavouriteList.stream().distinct().collect(Collectors.toList());
 
         user.setFavouriteDrinks(userFavouriteList);
 
         userRepository.save(user);
 
-        return drinkMapper.drinkToDrinkDTO(drink);
+        return drinkId;
     }
 
 

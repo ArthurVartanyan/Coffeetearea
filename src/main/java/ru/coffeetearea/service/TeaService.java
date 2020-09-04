@@ -40,19 +40,11 @@ public class TeaService {
                 .findById(teaId)
                 .orElseThrow(() -> new EntityNotFoundException(teaId));
 
-        tea.setName(teaDTO.getName());
-        tea.setPrice(teaDTO.getPrice());
-        tea.setAbout(teaDTO.getAbout());
-        tea.setPackaging(teaMapper.teaDTOtoTea(teaDTO).getPackaging());
-        tea.setManufacturer(teaMapper.teaDTOtoTea(teaDTO).getManufacturer());
-        tea.setCountry(teaMapper.teaDTOtoTea(teaDTO).getCountry());
-        tea.setWeight(teaDTO.getWeight());
-        tea.setTeaType(teaMapper.teaDTOtoTea(teaDTO).getTeaType());
-        tea.setTeaColor(teaMapper.teaDTOtoTea(teaDTO).getTeaColor());
+        teaDTO.setId(teaId);
 
-        teaRepository.save(tea);
+        teaRepository.save(teaMapper.teaDTOtoTea(teaDTO));
 
-        return teaMapper.teaToTeaDTO(teaRepository.getOne(teaId));
+        return teaMapper.teaToTeaDTO(tea);
     }
 
 

@@ -68,4 +68,15 @@ public class CartItemController {
 
         cartItemService.removeAllDrinksFromCart();
     }
+
+
+    // Put - methods
+
+    /**
+     * Изменения количества напитка в корзине
+     */
+    @PutMapping("/{drinkId}/count")
+    public void editDrinkCount(@PathVariable Long drinkId, @RequestParam int count) {
+        cartItemService.editDrinkCount(drinkId, count);
+    }
 }

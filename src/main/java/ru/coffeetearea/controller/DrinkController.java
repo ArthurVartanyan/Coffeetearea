@@ -2,25 +2,18 @@ package ru.coffeetearea.controller;
 
 import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
-import org.apache.commons.io.IOUtils;
-import org.springframework.context.ApplicationContext;
+import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.http.MediaType;
-import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.*;
 import ru.coffeetearea.dto.DrinkDTO;
 import ru.coffeetearea.service.DrinkService;
 
-import javax.imageio.ImageIO;
-import javax.imageio.stream.ImageInputStream;
-import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.awt.*;
-import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
-import java.util.Properties;
 
 
 @RestController
@@ -34,6 +27,12 @@ public class DrinkController {
     private final DrinkService drinkService;
 
 
+    @GetMapping("/image")
+    public void getImageAsByteArray(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        InputStream in = new FileInputStream("C:\\Users\\vartanyan\\Desktop\\images\\Puer.jpg");
+        response.setContentType(MediaType.IMAGE_JPEG_VALUE);
+        IOUtils.copy(in, response.getOutputStream());
+    }
 
     // POST - methods
 
@@ -44,7 +43,7 @@ public class DrinkController {
      * @return
      */
     @PostMapping("/{drinkId}/favourites")
-    public DrinkDTO addDrinkInFavourites(@PathVariable Long drinkId) {
+    public Long addDrinkInFavourites(@PathVariable Long drinkId) {
 
         return drinkService.addDrinkInFavourites(drinkId);
     }
