@@ -2,6 +2,9 @@ package ru.coffeetearea.controller;
 
 import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.coffeetearea.dto.CartItemDTO;
 import ru.coffeetearea.service.CartItemService;
@@ -76,7 +79,8 @@ public class CartItemController {
      * Изменения количества напитка в корзине
      */
     @PutMapping("/{drinkId}/count")
-    public void editDrinkCount(@PathVariable Long drinkId, @RequestParam int count) {
-        cartItemService.editDrinkCount(drinkId, count);
+    public ResponseEntity<Integer> editDrinkCount(@PathVariable Long drinkId,
+                                                 @Validated(CartItemDTO.SetCount.class) @RequestBody CartItemDTO cartItemDTO) {
+        return new ResponseEntity<>(cartItemService.editDrinkCount(drinkId, cartItemDTO.getCount()), HttpStatus.OK);
     }
 }

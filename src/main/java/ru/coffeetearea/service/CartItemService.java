@@ -168,7 +168,7 @@ public class CartItemService {
     /**
      * Изменение кол-ва напитка в корзине
      */
-    public void editDrinkCount(Long drinkId, int count) {
+    public Integer editDrinkCount(Long drinkId, int count) {
 
         Order order = orderRepository.findByUserIdAndOrderStatus(JwtUser.getCurrentUserID(), OrderStatus.NEW);
 
@@ -182,5 +182,7 @@ public class CartItemService {
         order.setCartItems(cartItem);
 
         orderRepository.save(order);
+
+        return count;
     }
 }

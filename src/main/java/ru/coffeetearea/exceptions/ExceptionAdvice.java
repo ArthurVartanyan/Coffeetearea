@@ -15,6 +15,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import ru.coffeetearea.dto.ErrorsDTO;
 import ru.coffeetearea.dto.FieldErrorDTO;
 
+import javax.validation.ConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,6 +62,15 @@ public class ExceptionAdvice extends ResponseEntityExceptionHandler {
     String IllegalArgumentHandler(MainIllegalArgumentException ex) {
         return ex.getMessage();
     }
+
+
+//    @ResponseBody
+//    @ExceptionHandler(ValidException.class)
+//    @ResponseStatus(HttpStatus.BAD_REQUEST)
+//    String ValidationHandler(ValidException ex) {
+//        return ex.getMessage();
+//    }
+
 
 
     /**

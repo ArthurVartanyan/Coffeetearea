@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import ru.coffeetearea.model.Role;
 import ru.coffeetearea.security.JwtUserDetailsService;
 import ru.coffeetearea.security.jwt.JwtConfigurer;
@@ -51,6 +52,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
 
+
+
     /**
      * Метод конфигураций.
      * Вместо аннотаций над методами и классами для доступа по ролям,
@@ -72,7 +75,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/webjars/**").permitAll()
                 .antMatchers("/catalogs/countries")
                 .hasAuthority(Role.CUSTOMER.name())
-                .antMatchers("/home/login", "/home/registration", "/drinks/image", "/cart-item/list", "/cart-item/**",
+                .antMatchers("/home/login", "/home/", "/home/registration", "/**/image", "/cart-item/list", "/cart-item/**",
                         "/cart-item/all", "/coffee", "/coffee/**", "/**/delete", "/all", "/filter", "/tea", "/tea/**",
                         "/**/delete", "/all", "/filter", "/orders", "/users", "/drinks/drinks/**/favourites",
                         "/drinks/favourites", "/drinks/populars", "/**/favourites", "/catalogs/coffee-types",

@@ -7,11 +7,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.coffeetearea.dto.AuthenticationRequestDTO;
 import ru.coffeetearea.dto.RegistrationUserDTO;
 import ru.coffeetearea.dto.UserDTO;
@@ -39,6 +37,18 @@ public class HomeController {
     private final UserService userService;
 
     private final UserRepository userRepository;
+
+
+
+    // Get - methods
+
+    @GetMapping("/")
+    public String homePage(Model model) {
+        model.addAttribute("appName", "COFFEETEARE!");
+        return "home";
+    }
+
+
 
     // POST - methods
 

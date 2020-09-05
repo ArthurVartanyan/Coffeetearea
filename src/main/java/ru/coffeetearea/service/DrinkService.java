@@ -1,12 +1,16 @@
 package ru.coffeetearea.service;
 
 import lombok.RequiredArgsConstructor;
+import org.apache.tomcat.util.http.fileupload.IOUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import ru.coffeetearea.dto.DrinkDTO;
 import ru.coffeetearea.dto.SortingParams;
 import ru.coffeetearea.exceptions.EntityNotFoundException;
+import ru.coffeetearea.exceptions.MainIllegalArgumentException;
 import ru.coffeetearea.mappers.DrinkMapper;
 import ru.coffeetearea.model.Drink;
 import ru.coffeetearea.model.User;
@@ -15,6 +19,10 @@ import ru.coffeetearea.repository.DrinkRepository;
 import ru.coffeetearea.repository.UserRepository;
 import ru.coffeetearea.security.jwt.JwtUser;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -32,8 +40,29 @@ public class DrinkService {
     private final DrinkMapper drinkMapper;
 
     private final CartItemRepository cartItemRepository;
+
     //
 
+
+    /**
+     * Получить изображение напитка
+     *
+     * @param response
+     * @param drinkId
+     * @throws IOException
+     */
+    //
+    @Value("${upload.path}")
+    private String uploadPath;
+    //
+    public void getDrinkImage(HttpServletResponse response, Long drinkId) throws IOException {
+
+        String imageURL = drinkRepository.getById(drinkId).getImage();
+
+        InputStream in = new FileInputStream(uploadPath + imageURL);
+        response.setContentType(MediaType.IMAGE_JPEG_VALUE);
+        IOUtils.copy(in, response.getOutputStream());
+    }
 
 
     /**
@@ -96,9 +125,11 @@ public class DrinkService {
 
         List<Drink> userFavouriteList = user.getFavouriteDrinks();
 
+        if (userFavouriteList.contains(drinkRepository.getById(drinkId))){
+            throw new MainIllegalArgumentException("Внимание! Данный напиток уже добавлен в изюранное!");
+        }
+
         userFavouriteList.add(drink);
-        // Тут я удаляю все повторные значения, чтобы пользователь не смог себе добавить несколько одинаковых напитков !! ERROR!
-        userFavouriteList = userFavouriteList.stream().distinct().collect(Collectors.toList());
 
         user.setFavouriteDrinks(userFavouriteList);
 

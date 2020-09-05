@@ -2,17 +2,13 @@ package ru.coffeetearea.controller;
 
 import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
-import org.apache.tomcat.util.http.fileupload.IOUtils;
-import org.springframework.http.MediaType;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import ru.coffeetearea.dto.DrinkDTO;
 import ru.coffeetearea.service.DrinkService;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
 
 
@@ -27,12 +23,7 @@ public class DrinkController {
     private final DrinkService drinkService;
 
 
-    @GetMapping("/image")
-    public void getImageAsByteArray(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        InputStream in = new FileInputStream("C:\\Users\\vartanyan\\Desktop\\images\\Puer.jpg");
-        response.setContentType(MediaType.IMAGE_JPEG_VALUE);
-        IOUtils.copy(in, response.getOutputStream());
-    }
+
 
     // POST - methods
 
@@ -67,6 +58,18 @@ public class DrinkController {
     public List<DrinkDTO> findMostPopularDrinks() {
 
         return drinkService.findMostPopularDrinks();
+    }
+
+    /**
+     * Получить изображение напитка
+     *
+     * @param response
+     * @param drinkId
+     * @throws IOException
+     */
+    @GetMapping("/{drinkId}/image")
+    public void getDrinkImage(HttpServletResponse response, @PathVariable Long drinkId) throws IOException {
+        drinkService.getDrinkImage(response, drinkId);
     }
 
 
