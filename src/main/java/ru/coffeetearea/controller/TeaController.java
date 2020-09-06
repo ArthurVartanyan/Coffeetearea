@@ -6,7 +6,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import ru.coffeetearea.dto.DrinkDTO;
 import ru.coffeetearea.dto.PageDTO;
 import ru.coffeetearea.dto.SortingParams;
 import ru.coffeetearea.dto.TeaDTO;
@@ -67,6 +66,7 @@ public class TeaController {
 
     /**
      * Получаем чай с фильтрами
+     *
      * @param page
      * @param pageSize
      * @param colorId

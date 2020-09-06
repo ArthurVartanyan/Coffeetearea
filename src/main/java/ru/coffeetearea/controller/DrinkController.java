@@ -2,7 +2,6 @@ package ru.coffeetearea.controller;
 
 import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import ru.coffeetearea.dto.DrinkDTO;
 import ru.coffeetearea.service.DrinkService;
@@ -21,8 +20,6 @@ public class DrinkController {
     // Fields
 
     private final DrinkService drinkService;
-
-
 
 
     // POST - methods

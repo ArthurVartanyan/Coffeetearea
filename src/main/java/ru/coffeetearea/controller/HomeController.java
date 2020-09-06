@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +23,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Slf4j
-@RestController
+@Controller
+//@RestController
 @RequestMapping("/home")
 @RequiredArgsConstructor
 @Api(value = "Home", tags = {"Home"})
@@ -39,15 +41,13 @@ public class HomeController {
     private final UserRepository userRepository;
 
 
-
     // Get - methods
 
-    @GetMapping("/")
-    public String homePage(Model model) {
-        model.addAttribute("appName", "COFFEETEARE!");
+    @GetMapping("/greeting")
+    public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+        model.addAttribute("name", name);
         return "home";
     }
-
 
 
     // POST - methods
