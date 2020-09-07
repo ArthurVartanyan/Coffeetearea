@@ -33,6 +33,9 @@ public class DrinkService {
 
     // Fields
 
+    @Value("${upload.path}")
+    private String uploadPath;
+
     private final DrinkRepository drinkRepository;
 
     private final UserRepository userRepository;
@@ -51,11 +54,7 @@ public class DrinkService {
      * @param drinkId
      * @throws IOException
      */
-    //
-    @Value("${upload.path}")
-    private String uploadPath;
-    //
-    public void getDrinkImage(HttpServletResponse response, Long drinkId) throws IOException {
+    public void putDrinkImage(HttpServletResponse response, Long drinkId) throws IOException {
 
         String imageURL = drinkRepository.getById(drinkId).getImage();
 

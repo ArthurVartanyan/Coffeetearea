@@ -50,7 +50,7 @@ public class UserService {
         if (registrationUserDTO.getCheckPassword().equals(registrationUserDTO.getPassword())) {
             user.setPassword(passwordEncoder.encode(registrationUserDTO.getPassword()));
         } else {
-            throw new MainIllegalArgumentException("Ошибка! Пароли не совпадают!");
+            throw new MainIllegalArgumentException("Внимание! Пароли отличаются!");
         }
         user.setRole(Role.CUSTOMER);
         user.setDeleted(false);

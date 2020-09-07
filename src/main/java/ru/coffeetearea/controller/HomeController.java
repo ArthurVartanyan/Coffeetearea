@@ -7,24 +7,20 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import ru.coffeetearea.dto.AuthenticationRequestDTO;
-import ru.coffeetearea.dto.RegistrationUserDTO;
-import ru.coffeetearea.dto.UserDTO;
 import ru.coffeetearea.model.User;
 import ru.coffeetearea.repository.UserRepository;
 import ru.coffeetearea.security.jwt.JwtTokenProvider;
-import ru.coffeetearea.service.UserService;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @Slf4j
-@Controller
-//@RestController
+@RestController
 @RequestMapping("/home")
 @RequiredArgsConstructor
 @Api(value = "Home", tags = {"Home"})
@@ -36,18 +32,7 @@ public class HomeController {
 
     private final JwtTokenProvider jwtTokenProvider;
 
-    private final UserService userService;
-
     private final UserRepository userRepository;
-
-
-    // Get - methods
-
-    @GetMapping("/greeting")
-    public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-        model.addAttribute("name", name);
-        return "home";
-    }
 
 
     // POST - methods
@@ -75,14 +60,7 @@ public class HomeController {
 
         } catch (AuthenticationServiceException e) {
             log.error("Error: ", e);
-            throw new AuthenticationServiceException("Invalid login ored");
+            throw new AuthenticationServiceException("Invalid login");
         }
-    }
-
-
-    @PostMapping("/registration")
-    public UserDTO registration(@Validated @RequestBody RegistrationUserDTO registrationUserDTO) {
-
-        return userService.registration(registrationUserDTO);
     }
 }

@@ -8,6 +8,4 @@ import java.util.List;
 public class ErrorsDTO {
 
     private String error;
-
-    private List<FieldErrorDTO> fieldErrors;
 }

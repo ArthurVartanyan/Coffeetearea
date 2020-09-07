@@ -66,7 +66,7 @@ public class DrinkController {
      */
     @GetMapping("/{drinkId}/image")
     public void getDrinkImage(HttpServletResponse response, @PathVariable Long drinkId) throws IOException {
-        drinkService.getDrinkImage(response, drinkId);
+        drinkService.putDrinkImage(response, drinkId);
     }
 
 

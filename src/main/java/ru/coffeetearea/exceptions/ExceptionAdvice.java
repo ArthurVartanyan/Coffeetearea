@@ -58,8 +58,12 @@ public class ExceptionAdvice extends ResponseEntityExceptionHandler {
     @ResponseBody
     @ExceptionHandler(MainIllegalArgumentException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public String IllegalArgumentHandler(MainIllegalArgumentException ex) {
-        return ex.getMessage();
+    public ErrorsDTO IllegalArgumentHandler(MainIllegalArgumentException ex) {
+
+        ErrorsDTO errorsDTO = new ErrorsDTO();
+        errorsDTO.setError(ex.getMessage());
+
+        return errorsDTO;
     }
 
 
@@ -92,9 +96,7 @@ public class ExceptionAdvice extends ResponseEntityExceptionHandler {
             MethodArgumentNotValidException ex, HttpHeaders headers,
             HttpStatus status, WebRequest request) {
 
-        ErrorsDTO errorsDTO = new ErrorsDTO();
-
-        List<FieldErrorDTO> errors = new ArrayList<>();
+        List<FieldErrorDTO> fieldErrors = new ArrayList<>();
 
         List<ObjectError> objectErrors = ex.getBindingResult().getAllErrors();
 
@@ -106,12 +108,8 @@ public class ExceptionAdvice extends ResponseEntityExceptionHandler {
             f.setField(fieldName);
             f.setMessage(errorMessage);
 
-            errors.add(f);
+            fieldErrors.add(f);
         }
-
-        errorsDTO.setFieldErrors(errors);
-        errorsDTO.setError(status.toString());
-
-        return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(fieldErrors, HttpStatus.BAD_REQUEST);
     }
 }
