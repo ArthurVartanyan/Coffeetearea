@@ -59,6 +59,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+
                 .cors().disable().csrf().disable()
                 .httpBasic().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
@@ -72,20 +73,27 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/webjars/**").permitAll()
                 .antMatchers("/catalogs/countries")
                 .hasAuthority(Role.CUSTOMER.name())
-                .antMatchers("/home/login", "/home", "/home/registration", "/**/image", "/cart-item/list", "/cart-item/**",
-                        "/cart-item/all", "/coffee", "/coffee/**", "/**/delete", "/all", "/filter", "/tea", "/tea/**",
-                        "/**/delete", "/all", "/filter", "/orders", "/users", "/drinks/drinks/**/favourites",
-                        "/drinks/favourites", "/drinks/populars", "/**/favourites", "/catalogs/coffee-types",
-                        "/catalogs/manufacturers", "/catalogs/packages", "/catalogs/roastings",
-                        "/catalogs/tea-colors", "/catalogs/tea-types", "/catalogs/**/coffee-types",
-                        "/catalogs/**/countries", "/catalogs/**/manufacturers",
-                        "/catalogs/**/packages", "/catalogs/**/roastings",
-                        "/catalogs/**/tea-colors", "/catalogs/**/tea-types", "/catalogs/**/delete/coffee-type",
-                        "/catalogs/**/delete/country", "/catalogs/**/delete/manufacturer",
-                        "/catalogs/**/delete/package", "/catalogs/**/delete/roasting",
-                        "/catalogs/**/delete/tea-color", "/catalogs/**/delete/tea-type", "/{drinkId}/number", "/greeting",
-                        "/hello").permitAll()// Все ссылки, которые доступны только заказчику
-                .anyRequest().authenticated()
+                .antMatchers("/home/login", "/home/", "/home/registration", "/**/image", "/cart-item/list",
+                        "/cart-item/**", "/cart-item/all", "/coffee", "/coffee/**", "/**/delete", "/all", "/filter",
+                        "/tea", "/tea/**", "/**/delete", "/all", "/filter", "/orders", "/users",
+                        "/drinks/drinks/**/favourites", "/drinks/favourites", "/drinks/populars", "/**/favourites",
+                        "/catalogs/coffee-types", "/catalogs/manufacturers", "/catalogs/packages",
+                        "/catalogs/roastings", "/catalogs/tea-colors", "/catalogs/tea-types",
+                        "/catalogs/**/coffee-types", "/catalogs/**/countries", "/catalogs/**/manufacturers",
+                        "/catalogs/**/packages", "/catalogs/**/roastings", "/catalogs/**/tea-colors",
+                        "/catalogs/**/tea-types", "/catalogs/**/delete/coffee-type", "/catalogs/**/delete/country",
+                        "/catalogs/**/delete/manufacturer", "/catalogs/**/delete/package",
+                        "/catalogs/**/delete/roasting", "/catalogs/**/delete/tea-color",
+                        "/catalogs/**/delete/tea-type", "/**/number", "/hello",
+                        "/static/**").permitAll()// Все ссылки, которые доступны только заказчику
+                .anyRequest()
+                .authenticated()/*.and()
+                .formLogin()
+                .loginPage("/hello")
+                .permitAll()
+                .and()
+                .logout()
+                .permitAll()*/
                 .and()
                 .apply(new JwtConfigurer(jwtTokenProvider(jwtUserDetailsService)));
     }

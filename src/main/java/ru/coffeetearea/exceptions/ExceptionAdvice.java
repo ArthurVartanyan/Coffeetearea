@@ -50,15 +50,15 @@ public class ExceptionAdvice extends ResponseEntityExceptionHandler {
 
 
     /**
-     * IllegalArgumentException
+     * BadRequestException
      *
      * @param ex
      * @return message
      */
     @ResponseBody
-    @ExceptionHandler(MainIllegalArgumentException.class)
+    @ExceptionHandler(BadRequestException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ErrorsDTO IllegalArgumentHandler(MainIllegalArgumentException ex) {
+    public ErrorsDTO BadRequestHandler(BadRequestException ex) {
 
         ErrorsDTO errorsDTO = new ErrorsDTO();
         errorsDTO.setError(ex.getMessage());

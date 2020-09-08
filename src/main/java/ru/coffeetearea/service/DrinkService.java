@@ -9,8 +9,8 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import ru.coffeetearea.dto.DrinkDTO;
 import ru.coffeetearea.dto.SortingParams;
+import ru.coffeetearea.exceptions.BadRequestException;
 import ru.coffeetearea.exceptions.EntityNotFoundException;
-import ru.coffeetearea.exceptions.MainIllegalArgumentException;
 import ru.coffeetearea.mappers.DrinkMapper;
 import ru.coffeetearea.model.Drink;
 import ru.coffeetearea.model.User;
@@ -125,7 +125,7 @@ public class DrinkService {
         List<Drink> userFavouriteList = user.getFavouriteDrinks();
 
         if (userFavouriteList.contains(drinkRepository.getById(drinkId))){
-            throw new MainIllegalArgumentException("Внимание! Данный напиток уже добавлен в изюранное!");
+            throw new BadRequestException("Внимание! Данный напиток уже добавлен в изюранное!");
         }
 
         userFavouriteList.add(drink);

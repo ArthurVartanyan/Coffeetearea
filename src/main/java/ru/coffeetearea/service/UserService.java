@@ -7,7 +7,7 @@ import ru.coffeetearea.dto.RegistrationUserDTO;
 import ru.coffeetearea.dto.UserDTO;
 import ru.coffeetearea.dto.UserInfoDTO;
 import ru.coffeetearea.exceptions.EntityNotFoundException;
-import ru.coffeetearea.exceptions.MainIllegalArgumentException;
+import ru.coffeetearea.exceptions.BadRequestException;
 import ru.coffeetearea.mappers.UserMapper;
 import ru.coffeetearea.model.Role;
 import ru.coffeetearea.model.User;
@@ -50,7 +50,7 @@ public class UserService {
         if (registrationUserDTO.getCheckPassword().equals(registrationUserDTO.getPassword())) {
             user.setPassword(passwordEncoder.encode(registrationUserDTO.getPassword()));
         } else {
-            throw new MainIllegalArgumentException("Внимание! Пароли отличаются!");
+            throw new BadRequestException("Внимание! Пароли отличаются!");
         }
         user.setRole(Role.CUSTOMER);
         user.setDeleted(false);
