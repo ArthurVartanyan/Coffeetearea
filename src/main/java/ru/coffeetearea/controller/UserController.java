@@ -3,12 +3,16 @@ package ru.coffeetearea.controller;
 
 import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import ru.coffeetearea.dto.AuthenticationRequestDTO;
 import ru.coffeetearea.dto.RegistrationUserDTO;
 import ru.coffeetearea.dto.UserDTO;
 import ru.coffeetearea.dto.UserInfoDTO;
 import ru.coffeetearea.service.UserService;
+
+import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
@@ -17,6 +21,13 @@ import ru.coffeetearea.service.UserService;
 public class UserController {
 
     private final UserService userService;
+
+
+    @PostMapping("/login")
+    public ResponseEntity<Map<String, String>> authorization(@RequestBody AuthenticationRequestDTO requestDTO) {
+
+        return userService.authorization(requestDTO);
+    }
 
 
     /**
@@ -32,6 +43,7 @@ public class UserController {
 
     /**
      * Метод регистрации пользователя
+     *
      * @param registrationUserDTO
      */
     @PostMapping("/registration")

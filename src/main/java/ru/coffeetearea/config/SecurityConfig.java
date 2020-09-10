@@ -87,13 +87,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/catalogs/**/delete/tea-type", "/**/number", "/hello",
                         "/static/**").permitAll()// Все ссылки, которые доступны только заказчику
                 .anyRequest()
-                .authenticated()/*.and()
+                .authenticated().and()
                 .formLogin()
-                .loginPage("/hello")
+                .loginPage("/login")
                 .permitAll()
                 .and()
                 .logout()
-                .permitAll()*/
+                .permitAll()
                 .and()
                 .apply(new JwtConfigurer(jwtTokenProvider(jwtUserDetailsService)));
     }

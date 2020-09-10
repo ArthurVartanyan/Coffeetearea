@@ -1,8 +1,15 @@
 package ru.coffeetearea.service;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.AuthenticationServiceException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
+import ru.coffeetearea.dto.AuthenticationRequestDTO;
 import ru.coffeetearea.dto.RegistrationUserDTO;
 import ru.coffeetearea.dto.UserDTO;
 import ru.coffeetearea.dto.UserInfoDTO;
@@ -12,17 +19,55 @@ import ru.coffeetearea.mappers.UserMapper;
 import ru.coffeetearea.model.Role;
 import ru.coffeetearea.model.User;
 import ru.coffeetearea.repository.UserRepository;
+import ru.coffeetearea.security.jwt.JwtTokenProvider;
 import ru.coffeetearea.security.jwt.JwtUser;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @RequiredArgsConstructor
 @Service
+@Slf4j
 public class UserService {
+
+    private final AuthenticationManager authenticationManager;
+
+    private final JwtTokenProvider jwtTokenProvider;
 
     private final UserRepository userRepository;
 
     private final UserMapper userMapper;
 
     private final PasswordEncoder passwordEncoder;
+
+
+
+
+    public ResponseEntity<Map<String, String>> authorization(@RequestBody AuthenticationRequestDTO requestDto) {
+        try {
+            String login = requestDto.getLogin();
+            authenticationManager
+                    .authenticate(new UsernamePasswordAuthenticationToken(login, requestDto.getPassword()));
+
+            User user = userRepository.getByLogin(login);
+
+            if (user == null) {
+                throw new AuthenticationServiceException("ddwd");
+            }
+
+            String token = jwtTokenProvider.createToken(login, user.getRole());
+
+            Map<String, String> response = new HashMap<>();
+            response.put("login", login);
+            response.put("token", token);
+
+            return ResponseEntity.ok(response);
+
+        } catch (AuthenticationServiceException e) {
+            log.error("Error: ", e);
+            throw new AuthenticationServiceException("Invalid login");
+        }
+    }
 
 
     /**
