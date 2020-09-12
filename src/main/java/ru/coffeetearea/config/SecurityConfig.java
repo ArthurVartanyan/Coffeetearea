@@ -73,7 +73,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/webjars/**").permitAll()
                 .antMatchers("/catalogs/countries")
                 .hasAuthority(Role.CUSTOMER.name())
-                .antMatchers("/home/login", "/home/", "/home/registration", "/**/image", "/cart-item/list",
+                .antMatchers("/users/login", "/home/", "/users/registration", "/**/image", "/cart-item/list",
                         "/cart-item/**", "/cart-item/all", "/coffee", "/coffee/**", "/**/delete", "/all", "/filter",
                         "/tea", "/tea/**", "/**/delete", "/all", "/filter", "/orders", "/users",
                         "/drinks/drinks/**/favourites", "/drinks/favourites", "/drinks/populars", "/**/favourites",
@@ -85,7 +85,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/catalogs/**/delete/manufacturer", "/catalogs/**/delete/package",
                         "/catalogs/**/delete/roasting", "/catalogs/**/delete/tea-color",
                         "/catalogs/**/delete/tea-type", "/**/number", "/hello",
-                        "/static/**").permitAll()// Все ссылки, которые доступны только заказчику
+                        "/static/**", "/login").permitAll()// Все ссылки, которые доступны только заказчику
                 .anyRequest()
                 .authenticated().and()
                 .formLogin()

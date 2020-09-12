@@ -25,7 +25,8 @@ public class JwtUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username){
 
-        User user = userRepository.findByLogin(username).orElseThrow(()-> new AuthenticationServiceException("f"));
+        User user = userRepository.findByLogin(username)
+                .orElseThrow(()-> new AuthenticationServiceException("Пользователя с такими данными не существует!"));
 
         JwtUser jwtUser = JwtUserFactory.create(user);
         log.info("IN loadUserByUsername - user with username: {} successfully loaded", username);

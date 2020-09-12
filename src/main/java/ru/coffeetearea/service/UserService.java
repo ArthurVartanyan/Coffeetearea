@@ -49,10 +49,10 @@ public class UserService {
             authenticationManager
                     .authenticate(new UsernamePasswordAuthenticationToken(login, requestDto.getPassword()));
 
-            User user = userRepository.getByLogin(login);
+            User user = findByLogin(login);
 
             if (user == null) {
-                throw new AuthenticationServiceException("ddwd");
+                throw new AuthenticationServiceException("NULL!");
             }
 
             String token = jwtTokenProvider.createToken(login, user.getRole());

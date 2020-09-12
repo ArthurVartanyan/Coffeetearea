@@ -45,6 +45,7 @@ public class DrinkDTO {
     @NotNull(groups = {New.class, Edit.class})
     protected GeneralCatalogDTO manufacturer;
 
-    @NotNull(groups = {New.class, Edit.class})
+    @NotNull(groups = {New.class})
+    @NotNull(groups = {Edit.class})
     protected GeneralCatalogDTO country;
 }

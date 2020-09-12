@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import ru.coffeetearea.dto.CoffeeDTO;
 import ru.coffeetearea.dto.PageDTO;
 import ru.coffeetearea.dto.SortingParams;
+import ru.coffeetearea.exceptions.BadRequestException;
 import ru.coffeetearea.exceptions.EntityNotFoundException;
 import ru.coffeetearea.mappers.CoffeeMapper;
 import ru.coffeetearea.model.Coffee;
@@ -41,7 +42,7 @@ public class CoffeeService {
 
         coffeeRepository.save(coffeeMapper.coffeeDTOtoCoffee(coffeeDTO));
 
-        return coffeeMapper.coffeeToCoffeeDTO(coffee);
+        return coffeeMapper.coffeeToCoffeeDTO(coffeeRepository.getOne(coffeeId));
     }
 
 
