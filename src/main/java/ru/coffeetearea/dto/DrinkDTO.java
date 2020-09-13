@@ -1,6 +1,7 @@
 package ru.coffeetearea.dto;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import ru.coffeetearea.model.catalog.GeneralCatalog;
 import ru.coffeetearea.model.catalog.Packaging;
 
@@ -8,6 +9,7 @@ import javax.validation.constraints.*;
 import java.math.BigDecimal;
 
 @Data
+@NoArgsConstructor
 public class DrinkDTO {
 
     public interface New {
