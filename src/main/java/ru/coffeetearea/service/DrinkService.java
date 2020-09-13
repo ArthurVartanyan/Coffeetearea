@@ -25,7 +25,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -124,7 +123,7 @@ public class DrinkService {
 
         List<Drink> userFavouriteList = user.getFavouriteDrinks();
 
-        if (userFavouriteList.contains(drinkRepository.getById(drinkId))){
+        if (userFavouriteList.contains(drinkRepository.getById(drinkId))) {
             throw new BadRequestException("Внимание! Данный напиток уже добавлен в изюранное!");
         }
 

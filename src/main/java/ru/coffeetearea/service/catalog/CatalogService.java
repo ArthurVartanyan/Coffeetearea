@@ -332,6 +332,7 @@ public class CatalogService {
      * @return List<GeneralCatalogDTO>
      */
     public List<GeneralCatalogDTO> findManufacturers() {
+
         return catalogMapper.catalogsToCatalogsDTO(manufacturerRepository.findAll(Sort.by("name").ascending()));
     }
 
@@ -341,6 +342,7 @@ public class CatalogService {
      * @return List<GeneralCatalogDTO>
      */
     public List<GeneralCatalogDTO> findRoastings() {
+
         return catalogMapper.catalogsToCatalogsDTO(roastingRepository.findAll(Sort.by("name").ascending()));
     }
 

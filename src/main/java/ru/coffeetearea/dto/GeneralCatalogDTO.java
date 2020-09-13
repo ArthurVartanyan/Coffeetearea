@@ -2,7 +2,6 @@ package ru.coffeetearea.dto;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.stereotype.Component;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
@@ -11,11 +10,11 @@ import javax.validation.constraints.Null;
 @NoArgsConstructor
 public class GeneralCatalogDTO {
 
-    public interface New{
+    public interface New {
 
     }
 
-    public interface Edit{
+    public interface Edit {
 
     }
 

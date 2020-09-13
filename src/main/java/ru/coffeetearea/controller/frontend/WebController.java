@@ -3,10 +3,12 @@ package ru.coffeetearea.controller.frontend;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import ru.coffeetearea.controller.UserController;
 import ru.coffeetearea.dto.AuthenticationRequestDTO;
-import ru.coffeetearea.model.User;
 
 @Controller
 @RequiredArgsConstructor
@@ -31,7 +33,7 @@ public class WebController {
     }
 
     @PostMapping("/login")
-    public String loginSubmit(@ModelAttribute AuthenticationRequestDTO requestDTO, Model model){
+    public String loginSubmit(@ModelAttribute AuthenticationRequestDTO requestDTO, Model model) {
         model.addAttribute("requestDTO", requestDTO);
         model.addAttribute("auth", userController.authorization(requestDTO));
         return "hello";

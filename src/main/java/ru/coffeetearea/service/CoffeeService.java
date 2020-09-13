@@ -6,11 +6,9 @@ import org.springframework.stereotype.Service;
 import ru.coffeetearea.dto.CoffeeDTO;
 import ru.coffeetearea.dto.PageDTO;
 import ru.coffeetearea.dto.SortingParams;
-import ru.coffeetearea.exceptions.BadRequestException;
 import ru.coffeetearea.exceptions.EntityNotFoundException;
 import ru.coffeetearea.mappers.CoffeeMapper;
 import ru.coffeetearea.model.Coffee;
-import ru.coffeetearea.model.catalog.Packaging;
 import ru.coffeetearea.repository.CoffeeRepository;
 import ru.coffeetearea.specification.DrinksSpecification;
 

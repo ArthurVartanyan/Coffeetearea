@@ -8,11 +8,22 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class MvcConfig implements WebMvcConfigurer {
 
+    /**
+     * Делаем видимым наши страницы
+     *
+     * @param registry
+     */
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/hello").setViewName("hello");
-        registry.addViewController("/login").setViewName("hello");
+        registry.addViewController("/login").setViewName("login");
     }
 
+
+    /**
+     * Данный метод помогает Spring обнаруживать пути к файлам
+     *
+     * @param registry
+     */
     @Override
     public void addResourceHandlers(final ResourceHandlerRegistry registry) {
 

@@ -62,7 +62,6 @@ public class Drink {
      * Флаг удаления
      */
     @Column(name = "is_deleted")
-//    @Where(clause = "is_deleted = false")
     private boolean isDeleted;
 
     /**

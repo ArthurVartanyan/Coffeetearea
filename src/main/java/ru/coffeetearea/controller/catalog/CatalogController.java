@@ -85,6 +85,7 @@ public class CatalogController {
      */
     @GetMapping("/countries")
     public List<GeneralCatalogDTO> findCountries() {
+
         return catalogService.findCountries();
     }
 
@@ -95,6 +96,7 @@ public class CatalogController {
      */
     @GetMapping("/packages")
     public List<GeneralCatalogDTO> findPackages() {
+
         return catalogService.findPackages();
     }
 
@@ -105,6 +107,7 @@ public class CatalogController {
      */
     @GetMapping("/manufacturers")
     public List<GeneralCatalogDTO> findManufacturers() {
+
         return catalogService.findManufacturers();
     }
 
@@ -115,6 +118,7 @@ public class CatalogController {
      */
     @GetMapping("/tea-colors")
     public List<GeneralCatalogDTO> findTeaColor() {
+
         return catalogService.findTeaColors();
     }
 
@@ -125,6 +129,7 @@ public class CatalogController {
      */
     @GetMapping("/coffee-types")
     public List<GeneralCatalogDTO> findCoffeeType() {
+
         return catalogService.findCoffeeTypes();
     }
 
@@ -135,6 +140,7 @@ public class CatalogController {
      */
     @GetMapping("/tea-types")
     public List<GeneralCatalogDTO> findTeaType() {
+
         return catalogService.findTeaTypes();
     }
 
@@ -145,6 +151,7 @@ public class CatalogController {
      */
     @GetMapping("/roastings")
     public List<GeneralCatalogDTO> findRoasting() {
+
         return catalogService.findRoastings();
     }
 
@@ -241,12 +248,13 @@ public class CatalogController {
 
 
     // Delete - methods
-    
+
     /**
      * Удаление элементов типов кофе
      */
     @DeleteMapping("/{coffeeTypeId}/coffee-type")
     public void deleteCoffeeType(@PathVariable Long coffeeTypeId) {
+
         catalogService.deleteCoffeeType(coffeeTypeId);
     }
 
@@ -255,6 +263,7 @@ public class CatalogController {
      */
     @DeleteMapping("/{countryId}/country")
     public void deleteCountry(@PathVariable Long countryId) {
+
         catalogService.deleteCountry(countryId);
     }
 
@@ -263,6 +272,7 @@ public class CatalogController {
      */
     @DeleteMapping("/{manufacturerId}/manufacturer")
     public void deleteManufacturer(@PathVariable Long manufacturerId) {
+
         catalogService.deleteManufacturer(manufacturerId);
     }
 
@@ -271,6 +281,7 @@ public class CatalogController {
      */
     @DeleteMapping("/{packagingId}/package")
     public void deletePackaging(@PathVariable Long packagingId) {
+
         catalogService.deletePackaging(packagingId);
     }
 
@@ -279,6 +290,7 @@ public class CatalogController {
      */
     @DeleteMapping("/{roastingId}/roasting")
     public void deleteRoasting(@PathVariable Long roastingId) {
+
         catalogService.deleteRoasting(roastingId);
     }
 
@@ -287,6 +299,7 @@ public class CatalogController {
      */
     @DeleteMapping("/{teaColorId}/tea-color")
     public void deleteTeaColor(@PathVariable Long teaColorId) {
+
         catalogService.deleteTeaColor(teaColorId);
     }
 
@@ -295,6 +308,7 @@ public class CatalogController {
      */
     @DeleteMapping("/{teaTypeId}/tea-type")
     public void deleteTeaType(@PathVariable Long teaTypeId) {
+
         catalogService.deleteTeaType(teaTypeId);
     }
 }

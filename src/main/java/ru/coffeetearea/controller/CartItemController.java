@@ -82,6 +82,7 @@ public class CartItemController {
     public ResponseEntity<Integer> editDrinkCount(@PathVariable Long drinkId,
                                                   @Validated(CartItemDTO.SetCount.class)
                                                   @RequestBody CartItemDTO cartItemDTO) {
+
         return new ResponseEntity<>(cartItemService.editDrinkCount(drinkId, cartItemDTO.getCount()), HttpStatus.OK);
     }
 }

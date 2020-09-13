@@ -44,6 +44,7 @@ public class DrinkController {
      */
     @GetMapping("/favourites")
     public List<DrinkDTO> findFavouriteDrinks() {
+
         return drinkService.findFavouriteDrinks();
     }
 
@@ -66,6 +67,7 @@ public class DrinkController {
      */
     @GetMapping("/{drinkId}/image")
     public void getDrinkImage(HttpServletResponse response, @PathVariable Long drinkId) throws IOException {
+
         drinkService.putDrinkImage(response, drinkId);
     }
 
@@ -77,6 +79,7 @@ public class DrinkController {
      */
     @DeleteMapping("/{drinkId}/favourites")
     public void deleteDrinkFromFavourites(@PathVariable Long drinkId) {
+
         drinkService.deleteDrinkFromFavourites(drinkId);
     }
 }

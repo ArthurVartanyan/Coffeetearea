@@ -13,8 +13,8 @@ import ru.coffeetearea.dto.AuthenticationRequestDTO;
 import ru.coffeetearea.dto.RegistrationUserDTO;
 import ru.coffeetearea.dto.UserDTO;
 import ru.coffeetearea.dto.UserInfoDTO;
-import ru.coffeetearea.exceptions.EntityNotFoundException;
 import ru.coffeetearea.exceptions.BadRequestException;
+import ru.coffeetearea.exceptions.EntityNotFoundException;
 import ru.coffeetearea.mappers.UserMapper;
 import ru.coffeetearea.model.Role;
 import ru.coffeetearea.model.User;
@@ -41,8 +41,12 @@ public class UserService {
     private final PasswordEncoder passwordEncoder;
 
 
-
-
+    /**
+     * Регистрация пользователя
+     *
+     * @param requestDto
+     * @return
+     */
     public ResponseEntity<Map<String, String>> authorization(@RequestBody AuthenticationRequestDTO requestDto) {
         try {
             String login = requestDto.getLogin();

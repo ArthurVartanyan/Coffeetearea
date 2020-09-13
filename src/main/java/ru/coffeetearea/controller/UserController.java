@@ -23,6 +23,12 @@ public class UserController {
     private final UserService userService;
 
 
+    /**
+     * Авторизация пользователя
+     *
+     * @param requestDTO
+     * @return
+     */
     @PostMapping("/login")
     public ResponseEntity<Map<String, String>> authorization(@RequestBody AuthenticationRequestDTO requestDTO) {
 

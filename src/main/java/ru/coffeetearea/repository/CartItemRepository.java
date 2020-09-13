@@ -15,6 +15,8 @@ public interface CartItemRepository extends JpaRepository<CartItem, Long> {
     /*
     Возвращает самые популярные напитки по убыванию
      */
-    @Query("select C.drink.id, sum(C.count) as count from CartItem C where C.order.orderStatus = 'ACTIVE' group by C.drink order by 2 DESC")
+    @Query("select C.drink.id, sum(C.count) as count " +
+            "from CartItem C " +
+            "where C.order.orderStatus = 'ACTIVE' group by C.drink order by 2 DESC")
     List<Long> getMostPopularDrinksIds(Pageable pageable);
 }

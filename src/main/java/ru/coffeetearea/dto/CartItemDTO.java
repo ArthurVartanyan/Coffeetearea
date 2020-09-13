@@ -10,7 +10,7 @@ import javax.validation.constraints.Null;
 @Data
 public class CartItemDTO {
 
-    public interface SetCount{
+    public interface SetCount {
 
     }
 
