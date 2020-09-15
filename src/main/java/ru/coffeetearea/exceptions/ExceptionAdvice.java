@@ -3,7 +3,6 @@ package ru.coffeetearea.exceptions;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.TransactionSystemException;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -16,11 +15,8 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import ru.coffeetearea.dto.ErrorsDTO;
 import ru.coffeetearea.dto.FieldErrorDTO;
 
-import javax.validation.ConstraintViolation;
-import javax.validation.ConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 @ControllerAdvice
 public class ExceptionAdvice extends ResponseEntityExceptionHandler {
@@ -32,9 +28,9 @@ public class ExceptionAdvice extends ResponseEntityExceptionHandler {
      * @return message
      */
     @ResponseBody
-    @ExceptionHandler(MainNullPointerException.class)
+    @ExceptionHandler(InternalServerException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    String NullPointerHandler(MainNullPointerException ex) {
+    String InternalServerHandler(InternalServerException ex) {
         return ex.getMessage();
     }
 

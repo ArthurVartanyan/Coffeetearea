@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
     <title>CoffeeTeArea</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -9,23 +9,24 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="static/css/login.css">
-
 </head>
 
 <body background="static/images/background.jpg">
-<h1>Авторизация</h1>
-<form id="formElem" action="#" th:action="@{/login}" th:object="${requestDTO}" method="post">
-    <div class="forms-and-button">
-        <label for="inputLogin">Логин:</label>
-        <input type="text" th:field="*{login}" class="form-control" id="inputLogin" aria-describedby="loginHelp">
+    <h1>Авторизация</h1>
+        <form action="/users/login" name="formElem" id="formElem" method="post">
+            <div class="forms-and-button">
 
-        <label for="inputPassword">Пароль:</label>
-        <input type="password" th:field="*{password}" class="form-control" id="inputPassword">
+                <label for="inputLogin">Логин:</label>
+                <input name="login" type="text" class="form-control" id="inputLogin" aria-describedby="loginHelp">
 
-        <script src="js/login.js"></script>
+                <label for="inputPassword">Пароль:</label>
+                <input name="password" type="password" class="form-control" id="inputPassword">
 
-        <button type="submit" th:action="${auth}" class="btn btn-primary">Вход</button>
-    </div>
-</form>
+                <button class="btn btn-primary">Вход</button>
+            </div>
+        </form>
 </body>
+
+<script src="static/js/callAuthorization.js"></script>
+
 </html>

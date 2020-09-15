@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.coffeetearea.dto.MakeOrderDTO;
 import ru.coffeetearea.dto.OrderDTO;
-import ru.coffeetearea.exceptions.MainNullPointerException;
+import ru.coffeetearea.exceptions.InternalServerException;
 import ru.coffeetearea.mappers.OrderMapper;
 import ru.coffeetearea.model.CartItem;
 import ru.coffeetearea.model.Order;
@@ -73,7 +73,7 @@ public class OrderService {
         Order order = orderRepository.findByUserIdAndOrderStatus(userId, OrderStatus.NEW);
 
         if (order == null) {
-            throw new MainNullPointerException("Ошибка! Ваша корзина пуста!");
+            throw new InternalServerException("Ошибка! Ваша корзина пуста!");
         }
         order.setTotalCost(calculateOrderPrice(order));
         order.setAddress(makeOrderDTO.getAddress());

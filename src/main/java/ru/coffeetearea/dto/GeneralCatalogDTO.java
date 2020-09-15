@@ -19,7 +19,7 @@ public class GeneralCatalogDTO {
     }
 
     @Null(groups = {GeneralCatalogDTO.New.class})
-    @NotNull(groups = {GeneralCatalogDTO.Edit.class})
+    @NotNull
     private Long id;
 
     @NotNull(groups = {GeneralCatalogDTO.New.class})

@@ -24,7 +24,6 @@ public class DrinkDTO {
     @NotNull(groups = {New.class, Edit.class})
     protected String name;
 
-//    protected String image;
 
     @NotNull(groups = {New.class, Edit.class})
     @DecimalMin("100.0")
@@ -36,7 +35,7 @@ public class DrinkDTO {
     protected String about;
 
     @NotNull(groups = {New.class, Edit.class})
-    @Min(value = 10)
+    @Min(value = 10, groups = {Edit.class})
     protected int weight;
 
     @NotNull(groups = {New.class, Edit.class})

@@ -45,7 +45,7 @@ public class UserService {
      * Регистрация пользователя
      *
      * @param requestDto
-     * @return
+     * @return OK status with token
      */
     public ResponseEntity<Map<String, String>> authorization(@RequestBody AuthenticationRequestDTO requestDto) {
         try {

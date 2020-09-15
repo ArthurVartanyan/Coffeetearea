@@ -11,6 +11,7 @@ import ru.coffeetearea.dto.SortingParams;
 import ru.coffeetearea.dto.TeaDTO;
 import ru.coffeetearea.service.TeaService;
 
+import javax.validation.Valid;
 import java.math.BigDecimal;
 
 @RestController

@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.coffeetearea.dto.CartItemDTO;
 import ru.coffeetearea.exceptions.EntityNotFoundException;
-import ru.coffeetearea.exceptions.MainNullPointerException;
+import ru.coffeetearea.exceptions.InternalServerException;
 import ru.coffeetearea.mappers.CartItemMapper;
 import ru.coffeetearea.model.CartItem;
 import ru.coffeetearea.model.Drink;
@@ -134,7 +134,7 @@ public class CartItemService {
         Order order = orderRepository.findByUserIdAndOrderStatus(userId, OrderStatus.NEW);
 
         if (order == null) {
-            throw new MainNullPointerException("Ошибка! Ваша корзина пуста!");
+            throw new InternalServerException("Ошибка! Ваша корзина пуста!");
         }
 
         List<CartItem> cartItemList = order.getCartItems();
@@ -156,7 +156,7 @@ public class CartItemService {
         Order order = orderRepository.findByUserIdAndOrderStatus(id, OrderStatus.NEW);
 
         if (order == null) {
-            throw new MainNullPointerException("Ошибка! Ваша корзина пуста!");
+            throw new InternalServerException("Ошибка! Ваша корзина пуста!");
         }
 
         List<CartItem> cartItem = order.getCartItems();

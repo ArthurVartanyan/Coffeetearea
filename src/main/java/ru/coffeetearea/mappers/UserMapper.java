@@ -29,6 +29,8 @@ public interface UserMapper {
 
     User registrationUserDTOtoUser(RegistrationUserDTO registrationUserDTO);
 
+    UserDTO registrationUserDTOtoUserDTO(RegistrationUserDTO registrationUserDTO);
+
     @IterableMapping(qualifiedByName = "userToRegistrationUserDTO")
     List<RegistrationUserDTO> usersToRegistrationUsersDTO(List<? extends User> users);
     //
