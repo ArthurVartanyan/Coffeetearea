@@ -1,39 +1,71 @@
-body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
+/**
+Панель фильтрации
+ */
+.filter-panel  {
+    width: 0;
+    position: fixed;
+    top: 150px;
+    left: 0;
+    z-index: 1;
+    height: 250px;
+    background-color: saddlebrown;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 10px;
 }
 
-.topnav {
-    overflow: hidden;
-    background-color: chocolate;
-}
-
-.topnav a {
-    float: left;
-    color: #f2f2f2;
-    text-align: center;
-    align-items: center;
-    padding: 20px 16px;
+.filter-panel a {
+    padding: 8px 8px 8px 32px;
     text-decoration: none;
-    font-size: 17px;
-}
-
-.topnav a:hover {
-    background-color: white;
-    color: black;
-}
-
-.topnav a.active {
-    background-color: goldenrod;
+    font-size: 25px;
     color: white;
+    display: block;
+    transition: 0.3s;
 }
 
-.card {
+.filter-panel a:hover {
+    color: #f1f1f1;
+}
+
+.filter-panel .close-button {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+}
+
+.filter-button {
+    position: fixed;
+    top: 90px;
+    left: 0;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: darkgreen;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+}
+
+.filter-button:hover {
+    background-color: saddlebrown;
+}
+
+/**
+Картчоки товаров
+ */
+.cards {
+    margin-left: 150px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    width: 80%;
+}
+
+.card{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    max-width: 300px;
-    margin: auto;
     text-align: center;
-    font-family: arial;
+    font-family: arial, serif;
+    width: 15%;
 }
 
 .price {
@@ -41,7 +73,7 @@ body {
     font-size: 22px;
 }
 
-.card button {
+.cards button {
     border: none;
     outline: 0;
     padding: 12px;
@@ -53,59 +85,43 @@ body {
     font-size: 18px;
 }
 
-.card button:hover {
+.cards button:hover {
     opacity: 0.7;
 }
 
-body {
-    font-family: "Lato", sans-serif;
+.cardss {
+    margin-left: 150px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    width: 80%;
 }
 
-.sidepanel  {
-    width: 0;
-    position: relative;
-    top: 70px;
-    left: 0;
-    z-index: 1;
-    height: 250px;
-    background-color: saddlebrown;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 10px;
+.card1{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    text-align: center;
+    font-family: arial, serif;
+    width: 15%;
+    background: white;
 }
 
-.sidepanel a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: white;
-    display: block;
-    transition: 0.3s;
+.price1 {
+    color: grey;
+    font-size: 22px;
 }
 
-.sidepanel a:hover {
-    color: #f1f1f1;
-}
-
-.sidepanel .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-}
-
-.openbtn {
-    position: fixed;
-    top: 70px;
-    left: 0;
-    font-size: 20px;
-    cursor: pointer;
-    background-color: black;
-    color: white;
-    padding: 10px 15px;
+.cardss button {
     border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
 }
 
-.openbtn:hover {
-    background-color: saddlebrown;
+.cardss button:hover {
+    opacity: 0.7;
 }

@@ -17,4 +17,14 @@ public class WebController {
     public String coffeesPage() {
         return "coffees";
     }
+
+    @GetMapping("/test")
+    public String testsPage() {
+        return "test";
+    }
+
+    @GetMapping("/contacts")
+    public String contactsPage() {
+        return "contacts";
+    }
 }

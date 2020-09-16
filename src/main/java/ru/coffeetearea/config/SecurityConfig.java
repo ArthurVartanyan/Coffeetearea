@@ -75,7 +75,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .hasAuthority(Role.CUSTOMER.name())
                 .antMatchers("/users/login", "/home/", "/users/registration", "/**/image", "/cart-item/list",
                         "/cart-item/**", "/cart-item/all", "/coffee", "/coffee/**", "/**/delete", "/all", "/filter",
-                        "/tea", "/tea/**", "/**/delete", "/all", "/filter", "/orders", "/users",
+                        "/tea", "/tea/**", "/**/delete", "coffees/all", "/filter", "/orders", "/users",
                         "/drinks/drinks/**/favourites", "/drinks/favourites", "/drinks/populars", "/**/favourites",
                         "/catalogs/coffee-types", "/catalogs/manufacturers", "/catalogs/packages",
                         "/catalogs/roastings", "/catalogs/tea-colors", "/catalogs/tea-types",
@@ -84,7 +84,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/catalogs/**/tea-types", "/catalogs/**/delete/coffee-type", "/catalogs/**/delete/country",
                         "/catalogs/**/delete/manufacturer", "/catalogs/**/delete/package",
                         "/catalogs/**/delete/roasting", "/catalogs/**/delete/tea-color",
-                        "/catalogs/**/delete/tea-type", "/**/number", "/static/**", "/login", "/coffees").permitAll()// Все ссылки, которые доступны только заказчику
+                        "/catalogs/**/delete/tea-type", "/**/number", "/static/**", "/login", "/coffees", "/test", "/contacts").permitAll()// Все ссылки, которые доступны только заказчику
                 .anyRequest()
                 .authenticated().and()
 //                .formLogin()

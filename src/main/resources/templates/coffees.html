@@ -9,49 +9,121 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="static/css/coffees.css">
+    <link rel="stylesheet" href="static/css/menuBar.css">
+
+
 </head>
 
-<body background="static/images/coffees-background.jpg">
-<div class="topnav">
-    <a class="active" href="#home">Главная странийа</a>
-    <a href="#coffee">Кофе</a>
-    <a href="#tea">Чай</a>
-    <a href="#about">О нас</a>
-    <a href="#contacts">Контакты</a>
-</div>
+<body background="static/images/background1.png">
 
-<div id="mySidepanel" class="sidepanel">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-    <a href="#">Прожарка </a>
-    <a href="#">Тип</a>
-    <a href="#">Страна</a>
-    <a href="#">Стоимость</a>
-</div>
+<!--МЕНЮ-БАР-->
+    <div id="menu-bar" class="menu-bar">
+        <a class="home" href="#home">Главная страница</a>
+        <a href="#coffee" onclick="RedirectCoffees();">Кофе</a>
+        <a href="#tea">Чай</a>
+        <a href="#about">О нас</a>
+        <a href="#contacts" onclick="RedirectContacts();">Контакты</a>
+    </div>
 
-<button class="openbtn" onclick="openNav()">☰ Фильтр</button>
+<!--ФИЛЬТР-->
+    <div id="filter-panel" class="filter-panel">
+        <a href="javascript:void(0)" class="close-button" onclick="closeNav()">×</a>
+        <a href="#">Прожарка</a>
+        <a href="#">Тип</a>
+        <a href="#">Страна</a>
+        <a href="#">Стоимость</a>
+    </div>
 
-<script>
-    function openNav() {
-        document.getElementById("mySidepanel").style.width = "250px";
-    }
+    <button class="filter-button" onclick="openNav()">☰ Фильтр</button>
 
-    function closeNav() {
-        document.getElementById("mySidepanel").style.width = "0";
-    }
-</script>
-
-
-<div style="padding-left:16px">
-</div>
-
+<!--Карточки товаров-->
+<br>
+<br>
+<br>
+<div class="cards">
+    <div class="card">
+        <img id="coffeeImage1" src="static/images/coffees-background.jpg" alt="Coffee" style="width:100%">
+        <h1 id="name1">Название</h1>
+        <p id="price1" class="price">price</p>
+        <p id="weight1">weight</p>
+        <p id="country1">country</p>
+        <p><button>Добавить в корзину</button></p>
+    </div>
 
 <div class="card">
-    <img src="static/images/background.jpg" alt="Coffee" style="width:100%">
-    <h1>Coffee</h1>
-    <p class="price">$19.99</p>
-    <p>Some text </p>
-    <p><button>Add to Cart</button></p>
+    <img id="coffeeImage2" src="static/images/coffees-background.jpg" alt="Coffee" style="width:100%">
+    <h1 id="name2">Название</h1>
+    <p id="price2" class="price">price</p>
+    <p id="weight2">weight</p>
+    <p id="country2">country</p>
+    <p><button>Добавить в корзину</button></p>
+</div>
+
+<div class="card">
+    <img id="coffeeImage3" src="static/images/coffees-background.jpg" alt="Coffee" style="width:100%">
+    <h1 id="name3">Название</h1>
+    <p id="price3" class="price">price</p>
+    <p id="weight3">weight</p>
+    <p id="country3">country</p>
+    <p><button>Добавить в корзину</button></p>
+</div>
+
+    <div class="card">
+        <img id="coffeeImage4" src="static/images/coffees-background.jpg" alt="Coffee" style="width:100%">
+        <h1 id="name4">Название</h1>
+        <p id="price4" class="price">price</p>
+        <p id="weight4">weight</p>
+        <p id="country4">country</p>
+        <p><button>Добавить в корзину</button></p>
+    </div>
+</div>
+
+<br>
+<br>
+<br>
+<div class="cardss">
+    <div class="card1">
+        <img id="coffeeImage0" src="static/images/coffees-background.jpg" alt="Coffee" style="width:100%">
+        <h1 id="name0">Название</h1>
+        <p id="price0" class="price1">price</p>
+        <p id="weight0">weight</p>
+        <p id="country0">country</p>
+        <p><button>Добавить в корзину</button></p>
+    </div>
+
+    <div class="card1">
+        <img id="coffeeImage11" src="static/images/coffees-background.jpg" alt="Coffee" style="width:100%">
+        <h1 id="name11">Название</h1>
+        <p id="price11" class="price1">price</p>
+        <p id="weight11">weight</p>
+        <p id="country11">country</p>
+        <p><button>Добавить в корзину</button></p>
+    </div>
+
+    <div class="card1">
+        <img id="coffeeImage1212" src="static/images/coffees-background.jpg" alt="Coffee" style="width:100%">
+        <h1 id="name1212">Название</h1>
+        <p id="price1212" class="price1">price</p>
+        <p id="weight1212">weight</p>
+        <p id="country1212">country</p>
+        <p><button>Добавить в корзину</button></p>
+    </div>
+
+    <div class="card1">
+        <img id="coffeeImage111" src="static/images/coffees-background.jpg" alt="Coffee" style="width:100%">
+        <h1 id="name111">Название</h1>
+        <p id="price111" class="price1">price</p>
+        <p id="weight111">weight</p>
+        <p id="country111">country</p>
+        <p><button>Добавить в корзину</button></p>
+    </div>
 </div>
 
 </body>
+<!--Вызываем скрипт для открытия фильтра-->
+<script src="static/js/callFilterMenu.js"></script>
+<!--Вызываем скрипт для добавления карточек товаров-->
+<script src="static/js/createProductCards.js"></script>
+<!--Редиректы по меню-->
+<script src="static/js/redirects.js"></script>
 </html>

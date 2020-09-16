@@ -1,0 +1,31 @@
+/*
+Меню бар
+*/
+.menu-bar {
+    overflow: hidden;
+    background-color: chocolate;
+}
+
+.menu-bar a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    align-items: center;
+    padding: 30px 16px;
+    text-decoration: none;
+    font-size: 19px;
+}
+
+.menu-bar a:hover {
+    background-color: white;
+    color: black;
+}
+
+.menu-bar a.home {
+    background-color: forestgreen;
+    color: white;
+}
+
+body {
+    font-family: "Lato", sans-serif;
+}
