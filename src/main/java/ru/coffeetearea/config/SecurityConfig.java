@@ -4,12 +4,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import ru.coffeetearea.model.Role;
 import ru.coffeetearea.security.JwtUserDetailsService;
 import ru.coffeetearea.security.jwt.JwtConfigurer;
 import ru.coffeetearea.security.jwt.JwtTokenProvider;
@@ -17,6 +17,7 @@ import ru.coffeetearea.security.jwt.JwtTokenProvider;
 @RequiredArgsConstructor
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(jsr250Enabled = true) // Включаем @RolesAllowed
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     // Fields
@@ -65,32 +66,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
+                // Раздаем статику
+                .antMatchers("/static/**").permitAll()
+                // Раздаем Swagger
                 .antMatchers("/v2/api-docs",
                         "/configuration/ui",
                         "/swagger-resources/**",
                         "/configuration/security",
                         "/swagger-ui.html",
                         "/webjars/**").permitAll()
-                .antMatchers("/catalogs/countries")
-                .hasAuthority(Role.CUSTOMER.name())
-                .antMatchers("/users/login", "/home/", "/users/registration", "/**/image", "/cart-item/list",
-                        "/cart-item/**", "/cart-item/all", "/coffee", "/coffee/**", "/**/delete", "/all", "/filter",
-                        "/tea", "/tea/**", "/**/delete", "coffees/all", "/filter", "/orders", "/users",
-                        "/drinks/drinks/**/favourites", "/drinks/favourites", "/drinks/populars", "/**/favourites",
-                        "/catalogs/coffee-types", "/catalogs/manufacturers", "/catalogs/packages",
-                        "/catalogs/roastings", "/catalogs/tea-colors", "/catalogs/tea-types",
-                        "/catalogs/**/coffee-types", "/catalogs/**/countries", "/catalogs/**/manufacturers",
-                        "/catalogs/**/packages", "/catalogs/**/roastings", "/catalogs/**/tea-colors",
-                        "/catalogs/**/tea-types", "/catalogs/**/delete/coffee-type", "/catalogs/**/delete/country",
-                        "/catalogs/**/delete/manufacturer", "/catalogs/**/delete/package",
-                        "/catalogs/**/delete/roasting", "/catalogs/**/delete/tea-color",
-                        "/catalogs/**/delete/tea-type", "/**/number", "/static/**", "/login", "/coffees", "/test", "/contacts").permitAll()// Все ссылки, которые доступны только заказчику
+                // Раздаем странички и ссылки, которые доступны всем
+                        // Ссылки
+                .antMatchers("/users/login",  "users/info", "/users/registration", "/coffee/all", "/coffee/filter",
+                        "/drinks/populars", "/drinks/**/image", "/tea/all", "/tea/filter",
+                        // Страницы
+                        "/login", "/contacts", "/coffees")
+                .permitAll()
                 .anyRequest()
                 .authenticated().and()
-//                .formLogin()
-//                .loginPage("/login")
-//                .permitAll()
-//                .and()
                 .logout()
                 .permitAll()
                 .and()

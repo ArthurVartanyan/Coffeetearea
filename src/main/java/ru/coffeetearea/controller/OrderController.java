@@ -13,6 +13,10 @@ import ru.coffeetearea.dto.MakeOrderDTO;
 import ru.coffeetearea.dto.OrderDTO;
 import ru.coffeetearea.service.OrderService;
 
+import javax.annotation.security.RolesAllowed;
+
+import static ru.coffeetearea.model.Role.ROLE_CUSTOMER;
+
 @RestController
 @RequestMapping("/orders")
 @RequiredArgsConstructor
@@ -29,6 +33,7 @@ public class OrderController {
      *
      * @param makeOrderDTO
      */
+    @RolesAllowed({ROLE_CUSTOMER})
     @PostMapping
     public ResponseEntity<OrderDTO> makeOrder(@Validated @RequestBody MakeOrderDTO makeOrderDTO) {
 

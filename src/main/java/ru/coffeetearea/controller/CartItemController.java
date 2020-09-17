@@ -7,9 +7,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.coffeetearea.dto.CartItemDTO;
+import ru.coffeetearea.model.Role;
 import ru.coffeetearea.service.CartItemService;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
+
+import static ru.coffeetearea.model.Role.ROLE_CUSTOMER;
 
 
 @RestController
@@ -28,6 +32,7 @@ public class CartItemController {
     /**
      * Получичение списка товаров в корзине
      */
+    @RolesAllowed({ROLE_CUSTOMER})
     @GetMapping("/list")
     public List<CartItemDTO> showAllCartDrinks() {
 
@@ -42,6 +47,7 @@ public class CartItemController {
      *
      * @param drinkId
      */
+    @RolesAllowed({ROLE_CUSTOMER})
     @PostMapping("/{drinkId}")
     public CartItemDTO addDrinkInCart(@PathVariable Long drinkId) {
 
@@ -56,6 +62,7 @@ public class CartItemController {
      *
      * @param drinkId
      */
+    @RolesAllowed({ROLE_CUSTOMER})
     @DeleteMapping("/{drinkId}")
     public void removeDrinkFromCart(@PathVariable Long drinkId) {
 
@@ -66,6 +73,7 @@ public class CartItemController {
     /**
      * Удаление всех товаров из корзины.
      */
+    @RolesAllowed({ROLE_CUSTOMER})
     @DeleteMapping("/all")
     public void removeAllDrinksFromCart() {
 
@@ -78,6 +86,7 @@ public class CartItemController {
     /**
      * Изменения количества напитка в корзине
      */
+    @RolesAllowed({ROLE_CUSTOMER})
     @PutMapping("/{drinkId}/number")
     public ResponseEntity<Integer> editDrinkCount(@PathVariable Long drinkId,
                                                   @Validated(CartItemDTO.SetCount.class)

@@ -11,8 +11,12 @@ import ru.coffeetearea.dto.SortingParams;
 import ru.coffeetearea.dto.TeaDTO;
 import ru.coffeetearea.service.TeaService;
 
+import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 import java.math.BigDecimal;
+
+import static ru.coffeetearea.model.Role.ROLE_ADMIN;
+import static ru.coffeetearea.model.Role.ROLE_CUSTOMER;
 
 @RestController
 @RequestMapping("/tea")
@@ -28,8 +32,9 @@ public class TeaController {
     // PUT - methods
 
     /**
-     * Редактирование напитка кофе
+     * Редактирование напитка чая
      */
+    @RolesAllowed({ROLE_ADMIN})
     @PutMapping("/{teaId}")
     public ResponseEntity<TeaDTO> editTea(@PathVariable Long teaId,
                                           @Validated(TeaDTO.Edit.class) @RequestBody TeaDTO teaDTO) {
@@ -45,6 +50,7 @@ public class TeaController {
      *
      * @param teaDTO
      */
+    @RolesAllowed({ROLE_ADMIN})
     @PostMapping
     public ResponseEntity<TeaDTO> addTea(@Validated(TeaDTO.New.class) @RequestBody TeaDTO teaDTO) {
         return new ResponseEntity<>(teaService.addTea(teaDTO), HttpStatus.OK);
@@ -97,6 +103,7 @@ public class TeaController {
      *
      * @param teaId
      */
+    @RolesAllowed({ROLE_ADMIN})
     @DeleteMapping("/{teaId}")
     public void deleteTeaFromDrinks(@PathVariable Long teaId) {
 

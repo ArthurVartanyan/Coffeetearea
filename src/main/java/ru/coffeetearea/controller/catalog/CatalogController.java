@@ -9,7 +9,11 @@ import org.springframework.web.bind.annotation.*;
 import ru.coffeetearea.dto.GeneralCatalogDTO;
 import ru.coffeetearea.service.catalog.CatalogService;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
+
+import static ru.coffeetearea.model.Role.ROLE_ADMIN;
+import static ru.coffeetearea.model.Role.ROLE_CUSTOMER;
 
 @RestController
 @RequiredArgsConstructor
@@ -24,6 +28,7 @@ public class CatalogController {
 
     // POST - methods
 
+    @RolesAllowed({ROLE_ADMIN})
     @PostMapping("/coffee-types")
     public ResponseEntity<GeneralCatalogDTO> addCoffeeType(@Validated(GeneralCatalogDTO.New.class)
                                                            @RequestBody GeneralCatalogDTO generalCatalogDTO) {
@@ -32,6 +37,7 @@ public class CatalogController {
                 .addCoffeeType(generalCatalogDTO.getName()), HttpStatus.OK);
     }
 
+    @RolesAllowed({ROLE_ADMIN})
     @PostMapping("/countries")
     public ResponseEntity<GeneralCatalogDTO> addCountry(@Validated(GeneralCatalogDTO.New.class)
                                                         @RequestBody GeneralCatalogDTO generalCatalogDTO) {
@@ -40,6 +46,7 @@ public class CatalogController {
                 .addCountry(generalCatalogDTO.getName()), HttpStatus.OK);
     }
 
+    @RolesAllowed({ROLE_ADMIN})
     @PostMapping("/manufacturers")
     public ResponseEntity<GeneralCatalogDTO> addManufacturer(@Validated(GeneralCatalogDTO.New.class)
                                                              @RequestBody GeneralCatalogDTO generalCatalogDTO) {
@@ -47,6 +54,7 @@ public class CatalogController {
         return new ResponseEntity<>(catalogService.addManufacturer(generalCatalogDTO.getName()), HttpStatus.OK);
     }
 
+    @RolesAllowed({ROLE_ADMIN})
     @PostMapping("/packages")
     public ResponseEntity<GeneralCatalogDTO> addPackaging(@Validated(GeneralCatalogDTO.New.class)
                                                           @RequestBody GeneralCatalogDTO generalCatalogDTO) {
@@ -54,6 +62,7 @@ public class CatalogController {
         return new ResponseEntity<>(catalogService.addPackaging(generalCatalogDTO.getName()), HttpStatus.OK);
     }
 
+    @RolesAllowed({ROLE_ADMIN})
     @PostMapping("/roastings")
     public ResponseEntity<GeneralCatalogDTO> addRoasting(@Validated(GeneralCatalogDTO.New.class)
                                                          @RequestBody GeneralCatalogDTO generalCatalogDTO) {
@@ -61,6 +70,7 @@ public class CatalogController {
         return new ResponseEntity<>(catalogService.addRoasting(generalCatalogDTO.getName()), HttpStatus.OK);
     }
 
+    @RolesAllowed({ROLE_ADMIN})
     @PostMapping("/tea-colors")
     public ResponseEntity<GeneralCatalogDTO> addTeaColor(@Validated(GeneralCatalogDTO.New.class)
                                                          @RequestBody GeneralCatalogDTO generalCatalogDTO) {
@@ -68,6 +78,7 @@ public class CatalogController {
         return new ResponseEntity<>(catalogService.addTeaColor(generalCatalogDTO.getName()), HttpStatus.OK);
     }
 
+    @RolesAllowed({ROLE_ADMIN})
     @PostMapping("/tea-types")
     public ResponseEntity<GeneralCatalogDTO> addTeaType(@Validated(GeneralCatalogDTO.New.class)
                                                         @RequestBody GeneralCatalogDTO generalCatalogDTO) {
@@ -83,6 +94,7 @@ public class CatalogController {
      *
      * @return List<GeneralCatalogDTO>
      */
+    @RolesAllowed({ROLE_ADMIN, ROLE_CUSTOMER})
     @GetMapping("/countries")
     public List<GeneralCatalogDTO> findCountries() {
 
@@ -94,6 +106,7 @@ public class CatalogController {
      *
      * @return List<GeneralCatalogDTO>
      */
+    @RolesAllowed({ROLE_ADMIN, ROLE_CUSTOMER})
     @GetMapping("/packages")
     public List<GeneralCatalogDTO> findPackages() {
 
@@ -105,6 +118,7 @@ public class CatalogController {
      *
      * @return List<GeneralCatalogDTO>
      */
+    @RolesAllowed({ROLE_ADMIN, ROLE_CUSTOMER})
     @GetMapping("/manufacturers")
     public List<GeneralCatalogDTO> findManufacturers() {
 
@@ -116,6 +130,7 @@ public class CatalogController {
      *
      * @return List<GeneralCatalogDTO>
      */
+    @RolesAllowed({ROLE_ADMIN, ROLE_CUSTOMER})
     @GetMapping("/tea-colors")
     public List<GeneralCatalogDTO> findTeaColor() {
 
@@ -127,6 +142,7 @@ public class CatalogController {
      *
      * @return List<GeneralCatalogDTO>
      */
+    @RolesAllowed({ROLE_ADMIN, ROLE_CUSTOMER})
     @GetMapping("/coffee-types")
     public List<GeneralCatalogDTO> findCoffeeType() {
 
@@ -138,6 +154,7 @@ public class CatalogController {
      *
      * @return List<GeneralCatalogDTO>
      */
+    @RolesAllowed({ROLE_ADMIN, ROLE_CUSTOMER})
     @GetMapping("/tea-types")
     public List<GeneralCatalogDTO> findTeaType() {
 
@@ -149,6 +166,7 @@ public class CatalogController {
      *
      * @return List<GeneralCatalogDTO>
      */
+    @RolesAllowed({ROLE_ADMIN, ROLE_CUSTOMER})
     @GetMapping("/roastings")
     public List<GeneralCatalogDTO> findRoasting() {
 
@@ -161,6 +179,7 @@ public class CatalogController {
     /**
      * Редактирование элементов типов кофе
      */
+    @RolesAllowed({ROLE_ADMIN})
     @PutMapping("/{coffeeTypeId}/coffee-types")
     public ResponseEntity<GeneralCatalogDTO> editCoffeeType(@PathVariable Long coffeeTypeId,
                                                             @Validated(GeneralCatalogDTO.New.class)
@@ -173,6 +192,7 @@ public class CatalogController {
     /**
      * Редактирование элементов стран
      */
+    @RolesAllowed({ROLE_ADMIN})
     @PutMapping("/{countryId}/countries")
     public ResponseEntity<GeneralCatalogDTO> editCountry(@PathVariable Long countryId,
                                                          @Validated(GeneralCatalogDTO.New.class)
@@ -186,6 +206,7 @@ public class CatalogController {
     /**
      * Редактирование элементов типов производителей
      */
+    @RolesAllowed({ROLE_ADMIN})
     @PutMapping("/{manufacturerId}/manufacturers")
     public ResponseEntity<GeneralCatalogDTO> editManufacturer(@PathVariable Long manufacturerId,
                                                               @Validated(GeneralCatalogDTO.New.class)
@@ -199,6 +220,7 @@ public class CatalogController {
     /**
      * Редактирование элементов типов пакетов
      */
+    @RolesAllowed({ROLE_ADMIN})
     @PutMapping("/{packagingId}/packages")
     public ResponseEntity<GeneralCatalogDTO> editPackaging(@PathVariable Long packagingId,
                                                            @Validated(GeneralCatalogDTO.New.class)
@@ -212,6 +234,7 @@ public class CatalogController {
     /**
      * Редактирование элементов типов обжарки
      */
+    @RolesAllowed({ROLE_ADMIN})
     @PutMapping("/{roastingId}/roastings")
     public ResponseEntity<GeneralCatalogDTO> editRoasting(@PathVariable Long roastingId,
                                                           @Validated(GeneralCatalogDTO.New.class)
@@ -225,6 +248,7 @@ public class CatalogController {
     /**
      * Редактирование элементов цветов чая
      */
+    @RolesAllowed({ROLE_ADMIN})
     @PutMapping("/{teaColorId}/tea-colors")
     public ResponseEntity<GeneralCatalogDTO> editTeaColor(@PathVariable Long teaColorId,
                                                           @Validated(GeneralCatalogDTO.New.class)
@@ -237,6 +261,7 @@ public class CatalogController {
     /**
      * Редактирование элементов типов чая
      */
+    @RolesAllowed({ROLE_ADMIN})
     @PutMapping("/{teaTypeId}/tea-types")
     public ResponseEntity<GeneralCatalogDTO> editTeaType(@PathVariable Long teaTypeId,
                                                          @Validated(GeneralCatalogDTO.New.class)
@@ -252,6 +277,7 @@ public class CatalogController {
     /**
      * Удаление элементов типов кофе
      */
+    @RolesAllowed({ROLE_ADMIN})
     @DeleteMapping("/{coffeeTypeId}/coffee-type")
     public void deleteCoffeeType(@PathVariable Long coffeeTypeId) {
 
@@ -261,6 +287,7 @@ public class CatalogController {
     /**
      * Удаление элементов стран
      */
+    @RolesAllowed({ROLE_ADMIN})
     @DeleteMapping("/{countryId}/country")
     public void deleteCountry(@PathVariable Long countryId) {
 
@@ -270,6 +297,7 @@ public class CatalogController {
     /**
      * Удаление элементов произваодителей
      */
+    @RolesAllowed({ROLE_ADMIN})
     @DeleteMapping("/{manufacturerId}/manufacturer")
     public void deleteManufacturer(@PathVariable Long manufacturerId) {
 
@@ -279,6 +307,7 @@ public class CatalogController {
     /**
      * Удаление элементов упаковок
      */
+    @RolesAllowed({ROLE_ADMIN})
     @DeleteMapping("/{packagingId}/package")
     public void deletePackaging(@PathVariable Long packagingId) {
 
@@ -288,6 +317,7 @@ public class CatalogController {
     /**
      * Удаление элементов обжарки кофе
      */
+    @RolesAllowed({ROLE_ADMIN})
     @DeleteMapping("/{roastingId}/roasting")
     public void deleteRoasting(@PathVariable Long roastingId) {
 
@@ -297,6 +327,7 @@ public class CatalogController {
     /**
      * Удаление элементов цвета чая
      */
+    @RolesAllowed({ROLE_ADMIN})
     @DeleteMapping("/{teaColorId}/tea-color")
     public void deleteTeaColor(@PathVariable Long teaColorId) {
 
@@ -306,6 +337,7 @@ public class CatalogController {
     /**
      * Удаление элементов типа чая
      */
+    @RolesAllowed({ROLE_ADMIN})
     @DeleteMapping("/{teaTypeId}/tea-type")
     public void deleteTeaType(@PathVariable Long teaTypeId) {
 

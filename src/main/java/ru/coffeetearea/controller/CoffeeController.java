@@ -12,7 +12,10 @@ import ru.coffeetearea.dto.PageDTO;
 import ru.coffeetearea.dto.SortingParams;
 import ru.coffeetearea.service.CoffeeService;
 
+import javax.annotation.security.RolesAllowed;
 import java.math.BigDecimal;
+
+import static ru.coffeetearea.model.Role.ROLE_ADMIN;
 
 @RestController
 @RequiredArgsConstructor
@@ -30,6 +33,7 @@ public class CoffeeController {
     /**
      * Редактирование напитка кофе
      */
+    @RolesAllowed({ROLE_ADMIN})
     @PutMapping("/{coffeeId}")
     public ResponseEntity<CoffeeDTO> editCoffee(@PathVariable Long coffeeId,
                                                 @Validated(DrinkDTO.Edit.class) @RequestBody CoffeeDTO coffeeDTO) {
@@ -45,6 +49,7 @@ public class CoffeeController {
      *
      * @param coffeeDTO
      */
+    @RolesAllowed({ROLE_ADMIN})
     @PostMapping
     public ResponseEntity<CoffeeDTO> addCoffee(@Validated(CoffeeDTO.New.class) @RequestBody CoffeeDTO coffeeDTO) {
         return new ResponseEntity<>(coffeeService.addCoffee(coffeeDTO), HttpStatus.OK);
@@ -97,6 +102,7 @@ public class CoffeeController {
      *
      * @param coffeeId
      */
+    @RolesAllowed({ROLE_ADMIN})
     @DeleteMapping("/{coffeeId}")
     public void deleteCoffeeFromDrinks(@PathVariable Long coffeeId) {
 
