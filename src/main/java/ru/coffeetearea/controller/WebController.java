@@ -27,4 +27,14 @@ public class WebController {
     public String contactsPage() {
         return "contacts";
     }
+
+    @GetMapping("/teas")
+    public String teasPage() {
+        return "teas";
+    }
+
+    @GetMapping("/home")
+    public String homePage() {
+        return "home";
+    }
 }

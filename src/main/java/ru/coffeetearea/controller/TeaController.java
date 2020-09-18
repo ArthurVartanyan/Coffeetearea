@@ -64,7 +64,7 @@ public class TeaController {
      */
     @GetMapping("/all")
     public PageDTO<TeaDTO> findAll(@RequestParam(value = "page", defaultValue = "0") int page,
-                                   @RequestParam(value = "page_size", defaultValue = "5") int pageSize,
+                                   @RequestParam(value = "page_size", defaultValue = "4") int pageSize,
                                    @RequestParam(required = false, defaultValue = "NAME_INCREASE")
                                            SortingParams sortingParams) {
 
