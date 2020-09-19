@@ -4,7 +4,7 @@
 .filter-panel  {
     width: 0;
     position: fixed;
-    top: 150px;
+    top: 180px;
     left: 0;
     z-index: 1;
     height: 250px;
@@ -36,7 +36,7 @@
 
 .filter-button {
     position: fixed;
-    top: 90px;
+    top: 100px;
     left: 0;
     font-size: 20px;
     cursor: pointer;

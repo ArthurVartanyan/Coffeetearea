@@ -37,4 +37,15 @@ public class WebController {
     public String homePage() {
         return "home";
     }
+
+    @GetMapping("/about")
+    public String aboutPage() {
+        return "about";
+    }
+
+    @GetMapping("/registration")
+    public String registrationPage() {
+        return "registration";
+    }
+
 }

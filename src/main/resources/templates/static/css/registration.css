@@ -1,7 +1,7 @@
 .forms-and-button {
     padding: 50px;
     position: fixed;
-    top: 50%;
+    top: 20%;
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
@@ -10,7 +10,7 @@
 
 .btn-primary {
     margin-top: 10px;
-    width: 120 px;
+    width: 120px;
     height: 35px;
 }
 

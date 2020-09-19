@@ -29,3 +29,31 @@
 body {
     font-family: "Lato", sans-serif;
 }
+
+.dropdown {
+    position: fixed;
+    top: 90px;
+    left: -13px;
+    font-size: 20px;
+    color: saddlebrown;
+    cursor: pointer;
+    padding: 10px 15px;
+    border: none;
+}
+
+.menu-bar div.svg {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    margin-left: 1700px;
+    margin-top: 40px;
+}
+
+p.info {
+    width: 0;
+    position: fixed;
+    top: 10px;
+    left: 950px;
+    color: white;
+    font-family: "Brush Script MT", cursive;
+}

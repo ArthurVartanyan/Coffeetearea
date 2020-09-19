@@ -10,10 +10,18 @@ function RedirectTeas() {
     window.location = '/teas';
 }
 
-// function RedirectAbout() {
-//     window.location = '/contacts';
-// }
+function RedirectAbout() {
+    window.location = '/about';
+}
 
 function RedirectHome() {
     window.location = '/home';
+}
+
+function RedirectRegistration() {
+    window.location = '/registration';
+}
+
+function RedirectLogin() {
+    window.location = '/login';
 }

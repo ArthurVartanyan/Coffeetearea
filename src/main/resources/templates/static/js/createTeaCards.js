@@ -8,7 +8,7 @@ xhr.onload = () => {
 
     var datas = JSON.parse(xhr.response)
 
-    for (let i = 0; i <= datas.content.length; i++) {
+    for (let i = 0; i < datas.content.length; i++) {
 
         var card = document.createElement("div");
         card.style.boxShadow = '0 4px 8px 0 rgba(0, 0, 0, 0.2)';

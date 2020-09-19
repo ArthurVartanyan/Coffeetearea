@@ -13,7 +13,11 @@ _form.addEventListener("submit", function (e) {
         body: JSON.stringify(Object.fromEntries(new FormData(e.target)))
     })
         .then((res) => {
-            return res.json();
+            if (res.status === 200) {
+                window.location = '/home';
+                return res.json();
+
+            }
         })
         .then((data) => {
             if (data && data.token) {

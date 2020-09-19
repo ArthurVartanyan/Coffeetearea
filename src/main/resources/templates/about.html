@@ -1,21 +1,20 @@
-<!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 
 <head>
-    <title>CoffeeTeArea</title>
+    <title>Контакты</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="static/css/drinksCardsAndFilters.css">
     <link rel="stylesheet" href="static/css/menuBar.css">
-    <link rel="stylesheet" href="static/css/home.css">
+    <link rel="stylesheet" href="static/css/about.css">
 
 
 </head>
 
-<body background="static/images/home.png">
+<body background="static/images/back.jpg">
 
 <!--МЕНЮ-БАР-->
 <div id="menu-bar" class="menu-bar">
@@ -29,7 +28,6 @@
             <path fill-rule="evenodd" d="M12 1H4a1 1 0 0 0-1 1v10.755S4 11 8 11s5 1.755 5 1.755V2a1 1 0 0 0-1-1zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4z"/>
             <path fill-rule="evenodd" d="M8 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
         </svg>
-
         <svg onclick="RedirectLogin();" width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-box-arrow-in-right" fill="white" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z"/>
             <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
@@ -49,32 +47,34 @@
     </div>
 </div>
 
-
 <p class="info">
     <pr>ddd<br></pr>
     <pr>ddd<br></pr>
     <pr>ddd<br></pr></p>
 
-<h1 class="h1">CoffeeTeArea</h1>
+<!--о нас и тд.-->
+<div class="about">
+    <h1 id="contacts">Контролируем качество и цены:</h1>
+    <p class="price">CoffeeTeArea.ru работает с производителями без посредников, напрямую.<br>
+        Мы тщательно выбираем поставщиков и следим за качеством каждой из 5 000 позиций нашего каталога.<br>
+        Это, а также отсутствие необходимости платить за аренду торговых помещений, позволяет CoffeeTeArea.ru<br>
+        оставаться одним из самых выгодных маркетплейсов.<br>
+        Мы гарантируем вам лучшее соотношение качества натуральных продуктов и цены.</p>
 
+    <br>
+    <h1 id="Social">Обслуживаем клиентов 24/7:</h1>
+    <p id="24/7">Следим за качеством обслуживания покупателей и постоянно совершенствуем клиентский сервис.<br>
+        Наши менеджеры ответят на любой ваш запрос в течение 24 часов, 7 дней в неделю.</p>
 
-<!--Карточки товаров-->
-<br>
-<br>
-<br>
-<h3 class="h3">ТОП - 5 популярных напитков!</h3>
-<div class="cards" id="cards">
+    <br>
+    <h1 id="Money">Вернем деньги, если товар не понравится:</h1>
+    <p id="money-return">Если чай или кофе вам не понравился, мы вернем деньги.<br>
+        Все что нужно от вас – сохранить чек и товарный вид покупок.</p>
 </div>
-
-<br>
-<br>
-<br>
-
 </body>
-<!--Вызываем скрипт для добавления карточек товаров-->
-<script src="static/js/createHomeCards.js"></script>
-<!--Редиректы по меню-->
+
 <script src="static/js/redirects.js"></script>
 
 <script src="static/js/logout.js"></script>
+
 </html>
