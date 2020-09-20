@@ -10,7 +10,7 @@
 
 .btn-primary {
     margin-top: 10px;
-    width: 120 px;
+    width: 120px;
     height: 35px;
 }
 
@@ -35,4 +35,20 @@ h1 {
     font-size: 50pt;
     color: WHITE;
     font-weight: bold;
+}
+
+.registr {
+    padding: 50px;
+    position: fixed;
+    top: 80%;
+    left: 42%;
+
+    font-family: Snell Roundhand, cursive;
+    font-size: 16pt;
+    color: WHITE;
+    font-weight: bold;
+}
+
+.registr a.reg {
+    color: white;
 }

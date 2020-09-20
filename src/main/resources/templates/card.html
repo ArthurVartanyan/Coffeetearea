@@ -1,20 +1,19 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-    <title>Контакты</title>
+    <title>CoffeeTeArea</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="static/css/menuBar.css">
-    <link rel="stylesheet" href="static/css/about.css">
-
+    <link rel="stylesheet" href="static/css/card.css">
 
 </head>
 
-<body background="static/images/back.jpg">
+<body background="static/images/home.png">
 
 <!--МЕНЮ-БАР-->
 <div id="menu-bar" class="menu-bar">
@@ -43,31 +42,18 @@
     </div>
 </div>
 
+
+<h1 class="h1">Ваша корзина: </h1>
+
+<div class="cardItems" id="cardItems">
+</div>
+
 <p class="info" id="info"></p>
 
-<!--о нас и тд.-->
-<div class="about">
-    <h1 id="contacts">Контролируем качество и цены:</h1>
-    <p class="price">CoffeeTeArea.ru работает с производителями без посредников, напрямую.<br>
-        Мы тщательно выбираем поставщиков и следим за качеством каждой из 5 000 позиций нашего каталога.<br>
-        Это, а также отсутствие необходимости платить за аренду торговых помещений, позволяет CoffeeTeArea.ru<br>
-        оставаться одним из самых выгодных маркетплейсов.<br>
-        Мы гарантируем вам лучшее соотношение качества натуральных продуктов и цены.</p>
-
-    <br>
-    <h1 id="Social">Обслуживаем клиентов 24/7:</h1>
-    <p id="24/7">Следим за качеством обслуживания покупателей и постоянно совершенствуем клиентский сервис.<br>
-        Наши менеджеры ответят на любой ваш запрос в течение 24 часов, 7 дней в неделю.</p>
-
-    <br>
-    <h1 id="Money">Вернем деньги, если товар не понравится:</h1>
-    <p id="money-return">Если чай или кофе вам не понравился, мы вернем деньги.<br>
-        Все что нужно от вас – сохранить чек и товарный вид покупок.</p>
-</div>
 </body>
-<script src="static/js/userInfo.js"></script>
+<script src="static/js/card.js"></script>
+<!--Редиректы по меню-->
 <script src="static/js/redirects.js"></script>
-
+<script src="static/js/userInfo.js"></script>
 <script src="static/js/logout.js"></script>
-
 </html>

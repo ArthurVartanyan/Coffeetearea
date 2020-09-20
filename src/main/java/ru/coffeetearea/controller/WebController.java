@@ -48,4 +48,8 @@ public class WebController {
         return "registration";
     }
 
+    @GetMapping("/card")
+    public String cardPage() {
+        return "card";
+    }
 }

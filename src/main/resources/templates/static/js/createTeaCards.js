@@ -1,64 +1,76 @@
-const requestURL = '/tea/all'
+function createTeaCards(number = '0') {
 
-const xhr = new XMLHttpRequest();
+    var url = new URL("http://localhost:8080/tea/all");
 
-xhr.open('GET', requestURL)
+    var search_params = url.searchParams;
+    search_params.set('page', number);
+    url.search = search_params.toString();
+    var new_url = url.toString();
 
-xhr.onload = () => {
+    const xhr = new XMLHttpRequest();
 
-    var datas = JSON.parse(xhr.response)
 
-    for (let i = 0; i < datas.content.length; i++) {
+    xhr.open('GET', new_url)
 
-        var card = document.createElement("div");
-        card.style.boxShadow = '0 4px 8px 0 rgba(0, 0, 0, 0.2)';
-        card.style.textAlign = 'center';
-        card.style.fontFamily = 'arial, serif';
-        card.style.width = '15%';
-        card.style.background = 'white';
-        card.style.margin = '5px';
 
-        var image = document.createElement("img")
-        image.src = "static/images/back.jpg"
-        image.style.width = "100%";
+    xhr.onload = () => {
 
-        var name = document.createElement("h1");
-        name.textContent = datas.content[i].name;
+        var datas = JSON.parse(xhr.response)
 
-        var price = document.createElement("p");
-        price.textContent = 'Цена: ' + datas.content[i].price + '₽';
-        price.style.color = 'grey';
-        price.style.background = 'white';
-        price.style.fontSize = '22px';
+        document.getElementById('cards').innerHTML = "";
 
-        var weight = document.createElement("p");
-        weight.textContent = 'Вес: ' + datas.content[i].weight + 'гр.';
+        for (let i = 0; i < datas.content.length; i++) {
 
-        var country = document.createElement("p");
-        country.textContent = 'Страна: ' + datas.content[i].country.name;
+            var card = document.createElement("div");
+            card.style.boxShadow = '0 4px 8px 0 rgba(0, 0, 0, 0.2)';
+            card.style.textAlign = 'center';
+            card.style.fontFamily = 'arial, serif';
+            card.style.width = '15%';
+            card.style.background = 'white';
+            card.style.margin = '5px';
 
-        var button = document.createElement("button")
-        button.textContent = "Добавить в корзину"
-        button.style.border = 'none';
-        button.style.outline = '0';
-        button.style.padding = '12px';
-        button.style.color = 'white';
-        button.style.backgroundColor = '#000';
-        button.style.textAlign = 'center';
-        button.style.cursor = 'pointer';
-        button.style.width = '100%';
-        button.style.fontSize = '18px';
+            var image = document.createElement("img")
+            image.src = "static/images/back.jpg"
+            image.style.width = "100%";
 
-        card.appendChild(image);
-        card.appendChild(name);
-        card.appendChild(price);
-        card.appendChild(weight);
-        card.appendChild(country);
-        card.appendChild(button);
+            var name = document.createElement("h1");
+            name.textContent = datas.content[i].name;
 
-        var super_div = document.getElementById('cards')
+            var price = document.createElement("p");
+            price.textContent = 'Цена: ' + datas.content[i].price + '₽';
+            price.style.color = 'grey';
+            price.style.background = 'white';
+            price.style.fontSize = '22px';
 
-        super_div.appendChild(card);
+            var weight = document.createElement("p");
+            weight.textContent = 'Вес: ' + datas.content[i].weight + 'гр.';
+
+            var country = document.createElement("p");
+            country.textContent = 'Страна: ' + datas.content[i].country.name;
+
+            var button = document.createElement("button")
+            button.textContent = "Добавить в корзину"
+            button.style.border = 'none';
+            button.style.outline = '0';
+            button.style.padding = '12px';
+            button.style.color = 'white';
+            button.style.backgroundColor = '#000';
+            button.style.textAlign = 'center';
+            button.style.cursor = 'pointer';
+            button.style.width = '100%';
+            button.style.fontSize = '18px';
+
+            card.appendChild(image);
+            card.appendChild(name);
+            card.appendChild(price);
+            card.appendChild(weight);
+            card.appendChild(country);
+            card.appendChild(button);
+
+            var super_div = document.getElementById('cards')
+
+            super_div.appendChild(card);
+        }
     }
+    xhr.send()
 }
-xhr.send()

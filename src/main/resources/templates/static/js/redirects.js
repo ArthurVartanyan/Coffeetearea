@@ -23,5 +23,12 @@ function RedirectRegistration() {
 }
 
 function RedirectLogin() {
-    window.location = '/login';
+    if (localStorage.getItem('token') !== null) {
+        alert("Уважаемый покупатель, Вы уже авторизовались!")
+    } else (window.location = '/login');
+
+}
+
+function RedirectCard() {
+    window.location = '/card';
 }

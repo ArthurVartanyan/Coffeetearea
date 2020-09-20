@@ -27,7 +27,7 @@
 }
 
 body {
-    font-family: "Lato", sans-serif;
+    font-family: "Brush Script MT", cursive;
 }
 
 .dropdown {
@@ -53,7 +53,7 @@ p.info {
     width: 0;
     position: fixed;
     top: 10px;
-    left: 950px;
+    left: 1550px;
     color: white;
     font-family: "Brush Script MT", cursive;
 }

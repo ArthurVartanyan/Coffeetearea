@@ -77,10 +77,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/webjars/**").permitAll()
                 // Раздаем странички и ссылки, которые доступны всем
                         // Ссылки
-                .antMatchers("/users/login",  "users/info", "/users/registration", "/coffee/all", "/coffee/filter",
+                .antMatchers("/users/login",  "/users/info", "/users/registration", "/coffee/all", "/coffee/filter",
                         "/drinks/populars", "/drinks/**/image", "/tea/all", "/tea/filter",
                         // Страницы
-                        "/login", "/contacts", "/coffees", "/teas", "/home", "/about", "/registration")
+                        "/login", "/contacts", "/coffees", "/teas", "/home", "/about", "/registration", "/card")
                 .permitAll()
                 .anyRequest()
                 .authenticated().and()
