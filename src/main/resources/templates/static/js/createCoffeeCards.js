@@ -50,6 +50,8 @@ function createCards(number = '0') {
             country.textContent = 'Страна: ' + datas.content[i].country.name;
 
             var button = document.createElement("button")
+            button.className = 'button'
+            button.id = datas.content[i].id
             button.textContent = "Добавить в корзину"
             button.style.border = 'none';
             button.style.outline = '0';
@@ -60,6 +62,20 @@ function createCards(number = '0') {
             button.style.cursor = 'pointer';
             button.style.width = '100%';
             button.style.fontSize = '18px';
+            button.onclick = function() {
+
+                fetch("/cart-item/" + this.id, {
+
+                    method: 'POST',
+
+                    headers: {
+                        'Content-Type': 'application/json;charset=utf-8',
+
+                        'Authorization': localStorage.getItem('token')
+                    },
+                })
+
+            }
 
             card.appendChild(image);
             card.appendChild(name);
@@ -73,5 +89,6 @@ function createCards(number = '0') {
             super_div.appendChild(card);
         }
     }
+
     xhr.send();
 }

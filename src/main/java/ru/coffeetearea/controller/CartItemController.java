@@ -7,10 +7,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.coffeetearea.dto.CartItemDTO;
-import ru.coffeetearea.model.Role;
+import ru.coffeetearea.dto.CartItemPriceDTO;
 import ru.coffeetearea.service.CartItemService;
 
 import javax.annotation.security.RolesAllowed;
+import java.math.BigDecimal;
 import java.util.List;
 
 import static ru.coffeetearea.model.Role.ROLE_CUSTOMER;
@@ -34,7 +35,7 @@ public class CartItemController {
      */
     @RolesAllowed({ROLE_CUSTOMER})
     @GetMapping("/list")
-    public List<CartItemDTO> showAllCartDrinks() {
+    public CartItemPriceDTO showAllCartDrinks() {
 
         return cartItemService.showAllCartDrinks();
     }

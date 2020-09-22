@@ -3,6 +3,7 @@ package ru.coffeetearea.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.coffeetearea.dto.CartItemDTO;
+import ru.coffeetearea.dto.CartItemPriceDTO;
 import ru.coffeetearea.exceptions.EntityNotFoundException;
 import ru.coffeetearea.exceptions.InternalServerException;
 import ru.coffeetearea.mappers.CartItemMapper;
@@ -16,6 +17,7 @@ import ru.coffeetearea.repository.OrderRepository;
 import ru.coffeetearea.repository.UserRepository;
 import ru.coffeetearea.security.jwt.JwtUser;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +36,8 @@ public class CartItemService {
     private final UserRepository userRepository;
 
     private final CartItemMapper cartItemMapper;
+
+    private final OrderService orderService;
 
     //
 
@@ -149,7 +153,7 @@ public class CartItemService {
     /**
      * Получичение списка товаров в корзине
      */
-    public List<CartItemDTO> showAllCartDrinks() {
+    public CartItemPriceDTO showAllCartDrinks() {
 
         Long id = JwtUser.getCurrentUserID();
 
@@ -161,7 +165,11 @@ public class CartItemService {
 
         List<CartItem> cartItem = order.getCartItems();
 
-        return cartItemMapper.cartItemsToCartItemsDTO(cartItem);
+        CartItemPriceDTO cartItemPriceDTO = new CartItemPriceDTO();
+        cartItemPriceDTO.setCartItemDTOS(cartItemMapper.cartItemsToCartItemsDTO(cartItem));
+        cartItemPriceDTO.setOrderPrice(orderService.calculateOrderPrice(order));
+
+        return cartItemPriceDTO;
     }
 
 

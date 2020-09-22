@@ -26,7 +26,7 @@
         <a href="#contacts" onclick="RedirectContacts();">Контакты</a>
 
         <div class="svg">
-            <svg onclick="RedirectLogin();" width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-box-arrow-in-right" fill="white" xmlns="http://www.w3.org/2000/svg">
+            <svg id="login" onclick="RedirectLogin();" width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-box-arrow-in-right" fill="white" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z"/>
                 <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
             </svg>
@@ -39,7 +39,7 @@
                 <path fill-rule="evenodd"
                       d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9H2zM1 7v1h14V7H1zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5z"/>
             </svg>
-            <svg onclick="logOut();" width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-door-open-fill" fill="white" xmlns="http://www.w3.org/2000/svg">
+            <svg id="logout" onclick="logOut();" width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-door-open-fill" fill="white" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M1.5 15a.5.5 0 0 0 0 1h13a.5.5 0 0 0 0-1H13V2.5A1.5 1.5 0 0 0 11.5 1H11V.5a.5.5 0 0 0-.57-.495l-7 1A.5.5 0 0 0 3 1.5V15H1.5zM11 2v13h1V2.5a.5.5 0 0 0-.5-.5H11zm-2.5 8c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1z"/>
             </svg>
         </div>
@@ -68,24 +68,16 @@
 
 
 
-<div class="paginationCof">
-<nav aria-label="Pagination">
-    <ul class="pagination">
-        <li class="page-item">
-            <a class="page-link" href="#" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-            </a>
-        </li>
-        <li class="page-item" onclick="first()"><a class="page-link" href="#">1</a></li>
-        <li class="page-item" onclick="second()"><a class="page-link" href="#">2</a></li>
-        <li class="page-item" onclick="third()"><a class="page-link" href="#">3</a></li>
-        <li class="page-item">
-            <a class="page-link" href="#" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-            </a>
-        </li>
-    </ul>
-</nav></div>
+<div class="pagination">
+    <a href="#">&laquo;</a>
+    <a href="#">1</a>
+    <a class="active" href="#">2</a>
+    <a href="#">3</a>
+    <a href="#">4</a>
+    <a href="#">5</a>
+    <a href="#">6</a>
+    <a href="#">&raquo;</a>
+</div>
 
 </body>
 <!--Информация о пользователе в шапке-->
@@ -99,5 +91,7 @@
 <!--Выход из системы-->
 <script src="static/js/logout.js"></script>
 <script src="static/js/coffeesPagination.js"></script>
+<script src="static/js/icons.js"></script>
+<script src="static/js/paginationButtons.js"></script>
 
 </html>

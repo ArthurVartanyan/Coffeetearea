@@ -19,4 +19,10 @@ public interface CartItemMapper {
 
     @IterableMapping(qualifiedByName = "cartItemsToCartItemsDTO")
     List<CartItemDTO> cartItemsToCartItemsDTO(List<? extends CartItem> cartItems);
+
+
+    /**
+     * Маппер для CartItemPrice
+     */
+
 }

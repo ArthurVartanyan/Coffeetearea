@@ -14,7 +14,6 @@ public class CartItemDTO {
 
     }
 
-    @Null(groups = {SetCount.class})
     private Drink drink;
 
     @Min(value = 1, groups = {SetCount.class})
