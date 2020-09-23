@@ -52,3 +52,12 @@ h1 {
 .registr a.reg {
     color: white;
 }
+
+
+.error {
+    position: fixed;
+    left: 50%;
+    top: 10%;
+    font-size: 48px;
+    color: red;
+}

@@ -1,0 +1,44 @@
+.orderOf {
+    font-size: 100px;
+    text-align: left;
+    color: forestgreen;
+    font-family: "Brush Script MT", cursive;
+    position: fixed;
+    left: 400px;
+}
+
+.inputNumber {
+    position: fixed;
+    left: 800px;
+    top: 380px;
+}
+
+.inputAddress {
+    position: fixed;
+    left: 800px;
+    top: 470px;
+}
+
+.prNumber {
+    color: saddlebrown;
+    position: fixed;
+    left: 800px;
+    top: 350px;
+}
+
+.prAddress {
+    color: saddlebrown;
+    position: fixed;
+    left: 800px;
+    top: 440px;
+}
+
+.orderButton {
+    background-color: saddlebrown;
+    color: #f1f1f1;
+    height: 30px;
+    width: 170px;
+    position: fixed;
+    left: 820px;
+    top: 540px;
+}

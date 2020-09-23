@@ -9,9 +9,7 @@ function createTeaCards(number = '0') {
 
     const xhr = new XMLHttpRequest();
 
-
     xhr.open('GET', new_url)
-
 
     xhr.onload = () => {
 
@@ -60,7 +58,7 @@ function createTeaCards(number = '0') {
             button.style.cursor = 'pointer';
             button.style.width = '100%';
             button.style.fontSize = '18px';
-            button.onclick = function() {
+            button.onclick = function () {
 
                 fetch("/cart-item/" + this.id, {
 
@@ -71,6 +69,11 @@ function createTeaCards(number = '0') {
 
                         'Authorization': localStorage.getItem('token')
                     },
+                })
+                    .then((res) => {
+                    if (res.status === 200) {
+                        alert('Напиток успешно добавлен в корзину!')
+                    }
                 })
             }
 
@@ -85,6 +88,18 @@ function createTeaCards(number = '0') {
 
             super_div.appendChild(card);
         }
+
+        for (let i = 0; i < datas.totalPages; i++) {
+            document.getElementById(i + 100).style.backgroundColor = 'chocolate';
+            document.getElementById(i + 100).style.color = 'black';
+            document.getElementById(i + 100).style.border = '1px solid chocolate';
+        }
+
+        document.getElementById(datas.number + 100).style.backgroundColor = '#4CAF50';
+        document.getElementById(datas.number + 100).style.color = 'white';
+        document.getElementById(datas.number + 100).style.border = '1px solid #4CAF50';
     }
-    xhr.send()
+
+    xhr.send();
+
 }

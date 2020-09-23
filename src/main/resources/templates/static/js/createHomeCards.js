@@ -61,6 +61,11 @@ xhr.onload = () => {
                     'Authorization': localStorage.getItem('token')
                 },
             })
+                .then((res) => {
+                if (res.status === 200) {
+                    alert('Напиток успешно добавлен в корзину!')
+                }
+            })
         }
 
         card.appendChild(image);

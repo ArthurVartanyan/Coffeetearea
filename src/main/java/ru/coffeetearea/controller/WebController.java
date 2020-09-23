@@ -52,4 +52,14 @@ public class WebController {
     public String cardPage() {
         return "card";
     }
+
+    @GetMapping("/order")
+    public String orderPage() {
+        return "order";
+    }
+
+    @GetMapping("/errorLogin")
+    public String errorLoginPage() {
+        return "errorLogin";
+    }
 }

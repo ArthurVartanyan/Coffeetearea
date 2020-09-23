@@ -16,7 +16,9 @@ _form.addEventListener("submit", function (e) {
             if (res.status === 200) {
                 window.location = '/home';
                 return res.json();
-
+            }
+            if (res.status === 403) {
+                window.location = '/errorLogin';
             }
         })
         .then((data) => {

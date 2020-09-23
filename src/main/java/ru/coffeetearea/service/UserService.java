@@ -2,6 +2,7 @@ package ru.coffeetearea.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationServiceException;
@@ -96,7 +97,12 @@ public class UserService {
 
         User user = userMapper.registrationUserDTOtoUser(registrationUserDTO);
 
-        if (registrationUserDTO.getCheckPassword().equals(registrationUserDTO.getPassword())) {
+        if (userRepository.getByLogin(registrationUserDTO.getLogin()) != null) {
+
+            throw new BadRequestException("Внимание! Пользователь с таким логином уже сущетсвует!");
+        }
+
+        if (StringUtils.equals(registrationUserDTO.getCheckPassword(), registrationUserDTO.getPassword())) {
             user.setPassword(passwordEncoder.encode(registrationUserDTO.getPassword()));
         } else {
             throw new BadRequestException("Внимание! Пароли отличаются!");

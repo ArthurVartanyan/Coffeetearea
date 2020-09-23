@@ -1,21 +1,21 @@
-<!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 
 <head>
-    <title>CoffeeTeArea || Чай</title>
+    <title>Контакты</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="static/css/drinksCardsAndFilters.css">
     <link rel="stylesheet" href="static/css/menuBar.css">
-    <link rel="stylesheet" href="static/css/pagination.css">
+    <link rel="stylesheet" href="static/css/about.css">
+    <link rel="stylesheet" href="static/css/order.css">
 
 
 </head>
 
-<body background="static/images/teas-background.png" onload="createTeaCards();">
+<body background="static/images/back.jpg">
 
 <!--МЕНЮ-БАР-->
 <div id="menu-bar" class="menu-bar">
@@ -45,41 +45,24 @@
 </div>
 
 
+<h1 id="orderOf" class="orderOf">Оформление заказа:</h1>
+
+<pr class="prNumber">Номер телефона(без +7 или 8):</pr>
+<pr class="prAddress">Адрес доставки:</pr>
+
+
+<input type="text" id="inputNumber" class="inputNumber">
+<input type="text" id="inputAddress" class="inputAddress">
+
+<button class="orderButton" id="orderButton">Сделать заказ</button>
+
 <p class="info" id="info"></p>
 
-<!--ФИЛЬТР-->
-<div id="filter-panel" class="filter-panel">
-    <a href="javascript:void(0)" class="close-button" onclick="closeNav()">×</a>
-    <a href="#">Прожарка</a>
-    <a href="#">Тип</a>
-    <a href="#">Страна</a>
-    <a href="#">Стоимость</a>
-</div>
 
-<button class="filter-button" onclick="openNav()">☰ Фильтр</button>
-
-
-<!--Карточки товаров-->
-<br>
-<br>
-<br>
-<div class="cards" id="cards">
-</div>
-
-
-
-<div id="paginationTea" class="pagination">
-</div>
 </body>
 <script src="static/js/userInfo.js"></script>
-<!--Вызываем скрипт для добавления карточек товаров-->
-<script src="static/js/createTeaCards.js"></script>
-<script src="static/js/teaPaginationButtons.js"></script>
-<!--Вызываем скрипт для открытия фильтра-->
-<script src="static/js/callFilterMenu.js"></script>
-<!--Редиректы по меню-->
 <script src="static/js/redirects.js"></script>
-<!--Выход-->
-<script src="static/js/logout.js"></script>
 <script src="static/js/icons.js"></script>
+<script src="static/js/logout.js"></script>
+
 </html>

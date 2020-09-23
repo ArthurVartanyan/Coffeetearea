@@ -74,7 +74,11 @@ function createCards(number = '0') {
                         'Authorization': localStorage.getItem('token')
                     },
                 })
-
+                    .then((res) => {
+                        if (res.status === 200) {
+                            alert('Напиток успешно добавлен в корзину!')
+                        }
+                    })
             }
 
             card.appendChild(image);
@@ -88,7 +92,16 @@ function createCards(number = '0') {
 
             super_div.appendChild(card);
         }
-    }
 
+        for (let i = 0; i < datas.totalPages; i++) {
+            document.getElementById(i).style.backgroundColor = 'chocolate';
+            document.getElementById(i).style.color = 'black';
+            document.getElementById(i).style.border = '1px solid chocolate';
+        }
+
+        document.getElementById(number).style.backgroundColor = '#4CAF50';
+        document.getElementById(number).style.color = 'white';
+        document.getElementById(number).style.border = '1px solid #4CAF50';
+    }
     xhr.send();
 }

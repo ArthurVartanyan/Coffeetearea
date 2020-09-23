@@ -32,3 +32,7 @@ function RedirectLogin() {
 function RedirectCard() {
     window.location = '/card';
 }
+
+function RedirectOrder() {
+    window.location = '/order';
+}

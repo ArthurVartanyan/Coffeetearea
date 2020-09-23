@@ -13,8 +13,6 @@ if (localStorage.getItem('token') !== null) {
 
         var datas = JSON.parse(xhr.response)
 
-        console.log(datas)
-
         var super_div = document.getElementById('cardItems')
 
         for (let i = 0; i < datas.cartItemDTOS.length; i++) {
@@ -64,6 +62,7 @@ if (localStorage.getItem('token') !== null) {
             cardItemCount.style.color = 'chocolate';
 
             var weight = document.createElement("pr")
+            weight.className = 'weightClassName'
             weight.style.fontFamily = 'Brush Script MT, cursive';
             weight.style.fontSize = '30px';
             weight.style.color = 'chocolate';
@@ -144,9 +143,26 @@ if (localStorage.getItem('token') !== null) {
             }
 
 
+
+        var order = document.createElement("button")
+
+        order.style.width = '200px';
+        order.style.height = '40px';
+        order.style.position = 'fixed'
+        order.style.marginLeft = '950px';
+        order.style.top = '400px';
+        order.textContent = 'Оформить заказ'
+        order.onclick = function () {
+
+            if (document.getElementById('cardItems').childElementCount !== 1){
+                RedirectOrder();
+            } else (alert('Ошибка! Для оформления заказа Вам необходимо пополнить корзину!'))
+        }
+
             var br5 = document.createElement('br');
 
             document.body.appendChild(removeAllButton);
+            document.body.appendChild(order);
             super_div.appendChild(br5);
 
             const url = '/cart-item/list'

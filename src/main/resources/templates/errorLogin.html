@@ -12,22 +12,24 @@
 </head>
 
 <body background="static/images/background.jpg">
-    <h1>Авторизация</h1>
-        <form action="/users/login" name="formElem" id="formElem" method="post">
-            <div class="forms-and-button">
+<h1>Авторизация</h1>
+<form action="/users/login" name="formElem" id="formElem" method="post">
+    <div class="forms-and-button">
 
-                <label for="inputLogin">Логин:</label>
-                <input name="login" type="text" class="form-control" id="inputLogin" aria-describedby="loginHelp">
+        <label for="inputLogin">Логин:</label>
+        <input name="login" type="text" class="form-control" id="inputLogin" aria-describedby="loginHelp">
 
-                <label for="inputPassword">Пароль:</label>
-                <input name="password" type="password" class="form-control" id="inputPassword">
+        <label for="inputPassword">Пароль:</label>
+        <input name="password" type="password" class="form-control" id="inputPassword">
 
-                <button class="btn btn-primary">Вход</button>
+        <button class="btn btn-primary">Вход</button>
 
-            </div>
-        </form>
+    </div>
+</form>
 
-    <p class="registr" onclick="RedirectRegistration();"><a class="reg" href="#">У меня нет аккаунта!</a></p>
+<h1 class="error">Неверно введен логин или пароль!</h1>
+
+<p class="registr" onclick="RedirectRegistration();"><a class="reg" href="#">У меня нет аккаунта!</a></p>
 </body>
 
 <script src="static/js/authorization.js"></script>
