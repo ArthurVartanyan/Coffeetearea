@@ -3,8 +3,11 @@ function createTeaCards(number = '0') {
     var url = new URL("http://localhost:8080/tea/all");
 
     var search_params = url.searchParams;
+
     search_params.set('page', number);
+
     url.search = search_params.toString();
+
     var new_url = url.toString();
 
     const xhr = new XMLHttpRequest();
@@ -31,8 +34,24 @@ function createTeaCards(number = '0') {
             image.src = "static/images/back.jpg"
             image.style.width = "100%";
 
-            var name = document.createElement("h1");
+            var name = document.createElement("a");
             name.textContent = datas.content[i].name;
+            name.id = datas.content[i].id + 1000;
+
+            name.addEventListener("click",  async function (e) {
+                    e.preventDefault();
+
+                    // await RedirectTea()
+
+                await teaDrink(this.id)
+            })
+
+            // name.onclick = function () {
+            //     RedirectTea();
+            //
+            //     console.log(this, this.id)
+            //     teaDrink(this.id)
+            // }
 
             var price = document.createElement("p");
             price.textContent = 'Цена: ' + datas.content[i].price + '₽';
@@ -71,10 +90,10 @@ function createTeaCards(number = '0') {
                     },
                 })
                     .then((res) => {
-                    if (res.status === 200) {
-                        alert('Напиток успешно добавлен в корзину!')
-                    }
-                })
+                        if (res.status === 200) {
+                            alert('Напиток успешно добавлен в корзину!')
+                        }
+                    })
             }
 
             card.appendChild(image);
@@ -84,9 +103,9 @@ function createTeaCards(number = '0') {
             card.appendChild(country);
             card.appendChild(button);
 
-            var super_div = document.getElementById('cards')
+            var supe_div = document.getElementById('cards')
 
-            super_div.appendChild(card);
+            supe_div.appendChild(card);
         }
 
         for (let i = 0; i < datas.totalPages; i++) {
@@ -99,7 +118,6 @@ function createTeaCards(number = '0') {
         document.getElementById(datas.number + 100).style.color = 'white';
         document.getElementById(datas.number + 100).style.border = '1px solid #4CAF50';
     }
-
-    xhr.send();
+xhr.send()
 
 }

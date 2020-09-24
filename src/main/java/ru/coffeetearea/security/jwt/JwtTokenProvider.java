@@ -12,6 +12,7 @@ import ru.coffeetearea.model.Role;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
+import java.time.ZonedDateTime;
 import java.util.Base64;
 import java.util.Date;
 
@@ -55,7 +56,7 @@ public class JwtTokenProvider {
         return Jwts.builder()
                 .setClaims(claims)
                 .setIssuedAt(now)
-                .setExpiration(validity)
+                .setExpiration(Date.from(ZonedDateTime.now().plusMinutes(180L).toInstant()))
                 .signWith(SignatureAlgorithm.HS256, secret)
                 .compact();
     }

@@ -62,4 +62,9 @@ public class WebController {
     public String errorLoginPage() {
         return "errorLogin";
     }
+
+    @GetMapping("/drink")
+    public String drinkPage() {
+        return "drink";
+    }
 }

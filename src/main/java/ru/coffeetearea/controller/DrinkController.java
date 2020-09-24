@@ -2,6 +2,7 @@ package ru.coffeetearea.controller;
 
 import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Role;
 import org.springframework.web.bind.annotation.*;
 import ru.coffeetearea.dto.DrinkDTO;
 import ru.coffeetearea.service.DrinkService;
@@ -41,6 +42,7 @@ public class DrinkController {
 
 
     // GET - methods
+
 
     /**
      * Получение списка избранных напитков

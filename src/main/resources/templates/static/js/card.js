@@ -13,7 +13,7 @@ if (localStorage.getItem('token') !== null) {
 
         var datas = JSON.parse(xhr.response)
 
-        var super_div = document.getElementById('cardItems')
+        var superio_div = document.getElementById('cardItems')
 
         for (let i = 0; i < datas.cartItemDTOS.length; i++) {
 
@@ -100,17 +100,17 @@ if (localStorage.getItem('token') !== null) {
             }
 
 
-            super_div.appendChild(cardItem);
-            super_div.appendChild(br0);
-            super_div.appendChild(weight);
-            super_div.appendChild(br1);
-            super_div.appendChild(cardItemCount);
-            super_div.appendChild(itemCount);
-            super_div.appendChild(button);
-            super_div.appendChild(delButton);
-            super_div.appendChild(br2);
-            super_div.appendChild(br3);
-            super_div.appendChild(br4);
+            superio_div.appendChild(cardItem);
+            superio_div.appendChild(br0);
+            superio_div.appendChild(weight);
+            superio_div.appendChild(br1);
+            superio_div.appendChild(cardItemCount);
+            superio_div.appendChild(itemCount);
+            superio_div.appendChild(button);
+            superio_div.appendChild(delButton);
+            superio_div.appendChild(br2);
+            superio_div.appendChild(br3);
+            superio_div.appendChild(br4);
 
         }
 
@@ -163,7 +163,7 @@ if (localStorage.getItem('token') !== null) {
 
             document.body.appendChild(removeAllButton);
             document.body.appendChild(order);
-            super_div.appendChild(br5);
+            superio_div.appendChild(br5);
 
             const url = '/cart-item/list'
 

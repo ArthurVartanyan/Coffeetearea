@@ -2,20 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 
 <head>
-    <title>Контакты</title>
+    <title>CoffeeTeArea</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="static/css/menuBar.css">
-    <link rel="stylesheet" href="static/css/about.css">
-    <link rel="stylesheet" href="static/css/order.css">
-
 
 </head>
 
-<body background="static/images/back.jpg">
+<body>
 
 <!--МЕНЮ-БАР-->
 <div id="menu-bar" class="menu-bar">
@@ -44,26 +41,16 @@
     </div>
 </div>
 
-
-<h1 id="orderOf" class="orderOf">Оформление заказа:</h1>
-
-<pr class="prNumber">Номер телефона(без +):</pr>
-<pr class="prAddress">Адрес доставки:</pr>
-
-
-<input type="text" id="inputNumber" class="inputNumber">
-<input type="text" id="inputAddress" class="inputAddress">
-
-<button class="orderButton" id="orderButton" onclick="makeOrder()">Сделать заказ</button>
-
 <p class="info" id="info"></p>
 
 
+<div id="drink"></div>
 </body>
-<script src="static/js/order.js"></script>
+<script src="static/js/createTeaCards.js"></script>
 <script src="static/js/userInfo.js"></script>
 <script src="static/js/redirects.js"></script>
 <script src="static/js/icons.js"></script>
 <script src="static/js/logout.js"></script>
+<script src="static/js/drink.js"></script>
 
 </html>

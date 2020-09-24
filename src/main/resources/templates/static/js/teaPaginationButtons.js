@@ -28,9 +28,9 @@ xhrPag.onload = () => {
             createTeaCards(i);
         }
 
-        var super_div = document.getElementById('paginationTea');
+        var super_divio = document.getElementById('paginationTea');
 
-        super_div.appendChild(a);
+        super_divio.appendChild(a);
     }
 }
 xhrPag.send()

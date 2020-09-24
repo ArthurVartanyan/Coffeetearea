@@ -16,6 +16,7 @@ import javax.annotation.security.RolesAllowed;
 import java.math.BigDecimal;
 
 import static ru.coffeetearea.model.Role.ROLE_ADMIN;
+import static ru.coffeetearea.model.Role.ROLE_CUSTOMER;
 
 @RestController
 @RequiredArgsConstructor
@@ -57,6 +58,17 @@ public class CoffeeController {
 
 
     // GET - methods
+
+    /**
+     * Получение одного напитка
+     */
+    @RolesAllowed({ROLE_CUSTOMER})
+    @GetMapping("/{coffeeId}")
+    public CoffeeDTO findCoffee(@PathVariable Long coffeeId){
+
+        return coffeeService.findCoffee(coffeeId);
+    }
+
 
     /**
      * Получение списка товаров

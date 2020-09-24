@@ -75,9 +75,9 @@ xhr.onload = () => {
         card.appendChild(country);
         card.appendChild(button);
 
-        var super_div = document.getElementById('cards')
+        var super_di = document.getElementById('cards')
 
-        super_div.appendChild(card);
+        super_di.appendChild(card);
     }
 }
 xhr.send()

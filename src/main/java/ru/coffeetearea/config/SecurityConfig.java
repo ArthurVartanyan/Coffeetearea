@@ -80,7 +80,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/users/login",  "/users/info", "/users/registration", "/coffee/all", "/coffee/filter",
                         "/drinks/populars", "/drinks/**/image", "/tea/all", "/tea/filter",
                         // Страницы
-                        "/login", "/errorLogin", "/contacts", "/coffees", "/teas", "/home", "/about", "/registration", "/card", "/order")
+                        "/login", "/errorLogin", "/contacts", "/coffees", "/teas", "/home", "/about", "/registration",
+                        "/card", "/order", "/drink")
                 .permitAll()
                 .anyRequest()
                 .authenticated().and()

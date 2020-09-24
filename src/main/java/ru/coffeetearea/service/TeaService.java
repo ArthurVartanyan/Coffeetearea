@@ -3,6 +3,7 @@ package ru.coffeetearea.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
+import ru.coffeetearea.dto.CoffeeDTO;
 import ru.coffeetearea.dto.PageDTO;
 import ru.coffeetearea.dto.SortingParams;
 import ru.coffeetearea.dto.TeaDTO;
@@ -26,6 +27,16 @@ public class TeaService {
 
     private final DrinkService drinkService;
 
+
+
+    /**
+     * Получить один напиток по ИД
+     */
+    public TeaDTO findTea(Long teaId){
+
+        return teaMapper.teaToTeaDTO(teaRepository.findById(teaId)
+                .orElseThrow(() -> new EntityNotFoundException(teaId)));
+    }
 
     /**
      * Редктирование напитка чая

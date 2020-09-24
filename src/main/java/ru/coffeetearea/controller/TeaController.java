@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import ru.coffeetearea.dto.CoffeeDTO;
 import ru.coffeetearea.dto.PageDTO;
 import ru.coffeetearea.dto.SortingParams;
 import ru.coffeetearea.dto.TeaDTO;
@@ -58,6 +59,17 @@ public class TeaController {
 
 
     // GET - methods
+
+    /**
+     * Получение одного напитка
+     */
+    @RolesAllowed({ROLE_CUSTOMER})
+    @GetMapping("/{teaId}")
+    public TeaDTO findTea(@PathVariable Long teaId){
+
+        return teaService.findTea(teaId);
+    }
+
 
     /**
      * Получение списка товаров

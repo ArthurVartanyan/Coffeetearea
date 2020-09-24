@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import ru.coffeetearea.dto.CoffeeDTO;
+import ru.coffeetearea.dto.DrinkDTO;
 import ru.coffeetearea.dto.PageDTO;
 import ru.coffeetearea.dto.SortingParams;
 import ru.coffeetearea.exceptions.EntityNotFoundException;
@@ -23,6 +24,16 @@ public class CoffeeService {
     private final CoffeeMapper coffeeMapper;
 
     private final DrinkService drinkService;
+
+
+    /**
+     * Получить один напиток по ИД
+     */
+    public CoffeeDTO findCoffee(Long coffeeId){
+
+        return coffeeMapper.coffeeToCoffeeDTO(coffeeRepository.findById(coffeeId)
+                .orElseThrow(() -> new EntityNotFoundException(coffeeId)));
+    }
 
 
     /**

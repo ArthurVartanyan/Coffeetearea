@@ -29,9 +29,9 @@ xhrPag.onload = () => {
             createCards(i);
         }
 
-        var super_div = document.getElementById('pagination');
+        var super_d = document.getElementById('pagination');
 
-        super_div.appendChild(a);
+        super_d.appendChild(a);
     }
 }
 xhrPag.send()

@@ -29,13 +29,17 @@ function createCards(number = '0') {
             card.style.background = 'white';
             card.style.margin = '5px';
 
-
             var image = document.createElement("img")
             image.src = "static/images/back.jpg"
             image.style.width = "100%";
 
             var name = document.createElement("h1");
             name.textContent = datas.content[i].name;
+            name.onclick = function () {
+                RedirectDrink();
+
+            }
+
 
             var price = document.createElement("p");
             price.textContent = 'Цена: ' + datas.content[i].price + '₽';
@@ -88,9 +92,9 @@ function createCards(number = '0') {
             card.appendChild(country);
             card.appendChild(button);
 
-            var super_div = document.getElementById('cards')
+            var s_div = document.getElementById('cards')
 
-            super_div.appendChild(card);
+            s_div.appendChild(card);
         }
 
         for (let i = 0; i < datas.totalPages; i++) {

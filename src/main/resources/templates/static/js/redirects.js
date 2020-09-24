@@ -36,3 +36,7 @@ function RedirectCard() {
 function RedirectOrder() {
     window.location = '/order';
 }
+
+function RedirectTea() {
+    window.location = '/drink';
+}

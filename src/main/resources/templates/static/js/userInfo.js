@@ -21,12 +21,12 @@ if (localStorage.getItem('token') !== null) {
         var mail = document.createElement('pr')
         mail.textContent = xh.response.mail
 
-        var super_div = document.getElementById('info')
-        super_div.appendChild(nameAndLastname)
-        super_div.appendChild(br1)
-        super_div.appendChild(login)
-        super_div.appendChild(br2)
-        super_div.appendChild(mail)
+        var superdiv = document.getElementById('info')
+        superdiv.appendChild(nameAndLastname)
+        superdiv.appendChild(br1)
+        superdiv.appendChild(login)
+        superdiv.appendChild(br2)
+        superdiv.appendChild(mail)
 
     }
 

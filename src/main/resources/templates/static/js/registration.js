@@ -27,8 +27,8 @@ _form.addEventListener("submit", function (e) {
             name.style.fontFamily = '"Brush Script MT", cursive';
             name.textContent = 'Ошибочка !';
 
-            var super_div = document.getElementById('formElem')
-            super_div.appendChild(name)
+            var sup_div = document.getElementById('formElem')
+            sup_div.appendChild(name)
         }
 
 
