@@ -63,7 +63,6 @@ public class TeaController {
     /**
      * Получение одного напитка
      */
-    @RolesAllowed({ROLE_CUSTOMER})
     @GetMapping("/{teaId}")
     public TeaDTO findTea(@PathVariable Long teaId){
 

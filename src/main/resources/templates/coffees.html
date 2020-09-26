@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="static/css/drinksCardsAndFilters.css">
     <link rel="stylesheet" href="static/css/menuBar.css">
     <link rel="stylesheet" href="static/css/pagination.css">
+    <link rel="stylesheet" href="static/css/coffeeAndTea.css">
 
 
 </head>
@@ -49,17 +50,29 @@
 
 <!--ФИЛЬТР-->
     <div id="filter-panel" class="filter-panel">
-        <a href="javascript:void(0)" class="close-button" onclick="closeNav()">×</a>
-        <a href="#">Прожарка</a>
-        <a href="#">Тип</a>
-        <a href="#">Страна</a>
-        <a href="#">Стоимость</a>
+        <pr href="javascript:void(0)" class="close-button" onclick="closeNav()">×</pr>
+        <pr>Прожарка:</pr>
+        <pr id="roast"></pr>
+        <pr>Тип:</pr>
+        <pr id="ctype"></pr>
+        <pr>Страна:</pr>
+        <pr>Стоимость:</pr>
     </div>
 
     <button class="filter-button" onclick="openNav()">☰ Фильтр</button>
 
 
+<select class="sort" id="sort">
+    <option id="alph">По алфавиту 🠗</option>
+    <option id="pop">По популярности 🠗</option>
+    <option id="prI">Цена 🠕</option>
+    <option id="prD">Цена 🠗</option>
+</select>
+
 <!--Карточки товаров-->
+<br>
+<br>
+<br>
 <br>
 <br>
 <br>
@@ -72,6 +85,7 @@
 </div>
 
 </body>
+<script src="static/js/filter.js"></script>
 <!--Информация о пользователе в шапке-->
 <script src="static/js/userInfo.js"></script>
 <!--Вызываем скрипт для добавления карточек товаров-->

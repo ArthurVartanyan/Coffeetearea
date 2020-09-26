@@ -2,8 +2,9 @@ package ru.coffeetearea.controller;
 
 import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
-import org.springframework.context.annotation.Role;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import ru.coffeetearea.dto.DrinkDTO;
 import ru.coffeetearea.service.DrinkService;
 
@@ -27,6 +28,22 @@ public class DrinkController {
 
 
     // POST - methods
+
+
+    /**
+     * Загрузить изображение для напитка
+     *
+     * @param drinkId
+     * @param multipartFile
+     * @throws IOException
+     */
+    @RolesAllowed({ROLE_CUSTOMER})
+    @PostMapping(value = "/{drinkId}/image", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public void uploadImage(@PathVariable Long drinkId, @RequestParam("file") MultipartFile multipartFile) throws IOException {
+
+        drinkService.uploadDrinkImage(drinkId, multipartFile);
+    }
+
 
     /**
      * Добавление в избранное
@@ -74,7 +91,7 @@ public class DrinkController {
     @GetMapping("/{drinkId}/image")
     public void getDrinkImage(HttpServletResponse response, @PathVariable Long drinkId) throws IOException {
 
-        drinkService.putDrinkImage(response, drinkId);
+        drinkService.takeDrinkImage(response, drinkId);
     }
 
 

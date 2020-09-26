@@ -10,7 +10,7 @@ xhrPag.onload = () => {
 
     var data = JSON.parse(xhrPag.response)
 
-    console.log(data)
+    var formS = document.getElementById('sort')
 
     for (let i = 0; i < data.totalPages; i++) {
 
@@ -25,7 +25,45 @@ xhrPag.onload = () => {
         a.textContent = i + 1;
         a.href = "#"
         a.onclick = function pages() {
-            createTeaCards(i);
+
+            if (formS.value === 'По алфавиту 🠗') {
+
+                createTeaCards(i, 'NAME_INCREASE')
+            }
+
+            if (formS.value === 'Цена 🠗') {
+                createTeaCards(i,'PRICE_DECREASE')
+            }
+
+            if (formS.value === 'Цена 🠕') {
+                createTeaCards(i,'PRICE_INCREASE')
+            }
+
+            if (formS.value === 'По популярности 🠗') {
+                createTeaCards(i,'POP_DECREASE')
+
+            }
+        }
+
+        formS.onchange = function () {
+
+            if (formS.value === 'По алфавиту 🠗') {
+
+                createTeaCards(0, 'NAME_INCREASE')
+            }
+
+            if (formS.value === 'Цена 🠗') {
+                createTeaCards(0,'PRICE_DECREASE')
+            }
+
+            if (formS.value === 'Цена 🠕') {
+                createTeaCards(0,'PRICE_INCREASE')
+            }
+
+            if (formS.value === 'По популярности 🠗') {
+                createTeaCards(0,'POP_DECREASE')
+
+            }
         }
 
         var super_divio = document.getElementById('paginationTea');

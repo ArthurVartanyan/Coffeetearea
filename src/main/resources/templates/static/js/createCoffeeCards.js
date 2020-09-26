@@ -1,16 +1,11 @@
-function createCards(number = '0') {
+function createCards(number = '0', sortingParams = 'NAME_INCREASE') {
 
-    var url = new URL("http://localhost:8080/coffee/all");
-
-    var search_params = url.searchParams;
-    search_params.set('page', number);
-    url.search = search_params.toString();
-    var new_url = url.toString();
+    var url = new URL("http://localhost:8080/coffee/all?" + 'page=' + number + "&sortingParams=" + sortingParams);
 
     const xhr = new XMLHttpRequest();
 
 
-    xhr.open('GET', new_url)
+    xhr.open('GET', url)
 
 
     xhr.onload = () => {
@@ -30,8 +25,22 @@ function createCards(number = '0') {
             card.style.margin = '5px';
 
             var image = document.createElement("img")
-            image.src = "static/images/back.jpg"
-            image.style.width = "100%";
+            image.id = datas.content[i].id + 700
+            image.style.width = "229px";
+            image.style.height = "129px";
+
+            let drinkId = image.id - 700
+
+            fetch("/drinks/" + drinkId + "/image", {
+
+                method: 'GET',
+
+                headers: {
+                    'Content-Type': 'application/json;charset=utf-8'
+                }
+            })
+
+            image.src = 'http://localhost:8080/drinks/' + drinkId + '/image'
 
             var name = document.createElement("h1");
             name.textContent = datas.content[i].name;

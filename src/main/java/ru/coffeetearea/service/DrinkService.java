@@ -7,6 +7,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 import ru.coffeetearea.dto.DrinkDTO;
 import ru.coffeetearea.dto.SortingParams;
 import ru.coffeetearea.exceptions.BadRequestException;
@@ -20,9 +21,7 @@ import ru.coffeetearea.repository.UserRepository;
 import ru.coffeetearea.security.jwt.JwtUser;
 
 import javax.servlet.http.HttpServletResponse;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,13 +46,35 @@ public class DrinkService {
 
 
     /**
+     * Загрузить изображение напитка
+     *
+     * @param drinkId
+     * @param multipartFile
+     * @throws IOException
+     */
+    public void uploadDrinkImage(Long drinkId, MultipartFile multipartFile) throws IOException {
+
+        File convertFile = new File(uploadPath + multipartFile.getOriginalFilename());
+
+        Drink drink = drinkRepository.getById(drinkId);
+        drink.setImage(multipartFile.getOriginalFilename());
+        drinkRepository.save(drink);
+
+        FileOutputStream fileOutputStream = new FileOutputStream(convertFile);
+
+        fileOutputStream.write(multipartFile.getBytes());
+        fileOutputStream.close();
+    }
+
+
+    /**
      * Получить изображение напитка
      *
      * @param response
      * @param drinkId
      * @throws IOException
      */
-    public void putDrinkImage(HttpServletResponse response, Long drinkId) throws IOException {
+    public void takeDrinkImage(HttpServletResponse response, Long drinkId) throws IOException {
 
         String imageURL = drinkRepository.getById(drinkId).getImage();
 

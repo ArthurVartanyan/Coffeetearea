@@ -94,7 +94,6 @@ public class CatalogController {
      *
      * @return List<GeneralCatalogDTO>
      */
-    @RolesAllowed({ROLE_ADMIN, ROLE_CUSTOMER})
     @GetMapping("/countries")
     public List<GeneralCatalogDTO> findCountries() {
 
@@ -106,7 +105,6 @@ public class CatalogController {
      *
      * @return List<GeneralCatalogDTO>
      */
-    @RolesAllowed({ROLE_ADMIN, ROLE_CUSTOMER})
     @GetMapping("/packages")
     public List<GeneralCatalogDTO> findPackages() {
 
@@ -118,7 +116,6 @@ public class CatalogController {
      *
      * @return List<GeneralCatalogDTO>
      */
-    @RolesAllowed({ROLE_ADMIN, ROLE_CUSTOMER})
     @GetMapping("/manufacturers")
     public List<GeneralCatalogDTO> findManufacturers() {
 
@@ -130,7 +127,6 @@ public class CatalogController {
      *
      * @return List<GeneralCatalogDTO>
      */
-    @RolesAllowed({ROLE_ADMIN, ROLE_CUSTOMER})
     @GetMapping("/tea-colors")
     public List<GeneralCatalogDTO> findTeaColor() {
 
@@ -142,7 +138,6 @@ public class CatalogController {
      *
      * @return List<GeneralCatalogDTO>
      */
-    @RolesAllowed({ROLE_ADMIN, ROLE_CUSTOMER})
     @GetMapping("/coffee-types")
     public List<GeneralCatalogDTO> findCoffeeType() {
 
@@ -154,7 +149,6 @@ public class CatalogController {
      *
      * @return List<GeneralCatalogDTO>
      */
-    @RolesAllowed({ROLE_ADMIN, ROLE_CUSTOMER})
     @GetMapping("/tea-types")
     public List<GeneralCatalogDTO> findTeaType() {
 
@@ -166,7 +160,6 @@ public class CatalogController {
      *
      * @return List<GeneralCatalogDTO>
      */
-    @RolesAllowed({ROLE_ADMIN, ROLE_CUSTOMER})
     @GetMapping("/roastings")
     public List<GeneralCatalogDTO> findRoasting() {
 

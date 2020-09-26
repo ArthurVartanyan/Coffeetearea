@@ -62,7 +62,6 @@ public class CoffeeController {
     /**
      * Получение одного напитка
      */
-    @RolesAllowed({ROLE_CUSTOMER})
     @GetMapping("/{coffeeId}")
     public CoffeeDTO findCoffee(@PathVariable Long coffeeId){
 

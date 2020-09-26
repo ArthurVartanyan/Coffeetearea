@@ -7,14 +7,14 @@
     top: 180px;
     left: 0;
     z-index: 1;
-    height: 250px;
+    height: 500px;
     background-color: saddlebrown;
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 10px;
 }
 
-.filter-panel a {
+.filter-panel pr {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
@@ -23,8 +23,8 @@
     transition: 0.3s;
 }
 
-.filter-panel a:hover {
-    color: #f1f1f1;
+.filter-panel pr:hover {
+    color: white;
 }
 
 .filter-panel .close-button {
