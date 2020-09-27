@@ -40,3 +40,7 @@ function RedirectOrder() {
 function RedirectTea() {
     window.location = '/drink';
 }
+
+function RedirectFavourites() {
+    window.location = '/favourites';
+}

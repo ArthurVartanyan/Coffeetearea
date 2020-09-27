@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
     <title>CoffeeTeArea</title>
@@ -9,10 +9,11 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="static/css/menuBar.css">
+    <link rel="stylesheet" href="static/css/drinksCardsAndFilters.css">
 
 </head>
 
-<body>
+<body background="static/images/home.png">
 
 <!--МЕНЮ-БАР-->
 <div id="menu-bar" class="menu-bar">
@@ -41,16 +42,24 @@
     </div>
 </div>
 
+
 <p class="info" id="info"></p>
 
 
-<div id="drink"></div>
-</body>
-<script src="static/js/createTeaCards.js"></script>
-<script src="static/js/userInfo.js"></script>
-<script src="static/js/redirects.js"></script>
-<script src="static/js/icons.js"></script>
-<script src="static/js/logout.js"></script>
-<script src="static/js/drink.js"></script>
+<!--Карточки товаров-->
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="cards" id="cards">
 
+</body>
+<script src="static/js/createFavouriteCards.js"></script>
+<!--Редиректы по меню-->
+<script src="static/js/redirects.js"></script>
+<script src="static/js/userInfo.js"></script>
+<script src="static/js/logout.js"></script>
+<script src="static/js/icons.js"></script>
 </html>

@@ -67,4 +67,9 @@ public class WebController {
     public String drinkPage() {
         return "drink";
     }
+
+    @GetMapping("/favourites")
+    public String favouritesPage() {
+        return "favourites";
+    }
 }

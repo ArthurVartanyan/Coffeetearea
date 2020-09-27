@@ -81,7 +81,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/drinks/populars", "/drinks/**/image", "/tea/all", "/tea/filter", "/catalogs/roastings", "/catalogs/coffee-types",
                         // Страницы
                         "/login", "/errorLogin", "/contacts", "/coffees", "/teas", "/home", "/about", "/registration",
-                        "/card", "/order", "/drink")
+                        "/card", "/order", "/drink", "/favourites")
                 .permitAll()
                 .anyRequest()
                 .authenticated().and()
