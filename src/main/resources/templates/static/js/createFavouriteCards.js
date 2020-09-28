@@ -22,9 +22,44 @@ xhr.onload = () => {
         card.style.background = 'white';
         card.style.margin = '5px';
 
+        var favourite = document.createElement('button');
+        favourite.id = datas[i].id + 3000;
+        favourite.style.color = 'white'
+        favourite.style.backgroundColor = 'red'
+        favourite.style.border = 'none';
+        favourite.style.outline = '0';
+        favourite.style.padding = '11px';
+        favourite.style.textAlign = 'center';
+        favourite.style.cursor = 'pointer';
+        favourite.style.width = '100%';
+        favourite.style.fontSize = '18px';
+        favourite.textContent = 'Удалить из избранного'
+        favourite.onclick = function() {
+
+            let id = this.id - 3000
+
+            fetch("/drinks/" + id + "/favourites", {
+
+                method: 'DELETE',
+
+                headers: {
+                    'Content-Type': 'application/json;charset=utf-8',
+
+                    'Authorization': localStorage.getItem('token')
+                },
+            })
+                .then((res) => {
+                    if (res.status === 200) {
+                        alert('Напиток успешно удален из избранного!')
+                        location.reload()
+                    }
+                })
+        }
+
+
         var image = document.createElement("img")
         image.id = datas[i].id + 1100
-        image.style.width = "229px";
+        image.style.width = "225px";
         image.style.height = "129px";
 
         let drinkId = image.id - 1100
@@ -91,6 +126,7 @@ xhr.onload = () => {
         card.appendChild(price);
         card.appendChild(weight);
         card.appendChild(country);
+        card.appendChild(favourite);
         card.appendChild(button);
 
         var super_di = document.getElementById('cards')

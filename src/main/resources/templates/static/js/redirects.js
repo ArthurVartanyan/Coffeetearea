@@ -42,5 +42,7 @@ function RedirectTea() {
 }
 
 function RedirectFavourites() {
-    window.location = '/favourites';
+    if (localStorage.getItem('token') === null) {
+        window.location = '/login'
+    } else (window.location = '/favourites');
 }

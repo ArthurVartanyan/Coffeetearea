@@ -50,6 +50,40 @@ function createCards(number = '0', sortingParams = 'NAME_INCREASE') {
             }
 
 
+            var favourite = document.createElement('button');
+            favourite.id = datas.content[i].id + 3000;
+            favourite.style.color = 'white'
+            favourite.style.backgroundColor = 'green'
+            favourite.style.border = 'none';
+            favourite.style.outline = '0';
+            favourite.style.padding = '11px';
+            favourite.style.textAlign = 'center';
+            favourite.style.cursor = 'pointer';
+            favourite.style.width = '100%';
+            favourite.style.fontSize = '18px';
+            favourite.textContent = 'Добавить в избранное'
+            favourite.onclick = function() {
+
+                let id = this.id - 3000
+
+                fetch("/drinks/" + id + "/favourites", {
+
+                    method: 'POST',
+
+                    headers: {
+                        'Content-Type': 'application/json;charset=utf-8',
+
+                        'Authorization': localStorage.getItem('token')
+                    },
+                })
+                    .then((res) => {
+                        if (res.status === 200) {
+                            alert('Напиток успешно добавлен в избранное!')
+                        }
+                    })
+            }
+
+
             var price = document.createElement("p");
             price.textContent = 'Цена: ' + datas.content[i].price + '₽';
             price.style.color = 'grey';
@@ -99,6 +133,7 @@ function createCards(number = '0', sortingParams = 'NAME_INCREASE') {
             card.appendChild(price);
             card.appendChild(weight);
             card.appendChild(country);
+            card.appendChild(favourite);
             card.appendChild(button);
 
             var s_div = document.getElementById('cards')

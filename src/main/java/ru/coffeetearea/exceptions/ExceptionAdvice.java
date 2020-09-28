@@ -109,7 +109,12 @@ public class ExceptionAdvice extends ResponseEntityExceptionHandler {
             f.setMessage(errorMessage);
 
             fieldErrors.add(f);
+
         }
-        return new ResponseEntity<>(fieldErrors, HttpStatus.BAD_REQUEST);
+
+        ErrorsDTO errorsDTO = new ErrorsDTO();
+        errorsDTO.setFieldErrors(fieldErrors);
+
+        return new ResponseEntity<>(errorsDTO, HttpStatus.UNPROCESSABLE_ENTITY);
     }
 }

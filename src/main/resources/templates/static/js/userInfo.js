@@ -32,4 +32,3 @@ if (localStorage.getItem('token') !== null) {
 
     xh.send(xh)
 }
-

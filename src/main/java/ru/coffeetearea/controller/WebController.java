@@ -72,4 +72,9 @@ public class WebController {
     public String favouritesPage() {
         return "favourites";
     }
+
+    @GetMapping("/admin")
+    public String adminsPage() {
+        return "admin";
+    }
 }

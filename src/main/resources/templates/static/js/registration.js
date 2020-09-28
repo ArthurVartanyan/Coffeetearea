@@ -8,7 +8,9 @@ _form.addEventListener("submit", function (e) {
         method: 'POST',
 
         headers: {
-            'Content-Type': 'application/json;charset=utf-8'
+            'Content-Type': 'application/json',
+
+            'accept': '*/*'
         },
         body: JSON.stringify(Object.fromEntries(new FormData(e.target)))
 
@@ -25,7 +27,8 @@ _form.addEventListener("submit", function (e) {
             name.style.top = '275px';
             name.style.left = '1080px';
             name.style.fontFamily = '"Brush Script MT", cursive';
-            name.textContent = 'Ошибочка !';
+            console.log(res.json())
+            name.textContent =  res.fieldErrors[0].message
 
             var sup_div = document.getElementById('formElem')
             sup_div.appendChild(name)
