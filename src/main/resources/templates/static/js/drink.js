@@ -1,10 +1,10 @@
-function teaDrink(id) {
+// function teaDrink(id = 1001) {
 
-    let newId = id - 1000
+    // RedirectTea();
+
+    let newId = 1001 - 1000
 
     const teaUrl = '/tea/' + newId;
-
-    console.log(id, newId)
 
     const tea = new XMLHttpRequest();
 
@@ -15,8 +15,6 @@ function teaDrink(id) {
     tea.onload = () => {
 
         var data = JSON.parse(tea.response)
-
-        console.log(data)
 
         var name = document.createElement('h1')
         name.textContent = data.name
@@ -158,4 +156,4 @@ function teaDrink(id) {
         drink_div.appendChild(button)
     }
     tea.send()
-}
+// }

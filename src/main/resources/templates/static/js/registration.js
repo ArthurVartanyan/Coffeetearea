@@ -27,8 +27,6 @@ _form.addEventListener("submit", function (e) {
             name.style.top = '275px';
             name.style.left = '1080px';
             name.style.fontFamily = '"Brush Script MT", cursive';
-            console.log(res.json())
-            name.textContent =  res.fieldErrors[0].message
 
             var sup_div = document.getElementById('formElem')
             sup_div.appendChild(name)

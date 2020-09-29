@@ -1,6 +1,7 @@
 package ru.coffeetearea.service;
 
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.PageRequest;
@@ -54,10 +55,15 @@ public class DrinkService {
      */
     public void uploadDrinkImage(Long drinkId, MultipartFile multipartFile) throws IOException {
 
-        File convertFile = new File(uploadPath + multipartFile.getOriginalFilename());
+        String newImageName = drinkId.toString() + "." + StringUtils
+                .substringAfter(multipartFile.getOriginalFilename(), ".");
+
+        File convertFile = new File(uploadPath + newImageName);
 
         Drink drink = drinkRepository.getById(drinkId);
-        drink.setImage(multipartFile.getOriginalFilename());
+
+        drink.setImage(drinkId.toString() + "." + StringUtils
+                .substringAfter(multipartFile.getOriginalFilename(), "."));
         drinkRepository.save(drink);
 
         FileOutputStream fileOutputStream = new FileOutputStream(convertFile);

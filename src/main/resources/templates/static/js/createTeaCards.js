@@ -81,9 +81,11 @@ function createTeaCards(number = '0', sortingParams = 'NAME_INCREASE') {
             name.id = datas.content[i].id + 1000;
 
             name.onclick = function () {
-                teaDrink(this.id)
+                teaDrink();
+                //
+                // return false;
             }
-
+            //
             // name.onclick = function () {
             //     RedirectTea();
             //

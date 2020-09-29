@@ -1,56 +1,4 @@
 /**
-Панель фильтрации
- */
-.filter-panel  {
-    width: 0;
-    position: fixed;
-    top: 180px;
-    left: 0;
-    z-index: 1;
-    height: 500px;
-    background-color: saddlebrown;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 10px;
-}
-
-.filter-panel pr {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: white;
-    display: block;
-    transition: 0.3s;
-}
-
-.filter-panel pr:hover {
-    color: white;
-}
-
-.filter-panel .close-button {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-}
-
-.filter-button {
-    position: fixed;
-    top: 100px;
-    left: 0;
-    font-size: 20px;
-    cursor: pointer;
-    background-color: darkgreen;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-}
-
-.filter-button:hover {
-    background-color: saddlebrown;
-}
-
-/**
 Картчоки товаров
  */
 .cards {
@@ -64,4 +12,22 @@
 
 .cards button:hover {
     opacity: 0.7;
+}
+
+.roast {
+    position: fixed;
+    left: 400px;
+    top: 200px;
+}
+
+.color {
+    position: fixed;
+    left: 270px;
+    top: 200px;
+}
+
+.package {
+    position: fixed;
+    left: 180px;
+    top: 200px;
 }

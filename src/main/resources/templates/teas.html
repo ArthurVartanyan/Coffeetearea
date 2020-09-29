@@ -48,23 +48,28 @@
 
 <p class="info" id="info"></p>
 
-<!--ФИЛЬТР-->
-<div id="filter-panel" class="filter-panel">
-    <a href="javascript:void(0)" class="close-button" onclick="closeNav()">×</a>
-    <a href="#">Прожарка</a>
-    <a href="#">Тип</a>
-    <a href="#">Страна</a>
-    <a href="#">Стоимость</a>
-</div>
-
-<button class="filter-button" onclick="openNav()">☰ Фильтр</button>
-
 
 <select class="sort" id="sort">
     <option id="alph">По алфавиту 🠗</option>
     <option id="pop">По популярности 🠗</option>
     <option id="prI">Цена 🠕</option>
     <option id="prD">Цена 🠗</option>
+</select>
+
+
+<select class="type" id="type">
+</select>
+
+<select class="color" id="color">
+</select>
+
+<select class="package" id="packaging">
+</select>
+
+<select class="manufacture" id="manufacturer">
+</select>
+
+<select class="country" id="country">
 </select>
 
 <!--Карточки товаров-->
@@ -93,6 +98,8 @@
 <!--Выход-->
 <script src="static/js/logout.js"></script>
 <script src="static/js/icons.js"></script>
-<script src="static/js/drink.js"></script>
-
+<!--<script src="static/js/drink.js"></script>-->
+<script src="static/js/teaTypeFilter.js"></script>
+<script src="static/js/teaColorFilter.js"></script>
+<script src="static/js/packagingFilter.js"></script>
 </html>

@@ -75,6 +75,6 @@ public class WebController {
 
     @GetMapping("/admin")
     public String adminsPage() {
-        return "admin";
+        return "admCatalog";
     }
 }
