@@ -79,7 +79,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         // Ссылки
                 .antMatchers("/users/login",  "/users/info", "/users/registration", "/coffee/all", "/coffee/filter",
                         "/drinks/populars", "/drinks/**/image", "/tea/all", "/tea/filter", "/catalogs/roastings", "/catalogs/coffee-types",
-                        "/catalogs/tea-types", "/catalogs/tea-colors",
+                        "/catalogs/tea-types", "/catalogs/tea-colors", "/catalogs/countries",
                         // Страницы
                         "/login", "/errorLogin", "/contacts", "/coffees", "/teas", "/home", "/about", "/registration",
                         "/card", "/order", "/drink", "/favourites", "/admin")

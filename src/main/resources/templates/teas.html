@@ -16,7 +16,7 @@
 
 </head>
 
-<body background="static/images/teas-background.png" onload="createTeaCards();">
+<body background="static/images/teas-background.png" onload="createTeaCardsFilter();">
 
 <!--МЕНЮ-БАР-->
 <div id="menu-bar" class="menu-bar">
@@ -58,19 +58,21 @@
 
 
 <select class="type" id="type">
+    <option value=""></option>
 </select>
 
 <select class="color" id="color">
-</select>
-
-<select class="package" id="packaging">
-</select>
-
-<select class="manufacture" id="manufacturer">
+    <option value=""></option>
 </select>
 
 <select class="country" id="country">
+    <option value=""></option>
 </select>
+
+<input class="min-price" id="min-price" placeholder="Мин ₽">
+<input class="max-price" id="max-price" placeholder="Мах ₽">
+
+<button class="tea-filter" id="tea-filter" onclick="teaFilter();">Найти</button>
 
 <!--Карточки товаров-->
 <br>
@@ -101,5 +103,9 @@
 <!--<script src="static/js/drink.js"></script>-->
 <script src="static/js/teaTypeFilter.js"></script>
 <script src="static/js/teaColorFilter.js"></script>
-<script src="static/js/packagingFilter.js"></script>
+<script src="static/js/teaCountryFilter.js"></script>
+<script src="static/js/teaFilterButton.js"></script>
+
+<script src="static/js/teaCardsWithFilters.js"></script>
+
 </html>

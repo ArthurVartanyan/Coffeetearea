@@ -14,20 +14,88 @@
     opacity: 0.7;
 }
 
-.roast {
+.type {
+    font-size: 20px;
+    color: white;
+    background-color: forestgreen;
     position: fixed;
-    left: 400px;
+    left: 275px;
+    top: 200px;
+}
+
+.coffeeType {
+    font-size: 20px;
+    color: white;
+    background-color: forestgreen;
+    position: fixed;
+    left: 275px;
+    top: 200px;
+}
+
+.roast {
+    font-size: 20px;
+    color: white;
+    background-color: forestgreen;
+    position: fixed;
+    left: 620px;
     top: 200px;
 }
 
 .color {
+    font-size: 20px;
+    color: white;
+    background-color: forestgreen;
     position: fixed;
-    left: 270px;
+    left: 620px;
     top: 200px;
 }
 
-.package {
+.country {
+    font-size: 20px;
+    color: white;
+    background-color: forestgreen;
     position: fixed;
-    left: 180px;
+    left: 485px;
     top: 200px;
+}
+
+.coffeeCountry {
+    font-size: 20px;
+    color: white;
+    background-color: forestgreen;
+    position: fixed;
+    left: 670px;
+    top: 200px;
+}
+
+.coffee-filter {
+    position: fixed;
+    left: 800px;
+    top: 199px;
+    background-color: forestgreen;
+    color: white;
+    font-size: 20px;
+}
+
+.tea-filter {
+    position: fixed;
+    left: 760px;
+    top: 199px;
+    background-color: forestgreen;
+    color: white;
+    font-size: 20px;
+}
+
+.min-price {
+    position: fixed;
+    left: 275px;
+    top: 150px;
+    width: 100px;
+}
+
+.max-price {
+    position: fixed;
+    left: 390px;
+    top: 150px;
+    width: 100px;
 }

@@ -12,7 +12,8 @@ xhrTeaColor.onload = () => {
     for (let i = 0; i < datassss.length; i++) {
 
         var teaColor = document.createElement('option')
-        teaColor.value = 'Цвет чая'
+        teaColor.value = datassss[i].id
+        teaColor.id = datassss[i].id
         teaColor.textContent = datassss[i].name
 
         var super_select = document.getElementById('color')

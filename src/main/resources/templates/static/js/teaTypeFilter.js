@@ -10,13 +10,14 @@ xhrTeaType.onload = () => {
 
     for (let i = 0; i < datasss.length; i++) {
 
-    var teaType = document.createElement('option')
-    teaType.value = 'Листовый'
-    teaType.textContent = datasss[i].name
+        var teaType = document.createElement('option')
+        teaType.value = datasss[i].id
+        teaType.id = datasss[i].id
+        teaType.textContent = datasss[i].name
 
-    var super_select = document.getElementById('type')
+        var super_select = document.getElementById('type')
 
-    super_select.appendChild(teaType)
+        super_select.appendChild(teaType)
     }
 }
 xhrTeaType.send()

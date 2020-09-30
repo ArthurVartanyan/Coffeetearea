@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="static/css/menuBar.css">
     <link rel="stylesheet" href="static/css/pagination.css">
     <link rel="stylesheet" href="static/css/coffeeAndTea.css">
+    <script src="static/js/coffeeTypeFilter.js"></script>
+    <script src="static/js/roastingFilter.js"></script>
+    <script src="static/js/coffeeCountry.js"></script>
 
 
 </head>
@@ -54,6 +57,23 @@
     <option id="prI">Цена 🠕</option>
     <option id="prD">Цена 🠗</option>
 </select>
+
+<select class="coffeeType" id="coffeeType">
+    <option value=""></option>
+</select>
+
+<select class="roast" id="roast">
+    <option value=""></option>
+</select>
+
+<select class="coffeeCountry" id="coffeeCountry">
+    <option value=""></option>
+</select>
+
+<input class="min-price" id="min-price" placeholder="Мин ₽">
+<input class="max-price" id="max-price" placeholder="Мах ₽">
+
+<button class="coffee-filter" id="coffee-filter" onclick="coffeeFilter();">Найти</button>
 
 <!--Карточки товаров-->
 <br>

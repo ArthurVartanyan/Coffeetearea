@@ -1,4 +1,4 @@
-var pagUrl = "/tea/all";
+var pagUrl = "/tea/filter";
 
 const xhrPag = new XMLHttpRequest();
 
@@ -26,49 +26,79 @@ xhrPag.onload = () => {
         a.href = "#"
         a.onclick = function pages() {
 
-            if (formS.value === 'По алфавиту 🠗') {
-
-                createTeaCards(i, 'NAME_INCREASE')
+            for (let i = 0; i < data.totalPages; i++) {
+                document.getElementById(i + 100).style.backgroundColor = 'chocolate';
+                document.getElementById(i + 100).style.color = 'black';
+                document.getElementById(i + 100).style.border = '1px solid chocolate';
             }
+            document.getElementById(this.id).style.backgroundColor = '#4CAF50';
+            document.getElementById(this.id).style.color = 'white';
+            document.getElementById(this.id).style.border = '1px solid #4CAF50';
 
-            if (formS.value === 'Цена 🠗') {
-                createTeaCards(i,'PRICE_DECREASE')
-            }
+        if (formS.value === 'По алфавиту 🠗') {
 
-            if (formS.value === 'Цена 🠕') {
-                createTeaCards(i,'PRICE_INCREASE')
-            }
-
-            if (formS.value === 'По популярности 🠗') {
-                createTeaCards(i,'POP_DECREASE')
-
-            }
+            createTeaCardsFilter(i, 'NAME_INCREASE', colorId = document.getElementById('color').value, typeId = document.getElementById('type').value, countryId = document.getElementById('country').value, min = document.getElementById('min-price').value, max = document.getElementById('max-price').value)
         }
 
-        formS.onchange = function () {
-
-            if (formS.value === 'По алфавиту 🠗') {
-
-                createTeaCards(0, 'NAME_INCREASE')
-            }
-
-            if (formS.value === 'Цена 🠗') {
-                createTeaCards(0,'PRICE_DECREASE')
-            }
-
-            if (formS.value === 'Цена 🠕') {
-                createTeaCards(0,'PRICE_INCREASE')
-            }
-
-            if (formS.value === 'По популярности 🠗') {
-                createTeaCards(0,'POP_DECREASE')
-
-            }
+        if (formS.value === 'Цена 🠗') {
+            createTeaCardsFilter(i, 'PRICE_DECREASE', colorId = document.getElementById('color').value, typeId = document.getElementById('type').value, countryId = document.getElementById('country').value, min = document.getElementById('min-price').value, max = document.getElementById('max-price').value)
         }
 
-        var super_divio = document.getElementById('paginationTea');
+        if (formS.value === 'Цена 🠕') {
+            createTeaCardsFilter(i, 'PRICE_INCREASE', colorId = document.getElementById('color').value, typeId = document.getElementById('type').value, countryId = document.getElementById('country').value, min = document.getElementById('min-price').value, max = document.getElementById('max-price').value)
+        }
 
-        super_divio.appendChild(a);
+        if (formS.value === 'По популярности 🠗') {
+            createTeaCardsFilter(i, 'POP_DECREASE', colorId = document.getElementById('color').value, typeId = document.getElementById('type').value, countryId = document.getElementById('country').value, min = document.getElementById('min-price').value, max = document.getElementById('max-price').value)
+
+        }
     }
+
+    formS.onchange = function () {
+
+        var urlForPagi = '/tea/filter'
+
+        const xhrPagi = new XMLHttpRequest();
+
+        xhrPagi.open('GET', urlForPagi)
+
+        xhrPagi.onload = () => {
+
+            var datas_ = JSON.parse(xhrPagi.response)
+
+            for (let i = 0; i < datas_.totalPages; i++) {
+                document.getElementById(i + 100).style.backgroundColor = 'chocolate';
+                document.getElementById(i + 100).style.color = 'black';
+                document.getElementById(i + 100).style.border = '1px solid chocolate';
+            }
+
+            document.getElementById(datas_.number + 100).style.backgroundColor = '#4CAF50';
+            document.getElementById(datas_.number + 100).style.color = 'white';
+            document.getElementById(datas_.number + 100).style.border = '1px solid #4CAF50';
+        }
+        xhrPagi.send()
+
+        if (formS.value === 'По алфавиту 🠗') {
+
+            createTeaCardsFilter(0, 'NAME_INCREASE', colorId = document.getElementById('color').value, typeId = document.getElementById('type').value, countryId = document.getElementById('country').value, min = document.getElementById('min-price').value, max = document.getElementById('max-price').value)
+        }
+
+        if (formS.value === 'Цена 🠗') {
+            createTeaCardsFilter(0, 'PRICE_DECREASE', colorId = document.getElementById('color').value, typeId = document.getElementById('type').value, countryId = document.getElementById('country').value, min = document.getElementById('min-price').value, max = document.getElementById('max-price').value)
+        }
+
+        if (formS.value === 'Цена 🠕') {
+            createTeaCardsFilter(0, 'PRICE_INCREASE', colorId = document.getElementById('color').value, typeId = document.getElementById('type').value, countryId = document.getElementById('country').value, min = document.getElementById('min-price').value, max = document.getElementById('max-price').value)
+        }
+
+        if (formS.value === 'По популярности 🠗') {
+            createTeaCardsFilter(0, 'POP_DECREASE', colorId = document.getElementById('color').value, typeId = document.getElementById('type').value, countryId = document.getElementById('country').value, min = document.getElementById('min-price').value, max = document.getElementById('max-price').value)
+
+        }
+    }
+    var super_divio = document.getElementById('paginationTea');
+
+    super_divio.appendChild(a);
+}
 }
 xhrPag.send()
