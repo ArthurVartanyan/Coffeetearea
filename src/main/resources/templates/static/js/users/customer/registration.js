@@ -31,8 +31,5 @@ _form.addEventListener("submit", function (e) {
             var sup_div = document.getElementById('formElem')
             sup_div.appendChild(name)
         }
-
-
-
     })
 })

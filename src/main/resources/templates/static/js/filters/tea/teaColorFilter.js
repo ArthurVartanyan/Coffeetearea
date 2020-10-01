@@ -8,7 +8,6 @@ xhrTeaColor.onload = () => {
 
     var datassss = JSON.parse(xhrTeaColor.response)
 
-
     for (let i = 0; i < datassss.length; i++) {
 
         var teaColor = document.createElement('option')
@@ -21,5 +20,4 @@ xhrTeaColor.onload = () => {
         super_select.appendChild(teaColor)
     }
 }
-
 xhrTeaColor.send()

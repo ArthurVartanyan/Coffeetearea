@@ -27,8 +27,6 @@ if (localStorage.getItem('token') !== null) {
         superdiv.appendChild(login)
         superdiv.appendChild(br2)
         superdiv.appendChild(mail)
-
     }
-
-    xh.send(xh)
+    xh.send()
 }

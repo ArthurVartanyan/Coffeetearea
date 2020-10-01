@@ -10,8 +10,6 @@ xhr.onload = () => {
 
     var datas = JSON.parse(xhr.response)
 
-    console.log(datas)
-
     for (let i = 0; i <= datas.length; i++) {
 
         var card = document.createElement("div");
@@ -34,7 +32,8 @@ xhr.onload = () => {
         favourite.style.width = '100%';
         favourite.style.fontSize = '18px';
         favourite.textContent = 'Удалить из избранного'
-        favourite.onclick = function() {
+
+        favourite.onclick = function () {
 
             let id = this.id - 3000
 
@@ -55,7 +54,6 @@ xhr.onload = () => {
                     }
                 })
         }
-
 
         var image = document.createElement("img")
         image.id = datas[i].id + 1100
@@ -102,7 +100,8 @@ xhr.onload = () => {
         button.style.cursor = 'pointer';
         button.style.width = '100%';
         button.style.fontSize = '18px';
-        button.onclick = function() {
+
+        button.onclick = function () {
 
             fetch("/cart-item/" + this.id, {
 
@@ -120,7 +119,6 @@ xhr.onload = () => {
                     }
                 })
         }
-
         card.appendChild(image);
         card.appendChild(name);
         card.appendChild(price);

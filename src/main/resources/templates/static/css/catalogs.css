@@ -1,19 +1,20 @@
-.h1 {
+h1 {
     font-size: 100px;
     text-align: left;
     color: forestgreen;
     font-family: "Brush Script MT", cursive;
     position: fixed;
     left: 20px;
+    top: 160px;
 }
 
-.cardItems {
+.countries {
     position: fixed;
     top: 230px;
     left: 20px;
 }
 
-.cardItems {
+.countries {
     width:600px;
     overflow-y:scroll;
     position:relative;

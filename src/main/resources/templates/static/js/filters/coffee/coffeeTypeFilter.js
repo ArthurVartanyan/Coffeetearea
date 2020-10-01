@@ -10,14 +10,14 @@ xhrCoffeeType.onload = () => {
 
     for (let i = 0; i < datasss.length; i++) {
 
-        var teaType = document.createElement('option')
-        teaType.value = datasss[i].id
-        teaType.id = datasss[i].id
-        teaType.textContent = datasss[i].name
+        var coffeeType = document.createElement('option')
+        coffeeType.value = datasss[i].id
+        coffeeType.id = datasss[i].id
+        coffeeType.textContent = datasss[i].name
 
-        var super_select = document.getElementById('coffeeType')
+        var super_select = document.getElementById('cofType')
 
-        super_select.appendChild(teaType)
+        super_select.appendChild(coffeeType)
     }
 }
 xhrCoffeeType.send()

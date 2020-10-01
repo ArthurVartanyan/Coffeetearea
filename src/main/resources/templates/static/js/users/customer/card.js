@@ -8,7 +8,6 @@ if (localStorage.getItem('token') !== null) {
 
     xhr.setRequestHeader('Authorization', localStorage.getItem('token'))
 
-
     xhr.onload = () => {
 
         var datas = JSON.parse(xhr.response)
@@ -23,6 +22,7 @@ if (localStorage.getItem('token') !== null) {
             cardItem.style.color = 'chocolate';
 
             var itemCount = document.createElement("input")
+            itemCount.id = datas.cartItemDTOS[i].drink.id + 222;
             itemCount.style.width = '30px';
             itemCount.value = datas.cartItemDTOS[i].count;
 
@@ -33,12 +33,10 @@ if (localStorage.getItem('token') !== null) {
             button.style.marginLeft = '20px';
             button.textContent = 'Изменить'
 
-
-
             button.onclick = function () {
 
                 const data = JSON.stringify({
-                    count: 4
+                    count: document.getElementById(datas.cartItemDTOS[i].drink.id + 222).value
                 });
 
 
@@ -53,8 +51,9 @@ if (localStorage.getItem('token') !== null) {
                     },
                     body: data
                 })
-            }
 
+                location.reload()
+            }
 
             var cardItemCount = document.createElement("pr");
             cardItemCount.style.fontFamily = 'Brush Script MT, cursive';
@@ -78,13 +77,12 @@ if (localStorage.getItem('token') !== null) {
 
             cardItemCount.textContent = "Количество: ";
 
-
             var delButton = document.createElement('button');
             delButton.id = datas.cartItemDTOS[i].drink.id;
             delButton.textContent = "Удалить";
             delButton.style.marginLeft = "30px";
 
-            delButton.onclick = function(){
+            delButton.onclick = function () {
 
                 fetch("/cart-item/" + this.id, {
 
@@ -99,7 +97,6 @@ if (localStorage.getItem('token') !== null) {
                 })
             }
 
-
             superio_div.appendChild(cardItem);
             superio_div.appendChild(br0);
             superio_div.appendChild(weight);
@@ -111,9 +108,7 @@ if (localStorage.getItem('token') !== null) {
             superio_div.appendChild(br2);
             superio_div.appendChild(br3);
             superio_div.appendChild(br4);
-
         }
-
 
         var removeAllButton = document.createElement("button")
 
@@ -125,24 +120,22 @@ if (localStorage.getItem('token') !== null) {
         removeAllButton.textContent = 'Очистить корзину'
         removeAllButton.onclick = function () {
 
-                fetch("/cart-item/all", {
+            fetch("/cart-item/all", {
 
-                    method: 'DELETE',
+                method: 'DELETE',
 
-                    headers: {
-                        'Content-Type': 'application/json;charset=utf-8',
+                headers: {
+                    'Content-Type': 'application/json;charset=utf-8',
 
-                        'Authorization': localStorage.getItem('token')
+                    'Authorization': localStorage.getItem('token')
 
-                    }
+                }
+            })
+                .then(() => {
+                    alert("Вы очистили корзину!")
+                    location.reload()
                 })
-                    .then(() => {
-                        alert("Вы очистили корзину!")
-                        location.reload()
-                    })
-            }
-
-
+        }
 
         var order = document.createElement("button")
 
@@ -154,36 +147,35 @@ if (localStorage.getItem('token') !== null) {
         order.textContent = 'Оформить заказ'
         order.onclick = function () {
 
-            if (document.getElementById('cardItems').childElementCount !== 1){
+            if (document.getElementById('cardItems').childElementCount !== 1) {
                 RedirectOrder();
             } else (alert('Ошибка! Для оформления заказа Вам необходимо пополнить корзину!'))
         }
 
-            var br5 = document.createElement('br');
+        var br5 = document.createElement('br');
 
-            document.body.appendChild(removeAllButton);
-            document.body.appendChild(order);
-            superio_div.appendChild(br5);
+        document.body.appendChild(removeAllButton);
+        document.body.appendChild(order);
+        superio_div.appendChild(br5);
 
-            const url = '/cart-item/list'
+        const url = '/cart-item/list'
 
-            const request = new XMLHttpRequest();
+        const request = new XMLHttpRequest();
 
-            request.open('GET', url)
+        request.open('GET', url)
 
-            request.setRequestHeader('Authorization', localStorage.getItem('token'))
+        request.setRequestHeader('Authorization', localStorage.getItem('token'))
 
+        var totalPrice = document.createElement("pr")
+        totalPrice.style.fontFamily = 'Brush Script MT, cursive';
+        totalPrice.style.fontSize = '50px';
+        totalPrice.style.position = 'fixed'
+        totalPrice.style.left = '650px';
+        totalPrice.style.top = '300px'
+        totalPrice.style.color = '#228B22';
+        totalPrice.textContent = "Стоимость заказа: " + datas.orderPrice + "₽";
 
-            var totalPrice = document.createElement("pr")
-            totalPrice.style.fontFamily = 'Brush Script MT, cursive';
-            totalPrice.style.fontSize = '50px';
-            totalPrice.style.position = 'fixed'
-            totalPrice.style.left = '650px';
-            totalPrice.style.top = '300px'
-            totalPrice.style.color = '#228B22';
-            totalPrice.textContent = "Стоимость заказа: " + datas.orderPrice + "₽";
-
-            document.body.appendChild(totalPrice);
-        }
-        xhr.send()
+        document.body.appendChild(totalPrice);
     }
+    xhr.send()
+}

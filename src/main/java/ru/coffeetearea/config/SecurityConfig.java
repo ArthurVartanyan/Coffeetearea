@@ -79,10 +79,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         // Ссылки
                 .antMatchers("/users/login",  "/users/info", "/users/registration", "/coffee/all", "/coffee/filter",
                         "/drinks/populars", "/drinks/**/image", "/tea/all", "/tea/filter", "/catalogs/roastings", "/catalogs/coffee-types",
-                        "/catalogs/tea-types", "/catalogs/tea-colors", "/catalogs/countries",
+                        "/catalogs/tea-types", "/catalogs/tea-colors", "/catalogs/countries", "/coffee/**", "/tea/**",
                         // Страницы
                         "/login", "/errorLogin", "/contacts", "/coffees", "/teas", "/home", "/about", "/registration",
-                        "/card", "/order", "/drink", "/favourites", "/admin")
+                        "/card", "/order", "/drink-coffee", "/favourites", "/admin", "/admin-roastings", "/admin-manufacturers",
+                        "/admin-countries", "/admin-coffee-type", "/admin-tea-types", "/admin-tea-colors")
                 .permitAll()
                 .anyRequest()
                 .authenticated().and()

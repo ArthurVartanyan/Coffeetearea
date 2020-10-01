@@ -12,14 +12,11 @@
     <link rel="stylesheet" href="static/css/menuBar.css">
     <link rel="stylesheet" href="static/css/pagination.css">
     <link rel="stylesheet" href="static/css/coffeeAndTea.css">
-    <script src="static/js/coffeeTypeFilter.js"></script>
-    <script src="static/js/roastingFilter.js"></script>
-    <script src="static/js/coffeeCountry.js"></script>
 
 
 </head>
 
-<body background="static/images/coffees-background.png" onload="createCards()">
+<body background="static/images/coffees-background.png" onload="createCoffeeCardsFilter();">
 
 <!--МЕНЮ-БАР-->
     <div id="menu-bar" class="menu-bar">
@@ -58,15 +55,19 @@
     <option id="prD">Цена 🠗</option>
 </select>
 
-<select class="coffeeType" id="coffeeType">
-    <option value=""></option>
-</select>
+<!--<select class="coffeeType" id="coffeeType">-->
+<!--    <option value=""></option>-->
+<!--</select>-->
 
 <select class="roast" id="roast">
     <option value=""></option>
 </select>
 
 <select class="coffeeCountry" id="coffeeCountry">
+    <option value=""></option>
+</select>
+
+<select class="cofType" id="cofType">
     <option value=""></option>
 </select>
 
@@ -90,18 +91,27 @@
 <div id="pagination" class="pagination">
 </div>
 
+<div id="drinkCoffee"></div>
 </body>
-<script src="static/js/teaTypeFilter.js"></script>
+<script src="static/js/filters/coffee/coffeeTypeFilter.js"></script>
+<script src="static/js/filters/coffee/coffeeRoastingFilter.js"></script>
+<script src="static/js/filters/coffee/coffeeCountryFilter.js"></script>
+<script src="static/js/users/common/coffeeCardsWithFilter.js"></script>
+<script src="static/js/filters/coffee/coffeeFilter.js"></script>
+
+<!--<script src="static/js/teaTypeFilter.js"></script>-->
 <!--Информация о пользователе в шапке-->
-<script src="static/js/userInfo.js"></script>
+<script src="static/js/users/common/menuBarUserInfo.js"></script>
 <!--Вызываем скрипт для добавления карточек товаров-->
 <script src="static/js/createCoffeeCards.js"></script>
 <!--Вызываем скрипт для открытия фильтра-->
-<script src="static/js/callFilterMenu.js"></script>
+<!--<script src="static/js/callFilterMenu.js"></script>-->
 <!--Редиректы по меню-->
-<script src="static/js/redirects.js"></script>
+<script src="static/js/users/common/redirects.js"></script>
 <!--Выход из системы-->
 <script src="static/js/logout.js"></script>
-<script src="static/js/icons.js"></script>
-<script src="static/js/coffeePaginationButtons.js"></script>
+<script src="static/js/users/common/menuBarIcons.js"></script>
+<script src="static/js/users/common/coffeePaginationButtons.js"></script>
+<script src="static/js/drinkCoffee.js"></script>
+
 </html>

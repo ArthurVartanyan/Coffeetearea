@@ -63,9 +63,9 @@ public class WebController {
         return "errorLogin";
     }
 
-    @GetMapping("/drink")
-    public String drinkPage() {
-        return "drink";
+    @GetMapping("/drink-coffee")
+    public String drinkCoffeePage() {
+        return "drinkCoffee";
     }
 
     @GetMapping("/favourites")
@@ -75,6 +75,37 @@ public class WebController {
 
     @GetMapping("/admin")
     public String adminsPage() {
-        return "admCatalog";
+        return "adminCatalog";
     }
+
+    @GetMapping("/admin-coffee-type")
+    public String adminCoffeeTypesPage() {
+        return "adminCoffeeType";
+    }
+
+    @GetMapping("/admin-countries")
+    public String adminsCountriesPage() {
+        return "adminCountries";
+    }
+
+    @GetMapping("/admin-manufacturers")
+    public String adminsManufacturersPage() {
+        return "adminManufacturers";
+    }
+
+    @GetMapping("/admin-roastings")
+    public String adminsRoastingsPage() {
+        return "adminRoastings";
+    }
+
+    @GetMapping("/admin-tea-types")
+    public String adminsTeaTypesPage() {
+        return "adminTeaTypes";
+    }
+
+    @GetMapping("/admin-tea-colors")
+    public String adminsTeaColorsPage() {
+        return "adminTeaColors";
+    }
+
 }
