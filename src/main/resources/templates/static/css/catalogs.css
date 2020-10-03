@@ -20,3 +20,94 @@ h1 {
     position:relative;
     height: 600px;
 }
+
+.coffTypes {
+    position: fixed;
+    top: 230px;
+    left: 20px;
+}
+
+.coffTypes {
+    width:600px;
+    overflow-y:scroll;
+    position:relative;
+    height: 600px;
+}
+
+.manufactur {
+    position: fixed;
+    top: 230px;
+    left: 20px;
+}
+
+.manufactur {
+    width:600px;
+    overflow-y:scroll;
+    position:relative;
+    height: 600px;
+}
+
+.roasts {
+    position: fixed;
+    top: 230px;
+    left: 20px;
+}
+
+.roasts {
+    width:600px;
+    overflow-y:scroll;
+    position:relative;
+    height: 600px;
+}
+
+.tea-c {
+    position: fixed;
+    top: 230px;
+    left: 20px;
+}
+
+.tea-c {
+    width:600px;
+    overflow-y:scroll;
+    position:relative;
+    height: 600px;
+}
+
+.tea-t {
+    position: fixed;
+    top: 230px;
+    left: 20px;
+}
+
+.tea-t {
+    width:600px;
+    overflow-y:scroll;
+    position:relative;
+    height: 600px;
+}
+
+.packs {
+    position: fixed;
+    top: 230px;
+    left: 20px;
+}
+
+.packs {
+    width:600px;
+    overflow-y:scroll;
+    position:relative;
+    height: 600px;
+}
+
+.coffee {
+    position: fixed;
+    top: 230px;
+    left: 20px;
+}
+
+.coffee {
+    width:600px;
+    overflow-y:scroll;
+    position:relative;
+    height: 600px;
+}

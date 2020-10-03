@@ -70,3 +70,11 @@ function RedirectTeaTypes() {
 function RedirectTeaColors() {
     window.location = '/admin-tea-colors'
 }
+
+function RedirectPackages() {
+    window.location = '/admin-packages'
+}
+
+function RedirectCatalog() {
+    window.location = '/admin-catalog'
+}

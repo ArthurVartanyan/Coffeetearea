@@ -1,6 +1,6 @@
 if (localStorage.getItem('token') !== null) {
 
-    const requestURL = '/catalogs/countries'
+    const requestURL = '/catalogs/roastings'
 
     const xhr = new XMLHttpRequest();
 
@@ -12,7 +12,7 @@ if (localStorage.getItem('token') !== null) {
 
         var datas = JSON.parse(xhr.response)
 
-        var superio_div = document.getElementById('countries')
+        var superio_div = document.getElementById('roasts')
 
         for (let i = 0; i < datas.length; i++) {
 
@@ -50,7 +50,7 @@ if (localStorage.getItem('token') !== null) {
                         name: document.getElementById('addInput').value
                     });
 
-                    fetch("/catalogs/" + ids + "/countries", {
+                    fetch("/catalogs/" + ids + "/roastings", {
 
                         method: 'PUT',
 
@@ -62,7 +62,7 @@ if (localStorage.getItem('token') !== null) {
                         body: data
                     }).then((res) => {
                         if (res.status === 200) {
-                            alert("Страна успешно отредактирована!")
+                            alert("Прожарка успешно отредактирован!")
                             location.reload()
                         }
                     })
@@ -78,7 +78,7 @@ if (localStorage.getItem('token') !== null) {
 
             removeButton.onclick = function () {
 
-                fetch("/catalogs/" + ids + "/country", {
+                fetch("/catalogs/" + ids + "/roastings", {
 
                     method: 'DELETE',
 
@@ -134,7 +134,7 @@ if (localStorage.getItem('token') !== null) {
                     name: document.getElementById('addInput').value
                 });
 
-                fetch("/catalogs/countries", {
+                fetch("/catalogs/roastings", {
 
                     method: 'POST',
 
@@ -146,7 +146,7 @@ if (localStorage.getItem('token') !== null) {
                     body: data
                 }).then((res) => {
                     if (res.status === 200) {
-                        alert("Страна успешно добавлена!")
+                        alert("Прожарка успешно добавлен!")
                         location.reload()
                     }
                 })

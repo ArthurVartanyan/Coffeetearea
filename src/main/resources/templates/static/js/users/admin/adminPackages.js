@@ -1,6 +1,6 @@
 if (localStorage.getItem('token') !== null) {
 
-    const requestURL = '/catalogs/countries'
+    const requestURL = '/catalogs/packages'
 
     const xhr = new XMLHttpRequest();
 
@@ -12,7 +12,7 @@ if (localStorage.getItem('token') !== null) {
 
         var datas = JSON.parse(xhr.response)
 
-        var superio_div = document.getElementById('countries')
+        var superio_div = document.getElementById('packs')
 
         for (let i = 0; i < datas.length; i++) {
 
@@ -50,7 +50,7 @@ if (localStorage.getItem('token') !== null) {
                         name: document.getElementById('addInput').value
                     });
 
-                    fetch("/catalogs/" + ids + "/countries", {
+                    fetch("/catalogs/" + ids + "/packages", {
 
                         method: 'PUT',
 
@@ -62,7 +62,7 @@ if (localStorage.getItem('token') !== null) {
                         body: data
                     }).then((res) => {
                         if (res.status === 200) {
-                            alert("Страна успешно отредактирована!")
+                            alert("Упаковка успешно отредактирован!")
                             location.reload()
                         }
                     })
@@ -78,7 +78,7 @@ if (localStorage.getItem('token') !== null) {
 
             removeButton.onclick = function () {
 
-                fetch("/catalogs/" + ids + "/country", {
+                fetch("/catalogs/" + ids + "/packages", {
 
                     method: 'DELETE',
 
@@ -88,7 +88,7 @@ if (localStorage.getItem('token') !== null) {
                         'Authorization': localStorage.getItem('token')
                     }
                 }).then(() => {
-                    alert("Страна из справочника удалена!")
+                    alert("Производитель из справочника удален!")
                     location.reload()
                 })
 
@@ -134,7 +134,7 @@ if (localStorage.getItem('token') !== null) {
                     name: document.getElementById('addInput').value
                 });
 
-                fetch("/catalogs/countries", {
+                fetch("/catalogs/packages", {
 
                     method: 'POST',
 
@@ -146,7 +146,7 @@ if (localStorage.getItem('token') !== null) {
                     body: data
                 }).then((res) => {
                     if (res.status === 200) {
-                        alert("Страна успешно добавлена!")
+                        alert("Упаковка успешно добавлен!")
                         location.reload()
                     }
                 })

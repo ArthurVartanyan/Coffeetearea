@@ -19,7 +19,7 @@ if (localStorage.getItem('token') !== null) {
             aaaa.style.position = 'absolute'
             aaaa.style.top = '30px'
             aaaa.style.left = '900px'
-            aaaa.href = '/admin'
+            aaaa.href = '/admin-catalog'
 
             document.body.appendChild(aaaa);
         }

@@ -2,6 +2,7 @@ package ru.coffeetearea.model.catalog;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 

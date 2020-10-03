@@ -3,7 +3,7 @@ let _form = document.querySelector("form")
 _form.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    fetch("/users/login", {
+    fetch("http://localhost:8080/users/login", {
 
         method: 'POST',
 
@@ -25,5 +25,7 @@ _form.addEventListener("submit", function (e) {
             if (data && data.token) {
                 localStorage.setItem('token', 'Bearer ' + data.token);
             }
-        })
+        }).catch((error)=> {
+            console.log(error)
+    })
 })

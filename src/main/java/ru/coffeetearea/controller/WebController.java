@@ -73,7 +73,7 @@ public class WebController {
         return "favourites";
     }
 
-    @GetMapping("/admin")
+    @GetMapping("/admin-catalog")
     public String adminsPage() {
         return "adminCatalog";
     }
@@ -108,4 +108,13 @@ public class WebController {
         return "adminTeaColors";
     }
 
+    @GetMapping("/admin-packages")
+    public String adminsPackagesPage() {
+        return "adminPackages";
+    }
+
+    @GetMapping("/admin-coffee")
+    public String adminsCoffeePage() {
+        return "adminCoffee";
+    }
 }
