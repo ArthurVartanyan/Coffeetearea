@@ -117,4 +117,9 @@ public class WebController {
     public String adminsCoffeePage() {
         return "adminCoffee";
     }
+
+    @GetMapping("/admin-tea")
+    public String adminsTeaPage() {
+        return "adminTea";
+    }
 }

@@ -1,6 +1,6 @@
 if (localStorage.getItem('token') !== null) {
 
-    const requestURL = '/coffee/all?page_size=100000'
+    const requestURL = '/tea/all?page_size=100000'
 
     const xhr = new XMLHttpRequest();
 
@@ -72,7 +72,7 @@ if (localStorage.getItem('token') !== null) {
                 addType.style.width = '200px';
                 addType.style.height = '40px';
 
-                const requestURL = '/catalogs/coffee-types'
+                const requestURL = '/catalogs/tea-types'
 
                 const xhr = new XMLHttpRequest();
 
@@ -188,15 +188,15 @@ if (localStorage.getItem('token') !== null) {
                 packXhr.send()
 
 
-                var addRoast = document.createElement('select')
-                addRoast.id = 'addRoast';
-                addRoast.style.position = 'fixed';
-                addRoast.style.left = '1000px';
-                addRoast.style.top = '550px';
-                addRoast.style.width = '200px';
-                addRoast.style.height = '40px';
+                var addTeaColor = document.createElement('select')
+                addTeaColor.id = 'addTeaColor';
+                addTeaColor.style.position = 'fixed';
+                addTeaColor.style.left = '1000px';
+                addTeaColor.style.top = '550px';
+                addTeaColor.style.width = '200px';
+                addTeaColor.style.height = '40px';
 
-                const roastURL = '/catalogs/roastings'
+                const roastURL = '/catalogs/tea-colors'
 
                 const roastXhr = new XMLHttpRequest();
 
@@ -213,7 +213,7 @@ if (localStorage.getItem('token') !== null) {
                         var option = document.createElement('option')
                         option.value = dannie[i].id
                         option.textContent = dannie[i].name;
-                        addRoast.appendChild(option);
+                        addTeaColor.appendChild(option);
                     }
                 }
                 roastXhr.send()
@@ -267,7 +267,7 @@ if (localStorage.getItem('token') !== null) {
                 inpRoast.style.position = 'fixed'
                 inpRoast.style.left = '910px';
                 inpRoast.style.top = '555px';
-                inpRoast.textContent = 'Прожарка:'
+                inpRoast.textContent = 'Цвет:'
 
                 var inpPackage = document.createElement('pr')
                 inpPackage.style.position = 'fixed'
@@ -291,7 +291,7 @@ if (localStorage.getItem('token') !== null) {
                 document.body.appendChild(addWeight);
                 document.body.appendChild(addType);
                 document.body.appendChild(addCountry);
-                document.body.appendChild(addRoast);
+                document.body.appendChild(addTeaColor);
                 document.body.appendChild(addPackage);
                 document.body.appendChild(addManufacturer);
                 document.body.appendChild(addAbout);
@@ -312,7 +312,7 @@ if (localStorage.getItem('token') !== null) {
 
                     axios({
                         method: 'put',
-                        url: "/coffee/" + ids,
+                        url: "/tea/" + ids,
                         headers: {
                             'Content-Type': 'application/json;charset=utf-8',
 
@@ -332,11 +332,11 @@ if (localStorage.getItem('token') !== null) {
                             country: {
                                 id: document.getElementById('addCountry').value
                             },
-                            coffeeType: {
+                            teaType: {
                                 id: document.getElementById('addType').value
                             },
-                            roasting: {
-                                id: document.getElementById('addRoast').value
+                            teaColor: {
+                                id: document.getElementById('addTeaColor').value
                             }
                         }
                     }).catch((error) => {
@@ -436,7 +436,7 @@ if (localStorage.getItem('token') !== null) {
 
             removeButton.onclick = function () {
 
-                fetch("/coffee/" + ids, {
+                fetch("/tea/" + ids, {
 
                     method: 'DELETE',
 
@@ -509,7 +509,7 @@ if (localStorage.getItem('token') !== null) {
             addType.style.width = '200px';
             addType.style.height = '40px';
 
-            const requestURL = '/catalogs/coffee-types'
+            const requestURL = '/catalogs/tea-types'
 
             const xhr = new XMLHttpRequest();
 
@@ -621,15 +621,15 @@ if (localStorage.getItem('token') !== null) {
             }
             packXhr.send()
 
-            var addRoast = document.createElement('select')
-            addRoast.id = 'addRoast';
-            addRoast.style.position = 'fixed';
-            addRoast.style.left = '1000px';
-            addRoast.style.top = '550px';
-            addRoast.style.width = '200px';
-            addRoast.style.height = '40px';
+            var addTeaColor = document.createElement('select')
+            addTeaColor.id = 'addTeaColor';
+            addTeaColor.style.position = 'fixed';
+            addTeaColor.style.left = '1000px';
+            addTeaColor.style.top = '550px';
+            addTeaColor.style.width = '200px';
+            addTeaColor.style.height = '40px';
 
-            const roastURL = '/catalogs/roastings'
+            const roastURL = '/catalogs/tea-colors'
 
             const roastXhr = new XMLHttpRequest();
 
@@ -646,7 +646,7 @@ if (localStorage.getItem('token') !== null) {
                     var option = document.createElement('option')
                     option.value = dannie[i].id
                     option.textContent = dannie[i].name;
-                    addRoast.appendChild(option);
+                    addTeaColor.appendChild(option);
                 }
             }
             roastXhr.send()
@@ -700,7 +700,7 @@ if (localStorage.getItem('token') !== null) {
             inpRoast.style.position = 'fixed'
             inpRoast.style.left = '910px';
             inpRoast.style.top = '555px';
-            inpRoast.textContent = 'Прожарка:'
+            inpRoast.textContent = 'Цвет:'
 
             var inpPackage = document.createElement('pr')
             inpPackage.style.position = 'fixed'
@@ -719,7 +719,7 @@ if (localStorage.getItem('token') !== null) {
             document.body.appendChild(addWeight);
             document.body.appendChild(addType);
             document.body.appendChild(addCountry);
-            document.body.appendChild(addRoast);
+            document.body.appendChild(addTeaColor);
             document.body.appendChild(addPackage);
             document.body.appendChild(addManufacturer);
             document.body.appendChild(addAbout);
@@ -744,7 +744,7 @@ if (localStorage.getItem('token') !== null) {
 
                 axios({
                     method: 'post',
-                    url: "/coffee",
+                    url: "/tea",
                     headers: {
                         'Content-Type': 'application/json;charset=utf-8',
 
@@ -764,11 +764,11 @@ if (localStorage.getItem('token') !== null) {
                         country: {
                             id: document.getElementById('addCountry').value
                         },
-                        coffeeType: {
+                        teaType: {
                             id: document.getElementById('addType').value
                         },
-                        roasting: {
-                            id: document.getElementById('addRoast').value
+                        teaColor: {
+                            id: document.getElementById('addTeaColor').value
                         }
                     }
                 }).catch((error) => {

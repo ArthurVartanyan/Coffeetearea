@@ -78,3 +78,13 @@ function RedirectPackages() {
 function RedirectCatalog() {
     window.location = '/admin-catalog'
 }
+
+function RedirectAdminTea() {
+    window.location = '/admin-tea'
+}
+
+
+function RedirectAdminCoffee() {
+    window.location = '/admin-coffee'
+}
+

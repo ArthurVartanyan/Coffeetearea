@@ -21,22 +21,21 @@ public class DrinkDTO {
     @Null(groups = {New.class, Edit.class})
     protected Long id;
 
-    @NotNull(groups = {New.class, Edit.class})
+    @NotBlank(groups = {New.class, Edit.class})
     protected String name;
 
     protected String image;
 
     @NotNull(groups = {New.class, Edit.class})
-    @DecimalMin("100.0")
+    @DecimalMin(value = "100.0", groups = {New.class, Edit.class})
     protected BigDecimal price;
 
-    @NotNull(groups = {New.class})
-    @NotNull(groups = {Edit.class})
-    @Size(min = 20)
+    @NotBlank(groups = {New.class, Edit.class})
+    @Size(min = 20, groups = {New.class, Edit.class})
     protected String about;
 
-    @NotNull(groups = {New.class, Edit.class})
-    @Min(value = 10, groups = {Edit.class})
+    @NotNull(groups = {Edit.class, New.class})
+    @Min(value = 10, groups = {Edit.class, New.class})
     protected int weight;
 
     @NotNull(groups = {New.class, Edit.class})
@@ -45,7 +44,6 @@ public class DrinkDTO {
     @NotNull(groups = {New.class, Edit.class})
     protected GeneralCatalogDTO manufacturer;
 
-    @NotNull(groups = {New.class})
-    @NotNull(groups = {Edit.class})
+    @NotNull(groups = {New.class, Edit.class})
     protected GeneralCatalogDTO country;
 }

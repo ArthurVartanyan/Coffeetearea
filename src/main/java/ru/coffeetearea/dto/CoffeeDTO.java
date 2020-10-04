@@ -11,11 +11,9 @@ import javax.validation.constraints.NotNull;
 @EqualsAndHashCode(callSuper = true)
 public class CoffeeDTO extends DrinkDTO {
 
-    @NotNull(groups = {Edit.class})
-    @NotNull(groups = {New.class})
+    @NotNull(groups = {Edit.class, New.class})
     private GeneralCatalogDTO coffeeType;
 
-    @NotNull(groups = {Edit.class})
-    @NotNull(groups = {Edit.class})
+    @NotNull(groups = {Edit.class, Edit.class})
     private GeneralCatalogDTO roasting;
 }

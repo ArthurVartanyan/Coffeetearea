@@ -84,7 +84,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/login", "/errorLogin", "/contacts", "/coffees", "/teas", "/home", "/about", "/registration",
                         "/card", "/order", "/drink-coffee", "/favourites", "/admin", "/admin-roastings", "/admin-manufacturers",
                         "/admin-countries", "/admin-coffee-type", "/admin-tea-types", "/admin-tea-colors", "/admin-packages", "/admin-catalog",
-                        "/admin-coffee")
+                        "/admin-coffee", "/admin-tea")
                 .permitAll()
                 .anyRequest()
                 .authenticated().and()
