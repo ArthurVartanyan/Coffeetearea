@@ -229,6 +229,42 @@ function createTeaCardsFilter(number = '0', sortingParams = 'NAME_INCREASE',
                     var br20 = document.createElement('br')
 
 
+
+                    var buttonFavourites = document.createElement("button")
+                    buttonFavourites.textContent = "Добавить в избранное";
+                    buttonFavourites.style.height = '60px';
+                    buttonFavourites.style.width = '200px';
+                    buttonFavourites.style.position = 'fixed';
+                    buttonFavourites.style.left = '1000px';
+                    buttonFavourites.style.top = '780px';
+                    buttonFavourites.style.color = 'white';
+                    buttonFavourites.style.backgroundColor = '#1D8348';
+
+                    let idForWork = datas.content[i].id;
+
+                    buttonFavourites.onclick = function () {
+
+                        fetch("/drinks/" + idForWork + "/favourites", {
+
+                            method: 'POST',
+
+                            headers: {
+                                'Content-Type': 'application/json;charset=utf-8',
+
+                                'Authorization': localStorage.getItem('token')
+                            }
+                        })
+                            .then((res) => {
+                                if (res.status === 200) {
+                                    alert('Напиток успешно добавлен в избранное!')
+                                }
+
+                                if (res.status !== 200) {
+                                    alert('Напиток уже добавлен избранное!')
+                                }
+                            })
+                    }
+
                     var button = document.createElement('button')
                     button.textContent = 'Добавить в корзину';
                     button.style.height = '60px';
@@ -291,6 +327,7 @@ function createTeaCardsFilter(number = '0', sortingParams = 'NAME_INCREASE',
                     drink_div.appendChild(about)
                     drink_div.appendChild(br20)
                     drink_div.appendChild(button)
+                    drink_div.appendChild(buttonFavourites)
                 }
                 coffee.send()
             }
