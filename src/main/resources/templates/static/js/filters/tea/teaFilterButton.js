@@ -28,5 +28,11 @@ function teaFilter(){
     var minPriceId = document.getElementById('min-price').value
     var maxPriceId = document.getElementById('max-price').value
 
-    createTeaCardsFilter(number = 0, sortingParams = 'NAME_INCREASE', colorId, typeId, countryId, minPriceId, maxPriceId)
+    var drinkName = document.getElementById('drinkName').value
+
+    if (drinkName.length > 0) {
+        createTeaCardsFilter(number = 0, sortingParams = 'NAME_INCREASE', colorId, typeId, countryId, minPriceId, maxPriceId, drinkName)
+    } else {
+        createTeaCardsFilter(number = 0, sortingParams = 'NAME_INCREASE', colorId, typeId, countryId, minPriceId, maxPriceId)
+    }
 }

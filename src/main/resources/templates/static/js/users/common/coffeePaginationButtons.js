@@ -35,19 +35,19 @@ xhrPag.onload = () => {
             document.getElementById(this.id).style.border = '1px solid #4CAF50';
 
             if (formS.value === 'По алфавиту 🠗') {
-                createCoffeeCardsFilter(i, 'NAME_INCREASE', roastingId = document.getElementById('roast').value, typeId = document.getElementById('cofType').value, countryId = document.getElementById('coffeeCountry').value, min = document.getElementById('min-price').value, max = document.getElementById('max-price').value, drinkName = document.getElementById('drinkName').value)
+                createCoffeeCardsFilter(i, 'NAME_INCREASE', roastingId = document.getElementById('roast').value, typeId = document.getElementById('cofType').value, countryId = document.getElementById('coffeeCountry').value, min = document.getElementById('min-price').value, max = document.getElementById('max-price').value, /*drinkName = document.getElementById('drinkName').value*/)
             }
 
             if (formS.value === 'Цена 🠗') {
-                createCoffeeCardsFilter(i, 'PRICE_DECREASE', roastingId = document.getElementById('roast').value, typeId = document.getElementById('cofType').value, countryId = document.getElementById('coffeeCountry').value, min = document.getElementById('min-price').value, max = document.getElementById('max-price').value, drinkName = document.getElementById('drinkName').value)
+                createCoffeeCardsFilter(i, 'PRICE_DECREASE', roastingId = document.getElementById('roast').value, typeId = document.getElementById('cofType').value, countryId = document.getElementById('coffeeCountry').value, min = document.getElementById('min-price').value, max = document.getElementById('max-price').value, /*drinkName = document.getElementById('drinkName').value*/)
             }
 
             if (formS.value === 'Цена 🠕') {
-                createCoffeeCardsFilter(i, 'PRICE_INCREASE', roastingId = document.getElementById('roast').value, typeId = document.getElementById('cofType').value, countryId = document.getElementById('coffeeCountry').value, min = document.getElementById('min-price').value, max = document.getElementById('max-price').value, drinkName = document.getElementById('drinkName').value)
+                createCoffeeCardsFilter(i, 'PRICE_INCREASE', roastingId = document.getElementById('roast').value, typeId = document.getElementById('cofType').value, countryId = document.getElementById('coffeeCountry').value, min = document.getElementById('min-price').value, max = document.getElementById('max-price').value, /*drinkName = document.getElementById('drinkName').value*/)
             }
 
             if (formS.value === 'По популярности 🠗') {
-                createCoffeeCardsFilter(i, 'POP_DECREASE', roastingId = document.getElementById('roast').value, typeId = document.getElementById('cofType').value, countryId = document.getElementById('coffeeCountry').value, min = document.getElementById('min-price').value, max = document.getElementById('max-price').value, drinkName = document.getElementById('drinkName').value)
+                createCoffeeCardsFilter(i, 'POP_DECREASE', roastingId = document.getElementById('roast').value, typeId = document.getElementById('cofType').value, countryId = document.getElementById('coffeeCountry').value, min = document.getElementById('min-price').value, max = document.getElementById('max-price').value, /*drinkName = document.getElementById('drinkName').value*/)
             }
         }
 
@@ -77,19 +77,19 @@ xhrPag.onload = () => {
 
             if (formS.value === 'По алфавиту 🠗') {
 
-                createCoffeeCardsFilter(0, 'NAME_INCREASE', roastingId = document.getElementById('roast').value, typeId = document.getElementById('cofType').value, countryId = document.getElementById('coffeeCountry').value, min = document.getElementById('min-price').value, max = document.getElementById('max-price').value, drinkName = document.getElementById('drinkName').value)
+                createCoffeeCardsFilter(0, 'NAME_INCREASE', roastingId = document.getElementById('roast').value, typeId = document.getElementById('cofType').value, countryId = document.getElementById('coffeeCountry').value, min = document.getElementById('min-price').value, max = document.getElementById('max-price').value, /*drinkName = document.getElementById('drinkName').value*/)
             }
 
             if (formS.value === 'Цена 🠗') {
-                createCoffeeCardsFilter(0, 'PRICE_DECREASE', roastingId = document.getElementById('roast').value, typeId = document.getElementById('cofType').value, countryId = document.getElementById('coffeeCountry').value, min = document.getElementById('min-price').value, max = document.getElementById('max-price').value, drinkName = document.getElementById('drinkName').value)
+                createCoffeeCardsFilter(0, 'PRICE_DECREASE', roastingId = document.getElementById('roast').value, typeId = document.getElementById('cofType').value, countryId = document.getElementById('coffeeCountry').value, min = document.getElementById('min-price').value, max = document.getElementById('max-price').value, /*drinkName = document.getElementById('drinkName').value*/)
             }
 
             if (formS.value === 'Цена 🠕') {
-                createCoffeeCardsFilter(0, 'PRICE_INCREASE', roastingId = document.getElementById('roast').value, typeId = document.getElementById('cofType').value, countryId = document.getElementById('coffeeCountry').value, min = document.getElementById('min-price').value, max = document.getElementById('max-price').value, drinkName = document.getElementById('drinkName').value)
+                createCoffeeCardsFilter(0, 'PRICE_INCREASE', roastingId = document.getElementById('roast').value, typeId = document.getElementById('cofType').value, countryId = document.getElementById('coffeeCountry').value, min = document.getElementById('min-price').value, max = document.getElementById('max-price').value, /*drinkName = document.getElementById('drinkName').value*/)
             }
 
             if (formS.value === 'По популярности 🠗') {
-                createCoffeeCardsFilter(0, 'POP_DECREASE', roastingId = document.getElementById('roast').value, typeId = document.getElementById('cofType').value, countryId = document.getElementById('coffeeCountry').value, min = document.getElementById('min-price').value, max = document.getElementById('max-price').value, drinkName = document.getElementById('drinkName').value)
+                createCoffeeCardsFilter(0, 'POP_DECREASE', roastingId = document.getElementById('roast').value, typeId = document.getElementById('cofType').value, countryId = document.getElementById('coffeeCountry').value, min = document.getElementById('min-price').value, max = document.getElementById('max-price').value, /*drinkName = document.getElementById('drinkName').value*/)
             }
         }
 

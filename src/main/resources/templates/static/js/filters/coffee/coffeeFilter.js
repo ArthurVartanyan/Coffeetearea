@@ -27,8 +27,14 @@ function coffeeFilter() {
     var countryId = document.getElementById('coffeeCountry').value
     var minPriceId = document.getElementById('min-price').value
     var maxPriceId = document.getElementById('max-price').value
+
     var drinkName = document.getElementById('drinkName').value
 
+    if (drinkName.length > 0) {
 
-    createCoffeeCardsFilter(number = 0, sortingParams = 'NAME_INCREASE', roastingId, typeId, countryId, minPriceId, maxPriceId, drinkName)
+        createCoffeeCardsFilter(number = 0, sortingParams = 'NAME_INCREASE', roastingId, typeId, countryId, minPriceId, maxPriceId, drinkName)
+    } else {
+
+        createCoffeeCardsFilter(number = 0, sortingParams = 'NAME_INCREASE', roastingId, typeId, countryId, minPriceId, maxPriceId)
+    }
 }

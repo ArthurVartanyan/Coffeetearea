@@ -2,9 +2,21 @@ function createTeaCardsFilter(number = '0', sortingParams = 'NAME_INCREASE',
                               colorId = '', typeId = '', countryId = '',
                               min = '', max = '') {
 
-    var urlFilter = new URL("http://localhost:8080/tea/filter?" + "page_size=" + 4 + '&page=' +
-        number + "&sortingParams=" + sortingParams + '&colorId=' + colorId + '&countryId=' +
-        countryId + '&typeId=' + typeId + '&min=' + min + '&max=' + max);
+    var urlFilter;
+
+    var drinkName = document.getElementById("drinkName").value
+
+    if (drinkName.length > 0) {
+
+        urlFilter = new URL("http://localhost:8080/tea/filter?" + "page_size=" + 4 + '&page=' +
+            number + "&sortingParams=" + sortingParams + '&colorId=' + colorId + '&countryId=' +
+            countryId + '&typeId=' + typeId + '&min=' + min + '&max=' + max + '&drinkName=' + drinkName);
+    } else {
+        urlFilter = new URL("http://localhost:8080/tea/filter?" + "page_size=" + 4 + '&page=' +
+            number + "&sortingParams=" + sortingParams + '&colorId=' + colorId + '&countryId=' +
+            countryId + '&typeId=' + typeId + '&min=' + min + '&max=' + max);
+    }
+
 
     const xhrFilt = new XMLHttpRequest();
 

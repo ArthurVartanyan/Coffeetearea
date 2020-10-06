@@ -1,9 +1,18 @@
 function createCoffeeCardsFilter(number = '0', sortingParams = 'NAME_INCREASE',
                                  roastingId = '', typeId = '', countryId = '',
-                                 min = '', max = '', drinkname = '') {
+                                 min = '', max = '') {
 
-    var urlFilter = new URL("http://localhost:8080/coffee/filter?" + "page_size=" + 4 + '&page=' + number + "&sortingParams=" + sortingParams + '&countryId=' + countryId + '&roastingId=' +
-        roastingId + '&typeId=' + typeId + '&min=' + min + '&max=' + max + '&drinkName=' + drinkname);
+    var urlFilter;
+
+    var drinkname = document.getElementById("drinkName").value
+
+    if (drinkname.length > 0) {
+        urlFilter = new URL("http://localhost:8080/coffee/filter?" + "page_size=" + 4 + '&page=' + number + "&sortingParams=" + sortingParams + '&countryId=' + countryId + '&roastingId=' +
+            roastingId + '&typeId=' + typeId + '&min=' + min + '&max=' + max + '&drinkName=' + drinkname);
+    } else  {
+        urlFilter = new URL("http://localhost:8080/coffee/filter?" + "page_size=" + 4 + '&page=' + number + "&sortingParams=" + sortingParams + '&countryId=' + countryId + '&roastingId=' +
+            roastingId + '&typeId=' + typeId + '&min=' + min + '&max=' + max);
+    }
 
     const xhrFilt = new XMLHttpRequest();
 

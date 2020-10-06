@@ -8,8 +8,6 @@ xhrCoffeeCountry.onload = () => {
 
     var datassss = JSON.parse(xhrCoffeeCountry.response)
 
-    console.log(datassss)
-
     for (let i = 0; i < datassss.length; i++) {
 
         var teaCountry = document.createElement('option')
