@@ -46,7 +46,7 @@
     color: white;
     background-color: forestgreen;
     position: fixed;
-    left: 620px;
+    left: 640px;
     top: 200px;
 }
 
@@ -70,7 +70,7 @@
 
 .coffee-filter {
     position: fixed;
-    left: 800px;
+    left: 825px;
     top: 199px;
     background-color: forestgreen;
     color: white;
@@ -79,7 +79,7 @@
 
 .tea-filter {
     position: fixed;
-    left: 760px;
+    left: 790px;
     top: 199px;
     background-color: forestgreen;
     color: white;
@@ -98,4 +98,11 @@
     left: 390px;
     top: 150px;
     width: 100px;
+}
+
+.drinkName {
+    position: fixed;
+    left: 500px;
+    top: 150px;
+    width: 160px;
 }

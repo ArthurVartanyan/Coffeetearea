@@ -5,7 +5,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 import ru.coffeetearea.dto.RegistrationUserDTO;
 import ru.coffeetearea.dto.UserDTO;
-import ru.coffeetearea.dto.UserInfoDTO;
+//import ru.coffeetearea.dto.UserInfoDTO;
 import ru.coffeetearea.model.User;
 
 import java.util.List;
@@ -36,5 +36,5 @@ public interface UserMapper {
     //
 
     // UserInfoDTO
-    UserInfoDTO userToUserInfoDTO(User user);
+//    UserInfoDTO userToUserInfoDTO(User user);
 }

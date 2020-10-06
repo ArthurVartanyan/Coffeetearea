@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="static/css/menuBar.css">
     <link rel="stylesheet" href="static/css/admin.css">
     <link rel="stylesheet" href="static/css/catalogs.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 </head>
 
@@ -18,7 +19,7 @@
 
 <!--МЕНЮ-БАР-->
 <div id="menu-bar" class="menu-bar">
-    <a href="#orders" onclick="">Заказы</a>
+    <a href="#orders" onclick="RedirectAdminOrder()">Заказы</a>
     <a href="#coffee" onclick="RedirectAdminCoffee()">Кофе</a>
     <a href="#tea" onclick="RedirectAdminTea()">Чай</a>
     <a href="#catalog" onclick="RedirectCatalog();">Справочник</a>

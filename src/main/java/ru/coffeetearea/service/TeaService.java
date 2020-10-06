@@ -3,7 +3,6 @@ package ru.coffeetearea.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
-import ru.coffeetearea.dto.CoffeeDTO;
 import ru.coffeetearea.dto.PageDTO;
 import ru.coffeetearea.dto.SortingParams;
 import ru.coffeetearea.dto.TeaDTO;
@@ -28,11 +27,10 @@ public class TeaService {
     private final DrinkService drinkService;
 
 
-
     /**
      * Получить один напиток по ИД
      */
-    public TeaDTO findTea(Long teaId){
+    public TeaDTO findTea(Long teaId) {
 
         return teaMapper.teaToTeaDTO(teaRepository.findById(teaId)
                 .orElseThrow(() -> new EntityNotFoundException(teaId)));
@@ -97,7 +95,8 @@ public class TeaService {
      */
     public PageDTO<TeaDTO> findAll(int page, int pageSize, SortingParams sortingParams) {
 
-        final Page<Tea> teas = teaRepository.findAll(drinkService.sortingWithParams(sortingParams, page, pageSize));
+        final Page<Tea> teas = teaRepository
+                .findAllByIsDeletedIsFalse(drinkService.sortingWithParams(sortingParams, page, pageSize));
 
         return new PageDTO<>(teaMapper.teaToTeasDTO(teas));
     }
@@ -113,12 +112,12 @@ public class TeaService {
      * @param countryId
      * @return filtered Coffees(DTOs)
      */
-    public PageDTO<TeaDTO> findAllByFilter(int page, int pageSize, Long colorId, Long typeId, Long countryId,
+    public PageDTO<TeaDTO> findAllByFilter(int page, int pageSize, String drinkName, Long colorId, Long typeId, Long countryId,
                                            BigDecimal min, BigDecimal max, SortingParams sortingParams) {
 
         final Page<Tea> teas = teaRepository
                 .findAll(DrinksSpecification
-                                .getTeasByFilter(colorId, typeId, countryId, min, max),
+                                .getTeasByFilter(drinkName, colorId, typeId, countryId, min, max),
                         drinkService.sortingWithParams(sortingParams, page, pageSize));
 
         return new PageDTO<>(teaMapper.teaToTeasDTO(teas));

@@ -99,12 +99,13 @@ public class TeaController {
                                            @RequestParam(value = "page_size", defaultValue = "5") int pageSize,
                                            @RequestParam(required = false) Long colorId,
                                            @RequestParam(required = false) Long typeId,
+                                           @RequestParam(required = false) String drinkName,
                                            @RequestParam(required = false) Long countryId,
                                            BigDecimal min, BigDecimal max,
                                            @RequestParam(required = false, defaultValue = "NAME_INCREASE")
                                                    SortingParams sortingParams) {
 
-        return teaService.findAllByFilter(page, pageSize, colorId, typeId, countryId, min, max, sortingParams);
+        return teaService.findAllByFilter(page, pageSize, drinkName, colorId, typeId, countryId, min, max, sortingParams);
     }
 
     // Delete - methods

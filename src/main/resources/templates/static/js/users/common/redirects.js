@@ -83,8 +83,10 @@ function RedirectAdminTea() {
     window.location = '/admin-tea'
 }
 
-
 function RedirectAdminCoffee() {
     window.location = '/admin-coffee'
 }
 
+function RedirectAdminOrder() {
+    window.location = '/admin-order'
+}

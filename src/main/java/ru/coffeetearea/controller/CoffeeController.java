@@ -97,12 +97,13 @@ public class CoffeeController {
                                             @RequestParam(value = "page_size", defaultValue = "5") int pageSize,
                                             @RequestParam(required = false) Long roastingId,
                                             @RequestParam(required = false) Long typeId,
+                                            @RequestParam(required = false) String drinkName,
                                             @RequestParam(required = false) Long countryId,
                                             BigDecimal min, BigDecimal max,
                                             @RequestParam(required = false, defaultValue = "NAME_INCREASE")
                                                     SortingParams sortingParams) {
 
-        return coffeeService.findAllFilter(page, pageSize, roastingId, typeId, countryId, min, max, sortingParams);
+        return coffeeService.findAllFilter(page, pageSize, drinkName, roastingId, typeId, countryId, min, max, sortingParams);
     }
 
 

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.coffeetearea.dto.AuthenticationRequestDTO;
 import ru.coffeetearea.dto.RegistrationUserDTO;
 import ru.coffeetearea.dto.UserDTO;
-import ru.coffeetearea.dto.UserInfoDTO;
+//import ru.coffeetearea.dto.UserInfoDTO;
 import ru.coffeetearea.service.UserService;
 
 import java.util.Map;
@@ -41,7 +41,7 @@ public class UserController {
      * @return userDTO
      */
     @GetMapping("/info")
-    public UserInfoDTO getInfoAboutUser() {
+    public UserDTO getInfoAboutUser() {
         return userService.getInfoAboutUser();
     }
 

@@ -46,20 +46,42 @@ if (localStorage.getItem('token') !== null) {
 
                 countryBut.onclick = function () {
 
-                    const data = JSON.stringify({
-                        name: document.getElementById('addInput').value
-                    });
-
-                    fetch("/catalogs/" + ids + "/packages", {
-
-                        method: 'PUT',
-
+                    axios({
+                        method: 'put',
+                        url: "/catalogs/" + ids + "/packages",
                         headers: {
                             'Content-Type': 'application/json;charset=utf-8',
 
                             'Authorization': localStorage.getItem('token')
                         },
-                        body: data
+                        data: {
+                            name: document.getElementById('addInput').value
+                        }
+                    }).catch((error) => {
+
+                        Array.prototype.slice.call(document.getElementsByClassName('prEx')).forEach(
+                            function (item) {
+                                item.remove();
+                            });
+
+                        var nameEx;
+
+                        for (let i = 0; i < error.response.data.fieldErrors.length; i++) {
+                            if (error.response.data.fieldErrors[i].field === "name") {
+                                nameEx = error.response.data.fieldErrors[i].message;
+                            }
+                        }
+
+                        var nameC = document.createElement('pr');
+                        nameC.className = 'prEx'
+                        nameC.style.color = 'red';
+                        nameC.style.position = 'fixed';
+                        nameC.style.top = '405px';
+                        nameC.style.left = '1220px';
+                        nameC.style.fontFamily = '"Brush Script MT", cursive';
+                        nameC.textContent = nameEx;
+                        document.body.appendChild(nameC)
+
                     }).then((res) => {
                         if (res.status === 200) {
                             alert("Упаковка успешно отредактирован!")
@@ -130,20 +152,41 @@ if (localStorage.getItem('token') !== null) {
 
             countryBut.onclick = function () {
 
-                const data = JSON.stringify({
-                    name: document.getElementById('addInput').value
-                });
-
-                fetch("/catalogs/packages", {
-
-                    method: 'POST',
-
+                axios({
+                    method: 'post',
+                    url: "/catalogs/packages",
                     headers: {
                         'Content-Type': 'application/json;charset=utf-8',
 
                         'Authorization': localStorage.getItem('token')
                     },
-                    body: data
+                    data: {
+                        name: document.getElementById('addInput').value
+                    }
+                }).catch((error) => {
+
+                    Array.prototype.slice.call(document.getElementsByClassName('prEx')).forEach(
+                        function (item) {
+                            item.remove();
+                        });
+
+                    var nameEx;
+
+                    for (let i = 0; i < error.response.data.fieldErrors.length; i++) {
+                        if (error.response.data.fieldErrors[i].field === "name") {
+                            nameEx = error.response.data.fieldErrors[i].message;
+                        }
+                    }
+
+                    var nameC = document.createElement('pr');
+                    nameC.className = 'prEx'
+                    nameC.style.color = 'red';
+                    nameC.style.position = 'fixed';
+                    nameC.style.top = '405px';
+                    nameC.style.left = '1220px';
+                    nameC.style.fontFamily = '"Brush Script MT", cursive';
+                    nameC.textContent = nameEx;
+                    document.body.appendChild(nameC)
                 }).then((res) => {
                     if (res.status === 200) {
                         alert("Упаковка успешно добавлен!")

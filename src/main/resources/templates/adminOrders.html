@@ -10,11 +10,14 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="static/css/menuBar.css">
     <link rel="stylesheet" href="static/css/admin.css">
+    <link rel="stylesheet" href="static/css/catalogs.css">
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
 
 </head>
 
 <body>
-
 <!--МЕНЮ-БАР-->
 <div id="menu-bar" class="menu-bar">
     <a href="#orders" onclick="RedirectAdminOrder()">Заказы</a>
@@ -29,21 +32,16 @@
 
 </div>
 
-<p class="info" id="info"></p>
+<h1 class="h1">Номер заказа:</h1>
 
-<button class="catalogButton" id="coffeeTypeButton" onclick="RedirectCoffeeTypes()">Типы кофе</button>
-<button class="catalogButton" id="countryButton" onclick="RedirectCountries()">Страны</button>
-<button class="catalogButton" id="manufacturerButton" onclick="RedirectManufacturers()">Производители</button>
-<button class="catalogButton" id="packagingButton" onclick="RedirectPackages()">Упаковки</button>
-<button class="catalogButton" id="roastingsButton" onclick="RedirectRoastings()">Прожарки</button>
-<button class="catalogButton" id="teaColorsButton" onclick="RedirectTeaColors()">Цвета чая</button>
-<button class="catalogButton" id="teaTypesButton" onclick="RedirectTeaTypes()">Типы чая</button>
+<input id="orderId" class="orderId">
+<button id="orderSearch" onclick="searchOrder()">Поиск</button>
+
+<p class="info" id="info"></p>
 
 </body>
 <script src="static/js/users/common/menuBarUserInfo.js"></script>
 <script src="static/js/users/common/redirects.js"></script>
-<script src="static/js/users/common/menuBarIcons.js"></script>
-<script src="static/js/logout.js"></script>
-<script src="static/js/drinkCoffee.js"></script>
+<script src="static/js/users/admin/adminOrders.js"></script>
 
 </html>

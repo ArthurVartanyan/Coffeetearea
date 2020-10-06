@@ -1,15 +1,9 @@
 .pagination {
     display: inline-block;
     position: fixed;
-    top: 700px;
+    top: 800px;
     left: 700px;
 }
-
-/*.pagination a.active {*/
-/*    background-color: #4CAF50;*/
-/*    color: white;*/
-/*    border: 1px solid #4CAF50;*/
-/*}*/
 
 .pagination a:first-child {
     border-top-left-radius: 5px;

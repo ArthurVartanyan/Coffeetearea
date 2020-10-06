@@ -4,6 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.coffeetearea.dto.MakeOrderDTO;
 import ru.coffeetearea.dto.OrderDTO;
+import ru.coffeetearea.dto.OrderInfoDTO;
+import ru.coffeetearea.exceptions.EntityNotFoundException;
 import ru.coffeetearea.exceptions.InternalServerException;
 import ru.coffeetearea.mappers.OrderMapper;
 import ru.coffeetearea.model.CartItem;
@@ -84,5 +86,55 @@ public class OrderService {
         orderRepository.save(order);
 
         return orderMapper.orderToOrderDTO(order);
+    }
+
+
+    /**
+     * Найти заказ по номеру(ИД)
+     *
+     * @param orderId
+     * @return
+     */
+    public OrderInfoDTO findOrder(Long orderId) {
+
+        Order order = orderRepository.findById(orderId).orElseThrow(() -> new EntityNotFoundException(orderId));
+
+        return orderMapper.orderToOrderInfoDTO(order);
+    }
+
+
+    /**
+     * Отменить заказ
+     *
+     * @param orderId
+     * @return OrderInfoDTO
+     */
+    public OrderInfoDTO cancelOrder(Long orderId) {
+
+        Order order = orderRepository.getOne(orderId);
+
+        order.setOrderStatus(OrderStatus.CANCELED);
+
+        orderRepository.save(order);
+
+        return orderMapper.orderToOrderInfoDTO(order);
+    }
+
+
+    /**
+     * Отменить заказ
+     *
+     * @param orderId
+     * @return OrderInfoDTO
+     */
+    public OrderInfoDTO completeOrder(Long orderId) {
+
+        Order order = orderRepository.getOne(orderId);
+
+        order.setOrderStatus(OrderStatus.COMPLETED);
+
+        orderRepository.save(order);
+
+        return orderMapper.orderToOrderInfoDTO(order);
     }
 }

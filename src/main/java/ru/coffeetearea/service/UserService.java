@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import ru.coffeetearea.dto.AuthenticationRequestDTO;
 import ru.coffeetearea.dto.RegistrationUserDTO;
 import ru.coffeetearea.dto.UserDTO;
-import ru.coffeetearea.dto.UserInfoDTO;
+//import ru.coffeetearea.dto.UserInfoDTO;
 import ru.coffeetearea.exceptions.BadRequestException;
 import ru.coffeetearea.exceptions.EntityNotFoundException;
 import ru.coffeetearea.mappers.UserMapper;
@@ -80,11 +80,11 @@ public class UserService {
      *
      * @return userDTO
      */
-    public UserInfoDTO getInfoAboutUser() {
+    public UserDTO getInfoAboutUser() {
 
         User user = userRepository.getById(JwtUser.getCurrentUserID());
 
-        return userMapper.userToUserInfoDTO(user);
+        return userMapper.userToUserDTO(user);
     }
 
 

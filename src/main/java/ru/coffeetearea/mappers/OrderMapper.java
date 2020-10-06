@@ -2,9 +2,11 @@ package ru.coffeetearea.mappers;
 
 import org.mapstruct.IterableMapping;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 import ru.coffeetearea.dto.MakeOrderDTO;
 import ru.coffeetearea.dto.OrderDTO;
+import ru.coffeetearea.dto.OrderInfoDTO;
 import ru.coffeetearea.model.Order;
 
 import java.util.List;
@@ -42,4 +44,12 @@ public interface OrderMapper {
      */
     @IterableMapping(qualifiedByName = "ordersToOrdersDTO")
     List<OrderDTO> ordersToOrdersDTO(List<? extends Order> orders);
+
+    /**
+     * OrderInfoDTO
+     * @param order
+     * @return
+     */
+    @Mapping(source = "order.user", target = "userDTO")
+    OrderInfoDTO orderToOrderInfoDTO(Order order);
 }

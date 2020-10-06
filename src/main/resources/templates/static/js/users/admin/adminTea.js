@@ -27,10 +27,41 @@ if (localStorage.getItem('token') !== null) {
             var addImage = document.createElement('input')
             addImage.type = 'file'
             addImage.accept = 'image/jpeg, image/jpg, image/png'
-            addImage.id = 'addImage'
+            addImage.id = datas.content[i].id
             addImage.style.width = '140px';
             addImage.style.height = '30px';
             addImage.style.marginLeft = '20px';
+
+            var imageButton = document.createElement("button")
+            imageButton.style.width = '50px';
+            imageButton.style.height = '30px';
+            imageButton.style.marginLeft = '20px';
+            imageButton.textContent = 'Ок'
+
+            imageButton.onclick = function () {
+
+                const formData = new FormData();
+                formData.append("file", document.getElementById(datas.content[i].id).files[0]);
+
+                fetch("/drinks/" + ids + "/image", {
+
+                    method: 'POST',
+
+                    headers: {
+                        // 'Content-Type': 'multipart/form-data; boundary=----WebKitFormBoundarydMxd7Bza6mto2oUc',
+
+                        'Authorization': localStorage.getItem('token')
+                    },
+
+                    body: formData
+                })
+                    .then((res) => {
+                        if (res.status === 200) {
+                            alert("Изображение успешно добавлено!")
+                            location.reload()
+                        }
+                    })
+            }
 
             var editButton = document.createElement("button")
             editButton.style.width = '100px';
@@ -462,6 +493,7 @@ if (localStorage.getItem('token') !== null) {
             superio_div.appendChild(editButton)
             superio_div.appendChild(removeButton)
             superio_div.appendChild(addImage)
+            superio_div.appendChild(imageButton)
             superio_div.appendChild(br0)
             superio_div.appendChild(br1)
         }

@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
+import static ru.coffeetearea.model.Role.ROLE_ADMIN;
 import static ru.coffeetearea.model.Role.ROLE_CUSTOMER;
 
 
@@ -37,7 +38,7 @@ public class DrinkController {
      * @param multipartFile
      * @throws IOException
      */
-    @RolesAllowed({ROLE_CUSTOMER})
+    @RolesAllowed({ROLE_ADMIN})
     @PostMapping(value = "/{drinkId}/image", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public void uploadImage(@PathVariable Long drinkId, @RequestParam("file") MultipartFile multipartFile) throws IOException {
 

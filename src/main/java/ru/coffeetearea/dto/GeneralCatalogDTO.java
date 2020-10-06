@@ -3,6 +3,7 @@ package ru.coffeetearea.dto;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
 
@@ -19,9 +20,8 @@ public class GeneralCatalogDTO {
     }
 
     @Null(groups = {GeneralCatalogDTO.New.class})
-    @NotNull
     private Long id;
 
-    @NotNull(groups = {GeneralCatalogDTO.New.class})
+    @NotBlank(groups = {GeneralCatalogDTO.New.class, GeneralCatalogDTO.Edit.class})
     private String name;
 }

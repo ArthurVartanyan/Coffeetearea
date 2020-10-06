@@ -323,7 +323,7 @@ public class CatalogService {
      * @return List<GeneralCatalogDTO>
      */
     public List<GeneralCatalogDTO> findCountries() {
-        return catalogMapper.catalogsToCatalogsDTO(countriesRepository.findAll(Sort.by("name").ascending()));
+        return catalogMapper.catalogsToCatalogsDTO(countriesRepository.findAllByIsDeletedIsFalse(Sort.by("name").ascending()));
     }
 
     /**
@@ -333,7 +333,7 @@ public class CatalogService {
      */
     public List<GeneralCatalogDTO> findManufacturers() {
 
-        return catalogMapper.catalogsToCatalogsDTO(manufacturerRepository.findAll(Sort.by("name").ascending()));
+        return catalogMapper.catalogsToCatalogsDTO(manufacturerRepository.findAllByIsDeletedIsFalse(Sort.by("name").ascending()));
     }
 
     /**
@@ -343,7 +343,7 @@ public class CatalogService {
      */
     public List<GeneralCatalogDTO> findRoastings() {
 
-        return catalogMapper.catalogsToCatalogsDTO(roastingRepository.findAll(Sort.by("name").ascending()));
+        return catalogMapper.catalogsToCatalogsDTO(roastingRepository.findAllByIsDeletedIsFalse(Sort.by("name").ascending()));
     }
 
     /**
@@ -352,7 +352,7 @@ public class CatalogService {
      * @return List<GeneralCatalogDTO>
      */
     public List<GeneralCatalogDTO> findPackages() {
-        return catalogMapper.catalogsToCatalogsDTO(packagingRepository.findAll(Sort.by("name").ascending()));
+        return catalogMapper.catalogsToCatalogsDTO(packagingRepository.findAllByIsDeletedIsFalse(Sort.by("name").ascending()));
     }
 
     /**
@@ -361,7 +361,7 @@ public class CatalogService {
      * @return List<GeneralCatalogDTO>
      */
     public List<GeneralCatalogDTO> findTeaColors() {
-        return catalogMapper.catalogsToCatalogsDTO(teaColorRepository.findAll(Sort.by("name").ascending()));
+        return catalogMapper.catalogsToCatalogsDTO(teaColorRepository.findAllByIsDeletedIsFalse(Sort.by("name").ascending()));
     }
 
     /**
@@ -370,7 +370,7 @@ public class CatalogService {
      * @return List<GeneralCatalogDTO>
      */
     public List<GeneralCatalogDTO> findCoffeeTypes() {
-        return catalogMapper.catalogsToCatalogsDTO(coffeeTypeRepository.findAll(Sort.by("name").ascending()));
+        return catalogMapper.catalogsToCatalogsDTO(coffeeTypeRepository.findAllByIsDeletedIsFalse(Sort.by("name").ascending()));
     }
 
     /**
@@ -379,6 +379,6 @@ public class CatalogService {
      * @return List<GeneralCatalogDTO>
      */
     public List<GeneralCatalogDTO> findTeaTypes() {
-        return catalogMapper.catalogsToCatalogsDTO(teaTypeRepository.findAll(Sort.by("name").ascending()));
+        return catalogMapper.catalogsToCatalogsDTO(teaTypeRepository.findAllByIsDeletedIsFalse(Sort.by("name").ascending()));
     }
 }

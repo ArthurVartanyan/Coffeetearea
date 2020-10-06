@@ -23,15 +23,22 @@ public class DrinksSpecification {
      * @param cb
      * @return List of predicates
      */
-    private static List<Predicate> getDrinkPredicates(Long countryId, BigDecimal min, BigDecimal max,
+    private static List<Predicate> getDrinkPredicates(String drinkName, Long countryId, BigDecimal min, BigDecimal max,
                                                       Root<? extends Drink> root, CriteriaBuilder cb) {
 
         List<Predicate> predicateList = new ArrayList<>();
 
+        // Страна
         if (countryId != null) {
             Predicate countryPredicate = cb
                     .equal(root.get(Drink_.country).get(Country_.id), countryId);
             predicateList.add(countryPredicate);
+        }
+        // Название
+        if (drinkName != null) {
+            Predicate namePredicate = cb
+                    .equal(root.get(Drink_.name), drinkName);
+            predicateList.add(namePredicate);
         }
         // Если И мин И мах НЕ равны нулю
         if (min != null && max != null) {
@@ -65,7 +72,7 @@ public class DrinksSpecification {
      * @param max
      * @return List of predicates
      */
-    public static Specification<Tea> getTeasByFilter(Long colorId, Long typeId, Long countryId,
+    public static Specification<Tea> getTeasByFilter(String drinkName, Long colorId, Long typeId, Long countryId,
                                                      BigDecimal min, BigDecimal max) {
         return (root, query, criteriaBuilder) -> {
             // Создаю лист, чтобы заполнять его Предикатами(см. по параметрам)
@@ -82,7 +89,7 @@ public class DrinksSpecification {
                 predicateList.add(typePredicate);
             }
 
-            predicateList.addAll(getDrinkPredicates(countryId,
+            predicateList.addAll(getDrinkPredicates(drinkName, countryId,
                     min, max, root, criteriaBuilder));
 
             Predicate predicates = criteriaBuilder.and(predicateList.toArray(new Predicate[0]));
@@ -102,8 +109,8 @@ public class DrinksSpecification {
      * @param max
      * @return List of predicates
      */
-    public static Specification<Coffee> getCoffeesByFilter(Long roastingId, Long typeId, Long countryId,
-                                                           BigDecimal min, BigDecimal max) {
+    public static Specification<Coffee> getCoffeesByFilter(String drinkName, Long roastingId, Long typeId, Long countryId,
+                                                           BigDecimal min, BigDecimal max, boolean isDeleted) {
 
         return (root, query, criteriaBuilder) -> {
             // Создаю лист, чтобы заполнять его Предикатами(см. по параметрам)
@@ -119,8 +126,11 @@ public class DrinksSpecification {
                         .equal(root.get(Coffee_.coffeeType).get(CoffeeType_.id), typeId);
                 predicateList.add(typePredicate);
             }
+            Predicate isDeletedPredicate = criteriaBuilder
+                    .equal(root.get(Coffee_.isDeleted), isDeleted);
+            predicateList.add(isDeletedPredicate);
 
-            predicateList.addAll(getDrinkPredicates(countryId,
+            predicateList.addAll(getDrinkPredicates(drinkName, countryId,
                     min, max, root, criteriaBuilder));
 
             Predicate predicates = criteriaBuilder.and(predicateList.toArray(new Predicate[0]));

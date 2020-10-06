@@ -1,6 +1,7 @@
 package ru.coffeetearea.dto;
 
 import lombok.Data;
+import ru.coffeetearea.model.Role;
 
 @Data
 public class UserDTO {
@@ -14,4 +15,6 @@ public class UserDTO {
     private String login;
 
     private String mail;
+
+    private Role role;
 }

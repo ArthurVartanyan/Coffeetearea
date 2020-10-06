@@ -1,10 +1,9 @@
 function createCoffeeCardsFilter(number = '0', sortingParams = 'NAME_INCREASE',
                                  roastingId = '', typeId = '', countryId = '',
-                                 min = '', max = '') {
+                                 min = '', max = '', drinkname = '') {
 
-    var urlFilter = new URL("http://localhost:8080/coffee/filter?" + "page_size=" + 4 + '&page=' +
-        number + "&sortingParams=" + sortingParams + '&countryId=' + countryId + '&roastingId=' +
-        roastingId + '&typeId=' + typeId + '&min=' + min + '&max=' + max);
+    var urlFilter = new URL("http://localhost:8080/coffee/filter?" + "page_size=" + 4 + '&page=' + number + "&sortingParams=" + sortingParams + '&countryId=' + countryId + '&roastingId=' +
+        roastingId + '&typeId=' + typeId + '&min=' + min + '&max=' + max + '&drinkName=' + drinkname);
 
     const xhrFilt = new XMLHttpRequest();
 

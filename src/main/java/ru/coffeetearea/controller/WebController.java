@@ -122,4 +122,9 @@ public class WebController {
     public String adminsTeaPage() {
         return "adminTea";
     }
+
+    @GetMapping("/admin-order")
+    public String adminsOrderPage() {
+        return "adminOrders";
+    }
 }

@@ -96,7 +96,7 @@ public class CoffeeService {
     public PageDTO<CoffeeDTO> findAll(int page, int pageSize, SortingParams sortingParams) {
 
         final Page<Coffee> coffees = coffeeRepository
-                .findAll(drinkService.sortingWithParams(sortingParams, page, pageSize));
+                .findAllByIsDeletedIsFalse(drinkService.sortingWithParams(sortingParams, page, pageSize));
 
         return new PageDTO<>(coffeeMapper.coffeeToCoffeesDTO(coffees));
     }
@@ -112,12 +112,14 @@ public class CoffeeService {
      * @param sortingParams
      * @return filtered Coffees(DTOs)
      */
-    public PageDTO<CoffeeDTO> findAllFilter(int page, int pageSize, Long roastingId, Long typeId, Long countryId,
+    public PageDTO<CoffeeDTO> findAllFilter(int page, int pageSize, String drinkName, Long roastingId, Long typeId, Long countryId,
                                             BigDecimal min, BigDecimal max, SortingParams sortingParams) {
+
+        boolean isDeleted = false;
 
         final Page<Coffee> coffees = coffeeRepository
                 .findAll(DrinksSpecification
-                                .getCoffeesByFilter(roastingId, typeId, countryId, min, max),
+                                .getCoffeesByFilter(drinkName, roastingId, typeId, countryId, min, max, isDeleted),
                         drinkService.sortingWithParams(sortingParams, page, pageSize));
 
         return new PageDTO<>(coffeeMapper.coffeeToCoffeesDTO(coffees));
