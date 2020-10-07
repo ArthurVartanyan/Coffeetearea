@@ -26,6 +26,10 @@ function createTeaCardsFilter(number = '0', sortingParams = 'NAME_INCREASE',
 
         var datas = JSON.parse(xhrFilt.response)
 
+        // for (let i = datas.totalPages + 100; i < 1000; i++) {
+        //     document.getElementById(i + 100).remove()
+        // }
+
         document.getElementById('cards').innerHTML = "";
 
         for (let i = 0; i < datas.content.length; i++) {

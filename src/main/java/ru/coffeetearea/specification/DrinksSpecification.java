@@ -36,8 +36,8 @@ public class DrinksSpecification {
         }
         // Название
         if (drinkName != null) {
-            Predicate namePredicate = cb
-                    .equal(root.get(Drink_.name), drinkName);
+            Predicate namePredicate = cb.like(
+                    cb.lower(root.get(Drink_.name)), cb.lower(cb.literal("%" + drinkName + "%")));
             predicateList.add(namePredicate);
         }
         // Если И мин И мах НЕ равны нулю
@@ -141,5 +141,16 @@ public class DrinksSpecification {
 
             return criteriaBuilder.and(predicates);
         };
+    }
+
+
+    /**
+     * Метод который избавляет нас от регистрозависимости
+     *
+     * @param word
+     * @return
+     */
+    public static String changeRegisterCase(String word) {
+        return word.substring(0, 1).toUpperCase() + word.substring(1).toLowerCase();
     }
 }
