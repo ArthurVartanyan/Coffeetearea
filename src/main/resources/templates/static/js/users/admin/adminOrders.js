@@ -134,7 +134,7 @@ function searchOrder() {
             totalCostInf.style.top = '450px'
             var totalCost = document.createElement('pr')
             totalCost.className = 'forRemove'
-            totalCost.textContent = orderData.totalCost
+            totalCost.textContent = orderData.totalCost + "₽"
             totalCost.style.position = 'absolute'
             totalCost.style.left = '1000px'
             totalCost.style.top = '450px'
@@ -193,6 +193,7 @@ function searchOrder() {
 
             var cancelBut = document.createElement('button')
             cancelBut.className = 'forRemove'
+            cancelBut.id = 'cancelButton'
             cancelBut.style.position = 'absolute'
             cancelBut.style.left = '850px'
             cancelBut.style.top = '700px'
@@ -202,7 +203,7 @@ function searchOrder() {
 
             cancelBut.onclick = function () {
 
-                fetch("/api/orders/cancel/" + orderData.id, {
+                fetch("/api/orders/" + orderData.id + "/cancellation", {
 
                     method: 'PUT',
 
@@ -222,6 +223,7 @@ function searchOrder() {
 
             var activeBut = document.createElement('button')
             activeBut.className = 'forRemove'
+            activeBut.id = "completeButton"
             activeBut.style.position = 'absolute'
             activeBut.style.left = '1000px'
             activeBut.style.top = '700px'
@@ -230,7 +232,7 @@ function searchOrder() {
             activeBut.textContent = 'Завершить'
             activeBut.onclick = function () {
 
-                fetch("/api/orders/complete/" + orderData.id, {
+                fetch("/api/orders/" + orderData.id + "/readiness", {
 
                     method: 'PUT',
 
@@ -271,6 +273,16 @@ function searchOrder() {
             document.body.appendChild(h2)
             document.body.appendChild(cancelBut)
             document.body.appendChild(activeBut)
+
+            if (orderData.orderStatus === 'CANCELED') {
+
+                document.getElementById('cancelButton').remove()
+            }
+
+            if (orderData.orderStatus === 'COMPLETED') {
+
+                document.getElementById('completeButton').remove()
+            }
         }
         xhr.send()
     }

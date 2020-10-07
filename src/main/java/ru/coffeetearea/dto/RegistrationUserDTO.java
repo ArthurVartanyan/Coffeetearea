@@ -16,7 +16,7 @@ public class RegistrationUserDTO {
 
     @NotBlank(message = "Заполните поле!")
     @Size(message = "Длина логина должна быть не меньше 6 и не больше 30 символов", min = 6, max = 30)
-    @Pattern(message = "Неверный офрмат логина!", regexp = "[a-zA-Z0-9_]{3,12}")
+    @Pattern(message = "Неверный формат логина!", regexp = "[a-zA-Z0-9_]{3,12}")
     private String login;
 
     @NotBlank(message = "Заполните поле!")

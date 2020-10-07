@@ -61,7 +61,7 @@ public class OrderController {
      * @return OrderInfoDTO
      */
     @RolesAllowed({ROLE_ADMIN})
-    @PutMapping("/cancel/{orderId}")
+    @PutMapping("/{orderId}/cancellation")
     public OrderInfoDTO cancelOrder(@PathVariable Long orderId) {
 
         return orderService.cancelOrder(orderId);
@@ -75,7 +75,7 @@ public class OrderController {
      * @return OrderInfoDTO
      */
     @RolesAllowed({ROLE_ADMIN})
-    @PutMapping("/complete/{orderId}")
+    @PutMapping("/{orderId}/readiness")
     public OrderInfoDTO completeOrder(@PathVariable Long orderId) {
 
         return orderService.completeOrder(orderId);
