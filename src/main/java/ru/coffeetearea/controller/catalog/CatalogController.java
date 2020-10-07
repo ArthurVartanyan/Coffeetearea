@@ -17,7 +17,7 @@ import static ru.coffeetearea.model.Role.ROLE_CUSTOMER;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/catalogs")
+@RequestMapping("/api/catalogs")
 @Api(value = "Catalog", tags = {"Catalog"})
 public class CatalogController {
 

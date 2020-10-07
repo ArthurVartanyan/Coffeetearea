@@ -1,6 +1,6 @@
 if (localStorage.getItem('token') !== null) {
 
-    const requestURL = '/catalogs/packages'
+    const requestURL = '/api/catalogs/packages'
 
     const xhr = new XMLHttpRequest();
 
@@ -48,7 +48,7 @@ if (localStorage.getItem('token') !== null) {
 
                     axios({
                         method: 'put',
-                        url: "/catalogs/" + ids + "/packages",
+                        url: "/api/catalogs/" + ids + "/packages",
                         headers: {
                             'Content-Type': 'application/json;charset=utf-8',
 
@@ -100,7 +100,7 @@ if (localStorage.getItem('token') !== null) {
 
             removeButton.onclick = function () {
 
-                fetch("/catalogs/" + ids + "/packages", {
+                fetch("/api/catalogs/" + ids + "/package", {
 
                     method: 'DELETE',
 
@@ -110,7 +110,7 @@ if (localStorage.getItem('token') !== null) {
                         'Authorization': localStorage.getItem('token')
                     }
                 }).then(() => {
-                    alert("Производитель из справочника удален!")
+                    alert("Пакет из справочника удален!")
                     location.reload()
                 })
 
@@ -154,7 +154,7 @@ if (localStorage.getItem('token') !== null) {
 
                 axios({
                     method: 'post',
-                    url: "/catalogs/packages",
+                    url: "/api/catalogs/packages",
                     headers: {
                         'Content-Type': 'application/json;charset=utf-8',
 

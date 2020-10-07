@@ -51,5 +51,6 @@ public class CartItem {
     /**
      * Кол-во товаров в корзине
      */
+    @Column(name = "count")
     private int count;
 }

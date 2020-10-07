@@ -10,5 +10,5 @@ import java.util.List;
 
 public interface CountryRepository extends JpaRepository<Country, Long>, JpaSpecificationExecutor<Country> {
 
-    List<GeneralCatalog> findAllByIsDeletedIsFalse(Sort sort);
+    List<GeneralCatalog> findAllByDeletedIsFalse(Sort sort);
 }

@@ -9,5 +9,5 @@ import java.util.List;
 
 public interface ManufacturerRepository extends JpaRepository<Manufacturer, Long> {
 
-    List<GeneralCatalog> findAllByIsDeletedIsFalse(Sort sort);
+    List<GeneralCatalog> findAllByDeletedIsFalse(Sort sort);
 }

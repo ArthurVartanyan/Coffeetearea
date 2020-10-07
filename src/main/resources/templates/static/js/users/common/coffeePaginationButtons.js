@@ -1,4 +1,4 @@
-var pagUrl = "/coffee/all";
+var pagUrl = "/api/coffee/all";
 
 const xhrPag = new XMLHttpRequest();
 
@@ -53,7 +53,7 @@ xhrPag.onload = () => {
 
         formS.onchange = function () {
 
-            var urlForPaga = '/coffee/filter'
+            var urlForPaga = '/api/coffee/filter'
 
             const xhrPaga = new XMLHttpRequest();
 

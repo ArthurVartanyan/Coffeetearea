@@ -1,4 +1,4 @@
-const requestURL = '/drinks/favourites'
+const requestURL = '/api/drinks/favourites'
 
 const xhr = new XMLHttpRequest();
 
@@ -37,7 +37,7 @@ xhr.onload = () => {
 
             let id = this.id - 3000
 
-            fetch("/drinks/" + id + "/favourites", {
+            fetch("/api/drinks/" + id + "/favourites", {
 
                 method: 'DELETE',
 
@@ -62,7 +62,7 @@ xhr.onload = () => {
 
         let drinkId = image.id - 1100
 
-        fetch("/drinks/" + drinkId + "/image", {
+        fetch("/api/drinks/" + drinkId + "/image", {
 
             method: 'GET',
 
@@ -71,7 +71,7 @@ xhr.onload = () => {
             }
         })
 
-        image.src = 'http://localhost:8080/drinks/' + drinkId + '/image'
+        image.src = 'http://localhost:8080/api/drinks/' + drinkId + '/image'
 
         var name = document.createElement("h1");
         name.textContent = datas[i].name;
@@ -103,7 +103,7 @@ xhr.onload = () => {
 
         button.onclick = function () {
 
-            fetch("/cart-item/" + this.id, {
+            fetch("/api/cart-item/" + this.id, {
 
                 method: 'POST',
 

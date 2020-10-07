@@ -1,6 +1,6 @@
 if (localStorage.getItem('token') !== null) {
 
-    const requestURL = '/catalogs/roastings'
+    const requestURL = '/api/catalogs/roastings'
 
     const xhr = new XMLHttpRequest();
 
@@ -48,7 +48,7 @@ if (localStorage.getItem('token') !== null) {
 
                     axios({
                         method: 'put',
-                        url: "/catalogs/" + ids + "/roastings",
+                        url: "/api/catalogs/" + ids + "/roastings",
                         headers: {
                             'Content-Type': 'application/json;charset=utf-8',
 
@@ -100,7 +100,7 @@ if (localStorage.getItem('token') !== null) {
 
             removeButton.onclick = function () {
 
-                fetch("/catalogs/" + ids + "/roastings", {
+                fetch("/api/catalogs/" + ids + "/roasting", {
 
                     method: 'DELETE',
 
@@ -110,7 +110,7 @@ if (localStorage.getItem('token') !== null) {
                         'Authorization': localStorage.getItem('token')
                     }
                 }).then(() => {
-                    alert("Страна из справочника удалена!")
+                    alert("Прожарка из справочника удалена!")
                     location.reload()
                 })
 
@@ -154,7 +154,7 @@ if (localStorage.getItem('token') !== null) {
 
                 axios({
                     method: 'post',
-                    url: "/catalogs/roastings",
+                    url: "/api/catalogs/roastings",
                     headers: {
                         'Content-Type': 'application/json;charset=utf-8',
 

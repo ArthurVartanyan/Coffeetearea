@@ -1,4 +1,4 @@
-var teaTypeUrl = "/catalogs/tea-types";
+var teaTypeUrl = "/api/catalogs/tea-types";
 
 const xhrTeaType = new XMLHttpRequest();
 

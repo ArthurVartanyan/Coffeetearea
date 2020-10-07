@@ -1,4 +1,4 @@
-const admUrl = '/users/info'
+const admUrl = '/api/users/info'
 
 const xah = new XMLHttpRequest();
 

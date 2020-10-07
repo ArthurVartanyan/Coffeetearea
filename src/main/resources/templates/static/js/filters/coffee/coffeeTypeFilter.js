@@ -1,4 +1,4 @@
-var coffeeTypeUrl = "/catalogs/coffee-types";
+var coffeeTypeUrl = "/api/catalogs/coffee-types";
 
 const xhrCoffeeType = new XMLHttpRequest();
 

@@ -8,11 +8,11 @@ function createTeaCardsFilter(number = '0', sortingParams = 'NAME_INCREASE',
 
     if (drinkName.length > 0) {
 
-        urlFilter = new URL("http://localhost:8080/tea/filter?" + "page_size=" + 4 + '&page=' +
+        urlFilter = new URL("http://localhost:8080/api/tea/filter?" + "page_size=" + 4 + '&page=' +
             number + "&sortingParams=" + sortingParams + '&colorId=' + colorId + '&countryId=' +
             countryId + '&typeId=' + typeId + '&min=' + min + '&max=' + max + '&drinkName=' + drinkName);
     } else {
-        urlFilter = new URL("http://localhost:8080/tea/filter?" + "page_size=" + 4 + '&page=' +
+        urlFilter = new URL("http://localhost:8080/api/tea/filter?" + "page_size=" + 4 + '&page=' +
             number + "&sortingParams=" + sortingParams + '&colorId=' + colorId + '&countryId=' +
             countryId + '&typeId=' + typeId + '&min=' + min + '&max=' + max);
     }
@@ -45,7 +45,7 @@ function createTeaCardsFilter(number = '0', sortingParams = 'NAME_INCREASE',
 
             let drinkId = image.id - 500
 
-            fetch("/drinks/" + drinkId + "/image", {
+            fetch("/api/drinks/" + drinkId + "/image", {
 
                 method: 'GET',
 
@@ -54,7 +54,7 @@ function createTeaCardsFilter(number = '0', sortingParams = 'NAME_INCREASE',
                 }
             })
 
-            image.src = 'http://localhost:8080/drinks/' + drinkId + '/image'
+            image.src = 'http://localhost:8080/api/drinks/' + drinkId + '/image'
 
             var favourite = document.createElement('button');
             favourite.id = datas.content[i].id + 3000;
@@ -72,7 +72,7 @@ function createTeaCardsFilter(number = '0', sortingParams = 'NAME_INCREASE',
 
                 let id = this.id - 3000
 
-                fetch("/drinks/" + id + "/favourites", {
+                fetch("/api/drinks/" + id + "/favourites", {
 
                     method: 'POST',
 
@@ -85,6 +85,9 @@ function createTeaCardsFilter(number = '0', sortingParams = 'NAME_INCREASE',
                     .then((res) => {
                         if (res.status === 200) {
                             alert('Напиток успешно добавлен в избранное!')
+                        }
+                        if (res.status !== 200) {
+                            alert('Напиток уже добавлен избранное!')
                         }
                     })
             }
@@ -106,7 +109,7 @@ function createTeaCardsFilter(number = '0', sortingParams = 'NAME_INCREASE',
 
                 let newId = this.id - 1000
 
-                const coffeeUrl = '/tea/' + newId;
+                const coffeeUrl = '/api/tea/' + newId;
 
                 const coffee = new XMLHttpRequest();
 
@@ -135,7 +138,7 @@ function createTeaCardsFilter(number = '0', sortingParams = 'NAME_INCREASE',
                     image.style.top = '88px'
 
                     var image2 = document.createElement('img')
-                    image2.src = 'http://localhost:8080/drinks/' + newId + '/image'
+                    image2.src = 'http://localhost:8080/api/drinks/' + newId + '/image'
                     image2.style.width = '600px'
                     image2.style.height = '750px'
                     image2.style.position = 'fixed'
@@ -244,7 +247,7 @@ function createTeaCardsFilter(number = '0', sortingParams = 'NAME_INCREASE',
 
                     buttonFavourites.onclick = function () {
 
-                        fetch("/drinks/" + idForWork + "/favourites", {
+                        fetch("/api/drinks/" + idForWork + "/favourites", {
 
                             method: 'POST',
 
@@ -276,7 +279,7 @@ function createTeaCardsFilter(number = '0', sortingParams = 'NAME_INCREASE',
                     button.style.backgroundColor = '#1D8348';
                     button.onclick = function () {
 
-                        fetch("/cart-item/" + newId, {
+                        fetch("/api/cart-item/" + newId, {
 
                             method: 'POST',
 
@@ -358,7 +361,7 @@ function createTeaCardsFilter(number = '0', sortingParams = 'NAME_INCREASE',
             button.style.fontSize = '18px';
             button.onclick = function () {
 
-                fetch("/cart-item/" + this.id, {
+                fetch("/api/cart-item/" + this.id, {
 
                     method: 'POST',
 

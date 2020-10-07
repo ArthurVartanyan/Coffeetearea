@@ -3,7 +3,7 @@ let _form = document.querySelector("form")
 _form.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    fetch("http://localhost:8080/users/login", {
+    fetch("http://localhost:8080/api/users/login", {
 
         method: 'POST',
 

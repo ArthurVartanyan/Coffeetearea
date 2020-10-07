@@ -9,5 +9,5 @@ import java.util.List;
 
 public interface PackagingRepository extends JpaRepository<Packaging, Long> {
 
-    List<GeneralCatalog> findAllByIsDeletedIsFalse(Sort sort);
+    List<GeneralCatalog> findAllByDeletedIsFalse(Sort sort);
 }

@@ -26,11 +26,13 @@ public class Drink {
     /**
      * Изображение товара(напитка)
      */
+    @Column(name = "image")
     private String image;
 
     /**
      * Название напитка
      */
+    @Column(name = "name")
     private String name;
 
     /**
@@ -50,19 +52,20 @@ public class Drink {
     /**
      * Описание напитка
      */
+    @Column(name = "about")
     private String about;
-
 
     /**
      * Вес вещества(например: 100гр. или 1 кг.)
      */
+    @Column(name = "weight")
     private int weight;
 
     /**
      * Флаг удаления
      */
     @Column(name = "is_deleted")
-    private boolean isDeleted;
+    private boolean deleted;
 
     /**
      * Упаковка напитка
@@ -90,7 +93,7 @@ public class Drink {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Drink drink = (Drink) o;
-        return isDeleted == drink.isDeleted &&
+        return deleted == drink.deleted &&
                 Objects.equals(id, drink.id) &&
                 Objects.equals(name, drink.name) &&
                 Objects.equals(price, drink.price) &&
@@ -102,6 +105,6 @@ public class Drink {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, price, about, isDeleted, packaging, manufacturer, country);
+        return Objects.hash(id, name, price, about, deleted, packaging, manufacturer, country);
     }
 }

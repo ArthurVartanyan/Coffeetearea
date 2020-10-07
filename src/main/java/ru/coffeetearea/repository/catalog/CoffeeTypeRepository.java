@@ -9,5 +9,5 @@ import java.util.List;
 
 public interface CoffeeTypeRepository extends JpaRepository<CoffeeType, Long> {
 
-    List<GeneralCatalog> findAllByIsDeletedIsFalse(Sort sort);
+    List<GeneralCatalog> findAllByDeletedIsFalse(Sort sort);
 }

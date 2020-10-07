@@ -3,7 +3,8 @@ package ru.coffeetearea.model.catalog;
 import javax.persistence.*;
 
 /**
- * см. класс GeneralCatalog
+ * Класс - справочник "Страны".
+ * У каждого напитка своя страна производства.
  */
 
 @Entity

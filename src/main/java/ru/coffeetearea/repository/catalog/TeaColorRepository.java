@@ -9,5 +9,5 @@ import java.util.List;
 
 public interface TeaColorRepository extends JpaRepository<TeaColor, Long> {
 
-    List<GeneralCatalog> findAllByIsDeletedIsFalse(Sort sort);
+    List<GeneralCatalog> findAllByDeletedIsFalse(Sort sort);
 }

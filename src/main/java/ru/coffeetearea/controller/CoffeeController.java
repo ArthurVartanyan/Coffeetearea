@@ -20,7 +20,7 @@ import static ru.coffeetearea.model.Role.ROLE_CUSTOMER;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/coffee")
+@RequestMapping("/api/coffee")
 @Api(value = "Coffee", tags = {"Coffee"})
 public class CoffeeController {
 

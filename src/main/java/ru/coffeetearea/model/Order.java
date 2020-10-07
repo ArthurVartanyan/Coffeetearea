@@ -24,6 +24,7 @@ public class Order {
     /**
      * Адрес доставки
      */
+    @Column(name = "address")
     private String address;
 
     /**

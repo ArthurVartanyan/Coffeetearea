@@ -3,7 +3,9 @@ package ru.coffeetearea.model.catalog;
 import javax.persistence.*;
 
 /**
- * см. класс GeneralCatalog
+ * Класс - справочник "Прожарка" для кофе.
+ * Прожарки могут быть разными, в основном по степени от 1 до ...
+ * Прожарка в БД хранится в строковом виде, то есть String name = "1".
  */
 
 @Entity

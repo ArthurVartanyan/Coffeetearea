@@ -1,4 +1,4 @@
-const requestURL = '/drinks/populars'
+const requestURL = '/api/drinks/populars'
 
 const xhr = new XMLHttpRequest();
 
@@ -25,7 +25,7 @@ xhr.onload = () => {
 
         let drinkId = image.id - 500
 
-        fetch("/drinks/" + drinkId + "/image", {
+        fetch("/api/drinks/" + drinkId + "/image", {
 
             method: 'GET',
 
@@ -34,7 +34,7 @@ xhr.onload = () => {
             }
         })
 
-        image.src = 'http://localhost:8080/drinks/' + drinkId + '/image'
+        image.src = 'http://localhost:8080/api/drinks/' + drinkId + '/image'
 
         var name = document.createElement("h1");
         name.id = datas[i].id + 4000;
@@ -48,7 +48,7 @@ xhr.onload = () => {
 
             let newId = this.id - 4000;
 
-            const coffeeUrl = '/tea/' + newId;
+            const coffeeUrl = '/api/tea/' + newId;
 
             const coffee = new XMLHttpRequest();
 
@@ -77,7 +77,7 @@ xhr.onload = () => {
                 image.style.top = '88px'
 
                 var image2 = document.createElement('img')
-                image2.src = 'http://localhost:8080/drinks/' + newId + '/image'
+                image2.src = 'http://localhost:8080/api/drinks/' + newId + '/image'
                 image2.style.width = '600px'
                 image2.style.height = '750px'
                 image2.style.position = 'fixed'
@@ -183,7 +183,7 @@ xhr.onload = () => {
 
                 button.onclick = function () {
 
-                    fetch("/cart-item/" + newId, {
+                    fetch("/api/cart-item/" + newId, {
 
                         method: 'POST',
 
@@ -266,7 +266,7 @@ xhr.onload = () => {
 
             let id = this.id - 3000
 
-            fetch("/drinks/" + id + "/favourites", {
+            fetch("/api/drinks/" + id + "/favourites", {
 
                 method: 'POST',
 
@@ -277,10 +277,14 @@ xhr.onload = () => {
                 },
             })
                 .then((res) => {
-                    if (res.status === 200) {
-                        alert('Напиток успешно добавлен в избранное!')
-                    }
-                })
+                if (res.status === 200) {
+                    alert('Напиток успешно добавлен в избранное!')
+                }
+
+                if (res.status !== 200) {
+                    alert('Напиток уже добавлен избранное!')
+                }
+            })
         }
 
         var button = document.createElement("button")
@@ -298,7 +302,7 @@ xhr.onload = () => {
 
         button.onclick = function () {
 
-            fetch("/cart-item/" + this.id, {
+            fetch("/api/cart-item/" + this.id, {
 
                 method: 'POST',
 

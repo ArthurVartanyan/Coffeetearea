@@ -3,7 +3,8 @@ package ru.coffeetearea.model.catalog;
 import javax.persistence.*;
 
 /**
- * см. класс GeneralCatalog
+ * Класс - справочник "Цвет чая".
+ * Чай имеет свой цвет, например: черный, зеленый и т.д.
  */
 
 @Entity

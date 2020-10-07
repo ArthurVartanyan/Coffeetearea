@@ -1,4 +1,4 @@
-var pagUrl = "/tea/filter";
+var pagUrl = "/api/tea/filter";
 
 const xhrPag = new XMLHttpRequest();
 
@@ -56,7 +56,7 @@ xhrPag.onload = () => {
 
         formS.onchange = function () {
 
-            var urlForPagi = '/tea/filter'
+            var urlForPagi = '/api/tea/filter'
 
             const xhrPagi = new XMLHttpRequest();
 

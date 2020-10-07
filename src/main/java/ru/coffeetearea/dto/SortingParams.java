@@ -2,10 +2,13 @@ package ru.coffeetearea.dto;
 
 /**
  * ENUM для сортировки товара на странице.
- * INCREASE & DECREASE - возрастание и убывание, соответственно по цене, популярности и названию.
+ * INCREASE & DECREASE - возрастание и убывание, соответственно:
+ * цена,
+ * популярность,
+ * название.
  */
 
 public enum SortingParams {
 
-    PRICE_INCREASE, PRICE_DECREASE, NAME_INCREASE, POP_DECREASE
+    PRICE_INCREASE, PRICE_DECREASE, POP_DECREASE, NAME_INCREASE
 }

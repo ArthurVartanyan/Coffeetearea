@@ -1,6 +1,6 @@
 if (localStorage.getItem('token') !== null) {
 
-    const requestURL = '/coffee/all?page_size=100000'
+    const requestURL = '/api/coffee/all?page_size=100000'
 
     const xhr = new XMLHttpRequest();
 
@@ -43,13 +43,11 @@ if (localStorage.getItem('token') !== null) {
                 const formData = new FormData();
                 formData.append("file", document.getElementById(datas.content[i].id).files[0]);
 
-                fetch("/drinks/" + ids + "/image", {
+                fetch("/api/drinks/" + ids + "/image", {
 
                     method: 'POST',
 
                     headers: {
-                        // 'Content-Type': 'multipart/form-data; boundary=----WebKitFormBoundarydMxd7Bza6mto2oUc',
-
                         'Authorization': localStorage.getItem('token')
                     },
 
@@ -103,7 +101,7 @@ if (localStorage.getItem('token') !== null) {
                 addType.style.width = '200px';
                 addType.style.height = '40px';
 
-                const requestURL = '/catalogs/coffee-types'
+                const requestURL = '/api/catalogs/coffee-types'
 
                 const xhr = new XMLHttpRequest();
 
@@ -134,7 +132,7 @@ if (localStorage.getItem('token') !== null) {
                 addCountry.style.width = '200px';
                 addCountry.style.height = '40px';
 
-                const countryURL = '/catalogs/countries'
+                const countryURL = '/api/catalogs/countries'
 
                 const countryX = new XMLHttpRequest();
 
@@ -165,7 +163,7 @@ if (localStorage.getItem('token') !== null) {
                 addManufacturer.style.width = '200px';
                 addManufacturer.style.height = '40px';
 
-                const manufURL = '/catalogs/manufacturers'
+                const manufURL = '/api/catalogs/manufacturers'
 
                 const manufXhr = new XMLHttpRequest();
 
@@ -196,7 +194,7 @@ if (localStorage.getItem('token') !== null) {
                 addPackage.style.width = '200px';
                 addPackage.style.height = '40px';
 
-                const packURL = '/catalogs/packages'
+                const packURL = '/api/catalogs/packages'
 
                 const packXhr = new XMLHttpRequest();
 
@@ -227,7 +225,7 @@ if (localStorage.getItem('token') !== null) {
                 addRoast.style.width = '200px';
                 addRoast.style.height = '40px';
 
-                const roastURL = '/catalogs/roastings'
+                const roastURL = '/api/catalogs/roastings'
 
                 const roastXhr = new XMLHttpRequest();
 
@@ -343,7 +341,7 @@ if (localStorage.getItem('token') !== null) {
 
                     axios({
                         method: 'put',
-                        url: "/coffee/" + ids,
+                        url: "/api/coffee/" + ids,
                         headers: {
                             'Content-Type': 'application/json;charset=utf-8',
 
@@ -467,7 +465,7 @@ if (localStorage.getItem('token') !== null) {
 
             removeButton.onclick = function () {
 
-                fetch("/coffee/" + ids, {
+                fetch("/api/coffee/" + ids, {
 
                     method: 'DELETE',
 
@@ -541,7 +539,7 @@ if (localStorage.getItem('token') !== null) {
             addType.style.width = '200px';
             addType.style.height = '40px';
 
-            const requestURL = '/catalogs/coffee-types'
+            const requestURL = '/api/catalogs/coffee-types'
 
             const xhr = new XMLHttpRequest();
 
@@ -571,7 +569,7 @@ if (localStorage.getItem('token') !== null) {
             addCountry.style.width = '200px';
             addCountry.style.height = '40px';
 
-            const countryURL = '/catalogs/countries'
+            const countryURL = '/api/catalogs/countries'
 
             const countryX = new XMLHttpRequest();
 
@@ -601,7 +599,7 @@ if (localStorage.getItem('token') !== null) {
             addManufacturer.style.width = '200px';
             addManufacturer.style.height = '40px';
 
-            const manufURL = '/catalogs/manufacturers'
+            const manufURL = '/api/catalogs/manufacturers'
 
             const manufXhr = new XMLHttpRequest();
 
@@ -631,7 +629,7 @@ if (localStorage.getItem('token') !== null) {
             addPackage.style.width = '200px';
             addPackage.style.height = '40px';
 
-            const packURL = '/catalogs/packages'
+            const packURL = '/api/catalogs/packages'
 
             const packXhr = new XMLHttpRequest();
 
@@ -661,7 +659,7 @@ if (localStorage.getItem('token') !== null) {
             addRoast.style.width = '200px';
             addRoast.style.height = '40px';
 
-            const roastURL = '/catalogs/roastings'
+            const roastURL = '/api/catalogs/roastings'
 
             const roastXhr = new XMLHttpRequest();
 
@@ -776,7 +774,7 @@ if (localStorage.getItem('token') !== null) {
 
                 axios({
                     method: 'post',
-                    url: "/coffee",
+                    url: "/api/coffee",
                     headers: {
                         'Content-Type': 'application/json;charset=utf-8',
 

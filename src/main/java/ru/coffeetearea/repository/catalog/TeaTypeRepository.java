@@ -9,5 +9,5 @@ import java.util.List;
 
 public interface TeaTypeRepository extends JpaRepository<TeaType, Long> {
 
-    List<GeneralCatalog> findAllByIsDeletedIsFalse(Sort sort);
+    List<GeneralCatalog> findAllByDeletedIsFalse(Sort sort);
 }

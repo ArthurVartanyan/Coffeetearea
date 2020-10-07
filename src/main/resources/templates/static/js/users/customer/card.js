@@ -1,6 +1,6 @@
 if (localStorage.getItem('token') !== null) {
 
-    const requestURL = '/cart-item/list'
+    const requestURL = '/api/cart-item/list'
 
     const xhr = new XMLHttpRequest();
 
@@ -40,7 +40,7 @@ if (localStorage.getItem('token') !== null) {
                 });
 
 
-                fetch("/cart-item/" + this.id + "/number", {
+                fetch("/api/cart-item/" + this.id + "/number", {
 
                     method: 'PUT',
 
@@ -84,7 +84,7 @@ if (localStorage.getItem('token') !== null) {
 
             delButton.onclick = function () {
 
-                fetch("/cart-item/" + this.id, {
+                fetch("/api/cart-item/" + this.id, {
 
                     method: 'DELETE',
 
@@ -120,7 +120,7 @@ if (localStorage.getItem('token') !== null) {
         removeAllButton.textContent = 'Очистить корзину'
         removeAllButton.onclick = function () {
 
-            fetch("/cart-item/all", {
+            fetch("/api/cart-item/all", {
 
                 method: 'DELETE',
 
@@ -158,7 +158,7 @@ if (localStorage.getItem('token') !== null) {
         document.body.appendChild(order);
         superio_div.appendChild(br5);
 
-        const url = '/cart-item/list'
+        const url = '/api/cart-item/list'
 
         const request = new XMLHttpRequest();
 

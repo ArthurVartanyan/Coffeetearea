@@ -2,7 +2,7 @@ function searchOrder() {
 
     if (localStorage.getItem('token') !== null) {
 
-        const requestURL = '/orders/' + document.getElementById('orderId').value
+        const requestURL = '/api/orders/' + document.getElementById('orderId').value
 
         const xhr = new XMLHttpRequest();
 
@@ -202,7 +202,7 @@ function searchOrder() {
 
             cancelBut.onclick = function () {
 
-                fetch("orders/cancel/" + orderData.id, {
+                fetch("/api/orders/cancel/" + orderData.id, {
 
                     method: 'PUT',
 
@@ -230,7 +230,7 @@ function searchOrder() {
             activeBut.textContent = 'Завершить'
             activeBut.onclick = function () {
 
-                fetch("orders/complete/" + orderData.id, {
+                fetch("/api/orders/complete/" + orderData.id, {
 
                     method: 'PUT',
 
@@ -275,17 +275,3 @@ function searchOrder() {
         xhr.send()
     }
 }
-
-// Array.prototype.slice.call(document.getElementsByClassName('forRemove')).forEach(
-//     function (item) {
-//         item.remove();
-//     });
-//
-// var errorInf = document.createElement('pr')
-// errorInf.className = 'forRemove'
-// errorInf.textContent = 'Номер заказа:'
-// errorInf.style.position = 'absolute'
-// errorInf.style.left = '200px'
-// errorInf.style.top = '300px'
-// errorInf.style.color = 'red'
-// document.body.appendChild(errorInf)

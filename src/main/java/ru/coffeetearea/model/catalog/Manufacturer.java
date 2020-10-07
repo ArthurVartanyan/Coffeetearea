@@ -3,7 +3,8 @@ package ru.coffeetearea.model.catalog;
 import javax.persistence.*;
 
 /**
- * см. класс GeneralCatalog
+ * Класс - справочник "Производитель".
+ * У каждого напитка свой производитель, наприер: Lipton, Jacobs и т.д.
  */
 
 @Entity

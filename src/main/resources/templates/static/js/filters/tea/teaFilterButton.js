@@ -1,6 +1,6 @@
 function teaFilter(){
 
-    var urlForPagi = '/tea/filter'
+    var urlForPagi = '/api/tea/filter'
 
     const xhrPagi = new XMLHttpRequest();
 

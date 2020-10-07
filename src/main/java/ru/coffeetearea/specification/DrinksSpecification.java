@@ -89,6 +89,10 @@ public class DrinksSpecification {
                 predicateList.add(typePredicate);
             }
 
+            Predicate isDeletedPredicate = criteriaBuilder
+                    .equal(root.get(Tea_.deleted), false);
+            predicateList.add(isDeletedPredicate);
+
             predicateList.addAll(getDrinkPredicates(drinkName, countryId,
                     min, max, root, criteriaBuilder));
 
@@ -110,7 +114,7 @@ public class DrinksSpecification {
      * @return List of predicates
      */
     public static Specification<Coffee> getCoffeesByFilter(String drinkName, Long roastingId, Long typeId, Long countryId,
-                                                           BigDecimal min, BigDecimal max, boolean isDeleted) {
+                                                           BigDecimal min, BigDecimal max) {
 
         return (root, query, criteriaBuilder) -> {
             // Создаю лист, чтобы заполнять его Предикатами(см. по параметрам)
@@ -127,7 +131,7 @@ public class DrinksSpecification {
                 predicateList.add(typePredicate);
             }
             Predicate isDeletedPredicate = criteriaBuilder
-                    .equal(root.get(Coffee_.isDeleted), isDeleted);
+                    .equal(root.get(Coffee_.deleted), false);
             predicateList.add(isDeletedPredicate);
 
             predicateList.addAll(getDrinkPredicates(drinkName, countryId,

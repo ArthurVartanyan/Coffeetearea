@@ -96,7 +96,7 @@ public class TeaService {
     public PageDTO<TeaDTO> findAll(int page, int pageSize, SortingParams sortingParams) {
 
         final Page<Tea> teas = teaRepository
-                .findAllByIsDeletedIsFalse(drinkService.sortingWithParams(sortingParams, page, pageSize));
+                .findAllByDeletedIsFalse(drinkService.sortingWithParams(sortingParams, page, pageSize));
 
         return new PageDTO<>(teaMapper.teaToTeasDTO(teas));
     }

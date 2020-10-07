@@ -9,11 +9,11 @@ import javax.validation.constraints.Size;
 @Data
 public class MakeOrderDTO {
 
-    @NotBlank
-    @Size(min = 11, max = 11)
+    @NotBlank(message = "Заполните поле!")
+    @Size(message = "Пожалуйста, введите корректный номер телефона!", min = 11, max = 11)
     private String phoneNumber;
 
-    @NotBlank
-    @Size(min = 10)
+    @NotBlank(message = "Заполните поле!")
+    @Size(message = "Пожалуйста, введите корректный адрес доставки!", min = 10)
     private String address;
 }

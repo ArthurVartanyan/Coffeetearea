@@ -3,7 +3,8 @@ package ru.coffeetearea.model.catalog;
 import javax.persistence.*;
 
 /**
- * см. класс GeneralCatalog
+ * Класс - справочник "Упаковка".
+ * Каждый напиток может иметь свой тип упаковки, например: Стеклянная банка, пакет, вакуумная упаковка и т.д.
  */
 
 @Entity

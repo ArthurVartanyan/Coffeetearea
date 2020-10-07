@@ -1,6 +1,6 @@
 if (localStorage.getItem('token') !== null) {
 
-    const requestURL = '/catalogs/countries'
+    const requestURL = '/api/catalogs/countries'
 
     const xhr = new XMLHttpRequest();
 
@@ -48,7 +48,7 @@ if (localStorage.getItem('token') !== null) {
 
                     axios({
                         method: 'put',
-                        url: "/catalogs/" + ids + "/countries",
+                        url: "/api/catalogs/" + ids + "/countries",
                         headers: {
                             'Content-Type': 'application/json;charset=utf-8',
 
@@ -100,7 +100,7 @@ if (localStorage.getItem('token') !== null) {
 
             removeButton.onclick = function () {
 
-                fetch("/catalogs/" + ids + "/country", {
+                fetch("/api/catalogs/" + ids + "/country", {
 
                     method: 'DELETE',
 
@@ -154,7 +154,7 @@ if (localStorage.getItem('token') !== null) {
 
                 axios({
                     method: 'post',
-                    url: "/catalogs/countries",
+                    url: "/api/catalogs/countries",
                     headers: {
                         'Content-Type': 'application/json;charset=utf-8',
 

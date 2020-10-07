@@ -1,6 +1,6 @@
 if (localStorage.getItem('token') !== null) {
 
-    const requestURL = '/catalogs/tea-colors'
+    const requestURL = '/api/catalogs/tea-colors'
 
     const xhr = new XMLHttpRequest();
 
@@ -48,7 +48,7 @@ if (localStorage.getItem('token') !== null) {
 
                     axios({
                         method: 'put',
-                        url: "/catalogs/" + ids + "/tea-colors",
+                        url: "/api/catalogs/" + ids + "/tea-colors",
                         headers: {
                             'Content-Type': 'application/json;charset=utf-8',
 
@@ -100,7 +100,7 @@ if (localStorage.getItem('token') !== null) {
 
             removeButton.onclick = function () {
 
-                fetch("/catalogs/" + ids + "/tea-colors", {
+                fetch("/api/catalogs/" + ids + "/tea-color", {
 
                     method: 'DELETE',
 
@@ -110,7 +110,7 @@ if (localStorage.getItem('token') !== null) {
                         'Authorization': localStorage.getItem('token')
                     }
                 }).then(() => {
-                    alert("Страна из справочника удалена!")
+                    alert("Цвет из справочника удален!")
                     location.reload()
                 })
 
@@ -154,7 +154,7 @@ if (localStorage.getItem('token') !== null) {
 
                 axios({
                     method: 'post',
-                    url: "/catalogs/tea-colors",
+                    url: "/api/catalogs/tea-colors",
                     headers: {
                         'Content-Type': 'application/json;charset=utf-8',
 

@@ -5,7 +5,7 @@ _form.addEventListener("submit", function (e) {
 
     axios({
         method: 'post',
-        url: '/users/registration',
+        url: '/api/users/registration',
         data: {
             name: document.getElementById('inputName').value,
             lastName: document.getElementById('inputSurName').value,

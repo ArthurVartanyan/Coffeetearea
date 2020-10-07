@@ -77,9 +77,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/webjars/**").permitAll()
                 // Раздаем странички и ссылки, которые доступны всем
                         // Ссылки
-                .antMatchers("/users/login",  "/users/info", "/users/registration", "/coffee/all", "/coffee/filter",
-                        "/drinks/populars", "/drinks/**/image", "/tea/all", "/tea/filter", "/catalogs/roastings", "/catalogs/coffee-types",
-                        "/catalogs/tea-types", "/catalogs/tea-colors", "/catalogs/countries", "/coffee/**", "/tea/**",
+                .antMatchers("/api/users/login",  "/api/users/info", "/api/users/registration", "/api/coffee/all", "/api/coffee/filter",
+                        "/api/drinks/populars", "/api/drinks/**/image", "/api/tea/all", "/api/tea/filter", "/api/catalogs/roastings", "/api/catalogs/coffee-types",
+                        "/api/catalogs/tea-types", "/api/catalogs/tea-colors", "/api/catalogs/countries", "/api/coffee/**", "/api/tea/**",
                         // Страницы
                         "/login", "/errorLogin", "/contacts", "/coffees", "/teas", "/home", "/about", "/registration",
                         "/card", "/order", "/drink-coffee", "/favourites", "/admin", "/admin-roastings", "/admin-manufacturers",

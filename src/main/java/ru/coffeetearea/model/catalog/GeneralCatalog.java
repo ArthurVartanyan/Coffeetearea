@@ -29,5 +29,6 @@ public abstract class GeneralCatalog {
     /**
      * Флаг - удален или нет
      */
-    protected boolean isDeleted;
+    @Column(name = "is_deleted")
+    protected boolean deleted;
 }

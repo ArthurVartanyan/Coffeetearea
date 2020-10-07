@@ -8,5 +8,5 @@ import ru.coffeetearea.model.Tea;
 
 public interface TeaRepository extends JpaRepository<Tea, Long>, JpaSpecificationExecutor<Tea> {
 
-    Page<Tea> findAllByIsDeletedIsFalse(Pageable pageable);
+    Page<Tea> findAllByDeletedIsFalse(Pageable pageable);
 }

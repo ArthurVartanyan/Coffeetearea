@@ -3,7 +3,8 @@ package ru.coffeetearea.model.catalog;
 import javax.persistence.*;
 
 /**
- * см. класс GeneralCatalog
+ * Класс - справочник "Тип чая".
+ * Чай может в незаваренном виде быть в нескольких видах, например: листвой, пакетированый и т.д.
  */
 
 @Entity

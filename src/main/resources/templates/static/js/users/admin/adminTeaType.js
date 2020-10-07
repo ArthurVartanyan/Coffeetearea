@@ -1,6 +1,6 @@
 if (localStorage.getItem('token') !== null) {
 
-    const requestURL = '/catalogs/tea-types'
+    const requestURL = '/api/catalogs/tea-types'
 
     const xhr = new XMLHttpRequest();
 
@@ -48,7 +48,7 @@ if (localStorage.getItem('token') !== null) {
 
                     axios({
                         method: 'put',
-                        url: "/catalogs/" + ids + "/tea-types",
+                        url: "/api/catalogs/" + ids + "/tea-types",
                         headers: {
                             'Content-Type': 'application/json;charset=utf-8',
 
@@ -100,7 +100,7 @@ if (localStorage.getItem('token') !== null) {
 
             removeButton.onclick = function () {
 
-                fetch("/catalogs/" + ids + "/tea-types", {
+                fetch("/api/catalogs/" + ids + "/tea-type", {
 
                     method: 'DELETE',
 
@@ -110,7 +110,7 @@ if (localStorage.getItem('token') !== null) {
                         'Authorization': localStorage.getItem('token')
                     }
                 }).then(() => {
-                    alert("Страна из справочника удалена!")
+                    alert("Тип из справочника удалена!")
                     location.reload()
                 })
 
@@ -154,7 +154,7 @@ if (localStorage.getItem('token') !== null) {
 
                 axios({
                     method: 'post',
-                    url: "/catalogs/tea-types",
+                    url: "/api/catalogs/tea-types",
                     headers: {
                         'Content-Type': 'application/json;charset=utf-8',
 

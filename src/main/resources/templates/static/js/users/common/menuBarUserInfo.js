@@ -1,4 +1,4 @@
-const request = '/users/info'
+const request = '/api/users/info'
 
 const xh = new XMLHttpRequest();
 

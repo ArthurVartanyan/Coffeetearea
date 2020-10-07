@@ -239,7 +239,7 @@ public class CatalogService {
         CoffeeType coffeeType = coffeeTypeRepository
                 .findById(coffeeTypeId)
                 .orElseThrow(() -> new EntityNotFoundException(coffeeTypeId));
-        ;
+
         coffeeType.setDeleted(true);
         coffeeTypeRepository.save(coffeeType);
 
@@ -323,7 +323,8 @@ public class CatalogService {
      * @return List<GeneralCatalogDTO>
      */
     public List<GeneralCatalogDTO> findCountries() {
-        return catalogMapper.catalogsToCatalogsDTO(countriesRepository.findAllByIsDeletedIsFalse(Sort.by("name").ascending()));
+
+        return catalogMapper.catalogsToCatalogsDTO(countriesRepository.findAllByDeletedIsFalse(Sort.by("name").ascending()));
     }
 
     /**
@@ -333,7 +334,7 @@ public class CatalogService {
      */
     public List<GeneralCatalogDTO> findManufacturers() {
 
-        return catalogMapper.catalogsToCatalogsDTO(manufacturerRepository.findAllByIsDeletedIsFalse(Sort.by("name").ascending()));
+        return catalogMapper.catalogsToCatalogsDTO(manufacturerRepository.findAllByDeletedIsFalse(Sort.by("name").ascending()));
     }
 
     /**
@@ -343,7 +344,7 @@ public class CatalogService {
      */
     public List<GeneralCatalogDTO> findRoastings() {
 
-        return catalogMapper.catalogsToCatalogsDTO(roastingRepository.findAllByIsDeletedIsFalse(Sort.by("name").ascending()));
+        return catalogMapper.catalogsToCatalogsDTO(roastingRepository.findAllByDeletedIsFalse(Sort.by("name").ascending()));
     }
 
     /**
@@ -352,7 +353,8 @@ public class CatalogService {
      * @return List<GeneralCatalogDTO>
      */
     public List<GeneralCatalogDTO> findPackages() {
-        return catalogMapper.catalogsToCatalogsDTO(packagingRepository.findAllByIsDeletedIsFalse(Sort.by("name").ascending()));
+
+        return catalogMapper.catalogsToCatalogsDTO(packagingRepository.findAllByDeletedIsFalse(Sort.by("name").ascending()));
     }
 
     /**
@@ -361,7 +363,8 @@ public class CatalogService {
      * @return List<GeneralCatalogDTO>
      */
     public List<GeneralCatalogDTO> findTeaColors() {
-        return catalogMapper.catalogsToCatalogsDTO(teaColorRepository.findAllByIsDeletedIsFalse(Sort.by("name").ascending()));
+
+        return catalogMapper.catalogsToCatalogsDTO(teaColorRepository.findAllByDeletedIsFalse(Sort.by("name").ascending()));
     }
 
     /**
@@ -370,7 +373,8 @@ public class CatalogService {
      * @return List<GeneralCatalogDTO>
      */
     public List<GeneralCatalogDTO> findCoffeeTypes() {
-        return catalogMapper.catalogsToCatalogsDTO(coffeeTypeRepository.findAllByIsDeletedIsFalse(Sort.by("name").ascending()));
+
+        return catalogMapper.catalogsToCatalogsDTO(coffeeTypeRepository.findAllByDeletedIsFalse(Sort.by("name").ascending()));
     }
 
     /**
@@ -379,6 +383,7 @@ public class CatalogService {
      * @return List<GeneralCatalogDTO>
      */
     public List<GeneralCatalogDTO> findTeaTypes() {
-        return catalogMapper.catalogsToCatalogsDTO(teaTypeRepository.findAllByIsDeletedIsFalse(Sort.by("name").ascending()));
+
+        return catalogMapper.catalogsToCatalogsDTO(teaTypeRepository.findAllByDeletedIsFalse(Sort.by("name").ascending()));
     }
 }

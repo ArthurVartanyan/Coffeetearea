@@ -3,7 +3,8 @@ package ru.coffeetearea.model.catalog;
 import javax.persistence.*;
 
 /**
- * см. класс GeneralCatalog
+ * Класс - справочник "Тип кофе".
+ * Типы кофе, например: "молотый", "зерновой" и т.д.
  */
 
 @Entity

@@ -18,7 +18,7 @@ import static ru.coffeetearea.model.Role.ROLE_CUSTOMER;
 
 
 @RestController
-@RequestMapping("/cart-item")
+@RequestMapping("/api/cart-item")
 @RequiredArgsConstructor
 @Api(value = "Cart item", tags = {"Cart item"})
 public class CartItemController {

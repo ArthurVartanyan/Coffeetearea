@@ -17,7 +17,7 @@ import static ru.coffeetearea.model.Role.ROLE_ADMIN;
 import static ru.coffeetearea.model.Role.ROLE_CUSTOMER;
 
 @RestController
-@RequestMapping("/orders")
+@RequestMapping("/api/orders")
 @RequiredArgsConstructor
 @Api(value = "Order", tags = {"Order"})
 public class OrderController {

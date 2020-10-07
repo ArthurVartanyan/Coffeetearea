@@ -2,38 +2,36 @@ package ru.coffeetearea.dto;
 
 import lombok.Data;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.util.Objects;
 
 @Data
 public class RegistrationUserDTO {
 
-    @NotBlank
+    @NotBlank(message = "Заполните поле!")
     private String name;
 
-    @NotBlank
+    @NotBlank(message = "Заполните поле!")
     private String lastName;
 
-    @NotBlank
-    @Size(min = 6, max = 30)
+    @NotBlank(message = "Заполните поле!")
+    @Size(message = "Длина логина должна быть не меньше 6 и не больше 30 символов", min = 6, max = 30)
+    @Pattern(message = "Неверный офрмат логина!", regexp = "[a-zA-Z0-9_]{3,12}")
     private String login;
 
-    @NotBlank
-    @Size(min = 6, max = 24)
+    @NotBlank(message = "Заполните поле!")
+    @Size(message = "Длина пароля должна быть не меньше 6 и не больше 24 символов", min = 6, max = 24)
     private String password;
 
     /**
      * Для проверки ввода пароля на корректность
      */
-    @NotBlank
-    @Size(min = 6, max = 24)
+    @NotBlank(message = "Заполните поле!")
+    @Size(message = "Длина пароля должна быть не меньше 6 и не больше 24 символов", min = 6, max = 24)
     private String checkPassword;
 
-    @NotBlank
-    @Email
+    @NotBlank(message = "Заполните поле!")
+    @Email(message = "Пожалуйста, введите корректный почтовый адрес!")
     private String mail;
 
     @Override

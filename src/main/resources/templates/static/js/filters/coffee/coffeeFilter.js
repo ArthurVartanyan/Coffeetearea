@@ -1,6 +1,6 @@
 function coffeeFilter() {
 
-    var urlForPagi = '/coffee/filter'
+    var urlForPagi = '/api/coffee/filter'
 
     const xhrPagi = new XMLHttpRequest();
 

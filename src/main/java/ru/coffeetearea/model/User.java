@@ -31,6 +31,7 @@ public class User {
     /**
      * Имя
      */
+    @Column(name = "name")
     private String name;
 
     /**
@@ -42,16 +43,19 @@ public class User {
     /**
      * Логин
      */
+    @Column(name = "login")
     private String login;
 
     /**
      * Пароль
      */
+    @Column(name = "password")
     private String password;
 
     /**
      * Почта
      */
+    @Column(name = "mail")
     private String mail;
 
     @Column(name = "is_deleted")
@@ -61,6 +65,7 @@ public class User {
      * Роль (см. javadoc над классом)
      */
     @Enumerated(EnumType.STRING)
+    @Column(name = "role")
     private Role role;
 
     @ManyToMany(fetch = FetchType.LAZY)

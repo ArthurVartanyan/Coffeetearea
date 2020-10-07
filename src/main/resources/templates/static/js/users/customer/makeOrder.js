@@ -2,7 +2,7 @@ function makeOrder() {
 
     axios({
         method: 'post',
-        url: '/orders',
+        url: '/api/orders',
         headers: {
             'Content-Type': 'application/json;charset=utf-8',
 
