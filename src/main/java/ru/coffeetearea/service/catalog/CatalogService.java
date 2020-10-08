@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import ru.coffeetearea.dto.GeneralCatalogDTO;
+import ru.coffeetearea.exceptions.BadRequestException;
 import ru.coffeetearea.exceptions.EntityNotFoundException;
 import ru.coffeetearea.mappers.CatalogMapper;
 import ru.coffeetearea.model.catalog.*;
@@ -40,10 +41,18 @@ public class CatalogService {
         CoffeeType coffeeType = coffeeTypeRepository
                 .findById(coffeeTypeId)
                 .orElseThrow(() -> new EntityNotFoundException(coffeeTypeId));
-        coffeeType.setName(name);
-        coffeeTypeRepository.save(coffeeType);
 
-        return catalogMapper.catalogToCatalogsDTO(coffeeType);
+        if (!coffeeTypeRepository.existsByName(name)) {
+
+            coffeeType.setName(name);
+            coffeeTypeRepository.save(coffeeType);
+
+            return catalogMapper.catalogToCatalogsDTO(coffeeType);
+
+        } else {
+            throw new BadRequestException("Ошибка! Тип кофе с таким названием уже существует!");
+        }
+
     }
 
     /**
@@ -54,10 +63,18 @@ public class CatalogService {
         Country country = countriesRepository
                 .findById(countryId)
                 .orElseThrow(() -> new EntityNotFoundException(countryId));
-        country.setName(name);
-        countriesRepository.save(country);
 
-        return catalogMapper.catalogToCatalogsDTO(country);
+        if (!countriesRepository.existsByName(name)) {
+
+            country.setName(name);
+            countriesRepository.save(country);
+
+            return catalogMapper.catalogToCatalogsDTO(country);
+
+        } else {
+            throw new BadRequestException("Ошибка! Страна с таким названием уже существует!");
+        }
+
     }
 
 
@@ -69,10 +86,18 @@ public class CatalogService {
         Manufacturer manufacturer = manufacturerRepository
                 .findById(manufacturerId)
                 .orElseThrow(() -> new EntityNotFoundException(manufacturerId));
-        manufacturer.setName(name);
-        manufacturerRepository.save(manufacturer);
 
-        return catalogMapper.catalogToCatalogsDTO(manufacturer);
+        if (!manufacturerRepository.existsByName(name)) {
+
+            manufacturer.setName(name);
+            manufacturerRepository.save(manufacturer);
+
+            return catalogMapper.catalogToCatalogsDTO(manufacturer);
+
+        } else {
+            throw new BadRequestException("Ошибка! Производитель с таким названием уже существует!");
+        }
+
     }
 
 
@@ -84,10 +109,18 @@ public class CatalogService {
         Packaging packaging = packagingRepository
                 .findById(packagingId)
                 .orElseThrow(() -> new EntityNotFoundException(packagingId));
-        packaging.setName(name);
-        packagingRepository.save(packaging);
 
-        return catalogMapper.catalogToCatalogsDTO(packaging);
+        if (!packagingRepository.existsByName(name)) {
+
+            packaging.setName(name);
+            packagingRepository.save(packaging);
+
+            return catalogMapper.catalogToCatalogsDTO(packaging);
+
+        } else {
+            throw new BadRequestException("Ошибка! Упаковка с таким названием уже существует!");
+        }
+
     }
 
 
@@ -99,10 +132,18 @@ public class CatalogService {
         Roasting roasting = roastingRepository
                 .findById(roastingId)
                 .orElseThrow(() -> new EntityNotFoundException(roastingId));
-        roasting.setName(name);
-        roastingRepository.save(roasting);
 
-        return catalogMapper.catalogToCatalogsDTO(roasting);
+        if (!roastingRepository.existsByName(name)) {
+
+            roasting.setName(name);
+            roastingRepository.save(roasting);
+
+            return catalogMapper.catalogToCatalogsDTO(roasting);
+
+        } else {
+            throw new BadRequestException("Ошибка! Прожарка с таким названием уже существует!");
+        }
+
     }
 
 
@@ -114,10 +155,18 @@ public class CatalogService {
         TeaColor teaColor = teaColorRepository
                 .findById(teaColorId)
                 .orElseThrow(() -> new EntityNotFoundException(teaColorId));
-        teaColor.setName(name);
-        teaColorRepository.save(teaColor);
 
-        return catalogMapper.catalogToCatalogsDTO(teaColor);
+        if (!teaColorRepository.existsByName(name)) {
+
+            teaColor.setName(name);
+            teaColorRepository.save(teaColor);
+
+            return catalogMapper.catalogToCatalogsDTO(teaColor);
+
+        } else {
+            throw new BadRequestException("Ошибка! Цвет чая с таким названием уже существует!");
+        }
+
     }
 
     /**
@@ -128,10 +177,18 @@ public class CatalogService {
         TeaType teaType = teaTypeRepository
                 .findById(teaTypeId)
                 .orElseThrow(() -> new EntityNotFoundException(teaTypeId));
-        teaType.setName(name);
-        teaTypeRepository.save(teaType);
 
-        return catalogMapper.catalogToCatalogsDTO(teaType);
+        if (!teaTypeRepository.existsByName(name)) {
+
+            teaType.setName(name);
+            teaTypeRepository.save(teaType);
+
+            return catalogMapper.catalogToCatalogsDTO(teaType);
+
+        } else {
+            throw new BadRequestException("Ошибка! Тип чая с таким названием уже существует!");
+        }
+
     }
 
 
@@ -140,12 +197,18 @@ public class CatalogService {
      */
     public GeneralCatalogDTO addCoffeeType(String name) {
 
-        CoffeeType coffeeType = new CoffeeType();
-        coffeeType.setDeleted(false);
-        coffeeType.setName(name);
-        coffeeTypeRepository.save(coffeeType);
+        if (!coffeeTypeRepository.existsByName(name)) {
 
-        return catalogMapper.catalogToCatalogsDTO(coffeeType);
+            CoffeeType coffeeType = new CoffeeType();
+            coffeeType.setDeleted(false);
+            coffeeType.setName(name);
+            coffeeTypeRepository.save(coffeeType);
+
+            return catalogMapper.catalogToCatalogsDTO(coffeeType);
+
+        } else {
+            throw new BadRequestException("Ошибка! Тип кофе с таким названием уже существует!");
+        }
     }
 
     /**
@@ -153,12 +216,18 @@ public class CatalogService {
      */
     public GeneralCatalogDTO addCountry(String name) {
 
-        Country country = new Country();
-        country.setDeleted(false);
-        country.setName(name);
-        countriesRepository.save(country);
+        if (!countriesRepository.existsByName(name)) {
 
-        return catalogMapper.catalogToCatalogsDTO(country);
+            Country country = new Country();
+            country.setDeleted(false);
+            country.setName(name);
+            countriesRepository.save(country);
+
+            return catalogMapper.catalogToCatalogsDTO(country);
+
+        } else {
+            throw new BadRequestException("Ошибка! Страна с таким названием уже существует!");
+        }
     }
 
 
@@ -167,12 +236,17 @@ public class CatalogService {
      */
     public GeneralCatalogDTO addManufacturer(String name) {
 
-        Manufacturer manufacturer = new Manufacturer();
-        manufacturer.setDeleted(false);
-        manufacturer.setName(name);
-        manufacturerRepository.save(manufacturer);
+        if (!manufacturerRepository.existsByName(name)) {
 
-        return catalogMapper.catalogToCatalogsDTO(manufacturer);
+            Manufacturer manufacturer = new Manufacturer();
+            manufacturer.setDeleted(false);
+            manufacturer.setName(name);
+            manufacturerRepository.save(manufacturer);
+
+            return catalogMapper.catalogToCatalogsDTO(manufacturer);
+        } else {
+            throw new BadRequestException("Ошибка! Производитель с таким названием уже существует!");
+        }
     }
 
 
@@ -181,12 +255,18 @@ public class CatalogService {
      */
     public GeneralCatalogDTO addPackaging(String name) {
 
-        Packaging packaging = new Packaging();
-        packaging.setDeleted(false);
-        packaging.setName(name);
-        packagingRepository.save(packaging);
+        if (!packagingRepository.existsByName(name)) {
 
-        return catalogMapper.catalogToCatalogsDTO(packaging);
+            Packaging packaging = new Packaging();
+            packaging.setDeleted(false);
+            packaging.setName(name);
+            packagingRepository.save(packaging);
+
+            return catalogMapper.catalogToCatalogsDTO(packaging);
+
+        } else {
+            throw new BadRequestException("Ошибка! Упаковка с таким названием уже существует!");
+        }
     }
 
 
@@ -195,12 +275,18 @@ public class CatalogService {
      */
     public GeneralCatalogDTO addRoasting(String name) {
 
-        Roasting roasting = new Roasting();
-        roasting.setDeleted(false);
-        roasting.setName(name);
-        roastingRepository.save(roasting);
+        if (!roastingRepository.existsByName(name)) {
 
-        return catalogMapper.catalogToCatalogsDTO(roasting);
+            Roasting roasting = new Roasting();
+            roasting.setDeleted(false);
+            roasting.setName(name);
+            roastingRepository.save(roasting);
+
+            return catalogMapper.catalogToCatalogsDTO(roasting);
+
+        } else {
+            throw new BadRequestException("Ошибка! Прожарка с таким названием уже существует!");
+        }
     }
 
 
@@ -209,12 +295,18 @@ public class CatalogService {
      */
     public GeneralCatalogDTO addTeaColor(String name) {
 
-        TeaColor teaColor = new TeaColor();
-        teaColor.setDeleted(false);
-        teaColor.setName(name);
-        teaColorRepository.save(teaColor);
+        if (!teaColorRepository.existsByName(name)) {
 
-        return catalogMapper.catalogToCatalogsDTO(teaColor);
+            TeaColor teaColor = new TeaColor();
+            teaColor.setDeleted(false);
+            teaColor.setName(name);
+            teaColorRepository.save(teaColor);
+
+            return catalogMapper.catalogToCatalogsDTO(teaColor);
+
+        } else {
+            throw new BadRequestException("Ошибка! Цвет чая с таким названием уже существует!");
+        }
     }
 
     /**
@@ -222,12 +314,18 @@ public class CatalogService {
      */
     public GeneralCatalogDTO addTeaType(String name) {
 
-        TeaType teaType = new TeaType();
-        teaType.setDeleted(false);
-        teaType.setName(name);
-        teaTypeRepository.save(teaType);
+        if (!teaTypeRepository.existsByName(name)) {
 
-        return catalogMapper.catalogToCatalogsDTO(teaType);
+            TeaType teaType = new TeaType();
+            teaType.setDeleted(false);
+            teaType.setName(name);
+            teaTypeRepository.save(teaType);
+
+            return catalogMapper.catalogToCatalogsDTO(teaType);
+
+        } else {
+            throw new BadRequestException("Ошибка! Тип чая с таким названием уже существует!");
+        }
     }
 
 

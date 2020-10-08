@@ -58,30 +58,61 @@ if (localStorage.getItem('token') !== null) {
                             name: document.getElementById('addInput').value
                         }
                     }).catch((error) => {
+                        var notValidError;
 
-                        Array.prototype.slice.call(document.getElementsByClassName('prEx')).forEach(
-                            function (item) {
-                                item.remove();
-                            });
+                        if (error.response.data.error !== null) {
 
-                        var nameEx;
 
-                        for (let i = 0; i < error.response.data.fieldErrors.length; i++) {
-                            if (error.response.data.fieldErrors[i].field === "name") {
-                                nameEx = error.response.data.fieldErrors[i].message;
-                            }
+                            Array.prototype.slice.call(document.getElementsByClassName('prEx')).forEach(
+                                function (item) {
+                                    item.remove();
+                                });
+
+                            Array.prototype.slice.call(document.getElementsByTagName('h3')).forEach(
+                                function (item) {
+                                    item.remove();
+                                });
+
+                            notValidError = error.response.data.error;
+
+                            var notValidMessage = document.createElement('h3');
+                            notValidMessage.textContent = notValidError;
+                            notValidMessage.style.color = 'red'
+                            notValidMessage.style.position = 'absolute'
+                            notValidMessage.style.left = '750px'
+                            notValidMessage.style.top = '110px'
+                            notValidMessage.style.textAlign = 'center'
+                            document.body.appendChild(notValidMessage)
+
                         }
 
-                        var nameC = document.createElement('pr');
-                        nameC.className = 'prEx'
-                        nameC.style.color = 'red';
-                        nameC.style.position = 'fixed';
-                        nameC.style.top = '405px';
-                        nameC.style.left = '1220px';
-                        nameC.style.fontFamily = '"Brush Script MT", cursive';
-                        nameC.textContent = nameEx;
-                        document.body.appendChild(nameC)
+                        if (error.response.data.fieldErrors.length > 0) {
 
+
+
+                            Array.prototype.slice.call(document.getElementsByTagName('h3')).forEach(
+                                function (item) {
+                                    item.remove();
+                                });
+
+                            var nameEx;
+
+                            for (let i = 0; i < error.response.data.fieldErrors.length; i++) {
+                                if (error.response.data.fieldErrors[i].field === "name") {
+                                    nameEx = error.response.data.fieldErrors[i].message;
+                                }
+                            }
+
+                            var nameC = document.createElement('pr');
+                            nameC.className = 'prEx'
+                            nameC.style.color = 'red';
+                            nameC.style.position = 'fixed';
+                            nameC.style.top = '405px';
+                            nameC.style.left = '1220px';
+                            nameC.style.fontFamily = '"Brush Script MT", cursive';
+                            nameC.textContent = nameEx;
+                            document.body.appendChild(nameC)
+                        }
                     }).then((res) => {
                         if (res.status === 200) {
                             alert("Цвет успешно отредактирован!")
@@ -164,29 +195,61 @@ if (localStorage.getItem('token') !== null) {
                         name: document.getElementById('addInput').value
                     }
                 }).catch((error) => {
+                    var notValidError;
 
-                    Array.prototype.slice.call(document.getElementsByClassName('prEx')).forEach(
-                        function (item) {
-                            item.remove();
-                        });
+                    if (error.response.data.error !== null) {
 
-                    var nameEx;
 
-                    for (let i = 0; i < error.response.data.fieldErrors.length; i++) {
-                        if (error.response.data.fieldErrors[i].field === "name") {
-                            nameEx = error.response.data.fieldErrors[i].message;
-                        }
+                        Array.prototype.slice.call(document.getElementsByClassName('prEx')).forEach(
+                            function (item) {
+                                item.remove();
+                            });
+
+                        Array.prototype.slice.call(document.getElementsByTagName('h3')).forEach(
+                            function (item) {
+                                item.remove();
+                            });
+
+                        notValidError = error.response.data.error;
+
+                        var notValidMessage = document.createElement('h3');
+                        notValidMessage.textContent = notValidError;
+                        notValidMessage.style.color = 'red'
+                        notValidMessage.style.position = 'absolute'
+                        notValidMessage.style.left = '750px'
+                        notValidMessage.style.top = '110px'
+                        notValidMessage.style.textAlign = 'center'
+                        document.body.appendChild(notValidMessage)
+
                     }
 
-                    var nameC = document.createElement('pr');
-                    nameC.className = 'prEx'
-                    nameC.style.color = 'red';
-                    nameC.style.position = 'fixed';
-                    nameC.style.top = '405px';
-                    nameC.style.left = '1220px';
-                    nameC.style.fontFamily = '"Brush Script MT", cursive';
-                    nameC.textContent = nameEx;
-                    document.body.appendChild(nameC)
+                    if (error.response.data.fieldErrors.length > 0) {
+
+
+
+                        Array.prototype.slice.call(document.getElementsByTagName('h3')).forEach(
+                            function (item) {
+                                item.remove();
+                            });
+
+                        var nameEx;
+
+                        for (let i = 0; i < error.response.data.fieldErrors.length; i++) {
+                            if (error.response.data.fieldErrors[i].field === "name") {
+                                nameEx = error.response.data.fieldErrors[i].message;
+                            }
+                        }
+
+                        var nameC = document.createElement('pr');
+                        nameC.className = 'prEx'
+                        nameC.style.color = 'red';
+                        nameC.style.position = 'fixed';
+                        nameC.style.top = '405px';
+                        nameC.style.left = '1220px';
+                        nameC.style.fontFamily = '"Brush Script MT", cursive';
+                        nameC.textContent = nameEx;
+                        document.body.appendChild(nameC)
+                    }
                 }).then((res) => {
                     if (res.status === 200) {
                         alert("Цвет успешно добавлен!")

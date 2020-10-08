@@ -4,9 +4,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import ru.coffeetearea.dto.CoffeeDTO;
-import ru.coffeetearea.dto.DrinkDTO;
 import ru.coffeetearea.dto.PageDTO;
 import ru.coffeetearea.dto.SortingParams;
+import ru.coffeetearea.exceptions.BadRequestException;
 import ru.coffeetearea.exceptions.EntityNotFoundException;
 import ru.coffeetearea.mappers.CoffeeMapper;
 import ru.coffeetearea.model.Coffee;
@@ -29,7 +29,7 @@ public class CoffeeService {
     /**
      * Получить один напиток по ИД
      */
-    public CoffeeDTO findCoffee(Long coffeeId){
+    public CoffeeDTO findCoffee(Long coffeeId) {
 
         return coffeeMapper.coffeeToCoffeeDTO(coffeeRepository.findById(coffeeId)
                 .orElseThrow(() -> new EntityNotFoundException(coffeeId)));
@@ -44,14 +44,15 @@ public class CoffeeService {
      */
     public CoffeeDTO editCoffee(Long coffeeId, CoffeeDTO coffeeDTO) {
 
-        Coffee coffee = coffeeRepository.findById(coffeeId)
-                .orElseThrow(() -> new EntityNotFoundException(coffeeId));
+            Coffee coffee = coffeeRepository.findById(coffeeId)
+                    .orElseThrow(() -> new EntityNotFoundException(coffeeId));
 
-        coffeeDTO.setId(coffeeId);
+            coffeeDTO.setImage(coffee.getImage());
+            coffeeDTO.setId(coffeeId);
 
-        coffeeRepository.save(coffeeMapper.coffeeDTOtoCoffee(coffeeDTO));
+            coffeeRepository.save(coffeeMapper.coffeeDTOtoCoffee(coffeeDTO));
 
-        return coffeeMapper.coffeeToCoffeeDTO(coffeeRepository.getOne(coffeeId));
+            return coffeeMapper.coffeeToCoffeeDTO(coffeeRepository.getOne(coffeeId));
     }
 
 
@@ -78,48 +79,56 @@ public class CoffeeService {
      */
     public CoffeeDTO addCoffee(CoffeeDTO coffeeDTO) {
 
-        Coffee coffee = coffeeMapper.coffeeDTOtoCoffee(coffeeDTO);
+        if (!coffeeRepository.existsByName(coffeeDTO.getName())) {
 
-        coffee.setDeleted(false);
-        coffeeRepository.save(coffee);
+            Coffee coffee = coffeeMapper.coffeeDTOtoCoffee(coffeeDTO);
 
-        return coffeeMapper.coffeeToCoffeeDTO(coffee);
+            coffee.setDeleted(false);
+            coffeeRepository.save(coffee);
+
+            return coffeeMapper.coffeeToCoffeeDTO(coffee);
+
+        } else {
+            throw new BadRequestException("Ошибка! Кофе с таким названием уже существует!");
+        }
     }
 
-    /**
-     * Метод для вывода всех кофе
-     *
-     * @param page
-     * @param pageSize
-     * @return CoffeesDTOs
-     */
-    public PageDTO<CoffeeDTO> findAll(int page, int pageSize, SortingParams sortingParams) {
 
-        final Page<Coffee> coffees = coffeeRepository
-                .findAllByDeletedIsFalse(drinkService.sortingWithParams(sortingParams, page, pageSize));
+        /**
+         * Метод для вывода всех кофе
+         *
+         * @param page
+         * @param pageSize
+         * @return CoffeesDTOs
+         */
+        public PageDTO<CoffeeDTO> findAll ( int page, int pageSize, SortingParams sortingParams){
 
-        return new PageDTO<>(coffeeMapper.coffeeToCoffeesDTO(coffees));
+            final Page<Coffee> coffees = coffeeRepository
+                    .findAllByDeletedIsFalse(drinkService.sortingWithParams(sortingParams, page, pageSize));
+
+            return new PageDTO<>(coffeeMapper.coffeeToCoffeesDTO(coffees));
+        }
+
+        /**
+         * Метод для возвращение КОФЕ через фильтрацию
+         *
+         * @param page
+         * @param pageSize
+         * @param roastingId
+         * @param typeId
+         * @param countryId
+         * @param sortingParams
+         * @return filtered Coffees(DTOs)
+         */
+        public PageDTO<CoffeeDTO> findAllFilter ( int page, int pageSize, String drinkName, Long roastingId, Long
+        typeId, Long countryId,
+                BigDecimal min, BigDecimal max, SortingParams sortingParams){
+
+            final Page<Coffee> coffees = coffeeRepository
+                    .findAll(DrinksSpecification
+                                    .getCoffeesByFilter(drinkName, roastingId, typeId, countryId, min, max),
+                            drinkService.sortingWithParams(sortingParams, page, pageSize));
+
+            return new PageDTO<>(coffeeMapper.coffeeToCoffeesDTO(coffees));
+        }
     }
-
-    /**
-     * Метод для возвращение КОФЕ через фильтрацию
-     *
-     * @param page
-     * @param pageSize
-     * @param roastingId
-     * @param typeId
-     * @param countryId
-     * @param sortingParams
-     * @return filtered Coffees(DTOs)
-     */
-    public PageDTO<CoffeeDTO> findAllFilter(int page, int pageSize, String drinkName, Long roastingId, Long typeId, Long countryId,
-                                            BigDecimal min, BigDecimal max, SortingParams sortingParams) {
-
-        final Page<Coffee> coffees = coffeeRepository
-                .findAll(DrinksSpecification
-                                .getCoffeesByFilter(drinkName, roastingId, typeId, countryId, min, max),
-                        drinkService.sortingWithParams(sortingParams, page, pageSize));
-
-        return new PageDTO<>(coffeeMapper.coffeeToCoffeesDTO(coffees));
-    }
-}

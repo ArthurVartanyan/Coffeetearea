@@ -422,9 +422,6 @@ if (localStorage.getItem('token') !== null) {
                             }
                         }).catch((error) => {
 
-                            console.log(error.response)
-
-
                             Array.prototype.slice.call(document.getElementsByClassName('prEx')).forEach(
                                 function (item) {
                                     item.remove();
@@ -856,81 +853,119 @@ if (localStorage.getItem('token') !== null) {
                     }
                 }).catch((error) => {
 
-                    Array.prototype.slice.call(document.getElementsByClassName('prEx')).forEach(
-                        function (item) {
-                            item.remove();
-                        });
+                    var notValidError;
 
-                    var priceEx;
-                    var weightEx;
-                    var aboutEx;
-                    var nameEx;
+                    if (error.response.data.error !== null) {
 
-                    for (let i = 0; i < error.response.data.fieldErrors.length; i++) {
-                        if (error.response.data.fieldErrors[i].field === "price") {
-                            priceEx = error.response.data.fieldErrors[i].message;
-                        }
+
+                        Array.prototype.slice.call(document.getElementsByClassName('prEx')).forEach(
+                            function (item) {
+                                item.remove();
+                            });
+
+                        Array.prototype.slice.call(document.getElementsByTagName('h3')).forEach(
+                            function (item) {
+                                item.remove();
+                            });
+
+                        notValidError = error.response.data.error;
+
+                        var notValidMessage = document.createElement('h3');
+                        notValidMessage.textContent = notValidError;
+                        notValidMessage.style.color = 'red'
+                        notValidMessage.style.position = 'absolute'
+                        notValidMessage.style.left = '750px'
+                        notValidMessage.style.top = '110px'
+                        notValidMessage.style.textAlign = 'center'
+                        document.body.appendChild(notValidMessage)
+
                     }
 
-                    for (let i = 0; i < error.response.data.fieldErrors.length; i++) {
-                        if (error.response.data.fieldErrors[i].field === "weight") {
-                            weightEx = error.response.data.fieldErrors[i].message;
+
+                    if (error.response.data.fieldErrors.length > 0) {
+
+
+                        Array.prototype.slice.call(document.getElementsByTagName('h3')).forEach(
+                            function (item) {
+                                item.remove();
+                            });
+
+                        Array.prototype.slice.call(document.getElementsByClassName('prEx')).forEach(
+                            function (item) {
+                                item.remove();
+                            });
+
+                        var priceEx;
+                        var weightEx;
+                        var aboutEx;
+                        var nameEx;
+
+                        for (let i = 0; i < error.response.data.fieldErrors.length; i++) {
+                            if (error.response.data.fieldErrors[i].field === "price") {
+                                priceEx = error.response.data.fieldErrors[i].message;
+                            }
                         }
-                    }
 
-                    for (let i = 0; i < error.response.data.fieldErrors.length; i++) {
-                        if (error.response.data.fieldErrors[i].field === "about") {
-                            aboutEx = error.response.data.fieldErrors[i].message;
+                        for (let i = 0; i < error.response.data.fieldErrors.length; i++) {
+                            if (error.response.data.fieldErrors[i].field === "weight") {
+                                weightEx = error.response.data.fieldErrors[i].message;
+                            }
                         }
-                    }
 
-                    for (let i = 0; i < error.response.data.fieldErrors.length; i++) {
-                        if (error.response.data.fieldErrors[i].field === "name") {
-                            nameEx = error.response.data.fieldErrors[i].message;
+                        for (let i = 0; i < error.response.data.fieldErrors.length; i++) {
+                            if (error.response.data.fieldErrors[i].field === "about") {
+                                aboutEx = error.response.data.fieldErrors[i].message;
+                            }
                         }
+
+                        for (let i = 0; i < error.response.data.fieldErrors.length; i++) {
+                            if (error.response.data.fieldErrors[i].field === "name") {
+                                nameEx = error.response.data.fieldErrors[i].message;
+                            }
+                        }
+
+                        var nameC = document.createElement('pr');
+                        nameC.className = 'prEx'
+                        nameC.style.color = 'red';
+                        nameC.style.position = 'fixed';
+                        nameC.style.top = '255px';
+                        nameC.style.left = '1220px';
+                        nameC.style.fontFamily = '"Brush Script MT", cursive';
+                        nameC.textContent = nameEx;
+                        document.body.appendChild(nameC)
+
+                        var priceC = document.createElement('pr');
+                        priceC.className = 'prEx'
+                        priceC.style.color = 'red';
+                        priceC.style.position = 'fixed';
+                        priceC.style.top = '305px';
+                        priceC.style.left = '1220px';
+                        priceC.style.fontFamily = '"Brush Script MT", cursive';
+                        priceC.textContent = priceEx;
+                        document.body.appendChild(priceC)
+
+                        var weightC = document.createElement('pr');
+                        weightC.className = 'prEx'
+                        weightC.style.color = 'red';
+                        weightC.style.position = 'fixed';
+                        weightC.style.top = '355px';
+                        weightC.style.left = '1220px';
+                        weightC.style.fontFamily = '"Brush Script MT", cursive';
+                        weightC.textContent = weightEx;
+                        document.body.appendChild(weightC)
+
+                        var aboutC = document.createElement('pr');
+                        aboutC.className = 'prEx'
+                        aboutC.style.color = 'red';
+                        aboutC.style.position = 'fixed';
+                        aboutC.style.top = '730px';
+                        aboutC.style.left = '1470px';
+                        aboutC.style.fontFamily = '"Brush Script MT", cursive';
+                        aboutC.textContent = aboutEx;
+                        document.body.appendChild(aboutC)
                     }
-
-                    var nameC = document.createElement('pr');
-                    nameC.className = 'prEx'
-                    nameC.style.color = 'red';
-                    nameC.style.position = 'fixed';
-                    nameC.style.top = '255px';
-                    nameC.style.left = '1220px';
-                    nameC.style.fontFamily = '"Brush Script MT", cursive';
-                    nameC.textContent = nameEx;
-                    document.body.appendChild(nameC)
-
-                    var priceC = document.createElement('pr');
-                    priceC.className = 'prEx'
-                    priceC.style.color = 'red';
-                    priceC.style.position = 'fixed';
-                    priceC.style.top = '305px';
-                    priceC.style.left = '1220px';
-                    priceC.style.fontFamily = '"Brush Script MT", cursive';
-                    priceC.textContent = priceEx;
-                    document.body.appendChild(priceC)
-
-                    var weightC = document.createElement('pr');
-                    weightC.className = 'prEx'
-                    weightC.style.color = 'red';
-                    weightC.style.position = 'fixed';
-                    weightC.style.top = '355px';
-                    weightC.style.left = '1220px';
-                    weightC.style.fontFamily = '"Brush Script MT", cursive';
-                    weightC.textContent = weightEx;
-                    document.body.appendChild(weightC)
-
-                    var aboutC = document.createElement('pr');
-                    aboutC.className = 'prEx'
-                    aboutC.style.color = 'red';
-                    aboutC.style.position = 'fixed';
-                    aboutC.style.top = '730px';
-                    aboutC.style.left = '1470px';
-                    aboutC.style.fontFamily = '"Brush Script MT", cursive';
-                    aboutC.textContent = aboutEx;
-                    document.body.appendChild(aboutC)
-
-                })
+                    }
+                )
                     .then((res) => {
                         if (res.status === 200) {
 

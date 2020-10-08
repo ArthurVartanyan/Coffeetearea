@@ -37,7 +37,7 @@ public class DrinksSpecification {
         // Название
         if (drinkName != null) {
             Predicate namePredicate = cb.like(
-                    cb.lower(root.get(Drink_.name)), cb.lower(cb.literal("%" + drinkName + "%")));
+                    cb.lower(root.get(Drink_.name)), cb.lower(cb.literal("%" + drinkName.toLowerCase() + "%")));
             predicateList.add(namePredicate);
         }
         // Если И мин И мах НЕ равны нулю

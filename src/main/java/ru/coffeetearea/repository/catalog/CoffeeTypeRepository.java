@@ -10,4 +10,6 @@ import java.util.List;
 public interface CoffeeTypeRepository extends JpaRepository<CoffeeType, Long> {
 
     List<GeneralCatalog> findAllByDeletedIsFalse(Sort sort);
+
+    boolean existsByName(String coffeeTypeName);
 }

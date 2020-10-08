@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import ru.coffeetearea.dto.PageDTO;
 import ru.coffeetearea.dto.SortingParams;
 import ru.coffeetearea.dto.TeaDTO;
+import ru.coffeetearea.exceptions.BadRequestException;
 import ru.coffeetearea.exceptions.EntityNotFoundException;
 import ru.coffeetearea.mappers.TeaMapper;
 import ru.coffeetearea.model.Tea;
@@ -49,6 +50,7 @@ public class TeaService {
                 .findById(teaId)
                 .orElseThrow(() -> new EntityNotFoundException(teaId));
 
+        teaDTO.setImage(tea.getImage());
         teaDTO.setId(teaId);
 
         teaRepository.save(teaMapper.teaDTOtoTea(teaDTO));
@@ -79,11 +81,17 @@ public class TeaService {
      */
     public TeaDTO addTea(TeaDTO teaDTO) {
 
+        if (!teaRepository.existsByName(teaDTO.getName())) {
+
         Tea tea = teaMapper.teaDTOtoTea(teaDTO);
 
         teaRepository.save(tea);
 
         return teaMapper.teaToTeaDTO(tea);
+
+        } else {
+            throw new BadRequestException("Ошибка! Чай с таким названием уже существует!");
+        }
     }
 
     /**

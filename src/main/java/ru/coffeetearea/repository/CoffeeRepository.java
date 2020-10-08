@@ -9,4 +9,6 @@ import ru.coffeetearea.model.Coffee;
 public interface CoffeeRepository extends JpaRepository<Coffee, Long>, JpaSpecificationExecutor<Coffee> {
 
     Page<Coffee> findAllByDeletedIsFalse(Pageable pageable);
+
+    boolean existsByName(String coffeeName);
 }
