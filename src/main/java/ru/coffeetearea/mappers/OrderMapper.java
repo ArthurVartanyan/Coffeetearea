@@ -52,4 +52,12 @@ public interface OrderMapper {
      */
     @Mapping(source = "order.user", target = "userDTO")
     OrderInfoDTO orderToOrderInfoDTO(Order order);
+
+    /**
+     * Order
+     * @param orders
+     * @return
+     */
+    @IterableMapping(qualifiedByName = "ordersToOrdersInfoDTO")
+    List<OrderInfoDTO> ordersToOrdersInfoDTO(List<? extends Order> orders);
 }

@@ -12,6 +12,7 @@ import ru.coffeetearea.dto.OrderInfoDTO;
 import ru.coffeetearea.service.OrderService;
 
 import javax.annotation.security.RolesAllowed;
+import java.util.List;
 
 import static ru.coffeetearea.model.Role.ROLE_ADMIN;
 import static ru.coffeetearea.model.Role.ROLE_CUSTOMER;
@@ -40,19 +41,7 @@ public class OrderController {
     }
 
 
-    /**
-     * Найти заказ по ИД
-     *
-     * @param orderId
-     * @return OrderInfoDTO
-     */
-    @RolesAllowed({ROLE_ADMIN})
-    @GetMapping("/{orderId}")
-    public OrderInfoDTO findOrder(@PathVariable Long orderId) {
-
-        return orderService.findOrder(orderId);
-    }
-
+    // Put - methods
 
     /**
      * Оменить заказ
@@ -79,5 +68,34 @@ public class OrderController {
     public OrderInfoDTO completeOrder(@PathVariable Long orderId) {
 
         return orderService.completeOrder(orderId);
+    }
+
+
+    // Get - methods
+
+    /**
+     * Метод возвращает все заказы пользователя(со всеми статусами без исключения)
+     *
+     * @return List<OrderInfoDTO>
+     */
+    @RolesAllowed({ROLE_CUSTOMER})
+    @GetMapping("/user-orders")
+    public List<OrderInfoDTO> userOrders() {
+
+        return orderService.userOrders();
+    }
+
+
+    /**
+     * Найти заказ по ИД
+     *
+     * @param orderId
+     * @return OrderInfoDTO
+     */
+    @RolesAllowed({ROLE_ADMIN})
+    @GetMapping("/{orderId}")
+    public OrderInfoDTO findOrder(@PathVariable Long orderId) {
+
+        return orderService.findOrder(orderId);
     }
 }

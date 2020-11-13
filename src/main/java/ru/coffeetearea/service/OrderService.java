@@ -137,4 +137,17 @@ public class OrderService {
 
         return orderMapper.orderToOrderInfoDTO(order);
     }
+
+
+    /**
+     * Посмотреть все заказы пользователя(пользователь)
+     *
+     * @return OrderInfoDTO
+     */
+    public List<OrderInfoDTO> userOrders() {
+
+        List<Order> userOrders = orderRepository.findAllByUserId(JwtUser.getCurrentUserID());
+
+        return orderMapper.ordersToOrdersInfoDTO(userOrders);
+    }
 }

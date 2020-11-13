@@ -44,15 +44,15 @@ public class CoffeeService {
      */
     public CoffeeDTO editCoffee(Long coffeeId, CoffeeDTO coffeeDTO) {
 
-            Coffee coffee = coffeeRepository.findById(coffeeId)
-                    .orElseThrow(() -> new EntityNotFoundException(coffeeId));
+        Coffee coffee = coffeeRepository.findById(coffeeId)
+                .orElseThrow(() -> new EntityNotFoundException(coffeeId));
 
-            coffeeDTO.setImage(coffee.getImage());
-            coffeeDTO.setId(coffeeId);
+        coffeeDTO.setImage(coffee.getImage());
+        coffeeDTO.setId(coffeeId);
 
-            coffeeRepository.save(coffeeMapper.coffeeDTOtoCoffee(coffeeDTO));
+        coffeeRepository.save(coffeeMapper.coffeeDTOtoCoffee(coffeeDTO));
 
-            return coffeeMapper.coffeeToCoffeeDTO(coffeeRepository.getOne(coffeeId));
+        return coffeeMapper.coffeeToCoffeeDTO(coffeeRepository.getOne(coffeeId));
     }
 
 
@@ -94,41 +94,41 @@ public class CoffeeService {
     }
 
 
-        /**
-         * Метод для вывода всех кофе
-         *
-         * @param page
-         * @param pageSize
-         * @return CoffeesDTOs
-         */
-        public PageDTO<CoffeeDTO> findAll ( int page, int pageSize, SortingParams sortingParams){
+    /**
+     * Метод для вывода всех кофе
+     *
+     * @param page
+     * @param pageSize
+     * @return CoffeesDTOs
+     */
+    public PageDTO<CoffeeDTO> findAll(int page, int pageSize, SortingParams sortingParams) {
 
-            final Page<Coffee> coffees = coffeeRepository
-                    .findAllByDeletedIsFalse(drinkService.sortingWithParams(sortingParams, page, pageSize));
+        final Page<Coffee> coffees = coffeeRepository
+                .findAllByDeletedIsFalse(drinkService.sortingWithParams(sortingParams, page, pageSize));
 
-            return new PageDTO<>(coffeeMapper.coffeeToCoffeesDTO(coffees));
-        }
-
-        /**
-         * Метод для возвращение КОФЕ через фильтрацию
-         *
-         * @param page
-         * @param pageSize
-         * @param roastingId
-         * @param typeId
-         * @param countryId
-         * @param sortingParams
-         * @return filtered Coffees(DTOs)
-         */
-        public PageDTO<CoffeeDTO> findAllFilter ( int page, int pageSize, String drinkName, Long roastingId, Long
-        typeId, Long countryId,
-                BigDecimal min, BigDecimal max, SortingParams sortingParams){
-
-            final Page<Coffee> coffees = coffeeRepository
-                    .findAll(DrinksSpecification
-                                    .getCoffeesByFilter(drinkName, roastingId, typeId, countryId, min, max),
-                            drinkService.sortingWithParams(sortingParams, page, pageSize));
-
-            return new PageDTO<>(coffeeMapper.coffeeToCoffeesDTO(coffees));
-        }
+        return new PageDTO<>(coffeeMapper.coffeeToCoffeesDTO(coffees));
     }
+
+    /**
+     * Метод для возвращение КОФЕ через фильтрацию
+     *
+     * @param page
+     * @param pageSize
+     * @param roastingId
+     * @param typeId
+     * @param countryId
+     * @param sortingParams
+     * @return filtered Coffees(DTOs)
+     */
+    public PageDTO<CoffeeDTO> findAllFilter(int page, int pageSize, String drinkName, Long roastingId, Long
+            typeId, Long countryId,
+                                            BigDecimal min, BigDecimal max, SortingParams sortingParams) {
+
+        final Page<Coffee> coffees = coffeeRepository
+                .findAll(DrinksSpecification
+                                .getCoffeesByFilter(drinkName, roastingId, typeId, countryId, min, max),
+                        drinkService.sortingWithParams(sortingParams, page, pageSize));
+
+        return new PageDTO<>(coffeeMapper.coffeeToCoffeesDTO(coffees));
+    }
+}
