@@ -173,7 +173,7 @@ public class CatalogController {
      * Редактирование элементов типов кофе
      */
     @RolesAllowed({ROLE_ADMIN})
-    @PutMapping("/{coffeeTypeId}/coffee-types")
+    @PutMapping("/coffee-types/{coffeeTypeId}")
     public ResponseEntity<GeneralCatalogDTO> editCoffeeType(@PathVariable Long coffeeTypeId,
                                                             @Validated(GeneralCatalogDTO.New.class)
                                                             @RequestBody GeneralCatalogDTO generalCatalogDTO) {
@@ -186,7 +186,7 @@ public class CatalogController {
      * Редактирование элементов стран
      */
     @RolesAllowed({ROLE_ADMIN})
-    @PutMapping("/{countryId}/countries")
+    @PutMapping("/countries/{countryId}")
     public ResponseEntity<GeneralCatalogDTO> editCountry(@PathVariable Long countryId,
                                                          @Validated(GeneralCatalogDTO.New.class)
                                                          @RequestBody GeneralCatalogDTO generalCatalogDTO) {
@@ -200,7 +200,7 @@ public class CatalogController {
      * Редактирование элементов типов производителей
      */
     @RolesAllowed({ROLE_ADMIN})
-    @PutMapping("/{manufacturerId}/manufacturers")
+    @PutMapping("/manufacturers/{manufacturerId}")
     public ResponseEntity<GeneralCatalogDTO> editManufacturer(@PathVariable Long manufacturerId,
                                                               @Validated(GeneralCatalogDTO.New.class)
                                                               @RequestBody GeneralCatalogDTO generalCatalogDTO) {
@@ -214,7 +214,7 @@ public class CatalogController {
      * Редактирование элементов типов пакетов
      */
     @RolesAllowed({ROLE_ADMIN})
-    @PutMapping("/{packagingId}/packages")
+    @PutMapping("/packages/{packagingId}")
     public ResponseEntity<GeneralCatalogDTO> editPackaging(@PathVariable Long packagingId,
                                                            @Validated(GeneralCatalogDTO.New.class)
                                                            @RequestBody GeneralCatalogDTO generalCatalogDTO) {
@@ -228,7 +228,7 @@ public class CatalogController {
      * Редактирование элементов типов обжарки
      */
     @RolesAllowed({ROLE_ADMIN})
-    @PutMapping("/{roastingId}/roastings")
+    @PutMapping("/roastings/{roastingId}")
     public ResponseEntity<GeneralCatalogDTO> editRoasting(@PathVariable Long roastingId,
                                                           @Validated(GeneralCatalogDTO.New.class)
                                                           @RequestBody GeneralCatalogDTO generalCatalogDTO) {
@@ -242,7 +242,7 @@ public class CatalogController {
      * Редактирование элементов цветов чая
      */
     @RolesAllowed({ROLE_ADMIN})
-    @PutMapping("/{teaColorId}/tea-colors")
+    @PutMapping("/tea-colors/{teaColorId}")
     public ResponseEntity<GeneralCatalogDTO> editTeaColor(@PathVariable Long teaColorId,
                                                           @Validated(GeneralCatalogDTO.New.class)
                                                           @RequestBody GeneralCatalogDTO generalCatalogDTO) {
@@ -255,7 +255,7 @@ public class CatalogController {
      * Редактирование элементов типов чая
      */
     @RolesAllowed({ROLE_ADMIN})
-    @PutMapping("/{teaTypeId}/tea-types")
+    @PutMapping("/tea-types/{teaTypeId}")
     public ResponseEntity<GeneralCatalogDTO> editTeaType(@PathVariable Long teaTypeId,
                                                          @Validated(GeneralCatalogDTO.New.class)
                                                          @RequestBody GeneralCatalogDTO generalCatalogDTO) {
@@ -271,7 +271,7 @@ public class CatalogController {
      * Удаление элементов типов кофе
      */
     @RolesAllowed({ROLE_ADMIN})
-    @DeleteMapping("/{coffeeTypeId}/coffee-type")
+    @DeleteMapping("/coffee-type/{coffeeTypeId}")
     public void deleteCoffeeType(@PathVariable Long coffeeTypeId) {
 
         catalogService.deleteCoffeeType(coffeeTypeId);
@@ -281,7 +281,7 @@ public class CatalogController {
      * Удаление элементов стран
      */
     @RolesAllowed({ROLE_ADMIN})
-    @DeleteMapping("/{countryId}/country")
+    @DeleteMapping("/country/{countryId}")
     public void deleteCountry(@PathVariable Long countryId) {
 
         catalogService.deleteCountry(countryId);
@@ -291,7 +291,7 @@ public class CatalogController {
      * Удаление элементов произваодителей
      */
     @RolesAllowed({ROLE_ADMIN})
-    @DeleteMapping("/{manufacturerId}/manufacturer")
+    @DeleteMapping("/manufacturer/{manufacturerId}")
     public void deleteManufacturer(@PathVariable Long manufacturerId) {
 
         catalogService.deleteManufacturer(manufacturerId);
@@ -301,7 +301,7 @@ public class CatalogController {
      * Удаление элементов упаковок
      */
     @RolesAllowed({ROLE_ADMIN})
-    @DeleteMapping("/{packagingId}/package")
+    @DeleteMapping("/package/{packagingId}")
     public void deletePackaging(@PathVariable Long packagingId) {
 
         catalogService.deletePackaging(packagingId);
@@ -311,7 +311,7 @@ public class CatalogController {
      * Удаление элементов обжарки кофе
      */
     @RolesAllowed({ROLE_ADMIN})
-    @DeleteMapping("/{roastingId}/roasting")
+    @DeleteMapping("/roasting/{roastingId}")
     public void deleteRoasting(@PathVariable Long roastingId) {
 
         catalogService.deleteRoasting(roastingId);
@@ -321,7 +321,7 @@ public class CatalogController {
      * Удаление элементов цвета чая
      */
     @RolesAllowed({ROLE_ADMIN})
-    @DeleteMapping("/{teaColorId}/tea-color")
+    @DeleteMapping("/tea-color/{teaColorId}")
     public void deleteTeaColor(@PathVariable Long teaColorId) {
 
         catalogService.deleteTeaColor(teaColorId);
@@ -331,7 +331,7 @@ public class CatalogController {
      * Удаление элементов типа чая
      */
     @RolesAllowed({ROLE_ADMIN})
-    @DeleteMapping("/{teaTypeId}/tea-type")
+    @DeleteMapping("/tea-type/{teaTypeId}")
     public void deleteTeaType(@PathVariable Long teaTypeId) {
 
         catalogService.deleteTeaType(teaTypeId);
