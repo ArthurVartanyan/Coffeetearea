@@ -87,24 +87,4 @@ public class Drink {
     @ManyToOne
     @JoinColumn(name = "country_id")
     private Country country;
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Drink drink = (Drink) o;
-        return deleted == drink.deleted &&
-                Objects.equals(id, drink.id) &&
-                Objects.equals(name, drink.name) &&
-                Objects.equals(price, drink.price) &&
-                Objects.equals(about, drink.about) &&
-                Objects.equals(packaging, drink.packaging) &&
-                Objects.equals(manufacturer, drink.manufacturer) &&
-                Objects.equals(country, drink.country);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, price, about, deleted, packaging, manufacturer, country);
-    }
 }

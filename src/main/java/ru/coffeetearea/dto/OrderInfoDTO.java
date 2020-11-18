@@ -1,6 +1,7 @@
 package ru.coffeetearea.dto;
 
 import lombok.Data;
+import ru.coffeetearea.model.Address;
 import ru.coffeetearea.model.OrderStatus;
 import ru.coffeetearea.model.User;
 
@@ -15,7 +16,7 @@ public class OrderInfoDTO {
     /**
      * Адрес доставки
      */
-    private String address;
+    private Address address;
 
     /**
      * Номер телефона заказчика
@@ -37,5 +38,8 @@ public class OrderInfoDTO {
      */
     private BigDecimal totalCost;
 
+    /**
+     * Заказчик
+     */
     private UserDTO userDTO;
 }

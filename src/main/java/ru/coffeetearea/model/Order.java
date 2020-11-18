@@ -22,12 +22,6 @@ public class Order {
     private Long id;
 
     /**
-     * Адрес доставки
-     */
-    @Column(name = "address")
-    private String address;
-
-    /**
      * Номер телефона заказчика
      */
     @Column(name = "phone_number")
@@ -53,9 +47,19 @@ public class Order {
     @Column(name = "total_cost")
     private BigDecimal totalCost;
 
+    /**
+     * Заказчик
+     */
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+    /**
+     * Адрес доставки
+     */
+    @ManyToOne
+    @JoinColumn(name = "address_id")
+    private Address address;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<CartItem> cartItems = new ArrayList<>();
