@@ -11,7 +11,6 @@ import ru.coffeetearea.mappers.OrderMapper;
 import ru.coffeetearea.model.CartItem;
 import ru.coffeetearea.model.Order;
 import ru.coffeetearea.model.OrderStatus;
-//import ru.coffeetearea.repository.AddressRepository;
 import ru.coffeetearea.repository.OrderRepository;
 import ru.coffeetearea.security.jwt.JwtUser;
 
@@ -27,8 +26,6 @@ public class OrderService {
     // Поля
 
     private final OrderRepository orderRepository;
-
-//    private final AddressRepository addressRepository;
 
     private final OrderMapper orderMapper;
     //
@@ -81,14 +78,10 @@ public class OrderService {
             throw new InternalServerException("Ошибка! Ваша корзина пуста!");
         }
         order.setTotalCost(calculateOrderPrice(order));
-//        order.setAddress(makeOrderDTO.getAddress());
-        Order.Address address = order.new Address();
-//        address.setRegion();
+        order.setAddress(makeOrderDTO.getAddress());
         order.setPhoneNumber(makeOrderDTO.getPhoneNumber());
         order.setDateOrder(new Date());
         order.setOrderStatus(OrderStatus.ACTIVE);
-
-//        addressRepository.save(order.getAddress());
 
         orderRepository.save(order);
 

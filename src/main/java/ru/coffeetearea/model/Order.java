@@ -1,6 +1,5 @@
 package ru.coffeetearea.model;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -58,36 +57,12 @@ public class Order {
     /**
      * Адрес доставки
      */
-//    @ManyToOne
-//    @JoinColumn(name = "address_id")
-//    private Address address;
+    @Embedded
+    private Address address;
 
-    @Data
-    @Embeddable
-    public class Address {
-
-        @Column(name = "region")
-        private String region;
-
-        @Column(name = "city")
-        private String city;
-
-        @Column(name = "district")
-        private String district;
-
-        @Column(name = "street")
-        private String street;
-
-        @Column(name = "house")
-        private short house;
-
-        @Column(name = "apartment")
-        private short apartment;
-
-        @Column(name = "index")
-        private int index;
-    }
-
+    /**
+     * Корзина(1 CartItem = напиток + кол-во(см. класс CartItem))
+     */
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<CartItem> cartItems = new ArrayList<>();
 
@@ -96,7 +71,7 @@ public class Order {
     public String toString() {
         return "Order{" +
                 "id=" + id +
-//                ", address='" + address + '\'' +
+                ", address='" + address + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", dateOrder=" + dateOrder +
                 ", orderStatus=" + orderStatus +

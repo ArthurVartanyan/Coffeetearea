@@ -56,7 +56,7 @@ public class Drink {
     private String about;
 
     /**
-     * Вес вещества(например: 100гр. или 1 кг.)
+     * Вес вещества(отображается в граммах, но хранится в килограммах)
      */
     @Column(name = "weight")
     private int weight;
