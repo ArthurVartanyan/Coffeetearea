@@ -36,8 +36,8 @@ public class DrinkDTO {
     protected String about;
 
     @NotNull(message = "Заполните поле!", groups = {Edit.class, New.class})
-    @Min(message = "Вес должен быть не меньше 10 грамм", value = 10, groups = {Edit.class, New.class})
-    protected int weight;
+    @Min(message = "Вес должен быть не меньше 10 грамм", value = 0, groups = {Edit.class, New.class})
+    protected double weight;
 
     @NotNull(groups = {New.class, Edit.class})
     protected GeneralCatalogDTO packaging;

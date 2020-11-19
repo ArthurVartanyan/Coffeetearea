@@ -184,4 +184,4 @@ create table cart_products(order_id bigint references pg_order(id)
                            count    integer not null);
 
 alter table drink
-    add weight int;
+    add weight double precision;

@@ -2,6 +2,7 @@ package ru.coffeetearea.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnTransformer;
 import org.hibernate.annotations.Formula;
 import ru.coffeetearea.model.catalog.Country;
 import ru.coffeetearea.model.catalog.Manufacturer;
@@ -9,7 +10,6 @@ import ru.coffeetearea.model.catalog.Packaging;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.Objects;
 
 
 @Data
@@ -59,7 +59,9 @@ public class Drink {
      * Вес вещества(отображается в граммах, но хранится в килограммах)
      */
     @Column(name = "weight")
-    private int weight;
+    @ColumnTransformer(read = "weight * 1000",
+                       write = "? / 1000") // Вес в БД храним в кг.
+    private double weight;
 
     /**
      * Флаг удаления
