@@ -1,7 +1,7 @@
 package ru.coffeetearea.dto;
 
 import lombok.Data;
-import ru.coffeetearea.model.Address;
+//import ru.coffeetearea.model.Address;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
@@ -17,5 +17,5 @@ public class MakeOrderDTO {
 
 //    @NotBlank(message = "Заполните поле!")
 //    @Size(message = "Пожалуйста, введите корректный адрес доставки!", min = 10)
-    private Address address;
+//    private Address address;
 }

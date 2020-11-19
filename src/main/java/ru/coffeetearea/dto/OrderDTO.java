@@ -1,7 +1,7 @@
 package ru.coffeetearea.dto;
 
 import lombok.Data;
-import ru.coffeetearea.model.Address;
+//import ru.coffeetearea.model.Address;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
@@ -21,7 +21,7 @@ public class OrderDTO {
 
     @NotNull(groups = {OrderDTO.MakeOrder.class})
 //    @Size(min = 10, groups = {OrderDTO.MakeOrder.class})
-    private Address address;
+//    private Address address;
 
     @NotNull(groups = {OrderDTO.MakeOrder.class})
     @Size(min = 11, max = 11, groups = {OrderDTO.MakeOrder.class})

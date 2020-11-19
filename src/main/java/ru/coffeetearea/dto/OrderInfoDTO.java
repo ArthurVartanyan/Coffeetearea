@@ -1,7 +1,7 @@
 package ru.coffeetearea.dto;
 
 import lombok.Data;
-import ru.coffeetearea.model.Address;
+//import ru.coffeetearea.model.Address;
 import ru.coffeetearea.model.OrderStatus;
 import ru.coffeetearea.model.User;
 
@@ -16,7 +16,7 @@ public class OrderInfoDTO {
     /**
      * Адрес доставки
      */
-    private Address address;
+//    private Address address;
 
     /**
      * Номер телефона заказчика
